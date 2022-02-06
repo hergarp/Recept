@@ -1,0 +1,249 @@
+body {
+    background-color: rgba(255,160,122,0.3);
+    background-image: url("../img/background.png");
+    background-repeat: repeat;
+    font-family: 'Ubuntu', sans-serif;
+    margin: 65px 0 0 0;
+    box-sizing: border-box;
+    font-size: 1.2rem;
+}
+
+main {
+    padding: 10px 0 0;
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+textarea {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+ol, ul {
+    padding: 0;
+}
+
+footer {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    margin-top: auto;
+    padding: 0 30px;
+}
+
+img {
+    max-width: 100%;
+}
+
+h1, h2, h3 {
+    margin: 0;
+    padding: 10px 0;
+}
+
+header > h2 {
+    padding-left: 30px;
+}
+
+nav {
+    box-sizing: border-box;
+    height: 65px;
+    margin-bottom: 10px;
+    position: fixed;
+    top: 0;
+    background-color: white;
+    width: 100%;
+    max-width: 1000px;
+    padding: 0 30px;
+}
+
+nav > ul {
+    list-style-type: none;
+    top: 0;
+}
+
+nav > ul > li {
+    display: inline;
+    float: left;
+}
+
+nav > ul > li > a {
+    padding-left: 30px;
+    text-decoration: none;
+    color: black;
+    display: block;
+}
+
+.align-center {
+    text-align: center;
+}
+
+.container {
+    padding: 0 30px;
+}
+
+.d-none {
+    display: none !important;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.fas {
+    color: lightsalmon;
+}
+
+.flp {
+    padding-left: 0 !important;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+.left-b {
+    border-left: 2px solid white;
+}
+
+.little-button {
+    width: 25px;
+    height: 25px;
+    border-radius: 10px;
+}
+
+.mr-2 {
+    margin-right: .5rem !important;
+}
+
+.mb-3 {
+    margin-bottom: 1rem !important;
+}
+
+.m-button {
+    display: inline-block;
+    line-height: 1.2;
+    text-align:center;
+    cursor: pointer;
+}
+
+.m-button {
+    font-size: 1.2rem;
+}
+
+.-fontSize-14 {
+    font-size: 1.2rem !important;
+}
+
+.m-form__input, .m-form__select {
+    height: 2rem;
+    font-size: 1rem;
+    border: none;
+    background-color: transparent;
+    font-family: 'Ubuntu', sans-serif;;
+}
+
+.m-form__selectWrapper {
+    position: relative;
+}
+
+.m-list__item {
+    counter-increment: number;
+    padding: 0.5rem 1.5rem 0.5rem 3.5rem;
+    cursor: pointer;
+    margin-bottom: 5px;
+    position: relative;
+}
+
+.m-list__item::before {
+    content: counter(number) ".";
+    box-sizing: border-box;
+    list-style-position: outside;
+    padding-right: 1rem;
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.right {
+    text-align: end;
+}
+
+.right-b {
+    border-right: 2px solid white;
+}
+
+.p-3 {
+    padding: 1rem !important;
+}
+
+.w-10 {
+    width: 10%;
+}
+.w-20 {
+    width: 20%;
+}
+
+.w-30 {
+    width: 30%;
+}
+
+.w-50 {
+    width: 47%;
+}
+
+.w-80 {
+    width: 80%;
+}
+
+.w-90 {
+    width: 87%;
+}
+
+.w-100 {
+    width: 100% !important;
+}
+
+.-adding {
+    background-color: lightgreen;
+}
+
+.-colorBgTernary {
+    background-color: rgba(255,160,122,0.3);
+}
+
+.-delete {
+    background-color: red;
+    margin: 5px 10px;
+    grid-column-start: 10;
+}
+
+.-draft {
+    background-color: lightgrey;
+}
+
+.-fontColorInversePrimary {
+    background-color: lightsalmon;
+}
+
+.-hidden {
+    border: none;
+    outline: none;
+    resize: none;
+}
+
+.-rejection {
+    background-color: lightcoral;
+}
+
+.-sending {
+    padding: 20px;
+    border: none;
+    border-radius: 10px;
+}

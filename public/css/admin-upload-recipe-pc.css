@@ -1,0 +1,82 @@
+form {
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-auto-flow: column;
+    grid-template: 
+        'ar ar as'
+        'd d as'
+        'f f f';
+    gap: 30px;
+    padding: 30px;
+}
+
+article {
+    grid-area: ar;
+}
+
+aside {
+    grid-area: as;
+}
+
+#d-send {
+    grid-area: d;
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-auto-flow: column;
+    grid-template: 1fr 1fr 1fr;
+    gap: 30px;
+}
+
+section {
+    border: 1px solid grey;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+footer {
+    grid-area: f;
+}
+
+img {
+    max-width: 100%;
+}
+
+#title {
+    border: None;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.ingredients, .steps {
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-auto-flow: column;
+    grid-template: auto auto auto auto auto auto auto auto auto auto;
+    gap: 10px;
+}
+
+.raw-material-name {
+    grid-column-start: 1;
+    grid-column-end: 5;
+}
+
+.raw-material-quantity {
+    grid-column-start: 5;
+    grid-column-end: 7;
+    width: 100%;
+}
+
+.raw-material-unit {
+    grid-column-start: 7;
+    grid-column-end: 10;
+}
+
+.step-txt {
+    grid-column-start: 1;
+    grid-column-end: 10;
+}
+
+.-delete {
+    grid-column-start: 10;
+    grid-column-end: 10;
+}
