@@ -17,15 +17,13 @@
     <article>
       <input class="w-100" type="text" name="title" id="title" placeholder="Név" />
       <div id="image">
-        <p>kép feltöltése</p>
-        <p style="color: red">
-          Csak saját készítésű képeket lehet feltölteni. Nem fogadunk el más
+        <p>kép feltöltése <br> <span style="color: red">Csak saját készítésű képeket lehet feltölteni. Nem fogadunk el más
           honlapokról levett, vagy könyvekben, újságokban megjelent fotókat,
-          amelyek szerzői joga más tulajdonában van.
-        </p>
+          amelyek szerzői joga más tulajdonában van.</span></p>
       </div>
       <section>
         <h2>Hozzávalók</h2>
+        <div id="ingredients">
         <div class="m-form__selectWrapper -colorBgTernary mb-3 ingredients">
             <select class="m-form__select right-b w-100 raw-material-name" name="raw-material-1" id="raw-material-1">
               <option value="">Alapanyag</option>
@@ -37,21 +35,24 @@
             </select>
             <button class="-delete little-button">–</button>
         </div>
+        </div>
         <div>
           <p class="right">
-            további alapanyag hozzáadása <button class="-adding little-button">+</button>
+            további alapanyag hozzáadása <button id="adding-material" class="-adding little-button">+</button>
           </p>
         </div>
       </section>
       <section>
         <h2>Lépések</h2>
-        <div class="steps w-100">
-          <textarea class="step-txt" name="step1" id="step1" cols="30" rows="1"></textarea>
-          <button class="-delete little-button">–</button>
+        <div id="steps">
+          <div class="steps w-100">
+            <textarea class="step-txt" name="step1" id="step1" cols="30" rows="1"></textarea>
+            <button class="-delete little-button">–</button>
+          </div>
         </div>
         <div>
           <p class="right">
-            további lépés hozzáadása <button class="-adding little-button">+</button>
+            további lépés hozzáadása <button id="adding-step" class="-adding little-button">+</button>
           </p>
         </div>
       </section>
@@ -112,26 +113,26 @@
       </section>
       <section>
         <h2>Mikor</h2>
-        <label class="m-button -fontSize-14 p-3 mr-2 -colorBgTernary" for="breakfast"><input class="d-none"
+        <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary" for="breakfast"><input class="d-none"
             type="checkbox" name="breakfast" id="breakfast" />reggeli</label>
-        <label class="m-button -fontSize-14 p-3 mr-2 -colorBgTernary" for="elevenses"><input class="d-none"
+        <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary" for="elevenses"><input class="d-none"
             type="checkbox" name="elevenses" id="elevenses" />tízórai</label>
-        <label class="m-button -fontSize-14 p-3 mr-2 -colorBgTernary" for="lunch"><input class="d-none" type="checkbox"
+        <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary" for="lunch"><input class="d-none" type="checkbox"
             name="lunch" id="lunch" />ebéd</label>
-        <label class="m-button -fontSize-14 p-3 mr-2 -colorBgTernary" for="snack"><input class="d-none" type="checkbox"
+        <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary" for="snack"><input class="d-none" type="checkbox"
             name="snack" id="snack" />uzsonna</label>
-        <label class="m-button -fontSize-14 p-3 mr-2 -colorBgTernary" for="dinner"><input class="d-none" type="checkbox"
+        <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary" for="dinner"><input class="d-none" type="checkbox"
             name="dinner" id="dinner" />vacsora</label>
       </section>
       <section>
         <h2>Szezon</h2>
-        <label class="m-button -fontSize-14 p-3 mr-2 -colorBgTernary" for="winter"><input class="d-none" type="checkbox"
+        <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary" for="winter"><input class="d-none" type="checkbox"
             name="winter" id="winter" />tél</label>
-        <label class="m-button -fontSize-14 p-3 mr-2 -colorBgTernary" for="spring"><input class="d-none" type="checkbox"
+        <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary" for="spring"><input class="d-none" type="checkbox"
             name="spring" id="spring" />tavasz</label>
-        <label class="m-button -fontSize-14 p-3 mr-2 -colorBgTernary" for="summer"><input class="d-none" type="checkbox"
+        <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary" for="summer"><input class="d-none" type="checkbox"
             name="summer" id="summer" />nyár</label>
-        <label class="m-button -fontSize-14 p-3 mr-2 -colorBgTernary" for="autumn"><input class="d-none" type="checkbox"
+        <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary" for="autumn"><input class="d-none" type="checkbox"
             name="autumn" id="autumn" />ősz</label>
       </section>
       <section>

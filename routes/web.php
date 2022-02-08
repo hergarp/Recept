@@ -40,6 +40,10 @@ Route::get('/results', function () {
     return view('results');
 });
 
+Route::get('/profile', function () {
+    return view('profile');
+});
+
 Route::get('/admin/upload', function () {
     return view('admin/upload');
 });

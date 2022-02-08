@@ -5,11 +5,16 @@
                 <img src="../img/logo.png" alt="">
             </a>
         </li>
-        @if (Auth::guest()) 
-        <li class="float-right"><a href="/login">Bejelentkezés</a></li>
+        @if(\Request::is("login") or \Request::is("register"))
+
         @else
-        <li class="float-right"><a href="/logout">Kijelentkezés</a></li>
+            @if (Auth::guest()) 
+            <li class="float-right"><a href="/login">Bejelentkezés</a></li>
+            @else
+            <li class="float-right"><a href="/logout">Kijelentkezés</a></li>
+            <li class="float-right"><a href="/profile">Profil</a></li>
+            @endif
+            <li class="float-right"><a href="/upload">Receptbeküldés</a></li>
         @endif
-        <li class="float-right"><a href="">Receptbeküldés</a></li>
     </ul>
 </nav>

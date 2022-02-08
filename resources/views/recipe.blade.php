@@ -83,7 +83,7 @@
                     <div class="order-md-2">
                         <form method="GET">
                             <a href=""><i class="fas fa-minus"></i></a>
-                            <input id="adag" class="m-form__input w-10 -fontSize-14" type="text" name="adag" value="4">
+                            <input id="adag" class="m-form__input w-10 -fontSize-16" type="text" name="adag" value="4">
                             <label for="adag">adag</label>
                             <a href=""><i class="fas fa-plus"></i></a>
                         </form>
@@ -103,8 +103,8 @@
             <section>
                 <h3>Elkészítés</h3>
                 <ol>
-                    <li class="m-list__item -fontSize-14 -number -selectable">Erőteljesen összerázzuk a sékerben az összes adalékot a jéggel és a pezsgő nélkül, a pezsgőskehelybe szűrjük és feltöltjük pezsgővel.</li>
-                    <li class="m-list__item -fontSize-14 -number -selectable">Az epret a pohár szélére szúrjuk.</li>
+                    <li class="m-list__item -fontSize-16 -number -selectable">Erőteljesen összerázzuk a sékerben az összes adalékot a jéggel és a pezsgő nélkül, a pezsgőskehelybe szűrjük és feltöltjük pezsgővel.</li>
+                    <li class="m-list__item -fontSize-16 -number -selectable">Az epret a pohár szélére szúrjuk.</li>
                 </ol>
                 
             </section>
