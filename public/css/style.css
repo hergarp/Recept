@@ -101,11 +101,6 @@ nav > ul > li.float-right > a:visited, nav > ul > li.float-right > a:hover{
     color: lightsalmon;
 }
 
-.fa-trash {
-    font-size: 1em !important;
-    width: 1em !important;
-}
-
 .flp {
     padding-left: 0 !important;
     margin-left: 0 !important;
