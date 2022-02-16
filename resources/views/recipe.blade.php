@@ -2,7 +2,7 @@
 <html lang="hu">
 <head>
     @include('template/head')
-    <link rel="stylesheet" href="css/recipe-pc.css">
+    <link rel="stylesheet" href="css/recipe-desktop.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://kit.fontawesome.com/91f36679fc.js" crossorigin="anonymous"></script>
     <script src="js/recipe.js"></script>

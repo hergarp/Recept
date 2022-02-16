@@ -3,7 +3,7 @@
 
 <head>
   @include('template/head')
-  <link rel="stylesheet" href="css/upload-pc.css" />
+  <link rel="stylesheet" href="css/upload-desktop.css" />
   <script src="js/upload.js"></script>
   <title>Receptfeltöltés | Recapt</title>
 </head>
@@ -33,12 +33,15 @@
             <select class="m-form__select left-b raw-material-unit" name="unit-1" id="unit-1">
               <option value="">mértékegység</option>
             </select>
-            <button class="-delete little-button">–</button>
+            <div class="right">
+              <button class="-delete little-button">–</button>
+            </div>
         </div>
         </div>
         <div>
           <p class="right">
-            további alapanyag hozzáadása <button id="adding-material" class="-adding little-button">+</button>
+            további alapanyag hozzáadása 
+            <button id="adding-material" class="-adding little-button">+</button>
           </p>
         </div>
       </section>
@@ -47,7 +50,9 @@
         <div id="steps">
           <div class="steps w-100">
             <textarea class="step-txt" name="step1" id="step1" cols="30" rows="1"></textarea>
-            <button class="-delete little-button">–</button>
+            <div class="right">
+              <button class="-delete little-button">–</button>
+            </div>
           </div>
         </div>
         <div>
@@ -182,11 +187,15 @@
       </section>
       <section>
         <h2>Egyéb elnevezések</h2>
-        <div>
-          <p class="right">
-            elnevezés hozzáadása <button class="-adding little-button">+</button>
-          </p>
+        <div id="names">
+          <div class="-colorBgTernary mb-3 w-100 names">
+            <input class="-hidden m-form__input w-80" type="text" name="name-' +nameNum+ '" id="name-'+nameNum+'" placeholder="További elnevezés" />
+            <div class="right"><button class="-delete little-button">–</button></div>
+          </div>
         </div>
+        <p class="right">
+          elnevezés hozzáadása <button id="adding-name" class="-adding little-button">+</button>
+        </p>
       </section>
     </aside>
     <div class="align-center w-100" id="d-send">

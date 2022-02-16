@@ -55,6 +55,13 @@ img {
     gap: 10px;
 }
 
+.names {
+    display: grid;
+    grid-auto-columns: 9fr 1fr;
+    grid-auto-flow: column;
+    gap: 10px;
+}
+
 .raw-material-name {
     grid-column-start: 1;
     grid-column-end: 5;

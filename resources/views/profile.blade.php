@@ -2,7 +2,7 @@
 <html lang="hu">
 <head>
     @include('../template/head')
-    <link rel="stylesheet" href="../css/profile-pc.css">
+    <link rel="stylesheet" href="../css/profile-desktop.css">
     <link rel="stylesheet" href="../css/rating.css">
     <title>Profil | Recapt</title>
 </head>

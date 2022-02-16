@@ -2,7 +2,7 @@
 <html lang="hu">
 <head>
     @include('template/head')
-    <link rel="stylesheet" href="css/results-pc.css">
+    <link rel="stylesheet" href="css/results-desktop.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/upload.js"></script>
     <title>Találatok | Recapt</title>

@@ -3,7 +3,7 @@
 
 <head>
   @include('../template/head')
-  <link rel="stylesheet" href="../css/admin-upload-recipe-pc.css">
+  <link rel="stylesheet" href="../css/admin-upload-recipe-desktop.css">
   <script src="../js/upload.js"></script>
   <title>Admin – Receptfelvitel | Recapt</title>
 </head>
@@ -31,7 +31,9 @@
             <select class="m-form__select left-b raw-material-unit" name="unit-1" id="unit-1">
               <option value="">cl</option>
             </select>
-            <button class="-delete little-button">–</button>
+            <div class="right">
+              <button class="-delete little-button">–</button>
+            </div>
           </div>
           <div class="m-form__selectWrapper -colorBgTernary mb-3 ingredients">
             <select class="m-form__select right-b raw-material-name" name="raw-material-2" id="raw-material-2">
@@ -42,7 +44,9 @@
             <select class="m-form__select left-b raw-material-unit" name="unit-2" id="unit-2">
               <option value="">cl</option>
             </select>
-            <button class="-delete little-button">–</button>
+            <div class="right">
+              <button class="-delete little-button">–</button>
+            </div>
           </div>
           <div class="m-form__selectWrapper -colorBgTernary mb-3 ingredients">
             <select class="m-form__select right-b raw-material-name" name="raw-material-3" id="raw-material-3">
@@ -53,7 +57,9 @@
             <select class="m-form__select left-b raw-material-unit" name="unit-3" id="unit-3">
               <option value="">cl</option>
             </select>
-            <button class="-delete little-button">–</button>
+            <div class="right">
+              <button class="-delete little-button">–</button>
+            </div>
           </div>
           <div class="m-form__selectWrapper -colorBgTernary mb-3 ingredients">
             <select class="m-form__select right-b raw-material-name" name="raw-material-4" id="raw-material-4">
@@ -64,7 +70,9 @@
             <select class="m-form__select left-b raw-material-unit" name="unit-4" id="unit-4">
               <option value="">cl</option>
             </select>
-            <button class="-delete little-button">–</button>
+            <div class="right">
+              <button class="-delete little-button">–</button>
+            </div>
           </div>
           <div class="m-form__selectWrapper -colorBgTernary mb-3 ingredients">
             <select class="m-form__select right-b raw-material-name" name="raw-material-5" id="raw-material-5">
@@ -75,7 +83,9 @@
             <select class="m-form__select left-b raw-material-unit" name="unit-5" id="unit-5">
               <option value="">bk</option>
             </select>
-            <button class="-delete little-button">–</button>
+            <div class="right">
+              <button class="-delete little-button">–</button>
+            </div>
           </div>
           <div class="m-form__selectWrapper -colorBgTernary mb-3 ingredients">
             <select class="m-form__select right-b raw-material-name" name="raw-material-6" id="raw-material-6">
@@ -86,7 +96,9 @@
             <select class="m-form__select left-b raw-material-unit" name="unit-6" id="unit-6">
               <option value="">ízlés szerint</option>
             </select>
-            <button class="-delete little-button">–</button>
+            <div class="right">
+              <button class="-delete little-button">–</button>
+            </div>
           </div>
           <div class="m-form__selectWrapper -colorBgTernary mb-3 ingredients">
             <select class="m-form__select right-b raw-material-name" name="raw-material-7" id="raw-material-7">
@@ -97,7 +109,9 @@
             <select class="m-form__select left-b raw-material-unit" name="unit-7" id="unit-7">
               <option value="">db</option>
             </select>
-            <button class="-delete little-button">–</button>
+            <div class="right">
+              <button class="-delete little-button">–</button>
+            </div>
           </div>
         </div>
         <div>
@@ -112,11 +126,15 @@
         <div class="steps w-100">
           <textarea class="step-txt" name="step1" id="step1" cols="30"
           rows="1">Erőteljesen összerázzuk a sékerben az összes adalékot a jéggel és a pezsgő nélkül, a pezsgőskehelybe szűrjük és feltöltjük pezsgővel.</textarea>
-          <button class="-delete little-button">–</button>
+          <div class="right">
+            <button class="-delete little-button">–</button>
+          </div>
         </div>
         <div class="steps w-100">
           <textarea class="step-txt" name="step1" id="step1" cols="30" rows="1">Az epret a pohár szélére szúrjuk.</textarea>
-          <button class="-delete little-button">–</button>
+          <div class="right">
+            <button class="-delete little-button">–</button>
+          </div>
         </div>
         </div>
         <div>
@@ -215,15 +233,20 @@
       </section>
       <section>
         <h2>Egyéb elnevezések</h2>
-        <div class="-colorBgTernary mb-3 w-100">
-          <input class="-hidden m-form__input w-80" type="text" name="other-name-1" id="other-name-1"
-            placeholder="Egyéb elnevezés" value="eper koktél" />
+        <div id="names">
+          <div class="-colorBgTernary mb-3 w-100 names">
+            <input class="-hidden m-form__input w-80" type="text" name="other-name-1" id="other-name-1"
+              placeholder="Egyéb elnevezés" value="eper koktél" />
+            <div class="right">
+              <button class="-delete little-button">–</button>
+            </div>  
+          </div>
         </div>
-        <div>
-          <p class="right">
-            elnevezés hozzáadása <button class="-adding little-button">+</button>
-          </p>
-        </div>
+          <div>
+            <p class="right">
+              elnevezés hozzáadása <button id="adding-name" class="-adding little-button">+</button>
+            </p>
+          </div>
       </section>
     </aside>
     <div class="align-center w-100" id="d-send">
