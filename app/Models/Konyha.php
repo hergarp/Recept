@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Konyha extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'konyha'
+    ];
 }

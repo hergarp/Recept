@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Mertekegyseg extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'mertekegyseg'
+    ];
 }

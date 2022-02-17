@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\Mertekegyseg;
 
 class CreateMertekegysegsTable extends Migration
 {
@@ -14,9 +15,29 @@ class CreateMertekegysegsTable extends Migration
     public function up()
     {
         Schema::create('mertekegysegs', function (Blueprint $table) {
-            $table->id();
+            $table->char('mertekegyseg', 20)->unique();
             $table->timestamps();
         });
+
+        Mertekegyseg::create(['mertekegyseg' => 'kk']);
+        Mertekegyseg::create(['mertekegyseg' => 'tk']);
+        Mertekegyseg::create(['mertekegyseg' => 'ek']);
+        Mertekegyseg::create(['mertekegyseg' => 'csepp']);
+        Mertekegyseg::create(['mertekegyseg' => 'citromból nyert']);
+        Mertekegyseg::create(['mertekegyseg' => 'fél citromból nyert']);
+        Mertekegyseg::create(['mertekegyseg' => 'ml']);
+        Mertekegyseg::create(['mertekegyseg' => 'dl']);
+        Mertekegyseg::create(['mertekegyseg' => 'cl']);
+        Mertekegyseg::create(['mertekegyseg' => 'l']);
+        Mertekegyseg::create(['mertekegyseg' => 'g']);
+        Mertekegyseg::create(['mertekegyseg' => 'dkg']);
+        Mertekegyseg::create(['mertekegyseg' => 'kg']);
+        Mertekegyseg::create(['mertekegyseg' => 'késhegynyi']);
+        Mertekegyseg::create(['mertekegyseg' => 'csipet']);
+        Mertekegyseg::create(['mertekegyseg' => 'szál']);
+        Mertekegyseg::create(['mertekegyseg' => 'ízlés szerint']);
+        Mertekegyseg::create(['mertekegyseg' => 'csokor']);
+        Mertekegyseg::create(['mertekegyseg' => 'bk']);
     }
 
     /**

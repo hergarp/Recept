@@ -14,6 +14,7 @@ class CreateReceptsTable extends Migration
     public function up()
     {
         Schema::create('recepts', function (Blueprint $table) {
+            $table->id('r_id', 11);
             $table->char('url_slug', 50);
             $table->char('megnevezes', 50);
             $table->char('kep', 50);
