@@ -47,3 +47,7 @@ Route::get('/profile', function () {
 Route::get('/admin/upload', function () {
     return view('admin/upload');
 });
+
+Route::get('/admin/recipe-list', function () {
+    return view('admin/recipe-list');
+});
