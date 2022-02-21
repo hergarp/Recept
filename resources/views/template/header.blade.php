@@ -1,4 +1,5 @@
 <nav class="dropdown">
+    <h1 class="dpn"><a class="flp" href="../index">Recapt</a></h1>
     <a class="flp" href="../index">
         <img src="../img/logo.png" alt="">
     </a>

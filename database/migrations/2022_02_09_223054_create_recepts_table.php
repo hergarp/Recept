@@ -42,9 +42,8 @@ class CreateReceptsTable extends Migration
             $table->binary('tel');
             $table->char('statusz')->length(50);
             $table->timestamps();
-        });
-        Schema::table('posts', function (Blueprint $table) {
-         
+
+
             $table->foreign('kategoria')->references('kategoria')->on('kategoria')
             ->constrained()
             ->onUpdate('cascade')

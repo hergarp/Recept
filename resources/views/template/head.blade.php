@@ -7,4 +7,5 @@
 <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;1,400;1,500&display=swap"
 rel="stylesheet" />
 <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
+<link rel="stylesheet" href="css/navigation.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

@@ -13,9 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 Route::get('/', function () {
     return view('index');
 });
@@ -51,3 +48,9 @@ Route::get('/admin/upload', function () {
 Route::get('/admin/recipe-list', function () {
     return view('admin/recipe-list');
 });
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
