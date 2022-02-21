@@ -2,7 +2,7 @@
 <html lang="hu">
 
 <head>
-  @include('template/head')
+  @include('../template/head')
   <link rel="stylesheet" href="css/upload-desktop.css" />
   <script src="js/upload.js"></script>
   <title>Receptfeltöltés | Recapt</title>
@@ -11,8 +11,9 @@
 <body>
   <main>
     <header>
-      @include('template/header')
+      @include('../template/header')
     </header>
+    @if(Auth::check())
     <form action="">
     <article>
       <input class="w-100" type="text" name="title" id="title" placeholder="Név" />
@@ -199,11 +200,17 @@
       </section>
     </aside>
     <div class="align-center w-100" id="d-send">
-      <button class="-adding -sending">Beküldés</button>
+      <button class="m-button -adding -sending">Beküldés</button>
     </div>
   </form>
+  @else
+  <div class="align-center">
+    <p>Receptfeltöltéshez először be kell jelentkeznie.</p>
+    <a href="/login">Bejelentkezés</a>
+  </div>
+  @endif
     <footer>
-      @include('template/footer')
+      @include('../template/footer')
     </footer>
   </main>
 </body>
