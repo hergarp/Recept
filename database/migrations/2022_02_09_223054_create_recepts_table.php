@@ -14,8 +14,9 @@ class CreateReceptsTable extends Migration
     public function up()
     {
         Schema::create('recepts', function (Blueprint $table) {
-            $table->id('r_id', 11);
+            $table->primary('r_id', 11);
             $table->char('url_slug', 50);
+            $table->unsignedBigInteger('user_id');
             $table->char('megnevezes', 50);
             $table->char('kep', 50);
             $table->char('kategoria', 30);
@@ -41,10 +42,8 @@ class CreateReceptsTable extends Migration
             $table->binary('tel');
             $table->char('statusz', 50);
             $table->timestamps();
-        });
-        Schema::table('posts', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id');
-         
+
+
             $table->foreign('user_id')->references('id')->on('users');
         });
     }
