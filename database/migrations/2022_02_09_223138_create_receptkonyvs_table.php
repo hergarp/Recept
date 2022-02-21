@@ -14,26 +14,23 @@ class CreateReceptkonyvsTable extends Migration
     public function up()
     {
         Schema::create('receptkonyvs', function (Blueprint $table) {
-            $table->id('rk_id', 11);
-            $table->integer('user_id', 11);
-            $table->id('r_id', 11);
+            $table->increments('rk_id', 11);
+            $table->unsignedBigInteger('user_id')->index();
+            $table->unsignedInteger('r_id')->index();
             $table->boolean('jelzes')->default(0);
-            $table->tinyInteger('minosites', 1);
+            $table->tinyInteger('minosites')->length(1);
             $table->timestamps();
-        });
-       Schema::table('posts', function (Blueprint $table) {
-     
-        $table->unsignedBigInteger('user_id');
-        $table->foreign('user_id')->references('id')->on('users')
-        ->constrained()
-        ->onUpdate('cascade')
-        ->onDelete('cascade');
-        $table->foreign('r_id')->references('id')->on('recept')
-        ->constrained()
-        ->onUpdate('cascade')
-        ->onDelete('cascade');
 
-    });
+
+            $table->foreign('user_id')->references('id')->on('users')
+                ->constraints()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->foreign('r_id')->references('r_id')->on('recepts')
+                ->constraints()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+        });
 } 
 
     /**

@@ -15,7 +15,7 @@ class CreateKonyhasTable extends Migration
     public function up()
     {
         Schema::create('konyhas', function (Blueprint $table) {
-            $table->primary('konyha', 30)->unique();
+            $table->char('konyha')->unique()->length(30);
             $table->timestamps();
         });
 

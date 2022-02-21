@@ -10,6 +10,6 @@ class Allergen extends Model
     use HasFactory;
 
     protected $fillable = [
-        'allergen'
+        'elnevezes'
     ];
 }

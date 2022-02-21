@@ -14,10 +14,9 @@ class CreateReceptsTable extends Migration
     public function up()
     {
         Schema::create('recepts', function (Blueprint $table) {
-            $table->primary('r_id', 11);
+            $table->increments('r_id')->length(11);
             $table->char('url_slug')->length(50);
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('user_id');
             $table->char('kep')->length(50);
             $table->char('kategoria')->length(30);
             $table->char('konyha')->length(30);
@@ -44,21 +43,20 @@ class CreateReceptsTable extends Migration
             $table->timestamps();
 
 
-            $table->foreign('kategoria')->references('kategoria')->on('kategoria')
-            ->constrained()
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
+            $table->foreign('kategoria')->references('kategoria')->on('kategorias')
+                ->constrained('kategoria')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
          
-            $table->foreign('konyha')->references('konyha')->on('konyha')
-            ->constrained()
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
+            $table->foreign('konyha')->references('konyha')->on('konyhas')
+                ->constrained('konyha')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
 
-            $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')
-            ->constrained()
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
+                ->constrained('users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
 
     }

@@ -14,18 +14,16 @@ class CreateLepesTable extends Migration
     public function up()
     {
         Schema::create('lepes', function (Blueprint $table) {
-            $table->id('l_id', 11);
-            $table->id('r_id', 11);  
-            $table->Text('lepes', 250);                      
+            $table->increments('l_id')->length(11);
+            $table->unsignedInteger('r_id')->length(11);  
+            $table->Text('lepes')->length(250);                      
             $table->timestamps();
-        });
-        Schema::table('posts', function (Blueprint $table) {
 
-            $table->foreign('r_id')->references('id')->on('recept')
-            ->constrained()
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
-    
+
+            $table->foreign('r_id')->references('r_id')->on('recepts')
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 

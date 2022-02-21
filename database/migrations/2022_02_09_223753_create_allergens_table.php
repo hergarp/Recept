@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Midels\Allergen;
+use App\Models\Allergen;
 
 class CreateAllergensTable extends Migration
 {
@@ -15,15 +15,15 @@ class CreateAllergensTable extends Migration
     public function up()
     {
         Schema::create('allergens', function (Blueprint $table) {
-            $table->primary('allergen', 20)->unique();
+            $table->char('elnevezes')->length(20)->unique();
             $table->timestamps();
         });
 
-        Allergen::create(['allergen' => 'glutén']);
-        Allergen::create(['allergen' => 'cukor']);
-        Allergen::create(['allergen' => 'tej']);
-        Allergen::create(['allergen' => 'tojás']);
-        Allergen::create(['allergen' => 'laktóz']);
+        Allergen::create(['elnevezes' => 'glutén']);
+        Allergen::create(['elnevezes' => 'cukor']);
+        Allergen::create(['elnevezes' => 'tej']);
+        Allergen::create(['elnevezes' => 'tojás']);
+        Allergen::create(['elnevezes' => 'laktóz']);
     }
 
     /**
