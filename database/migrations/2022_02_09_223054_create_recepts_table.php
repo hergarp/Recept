@@ -14,22 +14,23 @@ class CreateReceptsTable extends Migration
     public function up()
     {
         Schema::create('recepts', function (Blueprint $table) {
-            $table->id('r_id', 11);
-            $table->char('url_slug', 50);
-            $table->char('megnevezes', 50);
-            $table->char('kep', 50);
-            $table->char('kategoria', 30);
-            $table->char('konyha', 30);
-            $table->tinyInteger('adag', 2);
-            $table->mediumInteger('elokeszitesi_ido', 3);
-            $table->mediumInteger('fozesi_ido', 3);
-            $table->mediumInteger('sutesi_ido', 3);
-            $table->char('fogas', 20);
-            $table->char('konyhatechnologi', 20);
-            $table->char('babakonyha', 30);
-            $table->Text('egyeb_elnevezesek', 200);
-            $table->mediumInteger('receptkonyvben', 7);
-            $table->mediumInteger('ossznezettseg', 7);  
+            $table->primary('r_id', 11);
+            $table->char('url_slug')->length(50);
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->char('kep')->length(50);
+            $table->char('kategoria')->length(30);
+            $table->char('konyha')->length(30);
+            $table->tinyInteger('adag')->length(2);
+            $table->mediumInteger('elokeszitesi_ido')->length(3);
+            $table->mediumInteger('fozesi_ido')->length(3);
+            $table->mediumInteger('sutesi_ido')->length(3);
+            $table->char('fogas')->length(20);
+            $table->char('konyhatechnologi')->length(20);
+            $table->char('babakonyha')->length(30);
+            $table->Text('egyeb_elnevezesek')->length(200);
+            $table->mediumInteger('receptkonyvben')->length(7);
+            $table->mediumInteger('ossznezettseg')->length(7);  
             $table->date('feltoltes_datuma');
             $table->binary('reggeli');
             $table->binary('ebed');
@@ -39,14 +40,28 @@ class CreateReceptsTable extends Migration
             $table->binary('nyar');
             $table->binary('osz');
             $table->binary('tel');
-            $table->char('statusz', 50);
+            $table->char('statusz')->length(50);
             $table->timestamps();
         });
         Schema::table('posts', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id');
          
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('kategoria')->references('kategoria')->on('kategoria')
+            ->constrained()
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
+         
+            $table->foreign('konyha')->references('konyha')->on('konyha')
+            ->constrained()
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
+
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')
+            ->constrained()
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
         });
+
     }
 
     /**

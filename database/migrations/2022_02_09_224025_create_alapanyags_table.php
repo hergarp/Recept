@@ -14,7 +14,8 @@ class CreateAlapanyagsTable extends Migration
     public function up()
     {
         Schema::create('alapanyags', function (Blueprint $table) {
-            $table->id();
+            $table->id('a_id', 11);
+            $table->char('allergen', 20);            
             $table->timestamps();
         });
     }

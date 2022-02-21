@@ -14,8 +14,25 @@ class CreateAlkotjasTable extends Migration
     public function up()
     {
         Schema::create('alkotjas', function (Blueprint $table) {
-            $table->id();
+            $table->id('alk_id', 11);
+            $table->id('r_id', 11);
+            $table->id('am_id', 11);
+            $table->tinyInteger('mennyiseg', 4);
             $table->timestamps();
+        });
+        Schema::table('posts', function (Blueprint $table) {
+
+            $table->unsignedBigInteger('r_id');         
+            $table->foreign('r_id')->references('r_id')->on('recept')
+            ->constrained()
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
+
+            $table->unsignedBigInteger('am_id');
+            $table->foreign('am_id')->references('id')->on('alapanyag_mertekegyseg')
+            ->constrained()
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
         });
     }
 

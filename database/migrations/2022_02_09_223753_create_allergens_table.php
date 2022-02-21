@@ -15,7 +15,7 @@ class CreateAllergensTable extends Migration
     public function up()
     {
         Schema::create('allergens', function (Blueprint $table) {
-            $table->char('allergen', 20)->unique();
+            $table->primary('allergen', 20)->unique();
             $table->timestamps();
         });
 

@@ -14,8 +14,22 @@ class CreateAlapanyagMertekegysegsTable extends Migration
     public function up()
     {
         Schema::create('alapanyag_mertekegysegs', function (Blueprint $table) {
-            $table->id();
+            $table->primary('am_id', 11);
+            $table->char('mertekegyseg', 10);  
+            $table->id('a_id', 11);                      
             $table->timestamps();
+        });
+        Schema::table('posts', function (Blueprint $table) {
+
+             $table->foreign('a_id')->references('id')->on('alapanyag')
+            ->constrained()
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
+
+            $table->foreign('mertekegyseg')->references('mertekegyseg')->on('mertekegyseg')
+            ->constrained()
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
         });
     }
 
