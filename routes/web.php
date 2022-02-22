@@ -49,6 +49,9 @@ Route::get('/admin/upload', function () {
 Route::get('/admin/recipe-list', function () {
     return view('admin/recipe-list');
 });
+Route::get('/admin/materials', function () {
+    return view('admin/materials');
+});
 
 // Route::group(['middleware' => ['auth']], function() {
 //     Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
