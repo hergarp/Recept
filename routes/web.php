@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LogoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,8 +50,8 @@ Route::get('/admin/recipe-list', function () {
     return view('admin/recipe-list');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+// Route::group(['middleware' => ['auth']], function() {
+//     Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
+// });
 
 require __DIR__.'/auth.php';
