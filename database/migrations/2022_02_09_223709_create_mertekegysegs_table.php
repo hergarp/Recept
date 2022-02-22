@@ -15,7 +15,7 @@ class CreateMertekegysegsTable extends Migration
     public function up()
     {
         Schema::create('mertekegysegs', function (Blueprint $table) {
-            $table->char('mertekegyseg')->unique()->length(20);
+            $table->char('mertekegyseg')->unique()->length(10);
             $table->timestamps();
         });
 

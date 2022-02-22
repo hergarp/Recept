@@ -15,7 +15,7 @@ class CreateAlapanyagsTable extends Migration
     {
         Schema::create('alapanyags', function (Blueprint $table) {
             $table->increments('a_id')->length(11)->unique();
-            $table->string('megnevezes')->length(30);
+            $table->string('megnevezes')->length(30)->unique();
             $table->char('allergen', 20);            
             $table->timestamps();
 

@@ -15,12 +15,12 @@ class CreateAlapanyagMertekegysegsTable extends Migration
     {
         Schema::create('alapanyag_mertekegysegs', function (Blueprint $table) {
             $table->increments('am_id')->length(11);
-            $table->char('mertekegyseg')->length(20);  
-            $table->unsignedInteger('a_id')->length(11);                      
+            $table->char('mertekegyseg')->length(10);  
+            $table->unsignedInteger('alapanyag')->length(11);                      
             $table->timestamps();
 
 
-            $table->foreign('a_id')->references('a_id')->on('alapanyags')
+            $table->foreign('alapanyag')->references('a_id')->on('alapanyags')
                ->constrained()
                ->onUpdate('cascade')
                ->onDelete('cascade');

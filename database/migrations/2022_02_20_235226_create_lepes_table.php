@@ -15,12 +15,12 @@ class CreateLepesTable extends Migration
     {
         Schema::create('lepes', function (Blueprint $table) {
             $table->increments('l_id')->length(11);
-            $table->unsignedInteger('r_id')->length(11);  
+            $table->unsignedInteger('recept')->length(11);  
             $table->Text('lepes')->length(250);                      
             $table->timestamps();
 
 
-            $table->foreign('r_id')->references('r_id')->on('recepts')
+            $table->foreign('recept')->references('r_id')->on('recepts')
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');

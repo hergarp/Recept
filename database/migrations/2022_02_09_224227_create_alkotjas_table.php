@@ -15,18 +15,18 @@ class CreateAlkotjasTable extends Migration
     {
         Schema::create('alkotjas', function (Blueprint $table) {
             $table->increments('alk_id')->length(11)->unique();
-            $table->unsignedInteger('r_id')->length(11);
-            $table->unsignedInteger('am_id')->length(11);
+            $table->unsignedInteger('recept')->length(11);
+            $table->unsignedInteger('alapanyag_mertekegyseg')->length(11);
             $table->tinyInteger('mennyiseg')->length(4);
             $table->timestamps();
 
 
-            $table->foreign('r_id')->references('r_id')->on('recepts')
+            $table->foreign('recept')->references('r_id')->on('recepts')
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
     
-            $table->foreign('am_id')->references('am_id')->on('alapanyag_mertekegysegs')
+            $table->foreign('alapanyag_mertekegyseg')->references('am_id')->on('alapanyag_mertekegysegs')
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');

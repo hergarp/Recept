@@ -15,9 +15,10 @@ class CreateReceptsTable extends Migration
     {
         Schema::create('recepts', function (Blueprint $table) {
             $table->increments('r_id')->length(11);
-            $table->char('url_slug')->length(50);
-            $table->unsignedBigInteger('user_id');
-            $table->char('kep')->length(50);
+            $table->char('url_slug')->length(50)->unique();
+            $table->unsignedBigInteger('user');
+            $table->char('megnevezes')->length(50)->unique();
+            $table->char('kep')->length(50)->unique();
             $table->char('kategoria')->length(30);
             $table->char('konyha')->length(30);
             $table->tinyInteger('adag')->length(2);
@@ -53,7 +54,7 @@ class CreateReceptsTable extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 
-            $table->foreign('user_id')->references('id')->on('users')
+            $table->foreign('user')->references('id')->on('users')
                 ->constrained('users')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
