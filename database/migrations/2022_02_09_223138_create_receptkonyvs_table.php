@@ -15,7 +15,7 @@ class CreateReceptkonyvsTable extends Migration
     {
         Schema::create('receptkonyvs', function (Blueprint $table) {
             $table->increments('rk_id', 11);
-            $table->unsignedBigInteger('user')->index();
+            $table->unsignedBigInteger('user')->index()->nullable();
             $table->unsignedInteger('recept')->index();
             $table->boolean('jelzes')->default(0);
             $table->tinyInteger('minosites')->length(1);
@@ -25,7 +25,7 @@ class CreateReceptkonyvsTable extends Migration
             $table->foreign('user')->references('id')->on('users')
                 ->constraints()
                 ->onUpdate('cascade')
-                ->onDelete('cascade');
+                ->onDelete('set null');
             $table->foreign('recept')->references('r_id')->on('recepts')
                 ->constraints()
                 ->onUpdate('cascade')

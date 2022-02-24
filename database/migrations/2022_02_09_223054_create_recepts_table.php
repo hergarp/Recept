@@ -15,19 +15,19 @@ class CreateReceptsTable extends Migration
     {
         Schema::create('recepts', function (Blueprint $table) {
             $table->increments('r_id')->length(11);
-            $table->char('url_slug')->length(50)->unique();
-            $table->unsignedBigInteger('user');
-            $table->char('megnevezes')->length(50)->unique();
-            $table->char('kep')->length(50)->unique();
-            $table->char('kategoria')->length(30);
-            $table->char('konyha')->length(30);
+            $table->string('url_slug')->length(50)->unique();
+            $table->unsignedBigInteger('user')->nullable();
+            $table->string('megnevezes')->length(50)->unique();
+            $table->string('kep')->length(50)->unique();
+            $table->string('kategoria')->length(30)->nullable();
+            $table->string('konyha')->length(30)->nullable();
             $table->tinyInteger('adag')->length(2);
             $table->mediumInteger('elokeszitesi_ido')->length(3);
             $table->mediumInteger('fozesi_ido')->length(3);
             $table->mediumInteger('sutesi_ido')->length(3);
-            $table->char('fogas')->length(20);
-            $table->char('konyhatechnologi')->length(20);
-            $table->char('babakonyha')->length(30);
+            $table->string('fogas')->length(20);
+            $table->string('konyhatechnologi')->length(20);
+            $table->string('babakonyha')->length(30);
             $table->Text('egyeb_elnevezesek')->length(200);
             $table->mediumInteger('receptkonyvben')->length(7);
             $table->mediumInteger('ossznezettseg')->length(7);  
@@ -40,24 +40,24 @@ class CreateReceptsTable extends Migration
             $table->binary('nyar');
             $table->binary('osz');
             $table->binary('tel');
-            $table->char('statusz')->length(50);
+            $table->string('statusz')->length(15);
             $table->timestamps();
 
 
             $table->foreign('kategoria')->references('kategoria')->on('kategorias')
-                ->constrained('kategoria')
+                ->constrained()
                 ->onUpdate('cascade')
-                ->onDelete('cascade');
+                ->onDelete('set null');
          
             $table->foreign('konyha')->references('konyha')->on('konyhas')
-                ->constrained('konyha')
+                ->constrained()
                 ->onUpdate('cascade')
-                ->onDelete('cascade');
+                ->onDelete('set null');
 
             $table->foreign('user')->references('id')->on('users')
-                ->constrained('users')
+                ->constrained()
                 ->onUpdate('cascade')
-                ->onDelete('cascade');
+                ->onDelete('set null');
         });
 
     }

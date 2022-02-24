@@ -15,15 +15,17 @@ class CreateAllergensTable extends Migration
     public function up()
     {
         Schema::create('allergens', function (Blueprint $table) {
-            $table->char('elnevezes')->length(20)->unique();
+            $table->id('a_id', 11);
+            $table->string('alapanyag')->length(30);
+            $table->char('allergen')->length(20);
             $table->timestamps();
-        });
 
-        Allergen::create(['elnevezes' => 'glutén']);
-        Allergen::create(['elnevezes' => 'cukor']);
-        Allergen::create(['elnevezes' => 'tej']);
-        Allergen::create(['elnevezes' => 'tojás']);
-        Allergen::create(['elnevezes' => 'laktóz']);
+            
+            $table->foreign('allergen')->references('megnevezes')->on('alapanyags')
+                ->constraints()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+        });
     }
 
     /**
