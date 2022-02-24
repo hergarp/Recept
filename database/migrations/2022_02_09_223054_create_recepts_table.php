@@ -40,7 +40,7 @@ class CreateReceptsTable extends Migration
             $table->binary('nyar');
             $table->binary('osz');
             $table->binary('tel');
-            $table->string('statusz')->length(15);
+            $table->string('statusz')->length(15)->default('beküldött');
             $table->timestamps();
 
 

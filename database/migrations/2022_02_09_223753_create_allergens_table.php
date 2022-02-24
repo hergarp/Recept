@@ -17,11 +17,11 @@ class CreateAllergensTable extends Migration
         Schema::create('allergens', function (Blueprint $table) {
             $table->id('a_id', 11);
             $table->string('alapanyag')->length(30);
-            $table->char('allergen')->length(20);
+            $table->set('allergen', ['tej', 'tojás', 'laktóz', 'cukor', 'glutén'])->length(6);
             $table->timestamps();
 
             
-            $table->foreign('allergen')->references('megnevezes')->on('alapanyags')
+            $table->foreign('alapanyag')->references('megnevezes')->on('alapanyags')
                 ->constraints()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
