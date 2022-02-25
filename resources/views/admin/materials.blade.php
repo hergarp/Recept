@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="hu">
 <head>
@@ -11,6 +12,7 @@
             @include('../template/header')
         </header>
         <div class="container">
+            @if (Auth::check() and Auth::user()->is_admin)
             <section>
                 <h2>Alapanyag felvétele</h2>
                 <form id="adding-material" action="">
@@ -62,6 +64,12 @@
                     </div>
                 </form>
             </section>
+            @else
+            <div class="align-center">
+                <p>Ezen oldal betöltéséhez adminnak kell lenni.</p>
+                <a href="/login">Bejelentkezés</a>
+            </div>
+            @endif
         </div>
         <footer>
             @include('../template/footer')

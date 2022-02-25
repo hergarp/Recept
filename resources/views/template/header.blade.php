@@ -10,6 +10,7 @@
             <li class="float-right"><a href="#">Menü</a>
             <ul>
                 <li><a href="/upload">Receptbeküldés</a></li>
+                @if (Auth::check() and Auth::user()->is_admin)
                 <li>
                     <a href="#">Receptek</a>
                     <ul>
@@ -18,6 +19,7 @@
                     </ul>
                 </li>
                 <li><a href="../admin/materials">Alapanyag műveletek</a></li>
+                @endif
                 @if (Auth::guest()) 
                 <li><a href="/login">Bejelentkezés</a></li>
                 @else

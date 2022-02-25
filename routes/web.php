@@ -54,8 +54,8 @@ Route::get('/admin/materials', function () {
     return view('admin/materials');
 });
 
-// Route::group(['middleware' => ['auth']], function() {
-//     Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
-// });
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
+});
 
 require __DIR__.'/auth.php';
