@@ -19,7 +19,7 @@ class CreateAllergensTable extends Migration
             $table->string('alapanyag')->length(30);
             $table->set('allergen', ['tej', 'tojás', 'laktóz', 'cukor', 'glutén'])->length(6);
             $table->timestamps();
-
+            $table->unique(array('alapanyag', 'allergen'));
             
             $table->foreign('alapanyag')->references('megnevezes')->on('alapanyags')
                 ->constraints()

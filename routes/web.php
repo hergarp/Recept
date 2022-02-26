@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\MaterialsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,12 +51,13 @@ Route::get('/admin/recipe-list', function () {
     return view('admin/recipe-list');
 });
 
-Route::get('/admin/materials', function () {
-    return view('admin/materials');
-});
+Route::get('/admin/materials', [MaterialsController::class, 'index']);
+Route::post('/admin/add-materials', [MaterialsController::class, 'storeMaterial']);
+Route::post('/admin/add-matunits', [MaterialsController::class, 'storeMatUnit']);
+Route::post('/admin/add-allergen', [MaterialsController::class, 'storeAllergen']);
 
-Route::group(['middleware' => ['auth']], function() {
-    Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
-});
+Route::get('/logout', [AuthenticatedSessionController::class, 'destroy']);
+
+
 
 require __DIR__.'/auth.php';

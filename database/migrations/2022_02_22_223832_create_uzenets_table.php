@@ -18,7 +18,7 @@ class CreateUzenetsTable extends Migration
             $table->unsignedInteger('recept')->length(11);  
             $table->Text('uzenet')->length(250);                      
             $table->timestamps();
-
+            $table->unique(array('recept', 'uzenet'));
 
             $table->foreign('recept')->references('r_id')->on('recepts')
                 ->constrained()

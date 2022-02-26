@@ -51,6 +51,11 @@ button {
     border-radius: 5px;
 }
 
+option {
+    background-color: rgb(153,96,73);
+    color: white;
+}
+
 .align-center {
     text-align: center;
 }

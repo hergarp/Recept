@@ -13,6 +13,8 @@
     <header>
       @include('../template/header')
     </header>
+    <div class="container">
+    @if (Auth::check() and Auth::user()->is_admin)
     <form action="">
     <article>
       <input class="w-100 -hidden" type="text" name="title" id="title" placeholder="Név" value="Light Strawberry" />
@@ -255,6 +257,13 @@
       <button class="-adding -sending">Publikálás</button>
     </div>
   </form>
+  @else
+            <div class="align-center">
+                <p>Ezen oldal betöltéséhez adminnak kell lenni.</p>
+                <a href="/login">Bejelentkezés</a>
+            </div>
+            @endif
+</div>
     <footer>
       @include('../template/footer')
     </footer>

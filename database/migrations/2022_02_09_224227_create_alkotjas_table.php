@@ -19,6 +19,7 @@ class CreateAlkotjasTable extends Migration
             $table->unsignedInteger('alapanyag_mertekegyseg')->length(11);
             $table->tinyInteger('mennyiseg')->length(4);
             $table->timestamps();
+            $table->unique(array('recept', 'alapanyag_mertekegyseg', 'mennyiseg'));
 
 
             $table->foreign('recept')->references('r_id')->on('recepts')

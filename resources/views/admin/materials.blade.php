@@ -15,52 +15,67 @@
             @if (Auth::check() and Auth::user()->is_admin)
             <section>
                 <h2>Alapanyag felvétele</h2>
-                <form id="adding-material" action="">
-                    <input class="-hidden m-form__input -colorBgTernary" type="text" placeholder="Alapanyag megnevezése">
+                <form id="adding-material" action="/admin/add-materials" method="POST">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                    <input name="megnevezes" class="-hidden m-form__input -colorBgTernary" type="text" placeholder="Alapanyag megnevezése">
                     <div class="button-div">
-                        <button class="-adding m-button p-3">Alapanyag felvétele</button>
+                        <button type="submit" class="-adding m-button p-3" name="form1">Alapanyag felvétele</button>
                     </div>
                 </form>
             </section>
             <hr>
             <section>
                 <h2>Alapanyag – mértékegység felvétele</h2>
-                <form id="adding-matunit" action="">
+                <form id="adding-matunit" action="/admin/add-matunits" method="POST">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                     <div>    
                         <div class="select-div">
-                            <select class="m-form__select -colorBgTernary" name="material-1" id="material-1">
-                                <option value="">Valami</option>
+                            <select class="m-form__select -colorBgTernary" name="alapanyag" id="material-1">
+                                @foreach ($materials as $material)     
+                                <option value="{{ $material->megnevezes }}">{{ $material->megnevezes }}</option>
+                                @endforeach
                             </select>
-                            <select class="m-form__select -colorBgTernary" name="unit-1" id="unit-1">
-                                <option value="">Mértékegység valami</option>
+                            <select class="m-form__select -colorBgTernary" name="mertekegyseg" id="unit-1">
+                                @foreach ($units as $unit)    
+                                    <option value="{{ $unit->mertekegyseg}}">{{ $unit->mertekegyseg}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div>
-                            <p class="right">
-                            alapanyag – mértékegység hozzáadása <button id="adding-mu" class="-adding little-button">+</button>
+                            <p class="align-center">
+                            <button id="deleting-mu" class="-delete little-button">+</button> levétel | alapanyag – mértékegység | hozzáadás <button id="adding-mu" class="-adding little-button">+</button>
                             </p>
                         </div>
-                        <div id="existing-matunits"></div>
+                        <div id="existing-matunits">
+
+                        </div>
                     </div>
                     <div class="button-div">
-                        <button class="-adding m-button p-3">Alapanyag – mértékegység felvétele</button>
+                        <button type="submit" class="-adding m-button p-3" name="form2">Alapanyag – mértékegység felvétele</button>
                     </div>
                 </form>
             </section>
             <hr>
             <section>
                 <h2>Allergének hozzáadása</h2>
-                <form id="adding-allergen" action="">
+                <form id="adding-allergen" action="/admin/add-allergen" method="POST">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                     <div class="select-div">
-                        <select class="m-form__select -colorBgTernary" name="material" id="material">
-                            <option value="">Valami</option>
+                        <select class="m-form__select -colorBgTernary" name="alapanyag" id="material">
+                            @foreach ($materials as $material)     
+                            <option value="{{ $material->megnevezes }}">{{ $material->megnevezes }}</option>
+                            @endforeach
                         </select>
                         <select class="m-form__select -colorBgTernary" name="allergen" id="allergen">
-                            <option value="">Valami</option>
+                            <option value="cukor">cukor</option>
+                            <option value="tej">tej</option>
+                            <option value="laktóz">laktóz</option>
+                            <option value="tojás">tojás</option>
+                            <option value="glutén">glutén</option>
                         </select>
                     </div>
                     <div class="button-div">
-                        <button class="-adding m-button p-3">Allergén hozzáadása</button>
+                        <button type="submit" class="-adding m-button p-3" name="form3">Allergén hozzáadása</button>
                     </div>
                 </form>
             </section>

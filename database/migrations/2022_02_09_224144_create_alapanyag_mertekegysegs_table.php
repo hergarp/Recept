@@ -18,6 +18,7 @@ class CreateAlapanyagMertekegysegsTable extends Migration
             $table->string('mertekegyseg')->length(20);  
             $table->string('alapanyag')->length(30);                      
             $table->timestamps();
+            $table->unique(array('mertekegyseg', 'alapanyag'));
 
 
             $table->foreign('alapanyag')->references('megnevezes')->on('alapanyags')
