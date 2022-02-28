@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Alapanyag_mertekegyseg;
+use App\Models\Alapanyag;
+use App\Models\Mertekegyseg;
 use Illuminate\Http\Request;
 
 class Alapanyag_mertekegysegController extends Controller
@@ -14,7 +16,9 @@ class Alapanyag_mertekegysegController extends Controller
      */
     public function index()
     {
-        //
+        $matunits = Alapanyag_mertekegyseg::all();
+        return response()->json($matunits);
+
     }
 
     /**
@@ -35,7 +39,15 @@ class Alapanyag_mertekegysegController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $matunit = new Alapanyag_mertekegyseg();
+        $matunit->mertekegyseg = $request->mertekegyseg;
+        $matunit->alapanyag = $request->alapanyag;
+        $matunit->save();
+
+        $materials = Alapanyag::all();
+        $units = Mertekegyseg::all();
+        $matunits = Alapanyag_mertekegyseg::all();
+        return view('admin.materials', ['materials'=> $materials, 'units' => $units, 'matunits' => $matunits]);
     }
 
     /**

@@ -2,7 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\MaterialsController;
+use App\Http\Controllers\AlapanyagController;
+use App\Http\Controllers\Alapanyag_mertekegysegController;
+use App\Http\Controllers\AllergenController;
+use App\Http\Controllers\ReceptController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,10 +54,13 @@ Route::get('/admin/recipe-list', function () {
     return view('admin/recipe-list');
 });
 
-Route::get('/admin/materials', [MaterialsController::class, 'index']);
-Route::post('/admin/add-materials', [MaterialsController::class, 'storeMaterial']);
-Route::post('/admin/add-matunits', [MaterialsController::class, 'storeMatUnit']);
-Route::post('/admin/add-allergen', [MaterialsController::class, 'storeAllergen']);
+Route::get('/admin/materials', [AlapanyagController::class, 'index']);
+Route::get('/admin/matunits', [Alapanyag_mertekegysegController::class, 'index']);
+Route::post('/admin/add-materials', [AlapanyagController::class, 'store']);
+Route::post('/admin/add-matunits', [Alapanyag_mertekegysegController::class, 'store']);
+Route::post('/admin/add-allergen', [AllergenController::class, 'store']);
+
+Route::get('/upload', [ReceptController::class, 'create']);
 
 Route::get('/logout', [AuthenticatedSessionController::class, 'destroy']);
 

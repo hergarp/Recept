@@ -62,3 +62,19 @@ hr {
     padding: 10px;
     font-size: 1rem;
 }
+
+table {
+    width: 100%;
+}
+
+td + td {
+    padding-left: 15px;
+}
+
+td {
+    width: 50%;
+}
+
+tr:nth-child(odd) {
+    background-color: rgba(255,160,122,0.3);
+}

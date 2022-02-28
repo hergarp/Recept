@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Recept;
+use App\Models\Konyha;
+use App\Models\Kategoria;
 use Illuminate\Http\Request;
 
 class ReceptController extends Controller
@@ -24,7 +26,9 @@ class ReceptController extends Controller
      */
     public function create()
     {
-        //
+        $konyhas = Konyha::all();
+        $kategorias = Kategoria::all();
+        return view('upload', ['konyhas'=> $konyhas, 'kategorias' => $kategorias]);
     }
 
     /**

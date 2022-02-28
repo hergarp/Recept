@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Allergen;
+use App\Models\Alapanyag;
+use App\Models\Mertekegyseg;
+use App\Models\Alapanyag_mertekegyseg;
 use Illuminate\Http\Request;
 
 class AllergenController extends Controller
@@ -35,7 +38,15 @@ class AllergenController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $allergen = new Allergen();
+        $allergen->alapanyag = $request->alapanyag;
+        $allergen->allergen = $request->allergen;
+        $allergen->save();
+
+        $materials = Alapanyag::all();
+        $units = Mertekegyseg::all();
+        $matunits = Alapanyag_mertekegyseg::all();
+        return view('admin.materials', ['materials'=> $materials, 'units' => $units, 'matunits' => $matunits]);
     }
 
     /**

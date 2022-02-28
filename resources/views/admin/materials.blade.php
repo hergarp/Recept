@@ -4,6 +4,8 @@
 <head>
     @include('../template/head')
     <link rel="stylesheet" href="../css/materials-desktop.css">
+    <script src="../js/materials.js"></script>
+    <script src="../js/materials-table.js"></script>
     <title>Alapanyagok | Recapt</title>
 </head>
 <body>
@@ -28,26 +30,24 @@
                 <h2>Alapanyag – mértékegység felvétele</h2>
                 <form id="adding-matunit" action="/admin/add-matunits" method="POST">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-                    <div>    
-                        <div class="select-div">
-                            <select class="m-form__select -colorBgTernary" name="alapanyag" id="material-1">
+                    <div>                            
+                        <div class="select-div mb-3">
+                            <select class="m-form__select -colorBgTernary" name="alapanyag" id="mat">
+                                <option disabled selected value>Válassz alapanyagot</option>
                                 @foreach ($materials as $material)     
-                                <option value="{{ $material->megnevezes }}">{{ $material->megnevezes }}</option>
+                                    <option value="{{ $material->megnevezes }}">{{ $material->megnevezes }}</option>
                                 @endforeach
                             </select>
-                            <select class="m-form__select -colorBgTernary" name="mertekegyseg" id="unit-1">
+                            <select class="m-form__select -colorBgTernary" name="mertekegyseg" id="unit">
+                                <option disabled selected value>Válassz mértékegységet</option>    
                                 @foreach ($units as $unit)    
                                     <option value="{{ $unit->mertekegyseg}}">{{ $unit->mertekegyseg}}</option>
                                 @endforeach
                             </select>
                         </div>
-                        <div>
-                            <p class="align-center">
-                            <button id="deleting-mu" class="-delete little-button">+</button> levétel | alapanyag – mértékegység | hozzáadás <button id="adding-mu" class="-adding little-button">+</button>
-                            </p>
-                        </div>
                         <div id="existing-matunits">
-
+                            <table id="am-table">
+                            </table>
                         </div>
                     </div>
                     <div class="button-div">
@@ -62,11 +62,13 @@
                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                     <div class="select-div">
                         <select class="m-form__select -colorBgTernary" name="alapanyag" id="material">
+                            <option disabled selected value>Válassz alapanyagot</option>     
                             @foreach ($materials as $material)     
-                            <option value="{{ $material->megnevezes }}">{{ $material->megnevezes }}</option>
+                                <option value="{{ $material->megnevezes }}">{{ $material->megnevezes }}</option>
                             @endforeach
                         </select>
                         <select class="m-form__select -colorBgTernary" name="allergen" id="allergen">
+                            <option disabled selected value>Válassz allergént</option>     
                             <option value="cukor">cukor</option>
                             <option value="tej">tej</option>
                             <option value="laktóz">laktóz</option>

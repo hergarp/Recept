@@ -75,26 +75,17 @@
         <div class="m-form__selectWrapper -colorBgTernary w-100 mb-3">
           <select class="w-100 m-form__select" name="category" id="category" required>
             <option value="">Kategória</option>
-            <option value="aprósütemény">aprósütemény</option>
-            <option value="befőttek">befőttek</option>
-            <option value="bonbonok">bonbonok</option>
-            <option value="édes keksz">édes keksz</option>
-            <option value="édes krém">édes krém</option>
-            <option value="édes süti">édes süti</option>
-            <option value="torta">torta</option>
-            <option value="kelt tészta">kelt tészta</option>
-            <option value="kenyerek">kenyerek</option>
+            @foreach ($kategorias as $kategoria)
+            <option value="{{ $kategoria -> kategoria}}">{{ $kategoria -> kategoria}}</option>
+            @endforeach
           </select>
         </div>
         <div class="m-form__selectWrapper -colorBgTernary w-100 mb-3">
           <select class="w-100 m-form__select" name="kitchen" id="kitchen" required>
             <option value="">Konyha</option>
-            <option value="afrikai">afrikai</option>
-            <option value="amerikai">amerikai</option>
-            <option value="angol">angol</option>
-            <option value="arab">arab</option>
-            <option value="ausztrál">ausztrál</option>
-            <option value="belga">belga</option>
+            @foreach  ($konyhas as $konyha)  
+            <option value="{{ $konyha -> konyha}}">{{ $konyha -> konyha}}</option>
+            @endforeach
           </select>
         </div>
         <div class="-colorBgTernary mb-3 w-100">
