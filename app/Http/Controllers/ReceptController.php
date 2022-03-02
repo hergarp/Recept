@@ -39,7 +39,51 @@ class ReceptController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $recept = new Recept();
+        $recept->megnevezes = $request->megnevezes;
+        $recept->user = Auth::user()->u_id;
+        //kép
+        $recept->kategoria = $request->kategoria;
+        $recept->konyha = $request->konyha;
+        $recept->adag = $request->adag;
+        $recept->elokeszitesi_ido = $request->elokeszitesi_ido;
+        $recept->fozesi_ido = $request->fozesi_ido;
+        $recept->sutesi_ido = $request->sutesi_ido;
+        $recept->fogas = $request->fogas;
+        $recept->konyhatechnologia = $request->konyhatechnologia;
+        $recept->babakonyha = $request->babakonyha;
+        $recept->egyeb_elnevezesek = $request->egyeb_elnevezesek;
+        $recept->receptkonyvben = $request->receptkonyvben;
+        $recept->ossznezettseg = $request->ossznezettseg;
+        $recept->reggeli = $request->reggeli;
+        $recept->tizorai = $request->tizorai;
+        $recept->ebed = $request->ebed;
+        $recept->uzsonna = $request->uzsonna;
+        $recept->vacsora = $request->vacsora;
+        $recept->tavasz = $request->tavasz;
+        $recept->nyar = $request->nyar;
+        $recept->osz = $request->osz;
+        $recept->tel = $request->tel;
+        $recept->save();
+
+        $r_id = $recept->id;
+
+        $request->alapanyagok;
+        $request->mertekegysegek;
+
+        {
+            $am = AlapanyagMertekegyseg::where('alapanyag', '=', $request->alapanyagok[0])
+            ->where('mertekegyseg', '=', $request->mertekegysegek[0])->first();
+            
+            $a = new Alkotja();
+            $a->recept;
+            $a->alapanyag_mertekegyseg;
+            $a->mennyiseg;
+            $a->save();
+
+        }
+        
+        $recept->alapanyagMertekegyseg()->attach([$am->id]);
     }
 
     /**

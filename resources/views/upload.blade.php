@@ -14,7 +14,8 @@
       @include('../template/header')
     </header>
     @if(Auth::check())
-    <form action="">
+    <form action="/admin/upload" method="POST">
+    <input type="hidden" name="_token" value="{{ csrf_token() }}" />
     <article>
       <input class="w-100" type="text" name="title" id="title" placeholder="Név" />
       <div id="image">
@@ -191,7 +192,7 @@
       </section>
     </aside>
     <div class="align-center w-100" id="d-send">
-      <button class="m-button -adding -sending">Beküldés</button>
+      <button type="submit" class="m-button -adding -sending">Beküldés</button>
     </div>
   </form>
   @else
