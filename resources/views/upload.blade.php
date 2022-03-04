@@ -89,8 +89,9 @@
             @endforeach
           </select>
         </div>
-        <div class="-colorBgTernary mb-3 w-100">
-          <input class="w-100 -hidden m-form__input" type="number" placeholder="Adag" name="adag" min="1" max="100" /> 
+        <div class="-colorBgTernary mb-3 w-100 m-form__select">
+        <span>Adag:</span><input class="-hidden m-form__input w-80" type="number"  name="adag" min="1" max="100" />
+          
         </div>
       </section>
       <section>
