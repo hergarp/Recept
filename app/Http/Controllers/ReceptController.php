@@ -43,7 +43,7 @@ class ReceptController extends Controller
     {
         $recept = new Recept();
         $recept->megnevezes = $request->megnevezes;
-        $recept->user = Auth::user()->u_id;
+        $recept->user = auth()->user()->u_id;
         //kép
         $recept->kategoria = $request->kategoria;
         $recept->konyha = $request->konyha;
