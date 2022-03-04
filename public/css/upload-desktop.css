@@ -60,7 +60,7 @@ input[type=text]:focus, textarea:focus {
     display: grid;
     grid-auto-columns: 1fr;
     grid-auto-flow: column;
-    grid-template: auto auto auto auto auto auto auto auto auto auto;
+    grid-template: auto auto auto auto auto auto auto auto auto 30px;
     gap: 10px;
 }
 

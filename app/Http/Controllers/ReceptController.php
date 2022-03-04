@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Recept;
 use App\Models\Konyha;
 use App\Models\Kategoria;
+use App\Models\Alapanyag;
 use Illuminate\Http\Request;
 
 class ReceptController extends Controller
@@ -28,7 +29,8 @@ class ReceptController extends Controller
     {
         $konyhas = Konyha::all();
         $kategorias = Kategoria::all();
-        return view('upload', ['konyhas'=> $konyhas, 'kategorias' => $kategorias]);
+        $materials = Alapanyag::all();
+        return view('upload', ['konyhas'=> $konyhas, 'kategorias' => $kategorias, 'materials' => $materials]);
     }
 
     /**

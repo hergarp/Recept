@@ -2,9 +2,7 @@ $(function() {
     apivegpont = 'http://localhost:8000/admin/matunits';
     const matunits = [];
     adatbeolvasas(apivegpont, matunits);
-    $('#mat').on('change', function() {
-        let szurtvegpont = '';
-        var optionSelected = $("option:selected", this);
+    $("input[name='alapanyag']").on('input', function() {
         var valueSelected = this.value;
         var data = matunits.filter(element => element.alapanyag == valueSelected);
         megjelenit(data);

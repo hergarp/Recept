@@ -26,9 +26,12 @@
         <h2>Hozzávalók</h2>
         <div id="ingredients">
         <div class="m-form__selectWrapper -colorBgTernary mb-3 ingredients">
-            <select class="m-form__select right-b w-100 raw-material-name" name="raw-material-1" id="raw-material-1">
-              <option value="">Alapanyag</option>
-            </select>
+          <input class="-hidden m-form__input raw-material-name" list="materials" name="alapanyag" placeholder="Alapanyag">
+          <datalist id="materials">
+              @foreach ($materials as $material)     
+                  <option value="{{ $material->megnevezes }}">{{ $material->megnevezes }}</option>
+              @endforeach
+          </datalist>
             <input class="-hidden m-form__input raw-material-quantity" type="number" name="quantity-1" id="quantity-1"
             placeholder="mennyiség" />
             <select class="m-form__select left-b raw-material-unit" name="unit-1" id="unit-1">

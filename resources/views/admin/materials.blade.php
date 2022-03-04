@@ -32,12 +32,12 @@
                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                     <div>                            
                         <div class="select-div mb-3">
-                            <select class="m-form__select -colorBgTernary" name="alapanyag" id="mat">
-                                <option disabled selected value>Válassz alapanyagot</option>
+                            <input class="m-form__input -colorBgTernary" list="materials" name="alapanyag" placeholder="Alapanyag">
+                            <datalist id="materials">
                                 @foreach ($materials as $material)     
                                     <option value="{{ $material->megnevezes }}">{{ $material->megnevezes }}</option>
                                 @endforeach
-                            </select>
+                            </datalist>
                             <select class="m-form__select -colorBgTernary" name="mertekegyseg" id="unit">
                                 <option disabled selected value>Válassz mértékegységet</option>    
                                 @foreach ($units as $unit)    
@@ -61,12 +61,12 @@
                 <form id="adding-allergen" action="/admin/add-allergen" method="POST">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                     <div class="select-div">
-                        <select class="m-form__select -colorBgTernary" name="alapanyag" id="material">
-                            <option disabled selected value>Válassz alapanyagot</option>     
+                        <input class="m-form__input -colorBgTernary" list="materials" name="alapanyag" placeholder="Alapanyag">
+                        <datalist id="materials">
                             @foreach ($materials as $material)     
                                 <option value="{{ $material->megnevezes }}">{{ $material->megnevezes }}</option>
                             @endforeach
-                        </select>
+                        </datalist>
                         <select class="m-form__select -colorBgTernary" name="allergen" id="allergen">
                             <option disabled selected value>Válassz allergént</option>     
                             <option value="cukor">cukor</option>
