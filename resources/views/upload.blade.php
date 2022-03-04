@@ -14,7 +14,8 @@
       @include('../template/header')
     </header>
     @if(Auth::check())
-    <form action="">
+    <form action="/admin/upload" method="POST">
+    <input type="hidden" name="_token" value="{{ csrf_token() }}" />
     <article>
       <input class="w-100" type="text" name="title" id="title" placeholder="Név" />
       <div id="image">
@@ -91,8 +92,9 @@
             @endforeach
           </select>
         </div>
-        <div class="-colorBgTernary mb-3 w-100">
-          <input class="w-100 -hidden m-form__input" type="text" placeholder="Adag" />
+        <div class="-colorBgTernary mb-3 w-100 m-form__select">
+        <span>Adag:</span><input class="-hidden m-form__input w-80" type="number"  name="adag" min="1" max="100" />
+          
         </div>
       </section>
       <section>
@@ -194,7 +196,7 @@
       </section>
     </aside>
     <div class="align-center w-100" id="d-send">
-      <button class="m-button -adding -sending">Beküldés</button>
+      <button type="submit" class="m-button -adding -sending">Beküldés</button>
     </div>
   </form>
   @else

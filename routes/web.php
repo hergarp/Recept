@@ -46,9 +46,9 @@ Route::get('/profile', function () {
     return view('profile');
 });
 
-Route::get('/admin/upload', function () {
-    return view('admin/upload');
-});
+Route::get('/admin/upload', [ReceptController::class, 'create']);
+Route::post('/admin/upload', [ReceptController::class, 'store']);
+
 
 Route::get('/admin/recipe-list', function () {
     return view('admin/recipe-list');
