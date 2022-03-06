@@ -1,5 +1,5 @@
 $(function() {
-    apivegpont = 'http://localhost:8000/admin/matunits';
+    apivegpont = 'http://localhost:8000/api/matunits';
     const matunits = [];
     adatbeolvasas(apivegpont, matunits);
     $("input[name='alapanyag']").on('input', function() {

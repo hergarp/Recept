@@ -42,7 +42,7 @@ input[type=text]:focus, textarea:focus {
     height: 20em;
 }
 
-#image > p {
+#image > div {
     position: relative;
     top: 50%;
     left: 50%;
