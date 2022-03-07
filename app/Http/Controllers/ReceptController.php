@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Recept;
 use App\Models\Konyha;
 use App\Models\Kategoria;
+use App\Models\Alapanyag;
 use Illuminate\Http\Request;
 
 class ReceptController extends Controller
@@ -28,7 +29,8 @@ class ReceptController extends Controller
     {
         $konyhas = Konyha::all();
         $kategorias = Kategoria::all();
-        return view('upload', ['konyhas'=> $konyhas, 'kategorias' => $kategorias]);
+        $materials = Alapanyag::all();
+        return view('upload', ['konyhas'=> $konyhas, 'kategorias' => $kategorias, 'materials' => $materials]);
     }
 
     /**
@@ -39,10 +41,13 @@ class ReceptController extends Controller
      */
     public function store(Request $request)
     {
+        $file = $request->file('file');
+        $path = $file->storePublicly('images');
+
         $recept = new Recept();
         $recept->megnevezes = $request->megnevezes;
-        $recept->user = Auth::user()->u_id;
-        //kép
+        $recept->user = auth()->user()->u_id;
+        $recept->kep = $path;
         $recept->kategoria = $request->kategoria;
         $recept->konyha = $request->konyha;
         $recept->adag = $request->adag;
@@ -68,22 +73,23 @@ class ReceptController extends Controller
 
         $r_id = $recept->id;
 
-        $request->alapanyagok;
-        $request->mertekegysegek;
+        $alapanyagok = $request->alapanyagok;
+        $mertekegysegek = $request->quantitys;
+        $units = $request->units;
 
-        {
-            $am = AlapanyagMertekegyseg::where('alapanyag', '=', $request->alapanyagok[0])
-            ->where('mertekegyseg', '=', $request->mertekegysegek[0])->first();
+        for ($i = 0; $i < $alapanyagok.length(); $i++) {
+            $am = AlapanyagMertekegyseg::where('alapanyag', '=', $alapanyagok[i])
+            ->where('mertekegyseg', '=', $mertekegysegek[i])->first();
             
             $a = new Alkotja();
-            $a->recept;
-            $a->alapanyag_mertekegyseg;
-            $a->mennyiseg;
+            $a->recept = $r_id;
+            $a->alapanyag_mertekegyseg = $am->am_id;
+            $a->mennyiseg = $units[i];
             $a->save();
-
         }
         
-        $recept->alapanyagMertekegyseg()->attach([$am->id]);
+        
+        // $recept->alapanyagMertekegyseg()->attach([$am->id]);
     }
 
     /**

@@ -15,31 +15,21 @@
       @include('../template/header')
     </header>
     @if(Auth::check())
-    <form action="/admin/upload" method="POST">
+    <form action="/admin/upload" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
     <article>
       <input class="w-100" type="text" name="title" id="title" placeholder="Név" />
       <div id="image">
-        <p>kép feltöltése <br> <span style="color: red">Csak saját készítésű képeket lehet feltölteni. Nem fogadunk el más
-          honlapokról levett, vagy könyvekben, újságokban megjelent fotókat,
-          amelyek szerzői joga más tulajdonában van.</span></p>
+        <div>
+          <input type="file" name="file" id="file" />
+          <p>kép feltöltése <br> <span style="color: red">Csak saját készítésű képeket lehet feltölteni. Nem fogadunk el más
+            honlapokról levett, vagy könyvekben, újságokban megjelent fotókat,
+            amelyek szerzői joga más tulajdonában van.</span></p>
+        </div>
       </div>
       <section>
         <h2>Hozzávalók</h2>
         <div id="ingredients">
-        <div class="m-form__selectWrapper -colorBgTernary mb-3 ingredients">
-            <select class="m-form__select right-b w-100 raw-material-name" name="raw-material-1" id="raw-material-1">
-              <option value="">Alapanyag</option>
-            </select>
-            <input class="-hidden m-form__input raw-material-quantity" type="number" name="quantity-1" id="quantity-1"
-            placeholder="mennyiség" />
-            <select class="m-form__select left-b raw-material-unit" name="unit-1" id="unit-1">
-              <option value="">mértékegység</option>
-            </select>
-            <div class="right">
-              <button class="-delete little-button">–</button>
-            </div>
-        </div>
         </div>
         <div>
           <p class="right">

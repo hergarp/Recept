@@ -55,7 +55,6 @@ Route::get('/admin/recipe-list', function () {
 });
 
 Route::get('/admin/materials', [AlapanyagController::class, 'index']);
-Route::get('/admin/matunits', [Alapanyag_mertekegysegController::class, 'index']);
 Route::post('/admin/add-materials', [AlapanyagController::class, 'store']);
 Route::post('/admin/add-matunits', [Alapanyag_mertekegysegController::class, 'store']);
 Route::post('/admin/add-allergen', [AllergenController::class, 'store']);
@@ -65,5 +64,6 @@ Route::get('/upload', [ReceptController::class, 'create']);
 Route::get('/logout', [AuthenticatedSessionController::class, 'destroy']);
 
 
+Route::get('/api/matunits', [Alapanyag_mertekegysegController::class, 'index']);
 
 require __DIR__.'/auth.php';

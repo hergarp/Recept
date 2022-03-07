@@ -11,23 +11,28 @@ $(function () {
             $(this).parent().removeClass('-fontColorInversePrimary');
         }
     });
-    var materialNum = 1;
+    
     delField();
-    $('#adding-material').click(function() {
-        materialNum += 1;
-        txt = '<div class="m-form__selectWrapper -colorBgTernary mb-3 ingredients">';
-        txt += '<select class="m-form__select right-b w-100 raw-material-name" name="raw-material-' + materialNum + '" id="raw-material-' + materialNum + '">';
-        txt += '<option value="">Alapanyag</option>';
-        txt += '</select>';
-        txt += '<input class="-hidden m-form__input raw-material-quantity" type="number" name="quantity-' + materialNum + '" id="quantity-' + materialNum + '" placeholder="mennyiség" />';
-        txt += '<select class="m-form__select left-b raw-material-unit" name="unit-' + materialNum + '" id="unit-' + materialNum + '">';
-        txt += '<option value="">mértékegység</option>';
-        txt += '</select>';
-        txt += '<div class="right"><button class="-delete little-button">–</button></div>';
-        txt += '</div>';
-        var element = document.getElementById('ingredients');
-        element.insertAdjacentHTML("beforeend", txt);
+    addingMaterial();
+    function addingMaterial() {
+        const szuloElem = $('#ingredients');
+        szuloElem.append(`<div class="m-form__selectWrapper -colorBgTernary mb-3 ingredients">
+        <input class="-hidden m-form__input raw-material-name" list="materials" name="alapanyagok" placeholder="Alapanyag">
+        <datalist id="materials">
+        </datalist>
+          <input class="-hidden m-form__input raw-material-quantity" type="number" name="quantitys" id="quantity"
+          placeholder="mennyiség" />
+          <select class="m-form__select left-b raw-material-unit" name="units" id="unit">
+            <option value="">mértékegység</option>
+          </select>
+          <div class="right">
+            <button class="-delete little-button">–</button>
+          </div>
+      </div>`)
         delField();
+    }
+    $('#adding-material').click(function() {
+        addingMaterial();
     })
 
     var stepNum = 1
