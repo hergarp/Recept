@@ -65,5 +65,6 @@ Route::get('/logout', [AuthenticatedSessionController::class, 'destroy']);
 
 
 Route::get('/api/matunits', [Alapanyag_mertekegysegController::class, 'index']);
+Route::get('/api/materials', [AlapanyagController::class, 'show']);
 
 require __DIR__.'/auth.php';

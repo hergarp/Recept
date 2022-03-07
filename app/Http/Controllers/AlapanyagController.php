@@ -58,7 +58,8 @@ class AlapanyagController extends Controller
      */
     public function show(Alapanyag $alapanyag)
     {
-        //
+        $materials = Alapanyag::all();
+        return response()->json($materials);
     }
 
     /**

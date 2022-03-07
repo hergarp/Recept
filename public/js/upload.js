@@ -1,4 +1,23 @@
 $(function () {
+    materialsApiVegpont = 'http://localhost:8000/api/materials';
+    const materials = [];
+    materialsBeolvasas(materialsApiVegpont, materials);
+    delField();
+    var addingMaterialCounter = 1;
+    addingMaterial();
+
+    function materialsBeolvasas(fajlnev, tomb) {
+        $.ajax({
+            url: fajlnev,
+            success: function (result) {
+                result.forEach((value) => {
+                    tomb.push(value.megnevezes);
+                });
+
+            },
+        });
+    }
+
     if($('input:checkbox').is(':checked')) {
         $('input:checkbox:checked').parent().addClass('-fontColorInversePrimary');
     }
@@ -12,28 +31,39 @@ $(function () {
         }
     });
     
-    delField();
-    addingMaterial();
     function addingMaterial() {
-        const szuloElem = $('#ingredients');
-        szuloElem.append(`<div class="m-form__selectWrapper -colorBgTernary mb-3 ingredients">
-        <input class="-hidden m-form__input raw-material-name" list="materials" name="alapanyagok" placeholder="Alapanyag">
-        <datalist id="materials">
-        </datalist>
-          <input class="-hidden m-form__input raw-material-quantity" type="number" name="quantitys" id="quantity"
-          placeholder="mennyiség" />
-          <select class="m-form__select left-b raw-material-unit" name="units" id="unit">
-            <option value="">mértékegység</option>
-          </select>
-          <div class="right">
-            <button class="-delete little-button">–</button>
-          </div>
-      </div>`)
+        txt = '<div class="m-form__selectWrapper -colorBgTernary mb-3 ingredients">';
+        txt += '<input class="-hidden m-form__input raw-material-name" list="materials-' + addingMaterialCounter + '" name="alapanyagok" placeholder="Alapanyag">';
+        txt += '<datalist id="materials-' + addingMaterialCounter + '">';
+        txt += '</datalist>';
+        txt += '<input class="-hidden m-form__input raw-material-quantity" type="number" name="quantitys" id="quantity" placeholder="mennyiség" />';
+        txt += '<select class="m-form__select left-b raw-material-unit" name="units" id="unit">';
+        txt += '<option value="">mértékegység</option>';
+        txt += '</select>';
+        txt += '<div class="right">';
+        txt += '<button class="-delete little-button">–</button>';
+        txt += '</div>';
+        txt += '</div>';
+        var element = document.getElementById('ingredients');
+        element.insertAdjacentHTML("beforeend", txt);   
+        materialsDatalist(materials); 
         delField();
+        addingMaterialCounter += 1;
     }
+
     $('#adding-material').click(function() {
         addingMaterial();
+        
     })
+
+    function materialsDatalist(tomb) {
+        const szuloElem = $('#materials-' + addingMaterialCounter);
+        txt = '';
+        tomb.forEach(function(tombelem) {
+            txt += '<option value="' + tombelem +'">' + tombelem + '</option>';
+        });
+        szuloElem.html(txt);
+    }
 
     var stepNum = 1
     $('#adding-step').click(function() {
