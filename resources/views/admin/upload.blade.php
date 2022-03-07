@@ -172,16 +172,16 @@
       <section>
         <h2>Értékek</h2>
         <div class="-colorBgTernary mb-3 w-100">
-          <input class="-hidden m-form__input w-80" type="text" name="preparation" id="preparation"
-            placeholder="Előkészületi idő" value="5" />
+          <input class="-hidden m-form__input w-80" type="number" name="preparation" id="preparation" 
+            placeholder="Előkészületi idő" min="1"  />
           <span>perc</span>
         </div>
         <div class="-colorBgTernary mb-3 w-100">
-          <input class="-hidden m-form__input w-80" type="text" name="cooking" id="cooking" placeholder="Főzési idő" />
+          <input class="-hidden m-form__input w-80" type="number" name="cooking" id="cooking" placeholder="Főzési idő" min="1" />
           <span>perc</span>
         </div>
         <div class="-colorBgTernary mb-3 w-100">
-          <input class="-hidden m-form__input w-80" type="text" name="baking" id="baking" placeholder="Sütési idő" />
+          <input class="-hidden m-form__input w-80" type="number" name="baking" id="baking" placeholder="Sütési idő" min="1"  />
           <span>perc</span>
         </div>
       </section>
