@@ -5,7 +5,7 @@
   @include('../template/head')
   <link rel="stylesheet" href="css/upload-desktop.css" />
   <script src="js/upload.js"></script>
-  <!-- <script src="js/urlap_validacio.js" type="text/javascript"></script> -->
+  <script src="js/urlap_validacio.js" type="text/javascript"></script>
   <title>Receptfeltöltés | Recapt</title>
 </head>
 
@@ -18,7 +18,7 @@
     <form action="/admin/upload" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
     <article>
-      <input class="w-100" type="text" name="title" id="title" placeholder="Név" />
+      <input class="w-100" type="text" name="megnevezes" id="megnevezes" placeholder="Név" />
       <div id="image">
         <div>
           <input type="file" name="file" id="file" />
@@ -81,23 +81,49 @@
           </select>
         </div>
         <div class="-colorBgTernary mb-3 w-100 m-form__select">
-        <span>Adag:</span><input class="-hidden m-form__input w-80" type="number"  name="adag" min="1" max="100" />
-          
+        <span>Adag:</span><input class="-hidden m-form__input w-80" type="number"  name="adag" id="adag" min="1" max="100" />
+        <aside>
+                    <section>
+                        <h3>Űrlap validáció</h3>
+                        <p>
+                            Itt jelenik majd meg, hogy van-e hiba az űrlap kitöltésekor. Például űres mező, vagy nem megfelelő formátumú e-mail cím, weboldal, telefonszám.
+                        </p>
+                    </section>
+                    <section>
+                        <h3>Űrlap adatok</h3>
+                        <p>Itt jelennek majd meg az űrlapon megadott adatok  </p>
+                    </section>
+
+                </aside>
         </div>
       </section>
       <section>
+      <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
         <h2>Értékek</h2>
         <div class="-colorBgTernary mb-3 w-100">
-          <input class="right -hidden m-form__input w-80" type="number" name="preparation" id="preparation"
+          <input class="right -hidden m-form__input w-80" type="number" name="elokeszitesi_ido" id="elokeszitesi_ido"
             placeholder="Előkészületi idő" min="1"/>
           <span>perc</span>
         </div>
         <div class="-colorBgTernary mb-3 w-100">
-          <input class="right -hidden m-form__input w-80" type="number" name="cooking" id="cooking" placeholder="Főzési idő" min="1"/>
+          <input class="right -hidden m-form__input w-80" type="number" name="fozesi_ido" id="fozesi_ido" placeholder="Főzési idő" min="1"/>
           <span>perc</span>
         </div>
         <div class="-colorBgTernary mb-3 w-100">
-          <input class=" right -hidden m-form__input w-80" type="number" name="baking" id="baking" placeholder="Sütési idő" min="1"/>
+          <input class=" right -hidden m-form__input w-80" type="number" name="sutesi_ido" id="sutesi_ido" placeholder="Sütési idő" min="1"/>
           <span>perc</span>
         </div>
       </section>
@@ -128,7 +154,7 @@
       <section>
         <h2>Hasznos információk</h2>
         <div class="m-form__selectWrapper -colorBgTernary w-100 mb-3">
-          <select class="w-100 m-form__select" name="snack" id="snack">
+          <select class="w-100 m-form__select" name="fogas" id="fogas">
             <option value="">Fogás</option>
             <option value="hideg előétel">hideg előétel</option>
             <option value="meleg előétel">meleg előétel</option>
@@ -142,7 +168,7 @@
           </select>
         </div>
         <div class="m-form__selectWrapper -colorBgTernary w-100 mb-3">
-          <select class="w-100 m-form__select" name="technology" id="technology">
+          <select class="w-100 m-form__select" name="konyhatechnologia" id="konyhatechnologia">
             <option value="">Konyhatechnológia</option>
             <option value="bográcsos">bográcsos</option>
             <option value="grill">grill</option>
@@ -159,7 +185,7 @@
           </select>
         </div>
         <div class="m-form__selectWrapper -colorBgTernary w-100 mb-3">
-          <select class="w-100 m-form__select" name="baby" id="baby">
+          <select class="w-100 m-form__select" name="babakonyha" id="babakonyha">
             <option value="">Babakonyha</option>
             <option value="baba 18–24 hónap">baba 18–24 hónap</option>
             <option value="baba 12–18 hónap">baba 12–18 hónap</option>
@@ -174,7 +200,7 @@
         <h2>Egyéb elnevezések</h2>
         <div id="names">
           <div class="-colorBgTernary mb-3 w-100 names">
-            <input class="-hidden m-form__input w-80" type="text" name="name-' +nameNum+ '" id="name-'+nameNum+'" placeholder="További elnevezés" />
+            <input class="-hidden m-form__input w-80" type="text" name="egyeb_elnevezesek" id="egyeb_elnevezesek" placeholder="További elnevezés" />
             <div class="right"><button class="-delete little-button">–</button></div>
           </div>
         </div>

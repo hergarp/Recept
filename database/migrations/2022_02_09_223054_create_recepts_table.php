@@ -18,7 +18,7 @@ class CreateReceptsTable extends Migration
             $table->string('url_slug')->length(50)->unique();
             $table->unsignedBigInteger('user')->nullable();
             $table->string('megnevezes')->length(50)->unique();
-            $table->string('kep')->length(50)->unique();
+            $table->string('kep')->unique();
             $table->string('kategoria')->length(30)->nullable();
             $table->string('konyha')->length(30)->nullable();
             $table->tinyInteger('adag')->length(2);
@@ -26,13 +26,14 @@ class CreateReceptsTable extends Migration
             $table->mediumInteger('fozesi_ido')->length(3);
             $table->mediumInteger('sutesi_ido')->length(3);
             $table->string('fogas')->length(20);
-            $table->string('konyhatechnologi')->length(20);
+            $table->string('konyhatechnologia')->length(20);
             $table->string('babakonyha')->length(30);
-            $table->Text('egyeb_elnevezesek')->length(200);
-            $table->mediumInteger('receptkonyvben')->length(7);
+            $table->Text('egyeb_elnevezesek')->length(200)->nullable();
+            $table->mediumInteger('receptkonyvben')->length(7)->nullable();
             $table->mediumInteger('ossznezettseg')->length(7);  
             $table->date('feltoltes_datuma');
             $table->binary('reggeli');
+            $table->binary('tizorai');
             $table->binary('ebed');
             $table->binary('uzsonna');
             $table->binary('vacsora');

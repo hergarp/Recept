@@ -167,9 +167,36 @@
         </div>
         <div class="-colorBgTernary mb-3 w-100">
         <span>Adag:</span><input class="-hidden m-form__input w-80" type="number"  name="adag" min="1" max="100" />
-        </div>
+        <aside>
+                    <section>
+                        <h3>Űrlap validáció</h3>
+                        <p>
+                            Itt jelenik majd meg, hogy van-e hiba az űrlap kitöltésekor. Például űres mező, vagy nem megfelelő formátumú e-mail cím, weboldal, telefonszám.
+                        </p>
+                    </section>
+                    <section>
+                        <h3>Űrlap adatok</h3>
+                        <p>Itt jelennek majd meg az űrlapon megadott adatok  </p>
+                    </section>
+
+                </aside> 
+      </div>
+
       </section>
       <section>
+      <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
         <h2>Értékek</h2>
         <div class="-colorBgTernary mb-3 w-100">
           <input class="-hidden m-form__input w-80" type="number" name="preparation" id="preparation" 
