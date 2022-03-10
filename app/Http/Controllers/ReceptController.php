@@ -59,7 +59,7 @@ class ReceptController extends Controller
         $recept->sutesi_ido = $request->baking;
         $recept->fogas = $request->snacky;
         $recept->konyhatechnologia = $request->technology;
-        $recept->babakonyha = $request->babakonyha;
+        $recept->babakonyha = $request->baby;
         $recept->egyeb_elnevezesek = $request->egyeb_elnevezesek;
         $recept->receptkonyvben = $request->receptkonyvben;
         $recept->ossznezettseg = $request->ossznezettseg;
