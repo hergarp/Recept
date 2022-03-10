@@ -41,40 +41,40 @@ class ReceptController extends Controller
      */
     public function store(Request $request)
     {
-        $file = $request->file('file');
-        $path = $file->storePublicly('images');
-
         $recept = new Recept();
-        $recept->megnevezes = $request->megnevezes;
+        $recept->megnevezes = $request->title;
+        $recept->url_slug = $request->url_slug;
         $recept->user = auth()->user()->u_id;
-        $recept->kep = $path;
+        if ($request->file('file') != null) {
+            $file = $request->file('file');
+            $path = $file->storePublicly('images');
+            $recept->kep = $path;
+        }
         $recept->kategoria = $request->kategoria;
         $recept->konyha = $request->konyha;
         $recept->adag = $request->adag;
-        $recept->elokeszitesi_ido = $request->elokeszitesi_ido;
-        $recept->fozesi_ido = $request->fozesi_ido;
-        $recept->sutesi_ido = $request->sutesi_ido;
-        $recept->fogas = $request->fogas;
-        $recept->konyhatechnologia = $request->konyhatechnologia;
+        $recept->elokeszitesi_ido = $request->preparation;
+        $recept->fozesi_ido = $request->cooking;
+        $recept->sutesi_ido = $request->baking;
+        $recept->fogas = $request->snacky;
+        $recept->konyhatechnologia = $request->technology;
         $recept->babakonyha = $request->babakonyha;
         $recept->egyeb_elnevezesek = $request->egyeb_elnevezesek;
-        $recept->receptkonyvben = $request->receptkonyvben;
-        $recept->ossznezettseg = $request->ossznezettseg;
-        $recept->reggeli = $request->reggeli;
-        $recept->tizorai = $request->tizorai;
-        $recept->ebed = $request->ebed;
-        $recept->uzsonna = $request->uzsonna;
-        $recept->vacsora = $request->vacsora;
-        $recept->tavasz = $request->tavasz;
-        $recept->nyar = $request->nyar;
-        $recept->osz = $request->osz;
-        $recept->tel = $request->tel;
+        $recept->reggeli = $request->breakfast;
+        $recept->tizorai = $request->elevenses;
+        $recept->ebed = $request->lunch;
+        $recept->uzsonna = $request->snack;
+        $recept->vacsora = $request->dinner;
+        $recept->tavasz = $request->spring;
+        $recept->nyar = $request->summer;
+        $recept->osz = $request->autumn;
+        $recept->tel = $request->winter;
         $recept->save();
 
         $r_id = $recept->id;
 
         $alapanyagok = $request->alapanyagok;
-        $mertekegysegek = $request->quantitys;
+        $mertekegysegek = $request->quantities;
         $units = $request->units;
 
         for ($i = 0; $i < $alapanyagok.length(); $i++) {

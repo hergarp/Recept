@@ -26,8 +26,8 @@ class CreateMertekegysegsTable extends Migration
         Mertekegyseg::create(['mertekegyseg' => 'citromból nyert']);
         Mertekegyseg::create(['mertekegyseg' => 'fél citromból nyert']);
         Mertekegyseg::create(['mertekegyseg' => 'ml']);
-        Mertekegyseg::create(['mertekegyseg' => 'dl']);
         Mertekegyseg::create(['mertekegyseg' => 'cl']);
+        Mertekegyseg::create(['mertekegyseg' => 'dl']);
         Mertekegyseg::create(['mertekegyseg' => 'l']);
         Mertekegyseg::create(['mertekegyseg' => 'g']);
         Mertekegyseg::create(['mertekegyseg' => 'dkg']);
@@ -38,6 +38,7 @@ class CreateMertekegysegsTable extends Migration
         Mertekegyseg::create(['mertekegyseg' => 'ízlés szerint']);
         Mertekegyseg::create(['mertekegyseg' => 'csokor']);
         Mertekegyseg::create(['mertekegyseg' => 'bk']);
+        Mertekegyseg::create(['mertekegyseg' => 'db']);
     }
 
     /**

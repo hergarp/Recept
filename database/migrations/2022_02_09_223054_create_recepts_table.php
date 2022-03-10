@@ -26,13 +26,14 @@ class CreateReceptsTable extends Migration
             $table->mediumInteger('fozesi_ido')->length(3);
             $table->mediumInteger('sutesi_ido')->length(3);
             $table->string('fogas')->length(20);
-            $table->string('konyhatechnologi')->length(20);
+            $table->string('konyhatechnologia')->length(20);
             $table->string('babakonyha')->length(30);
             $table->Text('egyeb_elnevezesek')->length(200);
-            $table->mediumInteger('receptkonyvben')->length(7);
-            $table->mediumInteger('ossznezettseg')->length(7);  
+            $table->mediumInteger('receptkonyvben')->length(7)->default(0);
+            $table->mediumInteger('ossznezettseg')->length(7)->default(0);  
             $table->date('feltoltes_datuma');
             $table->binary('reggeli');
+            $table->binary('tizorai');
             $table->binary('ebed');
             $table->binary('uzsonna');
             $table->binary('vacsora');
