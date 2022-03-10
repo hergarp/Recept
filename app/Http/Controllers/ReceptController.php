@@ -7,6 +7,7 @@ use App\Models\Konyha;
 use App\Models\Kategoria;
 use App\Models\Alapanyag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ReceptController extends Controller
 {
@@ -60,6 +61,8 @@ class ReceptController extends Controller
         $recept->konyhatechnologia = $request->technology;
         $recept->babakonyha = $request->babakonyha;
         $recept->egyeb_elnevezesek = $request->egyeb_elnevezesek;
+        $recept->receptkonyvben = $request->receptkonyvben;
+        $recept->ossznezettseg = $request->ossznezettseg;
         $recept->reggeli = $request->breakfast;
         $recept->tizorai = $request->elevenses;
         $recept->ebed = $request->lunch;
@@ -69,7 +72,11 @@ class ReceptController extends Controller
         $recept->nyar = $request->summer;
         $recept->osz = $request->autumn;
         $recept->tel = $request->winter;
+        $recept->feltoltes_datuma = now();
+
         $recept->save();
+
+        // auth()->user()->recepts()->attach($recept->id)
 
         $r_id = $recept->id;
 

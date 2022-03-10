@@ -5,7 +5,7 @@
   @include('../template/head')
   <link rel="stylesheet" href="css/upload-desktop.css" />
   <script src="js/upload.js"></script>
-  <!-- <script src="js/urlap_validacio.js" type="text/javascript"></script> -->
+  <script src="js/urlap_validacio.js" type="text/javascript"></script>
   <title>Receptfeltöltés | Recapt</title>
 </head>
 
@@ -98,12 +98,40 @@
             @endforeach
           </select>
         </div>
+
         <div class="-colorBgTernary mb-3 w-100 portion">
           <label for="adag">Adag:</label>
           <input id="adag" class="align-center -hidden m-form__input" type="number" name="adag" min="1" max="100" />
+        <aside>
+                    <section>
+                        <h3>Űrlap validáció</h3>
+                        <p>
+                            Itt jelenik majd meg, hogy van-e hiba az űrlap kitöltésekor. Például űres mező, vagy nem megfelelő formátumú e-mail cím, weboldal, telefonszám.
+                        </p>
+                    </section>
+                    <section>
+                        <h3>Űrlap adatok</h3>
+                        <p>Itt jelennek majd meg az űrlapon megadott adatok  </p>
+                    </section>
+
+                </aside>
         </div>
       </section>
       <section>
+      <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
         <h2>Értékek</h2>
         <div class="-colorBgTernary mb-3 w-100 values">
           <label for="preparation">Előkészületi idő:</label>
