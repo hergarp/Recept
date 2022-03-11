@@ -101,7 +101,7 @@
 
         <div class="-colorBgTernary mb-3 w-100 portion">
           <label for="adag">Adag:</label>
-          <input id="adag" class="align-center -hidden m-form__input" type="number" name="adag" min="1" max="100" />
+          <input id="adag" class="align-center -hidden m-form__input" type="number" name="adag" min="1" max="100" required/>
         <aside>
                     <section>
                         <h3>Űrlap validáció</h3>
@@ -118,21 +118,7 @@
         </div>
       </section>
       <section>
-      <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-
-        <h2>Értékek</h2>
+           <h2>Értékek</h2>
         <div class="-colorBgTernary mb-3 w-100 values">
           <label for="preparation">Előkészületi idő:</label>
           <input class="align-center -hidden m-form__input" type="number" name="preparation" id="preparation" min="1"/>

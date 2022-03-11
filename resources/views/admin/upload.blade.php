@@ -184,19 +184,7 @@
 
       </section>
       <section>
-      <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
+
         <h2>Értékek</h2>
         <div class="-colorBgTernary mb-3 w-100">
           <input class="-hidden m-form__input w-80" type="number" name="preparation" id="preparation" 

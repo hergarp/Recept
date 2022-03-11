@@ -61,9 +61,9 @@ class ReceptController extends Controller
         $recept->konyhatechnologia = $request->technology;
         $recept->babakonyha = $request->baby;
         $recept->egyeb_elnevezesek = $request->egyeb_elnevezesek;
-        $recept->receptkonyvben = $request->receptkonyvben;
-        $recept->ossznezettseg = $request->ossznezettseg;
-        $recept->reggeli = $request->breakfast;
+        // $recept->receptkonyvben = $request->receptkonyvben;
+        // $recept->ossznezettseg = $request->ossznezettseg;
+        $recept->reggeli = $request->has(breakfast)?1:0;
         $recept->tizorai = $request->elevenses;
         $recept->ebed = $request->lunch;
         $recept->uzsonna = $request->snack;
@@ -72,7 +72,6 @@ class ReceptController extends Controller
         $recept->nyar = $request->summer;
         $recept->osz = $request->autumn;
         $recept->tel = $request->winter;
-        $recept->feltoltes_datuma = now();
 
         $recept->save();
 
