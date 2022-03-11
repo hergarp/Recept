@@ -26,6 +26,10 @@ class CreateAllergensTable extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
         });
+
+        Allergen::create(['alapanyag' => 'cukor', 'allergen' => 'cukor']);
+        Allergen::create(['alapanyag' => 'vaj', 'allergen' => 'tej']);
+        Allergen::create(['alapanyag' => 'vaj', 'allergen' => 'laktóz']);
     }
 
     /**

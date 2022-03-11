@@ -58,13 +58,16 @@ $(function () {
         const sablonElem = $(".alapanyag-felvitel-template");
         let ujElem = sablonElem.clone().appendTo(szuloElem).removeClass('d-none alapanyag-felvitel-template');
         var materialid = 'material-' + addingMaterialCounter;
+        var materialName = 'material[]';
         var materiallist = "materials-" + addingMaterialCounter;
         var quantityid = 'quantity-' + addingMaterialCounter;
+        var quantityName = 'quantity[]';
         var unitid = 'unit-' + addingMaterialCounter;
-        $("[id=material]:eq(1)").attr("id", materialid).attr("list", materiallist).attr("required", true);
+        var unitName = 'unit[]';
+        $("[id=material]:eq(1)").attr("id", materialid).attr("list", materiallist).attr("required", true).attr("name",materialName);
         $("[id=materials]:eq(1)").attr("id", materiallist);
-        $("[id=quantity]:eq(1)").attr("id", quantityid).attr("required", true);
-        $("[id=unit]:eq(1)").attr("id", unitid).attr("required", true);
+        $("[id=quantity]:eq(1)").attr("id", quantityid).attr("name",quantityName);
+        $("[id=unit]:eq(1)").attr("id", unitid).attr("required", true).attr("name",unitName);
         mertekegysegAdas(materialid,unitid);
         delField();
         addingMaterialCounter += 1;
@@ -120,7 +123,7 @@ $(function () {
     }
 
     function mertekegysegAdas(materialid,unitid) {
-        $('input[name=alapanyagok]').on('input', function() {
+        $('input[data=alapanyagok]').on('input', function() {
             let material = document.getElementById(materialid);
             var valueSelected = this.value;
             var data = matunits.filter(element => element.alapanyag == valueSelected);

@@ -6,8 +6,13 @@ use App\Models\Recept;
 use App\Models\Konyha;
 use App\Models\Kategoria;
 use App\Models\Alapanyag;
+use App\Models\Alapanyag_mertekegyseg;
+use App\Models\Alkotja;
+use App\Models\Uzenet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
+
 
 class ReceptController extends Controller
 {
@@ -45,7 +50,7 @@ class ReceptController extends Controller
         $recept = new Recept();
         $recept->megnevezes = $request->title;
         $recept->url_slug = $request->url_slug;
-        $recept->user = auth()->user()->u_id;
+        $recept->user = Auth::user()->id;
         if ($request->file('file') != null) {
             $file = $request->file('file');
             $path = $file->storePublicly('images');
@@ -61,41 +66,41 @@ class ReceptController extends Controller
         $recept->konyhatechnologia = $request->technology;
         $recept->babakonyha = $request->baby;
         $recept->egyeb_elnevezesek = $request->egyeb_elnevezesek;
-        // $recept->receptkonyvben = $request->receptkonyvben;
-        // $recept->ossznezettseg = $request->ossznezettseg;
-        $recept->reggeli = $request->has(breakfast)?1:0;
-        $recept->tizorai = $request->elevenses;
-        $recept->ebed = $request->lunch;
-        $recept->uzsonna = $request->snack;
-        $recept->vacsora = $request->dinner;
-        $recept->tavasz = $request->spring;
-        $recept->nyar = $request->summer;
-        $recept->osz = $request->autumn;
-        $recept->tel = $request->winter;
+        $recept->reggeli = $request->has('breakfast');
+        $recept->tizorai = $request->has('elevenses');
+        $recept->ebed = $request->has('lunch');
+        $recept->uzsonna = $request->has('snack');
+        $recept->vacsora = $request->has('dinner');
+        $recept->tavasz = $request->has('spring');
+        $recept->nyar = $request->has('summer');
+        $recept->osz = $request->has('autumn');
+        $recept->tel = $request->has('winter');
 
         $recept->save();
 
-        // auth()->user()->recepts()->attach($recept->id)
 
         $r_id = $recept->id;
 
-        $alapanyagok = $request->alapanyagok;
-        $mertekegysegek = $request->quantities;
-        $units = $request->units;
+        
+        $alme = array_map(null, $request->material, $request->quantity, $request->unit);
+        foreach ($alme as $material) {
+            $am = Alapanyag_mertekegyseg::where('alapanyag', '=', $material[0])
+            ->where('mertekegyseg', '=', $material[2])->first();
 
-        for ($i = 0; $i < $alapanyagok.length(); $i++) {
-            $am = AlapanyagMertekegyseg::where('alapanyag', '=', $alapanyagok[i])
-            ->where('mertekegyseg', '=', $mertekegysegek[i])->first();
-            
             $a = new Alkotja();
             $a->recept = $r_id;
             $a->alapanyag_mertekegyseg = $am->am_id;
-            $a->mennyiseg = $units[i];
+            $a->mennyiseg = $material[1];
             $a->save();
         }
         
-        
-        // $recept->alapanyagMertekegyseg()->attach([$am->id]);
+        if ($request->message != null) {
+            $message = new Uzenet();
+            $message->recept = $r_id;
+            $message->uzenet = $request->message;
+        }
+
+        return view('index');
     }
 
     /**

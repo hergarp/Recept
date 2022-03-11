@@ -34,7 +34,7 @@
         <h2>Hozzávalók<span class="red">*</span></h2>
         <div id="ingredients">
           <div class="d-none alapanyag-felvitel-template m-form__selectWrapper -colorBgTernary mb-3 ingredients">
-            <input class="-hidden m-form__input raw-material-name" id="material" list="materials" name="alapanyagok" placeholder="Alapanyag">
+            <input class="-hidden m-form__input raw-material-name" data="alapanyagok" id="material" list="materials" name="alapanyagok" placeholder="Alapanyag">
             <datalist id="materials">
               @foreach ($materials as $material)
                 <option value="{{ $material -> megnevezes}}">{{ $material -> megnevezes}}</option>
@@ -138,26 +138,26 @@
       <section>
         <h2>Mikor</h2>
         <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary mb-1" for="breakfast"><input class="d-none"
-            type="checkbox" name="breakfast" id="breakfast" />reggeli</label>
+            type="checkbox" name="breakfast" id="breakfast" value="1"/>reggeli</label>
         <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary mb-1" for="elevenses"><input class="d-none"
-            type="checkbox" name="elevenses" id="elevenses" />tízórai</label>
+            type="checkbox" name="elevenses" id="elevenses" value="1"/>tízórai</label>
         <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary mb-1" for="lunch"><input class="d-none" type="checkbox"
-            name="lunch" id="lunch" />ebéd</label>
+            name="lunch" id="lunch" value="1"/>ebéd</label>
         <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary mb-1" for="snack"><input class="d-none" type="checkbox"
-            name="snack" id="snack" />uzsonna</label>
+            name="snack" id="snack" value="1"/>uzsonna</label>
         <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary mb-1" for="dinner"><input class="d-none" type="checkbox"
-            name="dinner" id="dinner" />vacsora</label>
+            name="dinner" id="dinner" value="1"/>vacsora</label>
       </section>
       <section>
         <h2>Szezon</h2>
         <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary mb-1" for="winter"><input class="d-none" type="checkbox"
-            name="winter" id="winter" />tél</label>
+            name="winter" id="winter" value="1"/>tél</label>
         <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary mb-1" for="spring"><input class="d-none" type="checkbox"
-            name="spring" id="spring" />tavasz</label>
+            name="spring" id="spring" value="1"/>tavasz</label>
         <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary mb-1" for="summer"><input class="d-none" type="checkbox"
-            name="summer" id="summer" />nyár</label>
+            name="summer" id="summer" value="1"/>nyár</label>
         <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary mb-1" for="autumn"><input class="d-none" type="checkbox"
-            name="autumn" id="autumn" />ősz</label>
+            name="autumn" id="autumn" value="1"/>ősz</label>
       </section>
       <section>
         <h2>Hasznos információk</h2>
