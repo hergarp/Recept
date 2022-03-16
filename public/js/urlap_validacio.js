@@ -5,64 +5,50 @@ function ID(nev) {
 function selectall(nev) {
     return document.querySelectorAll(nev);
 }
+/*
+let init = (id) => {
+    console.log('init')
+    return id
+}
+function init(id) {
+    console.log('init')
+    return id
+}
+*/
+
 function init() {
     console.log('init')
-    $("#adag").blur(validate);
-    // ID("adag", "baking").addEventListener("blur", validate);
-    // ID("baking").addEventListener("blur", validate);
-    // ID("cooking").addEventListener("blur", validate);
-    // ID("preparation").addEventListener("blur", validate);
+    // $("#adag").blur(validate);
+    // function validateAdag() {
+    //     validate("adag")
+    // }
+    // ID("adag").addEventListener("blur", validateAdag);
+    ID("adag").addEventListener("blur", () => validate("adag"));
+    ID("baking").addEventListener("blur", () => validate("baking"));
+    ID("cooking").addEventListener("blur", () => validate("cooking"));
+    ID("preparation").addEventListener("blur", () => validate("preparation"));
+    ID("quantity").addEventListener("blur", () => validate("quantity"));
 }
-function validate() {
+function validate(id) {
     console.log('validate')
     var hiba = "";
     var urlapAdatok = "";
-    var input = $(this).value;
-    
-    // var backingInput = ID("backing").value;
-    // var cookingInput = ID("cooking").value;
-    // var preparationInput = ID("preparation").value;
+    var input = ID(id).value; 
 
 
     console.log(input);
 
-    var szuro3 = /^\d+$/;
+    var szuro3 = /^[1-9]+[0-9]*$/;
     if (! szuro3.test(input))  {
         hiba += "<br>" + "Legyen egész szám!";
-        ID("adag").style.border = "1px solid red";
+        ID(id).style.border = "1px solid red";
 
     }
     else{
         urlapAdatok +="<br>"+  "Jók az adatok:" + input + "<br>";
-        ID("adag").style.border = "none";
+        ID(id).style.border = "none";
     }
-    // if (! szuro3.test(backingInput))  {
-    //     hiba += "<br>" + "Legyen egész szám!";
-    //     ID("backing").style.border = "1px solid red";
-    // }
-    // else{
-    //     urlapAdatok +="<br>"+  "Jók az adatok:" + backingInput + "<br>";
-    //     ID("backing").style.border = "none";
-    // }
-    // if (! szuro3.test(cookingInput))  {
-    //     hiba += "<br>" + "Legyen egész szám!";
-    //     ID("cooking").style.border = "1px solid red";
-    // }
-    // else{
-    //     urlapAdatok +="<br>"+  "Jók az adatok:" + cookingInput + "<br>";
-    //     ID("cooking").style.border = "none";
-    // }
-    // if (! szuro3.test(preparationInput))  {
-    //     hiba += "<br>" + "Legyen egész szám!";
-    //     ID("preparation").style.border = "1px solid red";
-    // }
-    // else{
-    //     urlapAdatok +="<br>"+  "Jók az adatok:" + preparationInput + "<br>";
-    //     ID("preparation").style.border = "none";
-    // }
-
-
-
+  
 $("section:nth-child(1) p")[0].innerHTML = hiba;
 $("section:nth-child(2) p")[0].innerHTML = urlapAdatok;
 console.log(hiba);
