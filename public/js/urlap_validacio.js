@@ -1,55 +1,31 @@
-window.addEventListener("load", init);
 function ID(nev) {
     return document.getElementById(nev);
 }
-function selectall(nev) {
-    return document.querySelectorAll(nev);
-}
-/*
-let init = (id) => {
-    console.log('init')
-    return id
-}
-function init(id) {
-    console.log('init')
-    return id
-}
-*/
 
-function init() {
-    console.log('init')
-    // $("#adag").blur(validate);
-    // function validateAdag() {
-    //     validate("adag")
-    // }
-    // ID("adag").addEventListener("blur", validateAdag);
-    ID("adag").addEventListener("blur", () => validate("adag"));
-    ID("baking").addEventListener("blur", () => validate("baking"));
-    ID("cooking").addEventListener("blur", () => validate("cooking"));
-    ID("preparation").addEventListener("blur", () => validate("preparation"));
-    ID("quantity").addEventListener("blur", () => validate("quantity"));
-}
-function validate(id) {
-    console.log('validate')
+$(function() {
+    ID("adag").addEventListener("blur", () => validate("adag", "#adag-hiba"));
+    ID("baking").addEventListener("blur", () => validate("baking", "#baking-hiba"));
+    ID("cooking").addEventListener("blur", () => validate("cooking", "#cooking-hiba"));
+    ID("preparation").addEventListener("blur", () => validate("preparation", "#preparation-hiba"));
+    ID("quantity").addEventListener("blur", () => validate("quantity", "#quantity-hiba"));
+})
+
+function validate(id, errorField) {
     var hiba = "";
-    var urlapAdatok = "";
-    var input = ID(id).value; 
-
-
-    console.log(input);
-
+    input = ID(id).value; 
+    
+    
     var szuro3 = /^[1-9]+[0-9]*$/;
-    if (! szuro3.test(input))  {
-        hiba += "<br>" + "Legyen egész szám!";
+    console.log("input" + !input.trim());
+    console.log("szűrő" + ! szuro3.test(input));
+    /*Egyelőre üres mezőre is reagál, még nem találtam meg, azt hogy kéne kezelni*/
+    if ((! szuro3.test(input)) && (!input.trim())) {
+        hiba += "<p class='red align-center'>Legyen egész szám!</p>";
         ID(id).style.border = "1px solid red";
-
+        $(errorField).html(hiba);
     }
     else{
-        urlapAdatok +="<br>"+  "Jók az adatok:" + input + "<br>";
         ID(id).style.border = "none";
+        $(errorField).empty();
     }
-  
-$("section:nth-child(1) p")[0].innerHTML = hiba;
-$("section:nth-child(2) p")[0].innerHTML = urlapAdatok;
-console.log(hiba);
 }
