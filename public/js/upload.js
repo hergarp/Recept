@@ -8,7 +8,7 @@ $(function () {
     delField();
     var addingMaterialCounter = 1;
     var stepNum = 1;
-    nameNum = 1;
+    var nameNum = 1;
     addingMaterial();
     addingStep();
     addingName();
@@ -68,8 +68,8 @@ $(function () {
         $("[id=materials]:eq(1)").attr("id", materiallist);
         $("[id=quantity]:eq(1)").attr("id", quantityid).attr("name",quantityName);
         $("[id=unit]:eq(1)").attr("id", unitid).attr("required", true).attr("name",unitName);
-        mertekegysegAdas(materialid,unitid);
         delField();
+        mertekegysegAdas(materialid, unitid, quantityid);
         addingMaterialCounter += 1;
     }
 
@@ -121,17 +121,34 @@ $(function () {
             },
         });
     }
-
-    function mertekegysegAdas(materialid,unitid) {
-        $('input[data=alapanyagok]').on('input', function() {
-            let material = document.getElementById(materialid);
+    
+    function mertekegysegAdas(materialId, unitId, quantityId) {
+        $('#' + materialId).on('input', function() {
             var valueSelected = this.value;
             var data = matunits.filter(element => element.alapanyag == valueSelected);
-            $(this).next().next().next().empty();
+            $('#' + unitId).empty();
             data.forEach(element => {
-                $(this).next().next().next().append(`<option value="${element.mertekegyseg}">${element.mertekegyseg}</option>`);
+                $('#' + unitId).append(`<option value="${element.mertekegyseg}">${element.mertekegyseg}</option>`);
             });
+            $('#' + unitId).val($('#' + unitId +' option:first').val());
+            if ($('#' + unitId).val() == 'ízlés szerint') {
+                $('#' + quantityId).attr("required", false);
+            }
+            else {
+                $('#' + quantityId).attr("required", true);
+            }
         }).trigger('input');
+        requiredQuantity(unitId, quantityId);
     }
     
+    function requiredQuantity(unitId, quantityId) {
+        $('#' + unitId).change(function() {
+            if ($('#' + unitId).val() == 'ízlés szerint') {
+                $('#' + quantityId).attr("required", false);
+            }
+            else {
+                $('#' + quantityId).attr("required", true);
+            }
+        })
+    }
 })

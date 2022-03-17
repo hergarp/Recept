@@ -34,7 +34,7 @@
         <h2>Hozzávalók<span class="red">*</span></h2>
         <div id="ingredients">
           <div class="d-none alapanyag-felvitel-template m-form__selectWrapper -colorBgTernary mb-3 ingredients">
-            <input class="-hidden m-form__input raw-material-name" data="alapanyagok" id="material" list="materials" name="alapanyagok" placeholder="Alapanyag">
+            <input class="-hidden m-form__input raw-material-name" id="material" list="materials" name="alapanyagok" placeholder="Alapanyag">
             <datalist id="materials">
               @foreach ($materials as $material)
                 <option value="{{ $material -> megnevezes}}">{{ $material -> megnevezes}}</option>
@@ -45,8 +45,9 @@
              <option selected disabled>mértékegység</option>
             </select>
             <div class="right">
-            <button type="button" class="-delete little-button">–</button>
+              <button type="button" class="-delete little-button">–</button>
             </div>
+            <div id="quantity-hiba" class="w-100"></div>
           </div>
         </div>
         <div>
@@ -102,20 +103,8 @@
         <div class="-colorBgTernary mb-3 w-100 portion">
           <label for="adag">Adag:</label>
           <input id="adag" class="align-center -hidden m-form__input" type="number" name="adag" min="1" max="100" required/>
-        <aside>
-                    <section>
-                        <h3>Űrlap validáció</h3>
-                        <p>
-                            Itt jelenik majd meg, hogy van-e hiba az űrlap kitöltésekor. Például űres mező, vagy nem megfelelő formátumú e-mail cím, weboldal, telefonszám.
-                        </p>
-                    </section>
-                    <section>
-                        <h3>Űrlap adatok</h3>
-                        <p>Itt jelennek majd meg az űrlapon megadott adatok  </p>
-                    </section>
-
-                </aside>
         </div>
+        <div id="adag-hiba" class="w-100"></div>
       </section>
       <section>
            <h2>Értékek</h2>
@@ -124,16 +113,19 @@
           <input class="align-center -hidden m-form__input" type="number" name="preparation" id="preparation" min="1"/>
           <span>perc</span>
         </div>
+        <div id="preparation-hiba" class="w-100"></div>
         <div class="-colorBgTernary mb-3 w-100 values">
           <label for="cooking">Főzési idő</label>
           <input class="align-center -hidden m-form__input" type="number" name="cooking" id="cooking" min="1"/>
           <span>perc</span>
         </div>
+        <div id="cooking-hiba" class="w-100"></div>
         <div class="-colorBgTernary mb-3 w-100 values">
           <label for="baking">Sütési idő</label>
           <input class="align-center -hidden m-form__input" type="number" name="baking" id="baking" min="1"/>
           <span>perc</span>
         </div>
+        <div id="baking-hiba" class="w-100"></div>
       </section>
       <section>
         <h2>Mikor</h2>
