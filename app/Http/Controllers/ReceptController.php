@@ -8,6 +8,7 @@ use App\Models\Kategoria;
 use App\Models\Alapanyag;
 use App\Models\Alapanyag_mertekegyseg;
 use App\Models\Alkotja;
+use App\Models\Lepes;
 use App\Models\Uzenet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -75,6 +76,11 @@ class ReceptController extends Controller
         $recept->nyar = $request->has('summer');
         $recept->osz = $request->has('autumn');
         $recept->tel = $request->has('winter');
+        $names = $request->name;
+        $recept->egyeb_elnevezesek = json_encode($names);
+
+        /*and if you want to get that from DB and convert it back to an array use:
+        $array = json_decode($adprofile->education);*/
 
         $recept->save();
 
@@ -93,6 +99,15 @@ class ReceptController extends Controller
             $a->mennyiseg = $material[1];
             $a->save();
         }
+
+        $lepesek = $request->step;
+
+        foreach ($lepesek as $lepes) {
+            $l = new Lepes();
+            $l->recept = $r_id;
+            $l->lepes = $lepes;
+            $l->save();
+        }
         
         if ($request->message != null) {
             $message = new Uzenet();
@@ -103,6 +118,11 @@ class ReceptController extends Controller
         return view('index');
     }
 
+    public function draft()
+    {
+        $recipes = Recept::all()->where('statusz', '!=', 'publikus');
+        return view('admin.draft-recipe-list', ['recipes'=> $recipes]);
+    }
     /**
      * Display the specified resource.
      *
@@ -120,9 +140,10 @@ class ReceptController extends Controller
      * @param  \App\Models\Recept  $recept
      * @return \Illuminate\Http\Response
      */
-    public function edit(Recept $recept)
+    public function edit($id)
     {
-        //
+        $recipe = Recept::all()->where('id', '=', $id);
+        return view('admin.edit', ['recipe'=> $recipe]);
     }
 
     /**

@@ -58,6 +58,8 @@ Route::get('/admin/materials', [AlapanyagController::class, 'index']);
 Route::post('/admin/add-materials', [AlapanyagController::class, 'store']);
 Route::post('/admin/add-matunits', [Alapanyag_mertekegysegController::class, 'store']);
 Route::post('/admin/add-allergen', [AllergenController::class, 'store']);
+Route::get('/admin/draft-recipe-list', [ReceptController::class, 'draft']);
+Route::get('/admin/edit/{id}', [ReceptController::class, 'edit']);
 
 Route::get('/upload', [ReceptController::class, 'create']);
 

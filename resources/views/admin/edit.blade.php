@@ -3,8 +3,8 @@
 
 <head>
   @include('../template/head')
-  <link rel="stylesheet" href="../css/admin-upload-recipe-desktop.css">
-  <script src="../js/upload.js"></script>
+  <link rel="stylesheet" href="../../css/admin-edit-recipe-desktop.css">
+  <script src="../../js/upload.js"></script>
   <title>Admin – Receptfelvitel | Recapt</title>
 </head>
 

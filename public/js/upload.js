@@ -58,16 +58,13 @@ $(function () {
         const sablonElem = $(".alapanyag-felvitel-template");
         let ujElem = sablonElem.clone().appendTo(szuloElem).removeClass('d-none alapanyag-felvitel-template');
         var materialid = 'material-' + addingMaterialCounter;
-        var materialName = 'material[]';
         var materiallist = "materials-" + addingMaterialCounter;
         var quantityid = 'quantity-' + addingMaterialCounter;
-        var quantityName = 'quantity[]';
         var unitid = 'unit-' + addingMaterialCounter;
-        var unitName = 'unit[]';
-        $("[id=material]:eq(1)").attr("id", materialid).attr("list", materiallist).attr("required", true).attr("name",materialName);
+        $("[id=material]:eq(1)").attr("id", materialid).attr("list", materiallist).attr("required", true).attr("name",'material[]');
         $("[id=materials]:eq(1)").attr("id", materiallist);
-        $("[id=quantity]:eq(1)").attr("id", quantityid).attr("name",quantityName);
-        $("[id=unit]:eq(1)").attr("id", unitid).attr("required", true).attr("name",unitName);
+        $("[id=quantity]:eq(1)").attr("id", quantityid).attr("name",'quantity[]');
+        $("[id=unit]:eq(1)").attr("id", unitid).attr("required", true).attr("name",'unit[]');
         delField();
         mertekegysegAdas(materialid, unitid, quantityid);
         addingMaterialCounter += 1;
@@ -82,7 +79,7 @@ $(function () {
         const sablonElem = $(".step-template");
         let ujElem = sablonElem.clone().appendTo(szuloElem).removeClass('d-none step-template');
         var stepId = "step-" + stepNum;
-        $("[id=step]:eq(1)").attr("id", stepId).attr("required", true);
+        $("[id=step]:eq(1)").attr("id", stepId).attr("required", true).attr("name",'step[]');
         delField();
         stepNum += 1;
     }
@@ -96,7 +93,7 @@ $(function () {
         const sablonElem = $(".name-template");
         let ujElem = sablonElem.clone().appendTo(szuloElem).removeClass('d-none name-template');
         var nameId = "name-" + nameNum;
-        $("[id=name]:eq(1)").attr("id", nameId);
+        $("[id=name]:eq(1)").attr("id", nameId).attr("name",'name[]');
         delField();
         nameNum += 1;
     }

@@ -40,7 +40,7 @@
                 <option value="{{ $material -> megnevezes}}">{{ $material -> megnevezes}}</option>
               @endforeach
             </datalist>
-            <input class="-hidden m-form__input raw-material-quantity" type="number" name="quantities" id="quantity" min="1" placeholder="mennyiség"/>
+            <input class="-hidden m-form__input raw-material-quantity" type="number" name="quantities" id="quantity" placeholder="mennyiség"/>
             <select class="m-form__select left-b raw-material-unit" name="units" id="unit">
              <option selected disabled>mértékegység</option>
             </select>
