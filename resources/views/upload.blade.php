@@ -110,19 +110,19 @@
            <h2>Értékek</h2>
         <div class="-colorBgTernary mb-3 w-100 values">
           <label for="preparation">Előkészületi idő:</label>
-          <input class="align-center -hidden m-form__input" type="number" name="preparation" id="preparation" min="1"/>
+          <input class="align-center -hidden m-form__input" type="number" name="preparation" id="preparation" min="0"/>
           <span>perc</span>
         </div>
         <div id="preparation-hiba" class="w-100"></div>
         <div class="-colorBgTernary mb-3 w-100 values">
           <label for="cooking">Főzési idő</label>
-          <input class="align-center -hidden m-form__input" type="number" name="cooking" id="cooking" min="1"/>
+          <input class="align-center -hidden m-form__input" type="number" name="cooking" id="cooking" min="0"/>
           <span>perc</span>
         </div>
         <div id="cooking-hiba" class="w-100"></div>
         <div class="-colorBgTernary mb-3 w-100 values">
           <label for="baking">Sütési idő</label>
-          <input class="align-center -hidden m-form__input" type="number" name="baking" id="baking" min="1"/>
+          <input class="align-center -hidden m-form__input" type="number" name="baking" id="baking" min="0"/>
           <span>perc</span>
         </div>
         <div id="baking-hiba" class="w-100"></div>
