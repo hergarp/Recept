@@ -125,7 +125,7 @@
         </div>
         <div class="-colorBgTernary mb-3 w-100 portion">
           <label for="adag">Adag:</label>
-          <input id="adag" class="align-center -hidden m-form__input" type="number" name="adag" min="1" max="100" required value="{{ $recipe->adag }}"/>
+          <input id="adag" class="align-center -hidden m-form__input" name="adag" min="1" max="100" required value="{{ $recipe->adag }}"/>
         </div>
         <div id="adag-hiba" class="w-100"></div>
       </section>
@@ -133,19 +133,19 @@
         <h2>Értékek</h2>
         <div class="-colorBgTernary mb-3 w-100 values">
           <label for="preparation">Előkészületi idő:</label>
-          <input class="align-center -hidden m-form__input" type="number" name="preparation" id="preparation" min="1" value="{{ $recipe->elokeszitesi_ido }}"/>
+          <input class="align-center -hidden m-form__input" name="preparation" id="preparation" min="1" value="{{ $recipe->elokeszitesi_ido }}"/>
           <span>perc</span>
         </div>
         <div id="preparation-hiba" class="w-100"></div>
         <div class="-colorBgTernary mb-3 w-100 values">
           <label for="cooking">Főzési idő</label>
-          <input class="align-center -hidden m-form__input" type="number" name="cooking" id="cooking" min="1" value="{{ $recipe->fozesi_ido }}"/>
+          <input class="align-center -hidden m-form__input" name="cooking" id="cooking" min="1" value="{{ $recipe->fozesi_ido }}"/>
           <span>perc</span>
         </div>
         <div id="cooking-hiba" class="w-100"></div>
         <div class="-colorBgTernary mb-3 w-100 values">
           <label for="baking">Sütési idő</label>
-          <input class="align-center -hidden m-form__input" type="number" name="baking" id="baking" min="1" value="{{ $recipe->sutesi_ido }}"/>
+          <input class="align-center -hidden m-form__input" name="baking" id="baking" min="1" value="{{ $recipe->sutesi_ido }}"/>
           <span>perc</span>
         </div>
         <div id="baking-hiba" class="w-100"></div>

@@ -13,11 +13,9 @@ $(function() {
 function validate(id, errorField) {
     var hiba = "";
     var input = $("#" + id).val(); 
-    console.log(id, input);
     
     var szuro3 = /^[1-9]+[0-9]*$/;
     var l = input.trim().length;
-    /*Egyelőre üres mezőre is reagál, még nem találtam meg, azt hogy kéne kezelni*/
     if (l > 0) {
         if (! szuro3.test(input)) {
             hiba += "<p class='red align-center'>Legyen egész szám!</p>";
