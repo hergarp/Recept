@@ -25,7 +25,8 @@ class ReceptController extends Controller
      */
     public function index()
     {
-        //
+        $recipe = Recept::all();
+        return view('index', ['recipe'=> $recipe]);
     }
 
     /**
@@ -129,7 +130,7 @@ class ReceptController extends Controller
     {
         //
     }
-
+    
     /**
      * Show the form for editing the specified resource.
      *

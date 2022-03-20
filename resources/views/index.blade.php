@@ -18,15 +18,17 @@
                     <option value="name">Név szerint</option>
                     <option value="raw-material">Alapanyag szerint</option>
                 </select>
+                <button>Keresés</button>
             </div>
             <div id="recipes">
-                <a href="">
+                @foreach($recipe as $recipe)
+                <a href="./recipe/{{$recipe->url_slug}}">
                     <div class="recipe -colorBgTernary">
-                        <img src="img/cake.jpg" alt="">
-                        <h3>Title</h3>
+                        <img src="./{{$recipe->kep}}" alt="">
+                        <h3>{{$recipe->megnevezes}}</h3>
                     </div>
                 </a>
-                
+                @endforeach
             </div>
         </article>
         </div>

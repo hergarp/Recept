@@ -6,6 +6,7 @@ use App\Http\Controllers\AlapanyagController;
 use App\Http\Controllers\Alapanyag_mertekegysegController;
 use App\Http\Controllers\AllergenController;
 use App\Http\Controllers\ReceptController;
+use App\Http\Controllers\ReceptkonyvController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,13 +19,8 @@ use App\Http\Controllers\ReceptController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
-
-Route::get('/index', function () {
-    return view('index');
-});
+Route::get('/index', [ReceptController::class, 'index']);
+Route::get('/', [ReceptController::class, 'index']);
 
 Route::get('/login', function () {
     return view('login');
@@ -42,9 +38,7 @@ Route::get('/results', function () {
     return view('results');
 });
 
-Route::get('/profile', function () {
-    return view('profile');
-});
+Route::get('/profile', [ReceptkonyvController::class, 'show']);
 
 Route::get('/admin/upload', [ReceptController::class, 'create']);
 Route::post('/admin/upload', [ReceptController::class, 'store']);
@@ -60,8 +54,7 @@ Route::post('/admin/add-matunits', [Alapanyag_mertekegysegController::class, 'st
 Route::post('/admin/add-allergen', [AllergenController::class, 'store']);
 Route::get('/admin/draft-recipe-list', [ReceptController::class, 'draft']);
 Route::get('/admin/edit/{id}', [ReceptController::class, 'edit']);
-//segéd:
-Route::get('/admin/alkotjas/{id}', [ReceptController::class, 'seged']);
+
 
 Route::get('/upload', [ReceptController::class, 'create']);
 

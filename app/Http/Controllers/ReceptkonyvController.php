@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Receptkonyv;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
 
 class ReceptkonyvController extends Controller
 {
@@ -44,9 +47,16 @@ class ReceptkonyvController extends Controller
      * @param  \App\Models\Receptkonyv  $receptkonyv
      * @return \Illuminate\Http\Response
      */
-    public function show(Receptkonyv $receptkonyv)
+    public function show()
     {
-        //
+
+        $user=Auth::user()->id; 
+        $receptkonyv=DB::table('receptkonyvs')->where ('receptkonyvs.user', '=',$user)
+                                            -> join('recepts', 'receptkonyvs.recept', '=', 'recepts.r_id')
+                                            -> select('receptkonyvs.jelzes', 'receptkonyvs.minosites','recepts.url_slug','recepts.megnevezes', 'recepts.kep')
+                                            ->get();
+        return view('profile', ['receptkonyv'=>$receptkonyv]);
+    
     }
 
     /**
