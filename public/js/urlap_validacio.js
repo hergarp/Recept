@@ -12,20 +12,24 @@ $(function() {
 
 function validate(id, errorField) {
     var hiba = "";
-    input = ID(id).value; 
-    
+    var input = $("#" + id).val(); 
+    console.log(id, input);
     
     var szuro3 = /^[1-9]+[0-9]*$/;
-    console.log("input" + !input.trim());
-    console.log("szűrő" + ! szuro3.test(input));
+    var l = input.trim().length;
     /*Egyelőre üres mezőre is reagál, még nem találtam meg, azt hogy kéne kezelni*/
-    if ((! szuro3.test(input)) && (!input.trim())) {
-        hiba += "<p class='red align-center'>Legyen egész szám!</p>";
-        ID(id).style.border = "1px solid red";
-        $(errorField).html(hiba);
+    if (l > 0) {
+        if (! szuro3.test(input)) {
+            hiba += "<p class='red align-center'>Legyen egész szám!</p>";
+            ID(id).style.border = "1px solid red";
+            $(errorField).html(hiba);
+        }
+        else{
+            ID(id).style.border = "none";
+            $(errorField).empty();
+        }
     }
-    else{
-        ID(id).style.border = "none";
-        $(errorField).empty();
+    else {
+        console.log('input hossz' + l);
     }
 }

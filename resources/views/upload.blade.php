@@ -85,7 +85,7 @@
         <h2>Jellemzők</h2>
         <div class="m-form__selectWrapper -colorBgTernary w-100 mb-3">
           <select class="w-100 m-form__select" name="category" id="category">
-            <option selected disabled>Kategória</option>
+            <option value="">Kategória</option>
             @foreach ($kategorias as $kategoria)
             <option value="{{ $kategoria -> kategoria}}">{{ $kategoria -> kategoria}}</option>
             @endforeach
@@ -93,7 +93,7 @@
         </div>
         <div class="m-form__selectWrapper -colorBgTernary w-100 mb-3">
           <select class="w-100 m-form__select" name="kitchen" id="kitchen">
-            <option selected disabled>Konyha</option>
+            <option value="">Konyha</option>
             @foreach  ($konyhas as $konyha)  
             <option value="{{ $konyha -> konyha}}">{{ $konyha -> konyha}}</option>
             @endforeach
@@ -102,27 +102,27 @@
 
         <div class="-colorBgTernary mb-3 w-100 portion">
           <label for="adag">Adag:</label>
-          <input id="adag" class="align-center -hidden m-form__input" type="number" name="adag" min="1" max="100" required/>
+          <input id="adag" class="align-center -hidden m-form__input" name="adag" min="1" max="100" required/>
         </div>
         <div id="adag-hiba" class="w-100"></div>
       </section>
       <section>
-           <h2>Értékek</h2>
+        <h2>Értékek</h2>
         <div class="-colorBgTernary mb-3 w-100 values">
           <label for="preparation">Előkészületi idő:</label>
-          <input class="align-center -hidden m-form__input" type="number" name="preparation" id="preparation" min="1"/>
+          <input class="align-center -hidden m-form__input" name="preparation" id="preparation" min="1"/>
           <span>perc</span>
         </div>
         <div id="preparation-hiba" class="w-100"></div>
         <div class="-colorBgTernary mb-3 w-100 values">
           <label for="cooking">Főzési idő</label>
-          <input class="align-center -hidden m-form__input" type="number" name="cooking" id="cooking" min="1"/>
+          <input class="align-center -hidden m-form__input" name="cooking" id="cooking" min="1"/>
           <span>perc</span>
         </div>
         <div id="cooking-hiba" class="w-100"></div>
         <div class="-colorBgTernary mb-3 w-100 values">
           <label for="baking">Sütési idő</label>
-          <input class="align-center -hidden m-form__input" type="number" name="baking" id="baking" min="1"/>
+          <input class="align-center -hidden m-form__input" name="baking" id="baking" min="1"/>
           <span>perc</span>
         </div>
         <div id="baking-hiba" class="w-100"></div>
@@ -155,7 +155,7 @@
         <h2>Hasznos információk</h2>
         <div class="m-form__selectWrapper -colorBgTernary w-100 mb-3">
           <select class="w-100 m-form__select" name="snacky" id="snacky">
-            <option selected disabled>Fogás</option>
+            <option selected value="">Fogás</option>
             <option value="hideg előétel">hideg előétel</option>
             <option value="meleg előétel">meleg előétel</option>
             <option value="amuse-bouche">amuse-bouche</option>
@@ -169,7 +169,7 @@
         </div>
         <div class="m-form__selectWrapper -colorBgTernary w-100 mb-3">
           <select class="w-100 m-form__select" name="technology" id="technology">
-            <option selected disabled>Konyhatechnológia</option>
+            <option value="">Konyhatechnológia</option>
             <option value="bográcsos">bográcsos</option>
             <option value="grill">grill</option>
             <option value="hidegkonyha">hidegkonyha</option>
@@ -186,7 +186,7 @@
         </div>
         <div class="m-form__selectWrapper -colorBgTernary w-100 mb-3">
           <select class="w-100 m-form__select" name="baby" id="baby">
-            <option selected disabled>Babakonyha</option>
+            <option value="">Babakonyha</option>
             <option value="baba 18–24 hónap">baba 18–24 hónap</option>
             <option value="baba 12–18 hónap">baba 12–18 hónap</option>
             <option value="baba 8–12 hónap">baba 8–12 hónap</option>

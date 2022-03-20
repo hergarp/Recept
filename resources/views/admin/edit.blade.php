@@ -4,7 +4,7 @@
 <head>
   @include('../template/head')
   <link rel="stylesheet" href="../../css/admin-edit-recipe-desktop.css">
-  <script src="../../js/upload.js"></script>
+  <script src="../../js/edit.js"></script>
   <title>Admin – Receptfelvitel | Recapt</title>
 </head>
 
@@ -16,128 +16,76 @@
     <div class="container">
     @if (Auth::check() and Auth::user()->is_admin)
     <form action="">
+    <input type="hidden" name="_token" value="{{ csrf_token() }}" />
     <article>
-      <input class="w-100 -hidden" type="text" name="title" id="title" placeholder="Név" value="Light Strawberry" />
+      <input class="w-100 -hidden" type="text" name="title" id="title" placeholder="Név" value="{{ $recipe->megnevezes }}" />
+      <input class="d-none" id="slug" type="text" name="url_slug">
       <div id="image">
-        <img src="../img/cocktail.webp" alt="">
+        <img src="../../{{ $recipe->kep }}" alt="">
       </div>
       <section>
         <h2>Hozzávalók</h2>
         <div id="ingredients">
-          <div class="m-form__selectWrapper -colorBgTernary mb-3 ingredients">
-            <select class="m-form__select right-b raw-material-name" name="raw-material-1" id="raw-material-1">
-              <option value="">eperszirup</option>
+          <div class="d-none alapanyag-felvitel-template m-form__selectWrapper -colorBgTernary mb-3 ingredients">
+            <input class="-hidden m-form__input raw-material-name" id="material" list="materials" name="alapanyagok" placeholder="Alapanyag">
+            <datalist id="materials">
+              @foreach ($materials as $material)
+                <option value="{{ $material -> megnevezes }}">{{ $material -> megnevezes}}</option>
+              @endforeach
+            </datalist>
+            <input class="-hidden m-form__input raw-material-quantity" type="number" name="quantities" id="quantity" placeholder="mennyiség"/>
+            <select class="m-form__select left-b raw-material-unit" name="units" id="unit">
+             <option selected disabled>mértékegység</option>
             </select>
-            <input class="-hidden m-form__input raw-material-quantity" type="number" name="quantity-1" id="quantity-1"
-              placeholder="mennyiség" value="1" />
-            <select class="m-form__select left-b raw-material-unit" name="unit-1" id="unit-1">
-              <option value="">cl</option>
+            <div class="right">
+              <button type="button" class="-delete little-button">–</button>
+            </div>
+            <div id="quantity-hiba" class="w-100"></div>
+          </div>
+          @foreach ($alkotjas as $alkotja)
+          <div class="m-form__selectWrapper -colorBgTernary mb-3 ingredients">
+            <input class="-hidden m-form__input raw-material-name" id="matedit-{{$alkotja->alk_id}}" list="matedit-{{$alkotja->alk_id}}" name="material[]" placeholder="Alapanyag" value="{{$alkotja->alapanyag}}">
+            <datalist id="matedit-{{$alkotja->alk_id}}">
+              @foreach ($materials as $material)
+                <option value="{{ $material -> megnevezes}}">{{ $material -> megnevezes}}</option>
+              @endforeach
+            </datalist>
+            <input class="-hidden m-form__input raw-material-quantity" type="number" name="quantity[]" id="quantityedit-{{$alkotja->alk_id}}"
+              placeholder="mennyiség" value="{{$alkotja->mennyiseg}}" />
+            <select class="m-form__select left-b raw-material-unit" name="unit[]" id="unitedit-{{$alkotja->alk_id}}">
+              <option value="{{$alkotja->mertekegyseg}}">{{$alkotja->mertekegyseg}}</option>
             </select>
             <div class="right">
               <button class="-delete little-button">–</button>
             </div>
+            <div id="quantity-hiba" class="w-100 bgWhite"></div>
           </div>
-          <div class="m-form__selectWrapper -colorBgTernary mb-3 ingredients">
-            <select class="m-form__select right-b raw-material-name" name="raw-material-2" id="raw-material-2">
-              <option value="">ananászlé</option>
-            </select>
-            <input class="-hidden m-form__input  raw-material-quantity" type="number" name="quantity-2" id="quantity-2"
-              placeholder="mennyiség" value="1" />
-            <select class="m-form__select left-b raw-material-unit" name="unit-2" id="unit-2">
-              <option value="">cl</option>
-            </select>
-            <div class="right">
-              <button class="-delete little-button">–</button>
-            </div>
-          </div>
-          <div class="m-form__selectWrapper -colorBgTernary mb-3 ingredients">
-            <select class="m-form__select right-b raw-material-name" name="raw-material-3" id="raw-material-3">
-              <option value="">citromlé</option>
-            </select>
-            <input class="-hidden m-form__input  raw-material-quantity" type="number" name="quantity-3" id="quantity-3"
-              placeholder="mennyiség" value="1" />
-            <select class="m-form__select left-b raw-material-unit" name="unit-3" id="unit-3">
-              <option value="">cl</option>
-            </select>
-            <div class="right">
-              <button class="-delete little-button">–</button>
-            </div>
-          </div>
-          <div class="m-form__selectWrapper -colorBgTernary mb-3 ingredients">
-            <select class="m-form__select right-b raw-material-name" name="raw-material-4" id="raw-material-4">
-              <option value="">grapefruitlé</option>
-            </select>
-            <input class="-hidden m-form__input  raw-material-quantity" type="number" name="quantity-4" id="quantity-4"
-              placeholder="mennyiség" value="1" />
-            <select class="m-form__select left-b raw-material-unit" name="unit-4" id="unit-4">
-              <option value="">cl</option>
-            </select>
-            <div class="right">
-              <button class="-delete little-button">–</button>
-            </div>
-          </div>
-          <div class="m-form__selectWrapper -colorBgTernary mb-3 ingredients">
-            <select class="m-form__select right-b raw-material-name" name="raw-material-5" id="raw-material-5">
-              <option value="">pépesített eper</option>
-            </select>
-            <input class="-hidden m-form__input  raw-material-quantity" type="number" name="quantity-5" id="quantity-5"
-              placeholder="mennyiség" value="3" />
-            <select class="m-form__select left-b raw-material-unit" name="unit-5" id="unit-5">
-              <option value="">bk</option>
-            </select>
-            <div class="right">
-              <button class="-delete little-button">–</button>
-            </div>
-          </div>
-          <div class="m-form__selectWrapper -colorBgTernary mb-3 ingredients">
-            <select class="m-form__select right-b raw-material-name" name="raw-material-6" id="raw-material-6">
-              <option value="">alkoholmentes pezsgő</option>
-            </select>
-            <input class="-hidden m-form__input  raw-material-quantity" type="number" name="quantity-6" id="quantity-6"
-              placeholder="mennyiség" />
-            <select class="m-form__select left-b raw-material-unit" name="unit-6" id="unit-6">
-              <option value="">ízlés szerint</option>
-            </select>
-            <div class="right">
-              <button class="-delete little-button">–</button>
-            </div>
-          </div>
-          <div class="m-form__selectWrapper -colorBgTernary mb-3 ingredients">
-            <select class="m-form__select right-b raw-material-name" name="raw-material-7" id="raw-material-7">
-              <option value="">eper</option>
-            </select>
-            <input class="-hidden m-form__input  raw-material-quantity" type="number" name="quantity-7" id="quantity-7"
-              placeholder="mennyiség" value="0.5" />
-            <select class="m-form__select left-b raw-material-unit" name="unit-7" id="unit-7">
-              <option value="">db</option>
-            </select>
-            <div class="right">
-              <button class="-delete little-button">–</button>
-            </div>
-          </div>
+          @endforeach
         </div>
-        <div>
-          <p class="right">
-            további alapanyag hozzáadása <button id="adding-material" class="-adding little-button">+</button>
-          </p>
-        </div>
+          <div>
+            <p class="right">
+              további alapanyag hozzáadása <button id="adding-material" class="-adding little-button">+</button>
+            </p>
+          </div>
       </section>
       <section>
         <h2>Lépések</h2>
         <div id="steps">
-        <div class="steps w-100">
-          <textarea class="step-txt" name="step1" id="step1" cols="30"
-          rows="1">Erőteljesen összerázzuk a sékerben az összes adalékot a jéggel és a pezsgő nélkül, a pezsgőskehelybe szűrjük és feltöltjük pezsgővel.</textarea>
-          <div class="right">
-            <button class="-delete little-button">–</button>
+          <div class="d-none step-template steps w-100">
+            <textarea class="step-txt" name="steps" id="step" cols="30" rows="1"></textarea>
+            <div class="right">
+              <button type="button" class="-delete little-button">–</button>
+            </div>
           </div>
-        </div>
-        <div class="steps w-100">
-          <textarea class="step-txt" name="step1" id="step1" cols="30" rows="1">Az epret a pohár szélére szúrjuk.</textarea>
-          <div class="right">
-            <button class="-delete little-button">–</button>
+          @foreach ($steps as $step)
+          <div class="steps w-100">
+            <textarea class="step-txt" name="step[]" id="stepedit-{{$step->l_id}}" cols="30"
+            rows="1">{{$step->lepes}}</textarea>
+            <div class="right">
+              <button class="-delete little-button">–</button>
+            </div>
           </div>
-        </div>
+          @endforeach
         </div>
         <div>
           <p class="right">
@@ -148,7 +96,7 @@
       <section>
         <h2>Üzenet</h2>
         <textarea class="w-100" name="message" id="message" cols="30" rows="5"
-          placeholder="Itt üzenhetsz a szerkesztőségnek, ha valamilyen alapanyagot nem találnál vagy kérdésed lenne. Kitöltése nem kötelező."></textarea>
+          placeholder="<?php if (isset($message->uzenet) && !is_null($message->uzenet)) {echo $message->uzenet;} else {echo 'Nincs üzenet';}?>"></textarea>
       </section>
     </article>
 
@@ -156,112 +104,159 @@
       <section>
         <h2>Jellemzők</h2>
         <div class="m-form__selectWrapper -colorBgTernary w-100 mb-3">
-          <select class="w-100 m-form__select" name="category" id="category" required>
-            <option value="">italok</option>
+          <select class="w-100 m-form__select" name="category" id="category">
+            <option value="">Kategoria</option>
+            @foreach ($kategorias as $kategoria)
+            <option value="{{ $kategoria -> kategoria}}" <?php echo $recipe->kategoria == $kategoria->kategoria
+                ? 'selected'
+                : ''; ?>>{{ $kategoria -> kategoria}}</option>
+            @endforeach
           </select>
         </div>
         <div class="m-form__selectWrapper -colorBgTernary w-100 mb-3">
-          <select class="w-100 m-form__select" name="kitchen" id="kitchen" required>
+          <select class="w-100 m-form__select" name="kitchen" id="kitchen">
             <option value="">Konyha</option>
+            @foreach  ($konyhas as $konyha)  
+            <option value="{{ $konyha -> konyha}}" <?php echo $recipe->konyha == $konyha->konyha
+                ? 'selected'
+                : ''; ?>>{{ $konyha -> konyha}}</option>
+            @endforeach
           </select>
         </div>
-        <div class="-colorBgTernary mb-3 w-100">
-        <span>Adag:</span><input class="-hidden m-form__input w-80" type="number"  name="adag" min="1" max="100" />
-        <aside>
-                    <section>
-                        <h3>Űrlap validáció</h3>
-                        <p>
-                            Itt jelenik majd meg, hogy van-e hiba az űrlap kitöltésekor. Például űres mező, vagy nem megfelelő formátumú e-mail cím, weboldal, telefonszám.
-                        </p>
-                    </section>
-                    <section>
-                        <h3>Űrlap adatok</h3>
-                        <p>Itt jelennek majd meg az űrlapon megadott adatok  </p>
-                    </section>
-
-                </aside> 
-      </div>
-
+        <div class="-colorBgTernary mb-3 w-100 portion">
+          <label for="adag">Adag:</label>
+          <input id="adag" class="align-center -hidden m-form__input" type="number" name="adag" min="1" max="100" required value="{{ $recipe->adag }}"/>
+        </div>
+        <div id="adag-hiba" class="w-100"></div>
       </section>
       <section>
-
         <h2>Értékek</h2>
-        <div class="-colorBgTernary mb-3 w-100">
-          <input class="-hidden m-form__input w-80" type="number" name="preparation" id="preparation" 
-            placeholder="Előkészületi idő" min="1"  />
+        <div class="-colorBgTernary mb-3 w-100 values">
+          <label for="preparation">Előkészületi idő:</label>
+          <input class="align-center -hidden m-form__input" type="number" name="preparation" id="preparation" min="1" value="{{ $recipe->elokeszitesi_ido }}"/>
           <span>perc</span>
         </div>
-        <div class="-colorBgTernary mb-3 w-100">
-          <input class="-hidden m-form__input w-80" type="number" name="cooking" id="cooking" placeholder="Főzési idő" min="1" />
+        <div id="preparation-hiba" class="w-100"></div>
+        <div class="-colorBgTernary mb-3 w-100 values">
+          <label for="cooking">Főzési idő</label>
+          <input class="align-center -hidden m-form__input" type="number" name="cooking" id="cooking" min="1" value="{{ $recipe->fozesi_ido }}"/>
           <span>perc</span>
         </div>
-        <div class="-colorBgTernary mb-3 w-100">
-          <input class="-hidden m-form__input w-80" type="number" name="baking" id="baking" placeholder="Sütési idő" min="1"  />
+        <div id="cooking-hiba" class="w-100"></div>
+        <div class="-colorBgTernary mb-3 w-100 values">
+          <label for="baking">Sütési idő</label>
+          <input class="align-center -hidden m-form__input" type="number" name="baking" id="baking" min="1" value="{{ $recipe->sutesi_ido }}"/>
           <span>perc</span>
         </div>
+        <div id="baking-hiba" class="w-100"></div>
       </section>
       <section>
         <h2>Mikor</h2>
         <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary" for="breakfast"><input class="d-none"
-            type="checkbox" name="breakfast" id="breakfast" />reggeli</label>
+            type="checkbox" name="breakfast" id="breakfast" <?php echo $recipe->reggeli == 1
+                ? 'checked'
+                : ''; ?>/>reggeli</label>
         <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary" for="elevenses"><input class="d-none"
-            type="checkbox" name="elevenses" id="elevenses" />tízórai</label>
+            type="checkbox" name="elevenses" id="elevenses" <?php echo $recipe->tizorai == 1
+                ? 'checked'
+                : ''; ?>/>tízórai</label>
         <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary" for="lunch"><input class="d-none" type="checkbox"
-            name="lunch" id="lunch" />ebéd</label>
+            name="lunch" id="lunch" <?php echo $recipe->ebed == 1
+                ? 'checked'
+                : ''; ?>/>ebéd</label>
         <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary" for="snack"><input class="d-none" type="checkbox"
-            name="snack" id="snack" />uzsonna</label>
+            name="snack" id="snack" <?php echo $recipe->uzsonna == 1
+                ? 'checked'
+                : ''; ?>/>uzsonna</label>
         <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary" for="dinner"><input class="d-none" type="checkbox"
-            name="dinner" id="dinner" />vacsora</label>
+            name="dinner" id="dinner" <?php echo $recipe->vacsora == 1
+                ? 'checked'
+                : ''; ?>/>vacsora</label>
       </section>
       <section>
         <h2>Szezon</h2>
         <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary" for="winter"><input class="d-none" type="checkbox"
-            name="winter" id="winter" />tél</label>
+            name="winter" id="winter" <?php echo $recipe->tel == 1
+                ? 'checked'
+                : ''; ?>/>tél</label>
         <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary" for="spring"><input class="d-none" type="checkbox"
-            name="spring" id="spring" />tavasz</label>
+            name="spring" id="spring" <?php echo $recipe->tavasz == 1
+                ? 'checked'
+                : ''; ?>/>tavasz</label>
         <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary" for="summer"><input class="d-none" type="checkbox"
-            name="summer" id="summer" checked />nyár</label>
+            name="summer" id="summer" checked <?php echo $recipe->nyar == 1
+                ? 'checked'
+                : ''; ?>/>nyár</label>
         <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary" for="autumn"><input class="d-none" type="checkbox"
-            name="autumn" id="autumn" />ősz</label>
+            name="autumn" id="autumn" <?php echo $recipe->osz == 1
+                ? 'checked'
+                : ''; ?>/>ősz</label>
       </section>
       <section>
         <h2>Hasznos információk</h2>
         <div class="m-form__selectWrapper -colorBgTernary w-100 mb-3">
-          <select class="w-100 m-form__select" name="snack" id="snack">
-            <option value="ital">ital</option>
+          <select class="w-100 m-form__select" name="snacky" id="snacky">
+            <option value="" <?php echo $recipe->fogas == null? 'selected' : ''; ?>>Fogás</option>
+            <option value="hideg előétel" <?php echo $recipe->fogas == 'hideg előétel'? 'selected' : ''; ?>>hideg előétel</option>
+            <option value="meleg előétel" <?php echo $recipe->fogas == 'meleg előétel'? 'selected' : ''; ?>>meleg előétel</option>
+            <option value="amuse-bouche" <?php echo $recipe->fogas == 'amuse-bouche'? 'selected' : ''; ?>>amuse-bouche</option>
+            <option value="egyéb fogás" <?php echo $recipe->fogas == 'egyéb fogás'? 'selected' : ''; ?>>egyéb fogás</option>
+            <option value="desszert" <?php echo $recipe->fogas == 'desszert'? 'selected' : ''; ?>>desszert</option>
+            <option value="köret" <?php echo $recipe->fogas == 'köret'? 'selected' : ''; ?>>köret</option>
+            <option value="főétel" <?php echo $recipe->fogas == 'főétel'? 'selected' : ''; ?>>főétel</option>
+            <option value="leves" <?php echo $recipe->fogas == 'leves'? 'selected' : ''; ?>>leves</option>
+            <option value="ital" <?php echo $recipe->fogas == 'ital'? 'selected' : ''; ?>>ital</option>
           </select>
         </div>
         <div class="m-form__selectWrapper -colorBgTernary w-100 mb-3">
           <select class="w-100 m-form__select" name="technology" id="technology">
-            <option value="séker">séker</option>
+            <option value="" <?php echo $recipe->konyhatechnologia == null? 'selected' : ''; ?>>Konyhatechnológia</option>
+            <option value="bográcsos" <?php echo $recipe->konyhatechnologia == 'bográcsos'? 'selected' : ''; ?>>bográcsos</option>
+            <option value="grill" <?php echo $recipe->konyhatechnologia == 'grill'? 'selected' : ''; ?>>grill</option>
+            <option value="hidegkonyha" <?php echo $recipe->konyhatechnologia == 'hidegkonyha'? 'selected' : ''; ?>>hidegkonyha</option>
+            <option value="kenyérsütő" <?php echo $recipe->konyhatechnologia == 'kenyérsütő'? 'selected' : ''; ?>>kenyérsütő</option>
+            <option value="kukta" <?php echo $recipe->konyhatechnologia == 'kukta'? 'selected' : ''; ?>>kukta</option>
+            <option value="rántott ételek" <?php echo $recipe->konyhatechnologia == 'rántott ételek'? 'selected' : ''; ?>>rántott ételek</option>
+            <option value="római tál" <?php echo $recipe->konyhatechnologia == 'római tál'? 'selected' : ''; ?>>római tál</option>
+            <option value="séker" <?php echo $recipe->konyhatechnologia == 'séker'? 'selected' : ''; ?>>séker</option>
+            <option value="sörös" <?php echo $recipe->konyhatechnologia == 'sörös'? 'selected' : ''; ?>>sörös</option>
+            <option value="süti sütés nélkül" <?php echo $recipe->konyhatechnologia == 'süti sütés nélkül'? 'selected' : ''; ?>>süti sütés nélkül</option>
+            <option value="vadkovászos" <?php echo $recipe->konyhatechnologia == 'vadkovászos'? 'selected' : ''; ?>>vadkovászos</option>
+            <option value="wok" <?php echo $recipe->konyhatechnologia == 'wok'? 'selected' : ''; ?>>wok</option>
           </select>
         </div>
         <div class="m-form__selectWrapper -colorBgTernary w-100 mb-3">
           <select class="w-100 m-form__select" name="baby" id="baby">
-            <option value="">Babakonyha</option>
-            <option value="baba 18–24 hónap">baba 18–24 hónap</option>
-            <option value="baba 12–18 hónap">baba 12–18 hónap</option>
-            <option value="baba 8–12 hónap">baba 8–12 hónap</option>
-            <option value="baba 6–7 hónap">baba 6–7 hónap</option>
-            <option value="baba 5–6 hónap">baba 5–6 hónap</option>
-            <option value="baba-mama">baba-mama</option>
+            <option value="" <?php echo $recipe->babakonyha == null? 'selected' : ''; ?>>Babakonyha</option>
+            <option value="baba 18–24 hónap" <?php echo $recipe->babakonyha == 'baba 18–24 hónap'? 'selected' : ''; ?>>baba 18–24 hónap</option>
+            <option value="baba 12–18 hónap" <?php echo $recipe->babakonyha == 'baba 12–18 hónap'? 'selected' : ''; ?>>baba 12–18 hónap</option>
+            <option value="baba 8–12 hónap" <?php echo $recipe->babakonyha == 'baba 8–12 hónap'? 'selected' : ''; ?>>baba 8–12 hónap</option>
+            <option value="baba 6–7 hónap" <?php echo $recipe->babakonyha == 'baba 6–7 hónap'? 'selected' : ''; ?>>baba 6–7 hónap</option>
+            <option value="baba 5–6 hónap" <?php echo $recipe->babakonyha == 'baba 5–6 hónap'? 'selected' : ''; ?>>baba 5–6 hónap</option>
+            <option value="baba-mama" <?php echo $recipe->babakonyha == 'baba-mama'? 'selected' : ''; ?>>baba-mama</option>
           </select>
         </div>
       </section>
       <section>
         <h2>Egyéb elnevezések</h2>
         <div id="names">
+          <div class="d-none name-template -colorBgTernary mb-3 w-100 names">
+            <input class="-hidden m-form__input w-80" type="text" name="names" id="name" placeholder="További elnevezés" />
+            <div class="right"><button type="button" class="-delete little-button">–</button></div>
+          </div>
+          @foreach ($elnevezesek as $elnevezes)
           <div class="-colorBgTernary mb-3 w-100 names">
-            <input class="-hidden m-form__input w-80" type="text" name="other-name-1" id="other-name-1"
-              placeholder="Egyéb elnevezés" value="eper koktél" />
+            <input class="-hidden m-form__input w-80" type="text" name="other-name-1"
+              placeholder="Egyéb elnevezés" value="{{ $elnevezes }}" />
             <div class="right">
               <button class="-delete little-button">–</button>
             </div>  
           </div>
+          @endforeach
         </div>
           <div>
             <p class="right">
-              elnevezés hozzáadása <button id="adding-name" class="-adding little-button">+</button>
+              elnevezés hozzáadása <button type="button" id="adding-name" class="-adding little-button">+</button>
             </p>
           </div>
       </section>
@@ -272,13 +267,13 @@
       <button class="-adding -sending">Publikálás</button>
     </div>
   </form>
-  @else
-            <div class="align-center">
-                <p>Ezen oldal betöltéséhez adminnak kell lenni.</p>
-                <a href="/login">Bejelentkezés</a>
-            </div>
-            @endif
-</div>
+    @else
+    <div class="align-center">
+        <p>Ezen oldal betöltéséhez adminnak kell lenni.</p>
+        <a href="/login">Bejelentkezés</a>
+    </div>
+    @endif
+  </div>
     <footer>
       @include('../template/footer')
     </footer>

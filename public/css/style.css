@@ -60,6 +60,10 @@ option {
     text-align: center;
 }
 
+.bgWhite {
+    background-color: white !important;
+}
+
 .container {
     padding: 0 30px;
 }
