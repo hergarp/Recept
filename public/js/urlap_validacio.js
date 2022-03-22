@@ -27,7 +27,7 @@ function validate(id, errorField) {
             $(errorField).empty();
         }
     }
-    else {
-        console.log('input hossz' + l);
-    }
+    // else {
+    //     console.log('input hossz' + l);
+    // }
 }

@@ -126,11 +126,27 @@ class ReceptController extends Controller
      * @param  \App\Models\Recept  $recept
      * @return \Illuminate\Http\Response
      */
-    public function show(Recept $recept)
+    public function show($url_slug)
     {
-        //
+        $recipe = Recept::where('url_slug',$url_slug)->first();
+        $id=$recipe->r_id;
+        $alkotjas = DB::table('alkotjas')->where('recept', '=', $id)
+                                        ->join('alapanyag_mertekegysegs', 
+                                            'alkotjas.alapanyag_mertekegyseg', 
+                                            '=', 
+                                            'alapanyag_mertekegysegs.am_id')
+                                        ->select('alapanyag_mertekegysegs.alapanyag',
+                                                'alapanyag_mertekegysegs.mertekegyseg',
+                                                'alkotjas.mennyiseg')
+                                        ->get();
+        return view('recipe', ['recipe'=> $recipe, 'alkotjas'=>$alkotjas]);
     }
-    
+
+    public function seged($url_slug){
+        $recipe = Recept::where('url_slug',$url_slug)->first();
+        return response()->json(['recipe'=> $recipe]);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

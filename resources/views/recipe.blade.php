@@ -2,10 +2,10 @@
 <html lang="hu">
 <head>
     @include('template/head')
-    <link rel="stylesheet" href="css/recipe-desktop.css">
+    <link rel="stylesheet" href="../css/recipe-desktop.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://kit.fontawesome.com/91f36679fc.js" crossorigin="anonymous"></script>
-    <script src="js/recipe.js"></script>
+    <script src="../js/recipe.js"></script>
     <title>Recept | Recapt</title>
 </head>
 <body>
@@ -14,7 +14,7 @@
         @include('template/header')
 </header>
         <div id="recipe-container">
-            <h2 class="align-center" >Light Strawberry</h2>
+            <h2 class="align-center" >{{$recipe->megnevezes}}</h2>
             <section id="free-from-div">
                 <figure class="align-center">
                     <img class="w-20" src="img/sugar-cube.png" alt="">
@@ -38,7 +38,7 @@
                 </figure>
             </section>
             <section class="align-center">
-                <img id="main-pic" src="img/cocktail.webp" alt="">
+                <img id="main-pic" src="../{{$recipe->kep}}" alt="">
             </section>
             <section id="icons">
                 <div class="d-flex">
@@ -88,16 +88,12 @@
                             <a href=""><i class="fas fa-plus"></i></a>
                         </form>
                     </div>
-                    <h3 class="order-md-1 w-80">Hozzávalók</h3>
                 </div>
+                <h3 class="order-md-1 w-80">Hozzávalók</h3>
                 <ul>
-                    <li><spam class="quantity" value="1"></spam> <spam class="unit">cl</spam> eperszirup</li>
-                    <li><spam class="quantity" value="1"></spam> <spam class="unit">cl</spam> ananászlé</li>
-                    <li><spam class="quantity" value="1"></spam> <spam class="unit">cl</spam> citromlé</li>
-                    <li><spam class="quantity" value="1"></spam> <spam class="unit">cl</spam> grapefruitlé</li>
-                    <li><spam class="quantity" value="3"></spam> <spam class="unit">bk</spam> pépesített eper</li>
-                    <li><spam class="quantity" value="ízlés szerint"></spam> <spam class="unit"></spam> alkoholmentes pezsgő</li>
-                    <li><spam class="quantity" value="0.5"></spam> <spam class="unit">db</spam> eper</li>
+                    @foreach($alkotjas as $alkotja)
+                    <li><spam class="quantity" value="{{$alkotja->mennyiseg}}"></spam> <spam class="unit">{{$alkotja->mertekegyseg}}</spam> {{$alkotja->alapanyag}}</li>
+                   @endforeach
                 </ul>
             </section>
             <section>

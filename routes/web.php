@@ -22,13 +22,16 @@ use App\Http\Controllers\ReceptkonyvController;
 Route::get('/index', [ReceptController::class, 'index']);
 Route::get('/', [ReceptController::class, 'index']);
 
+
 Route::get('/login', function () {
     return view('login');
 });
 
-Route::get('/recipe', function () {
-    return view('recipe');
-});
+Route::get('/recipe/{url_slug}', [ReceptController::class, 'show']);
+
+// Route::get('/recipe', function () {
+//     return view('recipe');
+// });
 
 Route::get('/upload', function () {
     return view('upload');
@@ -63,5 +66,6 @@ Route::get('/logout', [AuthenticatedSessionController::class, 'destroy']);
 
 Route::get('/api/matunits', [Alapanyag_mertekegysegController::class, 'index']);
 Route::get('/api/materials', [AlapanyagController::class, 'show']);
+Route::get('/api/recipe/{url_slug}', [ReceptController::class, 'seged']);
 
 require __DIR__.'/auth.php';

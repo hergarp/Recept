@@ -18,7 +18,7 @@
                     <option value="name">Név szerint</option>
                     <option value="raw-material">Alapanyag szerint</option>
                 </select>
-                <button>Keresés</button>
+                <button type="submit" class="m-button -adding -sending">Keresés</button>
             </div>
             <div id="recipes">
                 @foreach($recipe as $recipe)
