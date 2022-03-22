@@ -22,35 +22,26 @@ use App\Http\Controllers\ReceptkonyvController;
 Route::get('/index', [ReceptController::class, 'index']);
 Route::get('/', [ReceptController::class, 'index']);
 
-
 Route::get('/login', function () {
     return view('login');
 });
 
 Route::get('/recipe/{url_slug}', [ReceptController::class, 'show']);
 
-// Route::get('/recipe', function () {
-//     return view('recipe');
-// });
-
 Route::get('/upload', function () {
     return view('upload');
 });
 
-Route::get('/results', function () {
-    return view('results');
-});
+Route::get('/results', [ReceptController::class, 'search']);
 
 Route::get('/profile', [ReceptkonyvController::class, 'show']);
-
-Route::get('/admin/upload', [ReceptController::class, 'create']);
-Route::post('/admin/upload', [ReceptController::class, 'store']);
-
 
 Route::get('/admin/recipe-list', function () {
     return view('admin/recipe-list');
 });
 
+Route::get('/admin/upload', [ReceptController::class, 'create']);
+Route::post('/admin/upload', [ReceptController::class, 'store']);
 Route::get('/admin/materials', [AlapanyagController::class, 'index']);
 Route::post('/admin/add-materials', [AlapanyagController::class, 'store']);
 Route::post('/admin/add-matunits', [Alapanyag_mertekegysegController::class, 'store']);
@@ -66,6 +57,9 @@ Route::get('/logout', [AuthenticatedSessionController::class, 'destroy']);
 
 Route::get('/api/matunits', [Alapanyag_mertekegysegController::class, 'index']);
 Route::get('/api/materials', [AlapanyagController::class, 'show']);
+Route::get('/api/search', [ReceptController::class, 'apiSearch']);
+
+//segéd:
 Route::get('/api/recipe/{url_slug}', [ReceptController::class, 'seged']);
 
 require __DIR__.'/auth.php';

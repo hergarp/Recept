@@ -4,41 +4,24 @@
     @include('template/head')
     <link rel="stylesheet" href="css/results-desktop.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="js/upload.js"></script>
+    <script src="js/results.js"></script>
     <title>Találatok | Recapt</title>
 </head>
 <body>
     <main>
         <header>
             @include('template/header')
-            <h2>Találatok a '#'' kulcsszóra</h2>
+            <h2>Találatok a <span class="salmon">{{$keyword}}</span> kulcsszóra</h2>
+            <p id="url"></p>
         </header>
         <div class="container">
         <article>
+            @foreach ($recipes as $recipe)
             <div class="result">
-                <img src="img/cake.jpg" alt="" srcset="">
-                <h3>Title</h3>
+                <img src="../{{$recipe[0]->kep}}" alt="">
+                <h3>{{$recipe[0]->megnevezes}}</h3>
             </div>
-            <div class="result">
-                <img src="img/cocktail.webp" alt="" srcset="">
-                <h3>Title</h3>
-            </div>
-            <div class="result">
-                <img src="img/cake.jpg" alt="" srcset="">
-                <h3>Title</h3>
-            </div>
-            <div class="result">
-                <img src="img/cake.jpg" alt="" srcset="">
-                <h3>Title</h3>
-            </div>
-            <div class="result">
-                <img src="img/cake.jpg" alt="" srcset="">
-                <h3>Title</h3>
-            </div>
-            <div class="result">
-                <img src="img/cake.jpg" alt="" srcset="">
-                <h3>Title</h3>
-            </div>
+            @endforeach
         </article>
         <aside>
             <section>
