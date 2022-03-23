@@ -23,7 +23,7 @@
                 </form>
             </div>
             <div id="recipes">
-                @foreach($recipe as $recipe)
+                @foreach($recipes as $recipe)
                 <a href="./recipe/{{$recipe->url_slug}}">
                     <div class="recipe -colorBgTernary">
                         <img src="./{{$recipe->kep}}" alt="">
