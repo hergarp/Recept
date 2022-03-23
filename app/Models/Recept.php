@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Recept extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'r_id';
 }

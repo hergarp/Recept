@@ -262,15 +262,16 @@
       </section>
     </aside>
     <div class="align-center w-100" id="d-send">
-      <form action="/api/edit/{{$recipe->r_id}}" method="post">
-        <input class="-rejection -sending" type="submit" value="Elvetés"></input>
-        <input type="hidden" name="_method" value="DELETE">
-        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-      </form>
+      
       <button class="-draft -sending">Mentés vázlatként</button>
       <button class="-adding -sending">Publikálás</button>
     </div>
   </form>
+  <form action="/api/edit/{{$recipe->r_id}}" method="post">
+        <input class="-rejection -sending" type="submit" value="Elvetés"></input>
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+      </form>
     @else
     <div class="align-center">
         <p>Ezen oldal betöltéséhez adminnak kell lenni.</p>

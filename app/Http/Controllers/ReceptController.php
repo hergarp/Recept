@@ -301,11 +301,12 @@ class ReceptController extends Controller
      * @param  \App\Models\Recept  $recept
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        Recept::where('r_id', $id)->first()->delete();
+        
+        Recept::where('r_id', $id)->delete();
         Alkotja::where('recept', $id)->delete();
-        Uzenet::where('recept', $id)->first()->delete();
+        Uzenet::where('recept', $id)->delete();
         Lepes::where('recept', $id)->delete();
         
         $recipes = Recept::all()->where('statusz', '!=', 'publikus');
