@@ -113,7 +113,6 @@ class ReceptController extends Controller
         }
 
         return redirect('index');
-        // return view('index');
     }
 
     public function draft()
@@ -132,14 +131,14 @@ class ReceptController extends Controller
         $recipe = Recept::where('url_slug',$url_slug)->first();
         $id=$recipe->r_id;
         $alkotjas = DB::table('alkotjas')->where('recept', '=', $id)
-                                        ->join('alapanyag_mertekegysegs', 
-                                            'alkotjas.alapanyag_mertekegyseg', 
-                                            '=', 
-                                            'alapanyag_mertekegysegs.am_id')
-                                        ->select('alapanyag_mertekegysegs.alapanyag',
+                                         ->join('alapanyag_mertekegysegs', 
+                                                'alkotjas.alapanyag_mertekegyseg', 
+                                                '=', 
+                                                'alapanyag_mertekegysegs.am_id')
+                                         ->select('alapanyag_mertekegysegs.alapanyag',
                                                 'alapanyag_mertekegysegs.mertekegyseg',
                                                 'alkotjas.mennyiseg')
-                                        ->get();
+                                         ->get();
         return view('recipe', ['recipe'=> $recipe, 'alkotjas'=>$alkotjas]);
     }
 
@@ -302,8 +301,14 @@ class ReceptController extends Controller
      * @param  \App\Models\Recept  $recept
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Recept $recept)
+    public function destroy($id)
     {
-        //
+        Recept::where('r_id', $id)->first()->delete();
+        Alkotja::where('recept', $id)->delete();
+        Uzenet::where('recept', $id)->first()->delete();
+        Lepes::where('recept', $id)->delete();
+        
+        $recipes = Recept::all()->where('statusz', '!=', 'publikus');
+        return view('admin.draft-recipe-list', ['recipes'=> $recipes]);
     }
 }

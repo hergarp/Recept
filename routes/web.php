@@ -48,6 +48,7 @@ Route::post('/admin/add-matunits', [Alapanyag_mertekegysegController::class, 'st
 Route::post('/admin/add-allergen', [AllergenController::class, 'store']);
 Route::get('/admin/draft-recipe-list', [ReceptController::class, 'draft']);
 Route::get('/admin/edit/{id}', [ReceptController::class, 'edit']);
+Route::put('/admin/edit/{id}', [ReceptController::class, 'update']);
 
 
 Route::get('/upload', [ReceptController::class, 'create']);
@@ -58,6 +59,7 @@ Route::get('/logout', [AuthenticatedSessionController::class, 'destroy']);
 Route::get('/api/matunits', [Alapanyag_mertekegysegController::class, 'index']);
 Route::get('/api/materials', [AlapanyagController::class, 'show']);
 Route::get('/api/search', [ReceptController::class, 'apiSearch']);
+Route::delete('/api/edit/{id}', [ReceptController::class, 'destroy']);
 
 //segéd:
 Route::get('/api/recipe/{url_slug}', [ReceptController::class, 'seged']);
