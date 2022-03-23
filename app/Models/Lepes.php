@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Lepes extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'l_id';
 }

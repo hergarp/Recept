@@ -117,6 +117,11 @@ class ReceptController extends Controller
 
     public function draft()
     {
+        //
+    }
+
+    public function draftList()
+    {
         $recipes = Recept::all()->where('statusz', '!=', 'publikus');
         return view('admin.draft-recipe-list', ['recipes'=> $recipes]);
     }
@@ -271,7 +276,12 @@ class ReceptController extends Controller
         $konyhas = Konyha::all();
         $kategorias = Kategoria::all();
         /*and if you want to get that from DB and convert it back to an array use:*/
-        $elnevezesek = json_decode($recipe->egyeb_elnevezesek);
+        if (empty($recipe->egyeb_elnevezesek)) {
+            $elnevezesek = [];
+        }
+        else {
+            $elnevezesek = json_decode($recipe->egyeb_elnevezesek);
+        }
 
         return view('admin.edit', ['recipe'=> $recipe, 
                                    'alkotjas' => $alkotjas, 
@@ -290,9 +300,62 @@ class ReceptController extends Controller
      * @param  \App\Models\Recept  $recept
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Recept $recept)
+    public function update(Request $request, $id)
     {
-        //
+        $recept = Recept::find($id);
+        $recept->megnevezes = $request->title;
+        $recept->url_slug = $request->url_slug;
+        $recept->kategoria = $request->category;
+        $recept->konyha = $request->kitchen;
+        $recept->adag = $request->adag;
+        $recept->elokeszitesi_ido = $request->preparation;
+        $recept->fozesi_ido = $request->cooking;
+        $recept->sutesi_ido = $request->baking;
+        $recept->fogas = $request->snacky;
+        $recept->konyhatechnologia = $request->technology;
+        $recept->babakonyha = $request->baby;
+        $recept->egyeb_elnevezesek = $request->egyeb_elnevezesek;
+        $recept->reggeli = $request->has('breakfast');
+        $recept->tizorai = $request->has('elevenses');
+        $recept->ebed = $request->has('lunch');
+        $recept->uzsonna = $request->has('snack');
+        $recept->vacsora = $request->has('dinner');
+        $recept->tavasz = $request->has('spring');
+        $recept->nyar = $request->has('summer');
+        $recept->osz = $request->has('autumn');
+        $recept->tel = $request->has('winter');
+        $recept->statusz = 'publikus';
+        $names = $request->name;
+        $recept->egyeb_elnevezesek = json_encode($names);
+
+        $recept->save();
+
+
+        Alkotja::where('recept', $id)->delete();
+        Lepes::where('recept', $id)->delete();
+
+        $alme = array_map(null, $request->material, $request->quantity, $request->unit);
+        foreach ($alme as $material) {
+            $am = Alapanyag_mertekegyseg::where('alapanyag', '=', $material[0])
+            ->where('mertekegyseg', '=', $material[2])->first();
+
+            $a = new Alkotja();
+            $a->recept = $id;
+            $a->alapanyag_mertekegyseg = $am->am_id;
+            $a->mennyiseg = $material[1];
+            $a->save();
+        }
+
+        $lepesek = $request->step;
+
+        foreach ($lepesek as $lepes) {
+            $l = new Lepes();
+            $l->recept = $id;
+            $l->lepes = $lepes;
+            $l->save();
+        }
+
+        return redirect('index');
     }
 
     /**
@@ -301,15 +364,10 @@ class ReceptController extends Controller
      * @param  \App\Models\Recept  $recept
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, $id)
+    public function destroy($id)
     {
-        
         Recept::where('r_id', $id)->delete();
-        Alkotja::where('recept', $id)->delete();
-        Uzenet::where('recept', $id)->delete();
-        Lepes::where('recept', $id)->delete();
         
-        $recipes = Recept::all()->where('statusz', '!=', 'publikus');
-        return view('admin.draft-recipe-list', ['recipes'=> $recipes]);
+        return redirect('admin/draft-recipe-list');
     }
 }

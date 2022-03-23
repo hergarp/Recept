@@ -22,8 +22,13 @@ aside {
     display: grid;
     grid-auto-columns: 1fr;
     grid-auto-flow: column;
-    grid-template: 1fr 1fr 1fr;
+    grid-template: 1fr 1fr;
     gap: 30px;
+}
+
+#form-delete {
+    grid-column-start: 1;
+    grid-column-end: 4;
 }
 
 section {
@@ -40,8 +45,11 @@ label {
     padding-left: 3px;
 }
 
-img {
-    max-width: 100%;
+#image {
+    width: 100%;
+    height: 35vw;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 #title {

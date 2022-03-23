@@ -15,13 +15,11 @@
     </header>
     <div class="container">
     @if (Auth::check() and Auth::user()->is_admin)
-    <form action="">
-    <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+    <form id="form-public" action="/admin/edit/{{$recipe->r_id}}" method="post">
     <article>
       <input class="w-100 -hidden" type="text" name="title" id="title" placeholder="Név" value="{{ $recipe->megnevezes }}" />
-      <input class="d-none" id="slug" type="text" name="url_slug">
-      <div id="image">
-        <img src="../../{{ $recipe->kep }}" alt="">
+      <input class="d-none" id="slug" type="text" name="url_slug" value="{{ $recipe->url_slug }}">
+      <div id="image" style="background-image: url('../../{{ $recipe->kep }}');">
       </div>
       <section>
         <h2>Hozzávalók</h2>
@@ -56,8 +54,8 @@
               <option value="{{$alkotja->mertekegyseg}}">{{$alkotja->mertekegyseg}}</option>
             </select>
             <div class="right">
-              <button class="-delete little-button">–</button>
-            </div>
+                <button class="-delete little-button">–</button>
+              </div>
             <div id="quantity-hiba" class="w-100 bgWhite"></div>
           </div>
           @endforeach
@@ -78,13 +76,13 @@
             </div>
           </div>
           @foreach ($steps as $step)
-          <div class="steps w-100">
-            <textarea class="step-txt" name="step[]" id="stepedit-{{$step->l_id}}" cols="30"
-            rows="1">{{$step->lepes}}</textarea>
-            <div class="right">
-              <button class="-delete little-button">–</button>
+            <div class="steps w-100">
+              <textarea class="step-txt" name="step[]" id="stepedit-{{$step->l_id}}" cols="30"
+              rows="1">{{$step->lepes}}</textarea>
+              <div class="right">
+                <button class="-delete little-button">–</button>
+              </div>
             </div>
-          </div>
           @endforeach
         </div>
         <div>
@@ -95,8 +93,7 @@
       </section>
       <section>
         <h2>Üzenet</h2>
-        <textarea class="w-100" name="message" id="message" cols="30" rows="5"
-          placeholder="<?php if (isset($message->uzenet) && !is_null($message->uzenet)) {echo $message->uzenet;} else {echo 'Nincs üzenet';}?>"></textarea>
+        <p><?php if (isset($message->uzenet) && !is_null($message->uzenet)) {echo $message->uzenet;} else {echo 'Nincs üzenet';}?></p>
       </section>
     </article>
 
@@ -261,18 +258,20 @@
           </div>
       </section>
     </aside>
-    <div class="align-center w-100" id="d-send">
-      
+    <div class="align-center w-100" id="d-send">   
       <button class="-draft -sending">Mentés vázlatként</button>
-      <button class="-adding -sending">Publikálás</button>
+      
+        <input class="-adding -sending w-100" type="submit" value="Publikálás"></input>
+        <input type="hidden" name="_method" value="PUT">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
     </div>
   </form>
   <form action="/api/edit/{{$recipe->r_id}}" method="post">
-        <input class="-rejection -sending" type="submit" value="Elvetés"></input>
-        <input type="hidden" name="_method" value="DELETE">
-        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-      </form>
-    @else
+    <input id="form-delete" onclick="return confirm('Biztosan törli?')" class="-rejection -sending w-100" type="submit" value="Elvetés"></input>
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+  </form>
+  @else
     <div class="align-center">
         <p>Ezen oldal betöltéséhez adminnak kell lenni.</p>
         <a href="/login">Bejelentkezés</a>

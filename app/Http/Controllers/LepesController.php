@@ -78,8 +78,10 @@ class LepesController extends Controller
      * @param  \App\Models\Lepes  $lepes
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Lepes $lepes)
+    public function destroy($id,$r_id)
     {
-        //
+        Lepes::where('l_id', $id)->delete();
+        
+        return redirect('admin/edit/'.$r_id);
     }
 }

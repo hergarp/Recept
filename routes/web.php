@@ -7,6 +7,8 @@ use App\Http\Controllers\Alapanyag_mertekegysegController;
 use App\Http\Controllers\AllergenController;
 use App\Http\Controllers\ReceptController;
 use App\Http\Controllers\ReceptkonyvController;
+use App\Http\Controllers\AlkotjaController;
+use App\Http\Controllers\LepesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,7 +48,7 @@ Route::get('/admin/materials', [AlapanyagController::class, 'index']);
 Route::post('/admin/add-materials', [AlapanyagController::class, 'store']);
 Route::post('/admin/add-matunits', [Alapanyag_mertekegysegController::class, 'store']);
 Route::post('/admin/add-allergen', [AllergenController::class, 'store']);
-Route::get('/admin/draft-recipe-list', [ReceptController::class, 'draft']);
+Route::get('/admin/draft-recipe-list', [ReceptController::class, 'draftList']);
 Route::get('/admin/edit/{id}', [ReceptController::class, 'edit']);
 Route::put('/admin/edit/{id}', [ReceptController::class, 'update']);
 
@@ -59,6 +61,7 @@ Route::get('/logout', [AuthenticatedSessionController::class, 'destroy']);
 Route::get('/api/matunits', [Alapanyag_mertekegysegController::class, 'index']);
 Route::get('/api/materials', [AlapanyagController::class, 'show']);
 Route::get('/api/search', [ReceptController::class, 'apiSearch']);
+Route::delete('/api/draft/{id}', [ReceptController::class, 'draft']);
 Route::delete('/api/edit/{id}', [ReceptController::class, 'destroy']);
 
 //segéd:

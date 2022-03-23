@@ -62,7 +62,6 @@ $(function () {
         $("[id=materials]:eq(1)").attr("id", materiallist);
         $("[id=quantity]:eq(1)").attr("id", quantityid).attr("name",'quantity[]');
         $("[id=unit]:eq(1)").attr("id", unitid).attr("required", true).attr("name",'unit[]');
-        delField();
         mertekegysegAdas(materialid, unitid, quantityid);
         addingMaterialCounter += 1;
     }
@@ -77,7 +76,6 @@ $(function () {
         let ujElem = sablonElem.clone().appendTo(szuloElem).removeClass('d-none step-template');
         var stepId = "step-" + stepNum;
         $("[id=step]:eq(1)").attr("id", stepId).attr("required", true).attr("name",'step[]');
-        delField();
         stepNum += 1;
     }
     

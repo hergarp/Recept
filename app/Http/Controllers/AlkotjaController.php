@@ -78,8 +78,10 @@ class AlkotjaController extends Controller
      * @param  \App\Models\Alkotja  $alkotja
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Alkotja $alkotja)
+    public function destroy($id,$r_id)
     {
-        //
+        Alkotja::where('alk_id', $id)->delete();
+        
+        return redirect('admin/edit/'.$r_id);
     }
 }

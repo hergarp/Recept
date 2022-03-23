@@ -246,4 +246,5 @@ option {
     padding: 15px;
     border: none;
     border-radius: 10px;
+    max-height: 45px;
 }
