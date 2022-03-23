@@ -14,13 +14,12 @@
         <article>
             <div id="search" class="-colorBgTernary mb-3 w-100">
                 <form action="/results">
-                    @csrf
                     <input class="-hidden m-form__input" name="keyword" type="text" placeholder="keress # kipróbált recept között">
                     <select name="search_selector" id="search-selector" class="m-form__select">
                         <option value="name">Név szerint</option>
                         <option value="raw-material">Alapanyag szerint</option>
                     </select>
-                    <button type="submit" class="m-button -adding -sending">Keresés</button>
+                    <button type="submit" class="m-button -adding">Keresés</button>
                 </form>
             </div>
             <div id="recipes">

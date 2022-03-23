@@ -14,8 +14,8 @@ class CreateLepesTable extends Migration
     public function up()
     {
         Schema::create('lepes', function (Blueprint $table) {
-            $table->increments('l_id')->length(11);
-            $table->unsignedInteger('recept')->length(11);  
+            $table->increments('l_id',11);
+            $table->unsignedInteger('recept');  
             $table->Text('lepes')->length(250);                      
             $table->timestamps();
 

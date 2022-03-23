@@ -14,9 +14,9 @@ class CreateAlkotjasTable extends Migration
     public function up()
     {
         Schema::create('alkotjas', function (Blueprint $table) {
-            $table->increments('alk_id')->length(11)->unique();
-            $table->unsignedInteger('recept')->length(11);
-            $table->unsignedInteger('alapanyag_mertekegyseg')->length(11);
+            $table->increments('alk_id',11)->unique();
+            $table->unsignedInteger('recept');
+            $table->unsignedInteger('alapanyag_mertekegyseg');
             $table->tinyInteger('mennyiseg')->nullable();
             $table->timestamps();
             $table->unique(array('recept', 'alapanyag_mertekegyseg', 'mennyiseg'));

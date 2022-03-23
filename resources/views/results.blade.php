@@ -3,7 +3,6 @@
 <head>
     @include('template/head')
     <link rel="stylesheet" href="css/results-desktop.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/results.js"></script>
     <title>Találatok | Recapt</title>
 </head>
@@ -16,12 +15,20 @@
         </header>
         <div class="container">
         <article>
-            @foreach ($recipes as $recipe)
-            <div class="result">
-                <img src="../{{$recipe[0]->kep}}" alt="">
-                <h3>{{$recipe[0]->megnevezes}}</h3>
+            <div class="d-none template result">
+                <img src="#" alt="">
+                <h3>Title</h3>
             </div>
-            @endforeach
+            @if ($recipes != 0)
+                @foreach ($recipes as $recipe)
+                    <div class="result">
+                        <img src="../{{$recipe[0]->kep}}" alt="">
+                        <h3>{{$recipe[0]->megnevezes}}</h3>
+                    </div>
+                @endforeach
+            @else
+                <p>Nincsenek találatok.</p>
+            @endif
         </article>
         <aside>
             <section>

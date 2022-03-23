@@ -18,7 +18,7 @@ class CreateReceptkonyvsTable extends Migration
             $table->unsignedBigInteger('user')->index()->nullable();
             $table->unsignedInteger('recept')->index();
             $table->boolean('jelzes')->default(0);
-            $table->tinyInteger('minosites')->length(1);
+            $table->tinyInteger('minosites')->default(0);
             $table->timestamps();
 
 

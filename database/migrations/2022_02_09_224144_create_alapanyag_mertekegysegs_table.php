@@ -15,7 +15,7 @@ class CreateAlapanyagMertekegysegsTable extends Migration
     public function up()
     {
         Schema::create('alapanyag_mertekegysegs', function (Blueprint $table) {
-            $table->increments('am_id')->length(11);
+            $table->increments('am_id',11);
             $table->string('alapanyag')->length(30);                      
             $table->string('mertekegyseg')->length(20);  
             $table->timestamps();

@@ -14,8 +14,8 @@ class CreateUzenetsTable extends Migration
     public function up()
     {
         Schema::create('uzenets', function (Blueprint $table) {
-            $table->increments('m_id')->length(11);
-            $table->unsignedInteger('recept')->length(11);  
+            $table->increments('m_id',11);
+            $table->unsignedInteger('recept');  
             $table->Text('uzenet')->length(250);                      
             $table->timestamps();
 

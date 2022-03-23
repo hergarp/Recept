@@ -25,7 +25,7 @@ class ReceptController extends Controller
      */
     public function index()
     {
-        $recipe = Recept::all();
+        $recipe = Recept::all()->where('statusz','publikus');
         return view('index', ['recipe'=> $recipe]);
     }
 
@@ -158,15 +158,28 @@ class ReceptController extends Controller
                                         ->where('statusz','publikus')
                                         ->get();
             $recipes=[];
-            foreach ($recs as $recipe) {
-                array_push($recipes, [$recipe]);
+            if ($recs->isEmpty()){}
+            else {
+                foreach ($recs as $recipe) {
+                    $materials = DB::table('alkotjas')->join('alapanyag_mertekegysegs', 
+                                                             'alkotjas.alapanyag_mertekegyseg', 
+                                                             '=', 
+                                                             'alapanyag_mertekegysegs.am_id')
+                                                       ->select('alapanyag_mertekegysegs.alapanyag')
+                                                       ->where('alkotjas.recept',$recipe->megnevezes)
+                                                       ->get();
+                    $materials = json_decode($materials);
+                    $recipe = (array)$recipe;
+                    $recipe['hozzávalók'] = $materials;
+                    array_push($recipes, $recipe);
+                }
             }
         }
         else {
             $rec_ids = DB::table('alkotjas')->join('alapanyag_mertekegysegs', 
-                                                'alkotjas.alapanyag_mertekegyseg', 
-                                                '=', 
-                                                'alapanyag_mertekegysegs.am_id')
+                                                   'alkotjas.alapanyag_mertekegyseg', 
+                                                   '=', 
+                                                   'alapanyag_mertekegysegs.am_id')
                                             ->select('alkotjas.recept')
                                             ->where('alapanyag_mertekegysegs.alapanyag','like','%'.$keyword.'%')->get();
             $recipes=[];
@@ -202,36 +215,31 @@ class ReceptController extends Controller
             $recs = DB::table('recepts')->where('megnevezes','like','%'.$keyword.'%')
                                            ->where('statusz','publikus')
                                            ->get();
-            $recipes=[];
-            foreach ($recs as $recipe) {
-                array_push($recipes, [$recipe]);
+            $recipes = [];
+            if (count($recs) == 0) {$recipes=0;}
+            else {
+                foreach ($recs as $recipe) {
+                    array_push($recipes,[$recipe]);
+                }
             }
         }
         else {
             $rec_ids = DB::table('alkotjas')->join('alapanyag_mertekegysegs', 
-                                                'alkotjas.alapanyag_mertekegyseg', 
-                                                '=', 
-                                                'alapanyag_mertekegysegs.am_id')
+                                                   'alkotjas.alapanyag_mertekegyseg', 
+                                                   '=', 
+                                                   'alapanyag_mertekegysegs.am_id')
                                             ->select('alkotjas.recept')
                                             ->where('alapanyag_mertekegysegs.alapanyag','like','%'.$keyword.'%')->get();
             $recipes=[];
-            foreach ($rec_ids as $id) {
-                $recipe = DB::table('recepts')->where('r_id', '=', $id->recept)
-                                              ->where('statusz','publikus')
-                                              ->get();
-                if ($recipe->isEmpty()) {}
-                else {
-                    $materials = DB::table('alkotjas')->join('alapanyag_mertekegysegs', 
-                                                            'alkotjas.alapanyag_mertekegyseg', 
-                                                            '=', 
-                                                            'alapanyag_mertekegysegs.am_id')
-                                                    ->select('alapanyag_mertekegysegs.alapanyag')
-                                                    ->where('alkotjas.recept',$id->recept)
-                                                    ->get();
-                    $materials = json_decode($materials);
-                    $recipe = json_decode($recipe);
-                    $recipe['hozzávalók'] = $materials;
-                    array_push($recipes, $recipe);
+            if (count($rec_ids) == 0) {$recipes=0;}
+            else {
+                foreach ($rec_ids as $id) {
+                    $recipe = DB::table('recepts')->where('r_id', '=', $id->recept)
+                                                  ->where('statusz','publikus')
+                                                  ->get();
+                    if (count($recipe) != 0) {
+                        array_push($recipes, $recipe);
+                    }
                 }
             }
         }

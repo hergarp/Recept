@@ -14,23 +14,23 @@ class CreateReceptsTable extends Migration
     public function up()
     {
         Schema::create('recepts', function (Blueprint $table) {
-            $table->increments('r_id')->length(11);
+            $table->increments('r_id');
             $table->string('url_slug')->length(50)->unique();
             $table->unsignedBigInteger('user')->nullable();
             $table->string('megnevezes')->length(50)->unique();
             $table->string('kep')->unique();
             $table->string('kategoria')->length(30)->nullable();
             $table->string('konyha')->length(30)->nullable();
-            $table->tinyInteger('adag')->length(2);
-            $table->mediumInteger('elokeszitesi_ido')->length(3)->nullable();
-            $table->mediumInteger('fozesi_ido')->length(3)->nullable();
-            $table->mediumInteger('sutesi_ido')->length(3)->nullable();
+            $table->tinyInteger('adag');
+            $table->mediumInteger('elokeszitesi_ido')->nullable();
+            $table->mediumInteger('fozesi_ido')->nullable();
+            $table->mediumInteger('sutesi_ido')->nullable();
             $table->string('fogas')->length(20)->nullable();
             $table->string('konyhatechnologia')->length(20)->nullable();
             $table->string('babakonyha')->length(30)->nullable();
             $table->Text('egyeb_elnevezesek')->length(200)->nullable();
-            $table->mediumInteger('receptkonyvben')->length(7)->default('0');
-            $table->mediumInteger('ossznezettseg')->length(7)->default('0');  
+            $table->mediumInteger('receptkonyvben')->default('0');
+            $table->mediumInteger('ossznezettseg')->default('0');  
             $table->boolean('reggeli')->default(0);
             $table->boolean('tizorai')->default(0);
             $table->boolean('ebed')->default(0);
