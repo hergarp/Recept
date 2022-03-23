@@ -26,7 +26,7 @@ class ReceptController extends Controller
     public function index()
     {
         $recipe = Recept::all()->where('statusz','publikus');
-        return view('index', ['recipe'=> $recipe]);
+        return view('index', ['recipes'=> $recipe]);
     }
 
     /**
@@ -112,7 +112,8 @@ class ReceptController extends Controller
             $message->uzenet = $request->message;
         }
 
-        return view('index');
+        return redirect('index');
+        // return view('index');
     }
 
     public function draft()

@@ -63,15 +63,15 @@
             <section id="times" class="align-center">
                 <div>
                     <p>Előkészítés</p>
-                    <p><span class="times" id="preparation-time">10</span> perc</p>
+                    <p><span class="times" id="preparation-time">{{$recipe->elokeszitesi_ido}}</span> perc</p>
                 </div>
                 <div>
                     <p>Főzés</p>
-                    <p><span class="times" id="cooking-time">15</span> perc</p>
+                    <p><span class="times" id="cooking-time">{{$recipe->fozesi_ido}}</span> perc</p>
                 </div>
                 <div>
                     <p>Sütés</p>
-                    <p><span class="times" id="baking-time">15</span> perc</p>
+                    <p><span class="times" id="baking-time">{{$recipe->sutesi_ido}}</span> perc</p>
                 </div>
                 <div>
                     <p>Összesen</p>
@@ -92,7 +92,8 @@
                 <h3 class="order-md-1 w-80">Hozzávalók</h3>
                 <ul>
                     @foreach($alkotjas as $alkotja)
-                    <li><spam class="quantity" value="{{$alkotja->mennyiseg}}"></spam> <spam class="unit">{{$alkotja->mertekegyseg}}</spam> {{$alkotja->alapanyag}}</li>
+                    <li><spam class="quantity" value="{{$alkotja->mennyiseg}}"></spam> 
+                    <spam class="unit">{{$alkotja->mertekegyseg}}</spam> {{$alkotja->alapanyag}}</li>
                    @endforeach
                 </ul>
             </section>
