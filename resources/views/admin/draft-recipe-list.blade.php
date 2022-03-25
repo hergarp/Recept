@@ -2,7 +2,7 @@
 <html lang="hu">
 <head>
     @include('../template/head')
-    <link rel="stylesheet" href="../css/admin-drafts-desktop.css">
+    <link rel="stylesheet" href="../css/admin-recipe-list-desktop.css">
     <title>Draft receptek | Recapt</title>
 </head>
 <body>
@@ -25,7 +25,7 @@
                     <tbody>
                         @foreach ($recipes as $recipe)
                             <tr>
-                                <td><img src="../../{{ $recipe->kep}}" alt=""></td>
+                                <td><div class="image" style="background-image: url('../../{{ $recipe->kep}}');"></div></td>
                                 <td><a href="/admin/edit/{{$recipe->r_id}}">{{ $recipe->megnevezes}}</a></td>
                                 <td>{{ $recipe->created_at}}</td>
                                 <td>{{ $recipe->statusz}}</td>

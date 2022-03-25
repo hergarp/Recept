@@ -26,7 +26,7 @@
                 @foreach($recipes as $recipe)
                 <a href="./recipe/{{$recipe->url_slug}}">
                     <div class="recipe -colorBgTernary">
-                        <img src="./{{$recipe->kep}}" alt="">
+                    <div class="image" style="background-image: url(./{{$recipe->kep}});"></div>
                         <h3>{{$recipe->megnevezes}}</h3>
                     </div>
                 </a>

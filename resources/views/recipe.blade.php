@@ -17,47 +17,45 @@
             <h2 class="align-center" >{{$recipe->megnevezes}}</h2>
             <section id="free-from-div">
                 <figure class="align-center">
-                    <img class="w-20" src="img/sugar-cube.png" alt="">
+                    <img class="w-20" src="../img/sugar-cube-free.png" alt="">
                     <figcaption>cukormentes</figcaption>
                 </figure>
                 <figure class="align-center">
-                    <img class="w-20" src="img/sugar-cube.png" alt="">
+                    <img class="w-20" src="../img/laktose-free.png" alt="">
                     <figcaption>laktózmentes</figcaption>
                 </figure>
                 <figure class="align-center">
-                    <img class="w-20" src="img/sugar-cube.png" alt="">
+                    <img class="w-20" src="../img/gluten-free.png" alt="">
                     <figcaption>gluténmentes</figcaption>
                 </figure>
                 <figure class="align-center">
-                    <img class="w-20" src="img/sugar-cube.png" alt="">
+                    <img class="w-20" src="../img/milk-free.png" alt="">
                     <figcaption>tejmentes</figcaption>
                 </figure>
                 <figure class="align-center">
-                    <img class="w-20" src="img/sugar-cube.png" alt="">
+                    <img class="w-20" src="../img/egg-free.png" alt="">
                     <figcaption>tojásmentes</figcaption>
                 </figure>
             </section>
             <section class="align-center">
-                <img id="main-pic" src="../{{$recipe->kep}}" alt="">
+                <div id="main-pic" style="background-image: url('../{{$recipe->kep}}');"></div>
             </section>
             <section id="icons">
-                <div class="d-flex">
+                <div>
                     <div>
                         <i class="fas fa-print"></i>
                     </div>
-                    <div class="">
+                    <div>
                         <i class="far fa-bookmark"></i>
                     </div>
                 </div>
-                <div class="d-flex">
-                    <ul>
-                        <li>
-                            <a id="facebookArticle-btn" href=""><i class="fab fa-facebook-f"></i></a>
-                        </li>
-                        <li>
-                            <a href=""><i class="fab fa-facebook-messenger"></i></a>
-                        </li>
-                    </ul>
+                <div class="right">
+                    <div>
+                        <a id="facebookArticle-btn" href=""><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                    <div>
+                        <a href=""><i class="fab fa-facebook-messenger"></i></a>
+                    </div>
                 </div>
             </section>
             <section id="times" class="align-center">
@@ -79,23 +77,25 @@
                 </div>
             </section>
             <section>
-                <div class="d-flex">
-                    <div class="order-md-2">
-                        <form method="GET">
-                            <a href=""><i class="fas fa-minus"></i></a>
-                            <input id="adag" class="m-form__input w-10 -fontSize-16" type="text" name="adag" value="4">
-                            <label for="adag">adag</label>
-                            <a href=""><i class="fas fa-plus"></i></a>
-                        </form>
+                <h3 class="order-md-1 w-80">Hozzávalók</h3>
+                <div id="hozzavalok-adag">
+                    <ul>
+                        @foreach($alkotjas as $alkotja)
+                        <li><spam class="quantity" value="{{$alkotja->mennyiseg}}"></spam> 
+                        <spam class="unit">{{$alkotja->mertekegyseg}}</spam> {{$alkotja->alapanyag}}</li>
+                       @endforeach
+                    </ul>
+                    <div class="right">
+                        <div class="order-md-2">
+                            <form method="GET">
+                                <a href=""><i class="fas fa-minus"></i></a>
+                                <input id="adag" class="m-form__input w-10 -fontSize-16" type="text" name="adag" value="4">
+                                <label for="adag">adag</label>
+                                <a href=""><i class="fas fa-plus"></i></a>
+                            </form>
+                        </div>
                     </div>
                 </div>
-                <h3 class="order-md-1 w-80">Hozzávalók</h3>
-                <ul>
-                    @foreach($alkotjas as $alkotja)
-                    <li><spam class="quantity" value="{{$alkotja->mennyiseg}}"></spam> 
-                    <spam class="unit">{{$alkotja->mertekegyseg}}</spam> {{$alkotja->alapanyag}}</li>
-                   @endforeach
-                </ul>
             </section>
             <section>
                 <h3>Elkészítés</h3>

@@ -14,16 +14,29 @@ ol, ul {
     padding: 0 30px;
 }
 
-#icons {
-    height: 2rem;
+#hozzavalok-adag {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template: auto 120px;
 }
 
-#icons > div {
+#icons {
+    height: 17.6px;
+    display: grid;
+    grid-auto-flow: column;
+    vertical-align: text-top;
+    margin-bottom: 2rem;
+}
+
+#icons > div > div,  #icons > div > ul > li {
     display: inline;
 }
 
 #main-pic {
-    max-width: 100%;
+    width: 100%;
+    height: 528px;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 #recipe-container {
@@ -36,6 +49,7 @@ ol, ul {
     grid-auto-columns: 1fr;
     grid-auto-flow: column;
     gap: 30px;
+    margin-bottom: 2rem;
 }
 
 #times > div > p {

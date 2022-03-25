@@ -12,6 +12,13 @@ a {
     gap: 30px;
 }
 
+.image {
+    max-width: 100%;
+    height: 140.25px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .recipe {
     box-sizing: border-box;
 }

@@ -16,6 +16,7 @@
     <div class="container">
     @if (Auth::check() and Auth::user()->is_admin)
     <form id="form-public" action="/admin/edit/{{$recipe->r_id}}" method="post">
+    <input type="hidden" name="_token" value="{{ csrf_token() }}" />
     <article>
       <input class="w-100 -hidden" type="text" name="title" id="title" placeholder="Név" value="{{ $recipe->megnevezes }}" />
       <input class="d-none" id="slug" type="text" name="url_slug" value="{{ $recipe->url_slug }}">
@@ -258,19 +259,17 @@
           </div>
       </section>
     </aside>
-    <div class="align-center w-100" id="d-send">   
-      <button class="-draft -sending">Mentés vázlatként</button>
-      
-        <input class="-adding -sending w-100" type="submit" value="Publikálás"></input>
-        <input type="hidden" name="_method" value="PUT">
-        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+    <div class="align-center w-100" id="d-send">  
+      <button class="-draft -sending w-100" type="submit" name="action" value="draft">Mentés vázlatként</button>     
+      <button class="-adding -sending w-100" type="submit" name="action" value="public">Publikálás</button>     
+      <button onclick="return confirm('Biztosan törli?')" class="-rejection -sending w-100" type="submit" name="action" value="delete">Elvetés</button>     
     </div>
   </form>
-  <form action="/api/edit/{{$recipe->r_id}}" method="post">
+  <!-- <form action="/api/edit/{{$recipe->r_id}}" method="post">
     <input id="form-delete" onclick="return confirm('Biztosan törli?')" class="-rejection -sending w-100" type="submit" value="Elvetés"></input>
     <input type="hidden" name="_method" value="DELETE">
     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-  </form>
+  </form> -->
   @else
     <div class="align-center">
         <p>Ezen oldal betöltéséhez adminnak kell lenni.</p>

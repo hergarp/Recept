@@ -30,6 +30,7 @@ class CreateAllergensTable extends Migration
         Allergen::create(['alapanyag' => 'cukor', 'allergen' => 'cukor']);
         Allergen::create(['alapanyag' => 'vaj', 'allergen' => 'tej']);
         Allergen::create(['alapanyag' => 'vaj', 'allergen' => 'laktóz']);
+        Allergen::create(['alapanyag' => 'liszt', 'allergen' => 'glutén']);
     }
 
     /**

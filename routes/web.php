@@ -38,8 +38,11 @@ Route::get('/results', [ReceptController::class, 'search']);
 
 Route::get('/profile', [ReceptkonyvController::class, 'show']);
 
-Route::get('/admin/recipe-list', [ReceptController::class, 'recipeList']);
+Route::get('/upload', [ReceptController::class, 'create']);
 
+Route::get('/logout', [AuthenticatedSessionController::class, 'destroy']);
+
+Route::get('/admin/recipe-list', [ReceptController::class, 'recipeList']);
 Route::get('/admin/upload', [ReceptController::class, 'create']);
 Route::post('/admin/upload', [ReceptController::class, 'store']);
 Route::get('/admin/materials', [AlapanyagController::class, 'index']);
@@ -48,13 +51,7 @@ Route::post('/admin/add-matunits', [Alapanyag_mertekegysegController::class, 'st
 Route::post('/admin/add-allergen', [AllergenController::class, 'store']);
 Route::get('/admin/draft-recipe-list', [ReceptController::class, 'draftList']);
 Route::get('/admin/edit/{id}', [ReceptController::class, 'edit']);
-Route::put('/admin/edit/{id}', [ReceptController::class, 'update']);
-
-
-Route::get('/upload', [ReceptController::class, 'create']);
-
-Route::get('/logout', [AuthenticatedSessionController::class, 'destroy']);
-
+Route::post('/admin/edit/{id}', [ReceptController::class, 'update']);
 
 Route::get('/api/matunits', [Alapanyag_mertekegysegController::class, 'index']);
 Route::get('/api/materials', [AlapanyagController::class, 'show']);

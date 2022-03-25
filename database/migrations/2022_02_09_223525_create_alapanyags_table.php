@@ -29,6 +29,7 @@ class CreateAlapanyagsTable extends Migration
         Alapanyag::create(['megnevezes' => 'tojás']);
         Alapanyag::create(['megnevezes' => 'vaj']);
         Alapanyag::create(['megnevezes' => 'cukor']);
+        Alapanyag::create(['megnevezes' => 'liszt']);
     }
 
     /**
