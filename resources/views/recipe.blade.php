@@ -100,15 +100,16 @@
             <section>
                 <h3>Elkészítés</h3>
                 <ol>
-                    <li class="m-list__item -fontSize-16 -number -selectable">Erőteljesen összerázzuk a sékerben az összes adalékot a jéggel és a pezsgő nélkül, a pezsgőskehelybe szűrjük és feltöltjük pezsgővel.</li>
-                    <li class="m-list__item -fontSize-16 -number -selectable">Az epret a pohár szélére szúrjuk.</li>
+                    @foreach($steps as $step)
+                    <li class="m-list__item -fontSize-16 -number -selectable">{{$step->lepes}}</li>
+                    @endforeach
                 </ol>
                 
             </section>
             <section>
-                <p>Receptkönyvben: <span id="recipebook">15</span></p>
-                <p>Össznézettség: <span id="total-views">15</span></p>
-                <p>Feltöltés dátuma: <span id="date-of-upload">15</span></p>
+                <p>Receptkönyvben: <span id="recipebook">{{$recipe->receptkonyvben}}</span></p>
+                <p>Össznézettség: <span id="total-views">{{$recipe->ossznezettseg}}</span></p>
+                <p>Feltöltés dátuma: <span id="date-of-upload">{{$recipe->created_at}}</span></p>
             </section>
         </div>
         <footer>

@@ -38,9 +38,7 @@ Route::get('/results', [ReceptController::class, 'search']);
 
 Route::get('/profile', [ReceptkonyvController::class, 'show']);
 
-Route::get('/admin/recipe-list', function () {
-    return view('admin/recipe-list');
-});
+Route::get('/admin/recipe-list', [ReceptController::class, 'recipeList']);
 
 Route::get('/admin/upload', [ReceptController::class, 'create']);
 Route::post('/admin/upload', [ReceptController::class, 'store']);

@@ -125,6 +125,11 @@ class ReceptController extends Controller
         $recipes = Recept::all()->where('statusz', '!=', 'publikus');
         return view('admin.draft-recipe-list', ['recipes'=> $recipes]);
     }
+    public function recipeList()
+    {
+        $recipes = Recept::all()->where('statusz', '=', 'publikus');
+        return view('admin.recipe-list', ['recipes'=> $recipes]);
+    }
     /**
      * Display the specified resource.
      *
@@ -144,7 +149,9 @@ class ReceptController extends Controller
                                                 'alapanyag_mertekegysegs.mertekegyseg',
                                                 'alkotjas.mennyiseg')
                                          ->get();
-        return view('recipe', ['recipe'=> $recipe, 'alkotjas'=>$alkotjas]);
+        
+        $steps = Lepes::all()->where('recept', '=', $id);
+        return view('recipe', ['recipe'=> $recipe, 'alkotjas'=>$alkotjas, 'steps'=>$steps]);
     }
 
     public function seged($url_slug)

@@ -19,7 +19,18 @@
                         <th>Kép</th>
                         <th>Cím</th>
                         <th>Publikálás időpontja</th>
+                        <th>Státusz</th>
                     </thead>
+                    <tbody>
+                        @foreach ($recipes as $recipe)
+                            <tr>
+                                <td><img src="../../{{ $recipe->kep}}" alt=""></td>
+                                <td><a href="/admin/edit/{{$recipe->r_id}}">{{ $recipe->megnevezes}}</a></td>
+                                <td>{{ $recipe->updated_at}}</td>
+                                <td>{{ $recipe->statusz}}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
                 </table>
             </article>
             @else
