@@ -17,7 +17,7 @@ class CreateAllergensTable extends Migration
         Schema::create('allergens', function (Blueprint $table) {
             $table->id('a_id', 11);
             $table->string('alapanyag')->length(30);
-            $table->set('allergen', ['tej', 'tojás', 'laktóz', 'cukor', 'glutén'])->length(6);
+            $table->set('allergen', ['milk', 'egg', 'laktose', 'sugar', 'gluten'])->length(6);
             $table->timestamps();
             $table->unique(array('alapanyag', 'allergen'));
             
@@ -27,10 +27,25 @@ class CreateAllergensTable extends Migration
                 ->onDelete('cascade');
         });
 
-        Allergen::create(['alapanyag' => 'cukor', 'allergen' => 'cukor']);
-        Allergen::create(['alapanyag' => 'vaj', 'allergen' => 'tej']);
-        Allergen::create(['alapanyag' => 'vaj', 'allergen' => 'laktóz']);
-        Allergen::create(['alapanyag' => 'liszt', 'allergen' => 'glutén']);
+        Allergen::create(['alapanyag' => 'kristálycukor', 'allergen' => 'sugar']);
+        Allergen::create(['alapanyag' => 'porcukor', 'allergen' => 'sugar']);
+        Allergen::create(['alapanyag' => 'vaj', 'allergen' => 'milk']);
+        Allergen::create(['alapanyag' => 'vaj', 'allergen' => 'laktose']);
+        Allergen::create(['alapanyag' => 'tojás', 'allergen' => 'egg']);
+        Allergen::create(['alapanyag' => 'tojásfehérje', 'allergen' => 'egg']);
+        Allergen::create(['alapanyag' => 'tojássárgája', 'allergen' => 'egg']);
+        Allergen::create(['alapanyag' => 'főtt tojás', 'allergen' => 'egg']);
+        Allergen::create(['alapanyag' => 'liszt', 'allergen' => 'gluten']);
+        Allergen::create(['alapanyag' => 'tejszín', 'allergen' => 'laktose']);
+        Allergen::create(['alapanyag' => 'tejszín', 'allergen' => 'milk']);
+        Allergen::create(['alapanyag' => 'tönkölybúza', 'allergen' => 'gluten']);
+        Allergen::create(['alapanyag' => 'bulgur', 'allergen' => 'gluten']);
+        Allergen::create(['alapanyag' => 'gersli', 'allergen' => 'gluten']);
+        Allergen::create(['alapanyag' => 'rozs', 'allergen' => 'gluten']);
+        Allergen::create(['alapanyag' => 'búzadara', 'allergen' => 'gluten']);
+        Allergen::create(['alapanyag' => 'háztartási keksz', 'allergen' => 'gluten']);
+        Allergen::create(['alapanyag' => 'kekszmorzsa', 'allergen' => 'gluten']);
+        Allergen::create(['alapanyag' => 'oreo keksz', 'allergen' => 'gluten']);
     }
 
     /**

@@ -1,3 +1,7 @@
+function ID(nev) {
+    return document.getElementById(nev);
+}
+
 $(function () {
     materialsApiVegpont = 'http://localhost:8000/api/materials';
     matunitsApiVegpont = 'http://localhost:8000/api/matunits';
@@ -60,14 +64,17 @@ $(function () {
         var materialid = 'material-' + addingMaterialCounter;
         var materiallist = "materials-" + addingMaterialCounter;
         var quantityid = 'quantity-' + addingMaterialCounter;
+        var quantityHibaId = 'quantity-hiba-' + addingMaterialCounter;
         var unitid = 'unit-' + addingMaterialCounter;
         $("[id=material]:eq(1)").attr("id", materialid).attr("list", materiallist).attr("required", true).attr("name",'material[]');
         $("[id=materials]:eq(1)").attr("id", materiallist);
         $("[id=quantity]:eq(1)").attr("id", quantityid).attr("name",'quantity[]');
+        $("[id=quantity-hiba]:eq(1)").attr("id", quantityHibaId);
         $("[id=unit]:eq(1)").attr("id", unitid).attr("required", true).attr("name",'unit[]');
         delField();
         mertekegysegAdas(materialid, unitid, quantityid);
         addingMaterialCounter += 1;
+        ID(quantityid).addEventListener("blur", () => validate(quantityid, quantityHibaId));
     }
 
     $('#adding-material').click(function() {

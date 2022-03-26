@@ -92,6 +92,11 @@ label {
     max-width: 210px;
 }
 
+.quantity-hiba {
+    grid-column-start: 1;
+    grid-column-end: 10;
+}
+
 .raw-material-name {
     grid-column-start: 1;
     grid-column-end: 5;

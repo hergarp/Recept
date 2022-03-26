@@ -32,7 +32,7 @@
                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                     <div>                            
                         <div class="select-div mb-3">
-                            <input class="m-form__input -colorBgTernary" list="materials" name="alapanyag" placeholder="Alapanyag">
+                            <input id="alapanyag" class="m-form__input -colorBgTernary" list="materials" name="alapanyag" placeholder="Alapanyag">
                             <datalist id="materials">
                                 @foreach ($materials as $material)     
                                     <option value="{{ $material->megnevezes }}">{{ $material->megnevezes }}</option>
@@ -69,11 +69,11 @@
                         </datalist>
                         <select class="m-form__select -colorBgTernary" name="allergen" id="allergen">
                             <option disabled selected value>Válassz allergént</option>     
-                            <option value="cukor">cukor</option>
-                            <option value="tej">tej</option>
-                            <option value="laktóz">laktóz</option>
-                            <option value="tojás">tojás</option>
-                            <option value="glutén">glutén</option>
+                            <option value="sugar">cukor</option>
+                            <option value="milk">tej</option>
+                            <option value="laktose">laktóz</option>
+                            <option value="egg">tojás</option>
+                            <option value="gluten">glutén</option>
                         </select>
                     </div>
                     <div class="button-div">

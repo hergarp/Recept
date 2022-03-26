@@ -2,7 +2,7 @@ $(function() {
     apivegpont = 'http://localhost:8000/api/matunits';
     const matunits = [];
     adatbeolvasas(apivegpont, matunits);
-    $("input[name='alapanyag']").on('input', function() {
+    $("input[id='alapanyag']").on('input', function() {
         var valueSelected = this.value;
         var data = matunits.filter(element => element.alapanyag == valueSelected);
         megjelenit(data);

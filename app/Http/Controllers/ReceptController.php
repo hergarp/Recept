@@ -68,7 +68,10 @@ class ReceptController extends Controller
         $recept->fogas = $request->snacky;
         $recept->konyhatechnologia = $request->technology;
         $recept->babakonyha = $request->baby;
-        $recept->egyeb_elnevezesek = $request->egyeb_elnevezesek;
+        if ($request->names != null) {
+            $recept->egyeb_elnevezesek = $request->names;
+            $recept->egyeb_elnevezesek = json_encode($names);
+        }
         $recept->reggeli = $request->has('breakfast');
         $recept->tizorai = $request->has('elevenses');
         $recept->ebed = $request->has('lunch');
@@ -78,12 +81,12 @@ class ReceptController extends Controller
         $recept->nyar = $request->has('summer');
         $recept->osz = $request->has('autumn');
         $recept->tel = $request->has('winter');
-        $names = $request->name;
-        $recept->egyeb_elnevezesek = json_encode($names);
+        
 
         $recept->save();
 
-        $r_id = $recept->id;
+        $r_id = $recept->r_id;
+        $adag = $recept->adag;
 
         $alme = array_map(null, $request->material, $request->quantity, $request->unit);
         foreach ($alme as $material) {
@@ -93,7 +96,7 @@ class ReceptController extends Controller
             $a = new Alkotja();
             $a->recept = $r_id;
             $a->alapanyag_mertekegyseg = $am->am_id;
-            $a->mennyiseg = $material[1];
+            $a->mennyiseg = $material[1]/$adag;
             $a->save();
         }
 
@@ -145,9 +148,16 @@ class ReceptController extends Controller
                                                 'alapanyag_mertekegysegs.mertekegyseg',
                                                 'alkotjas.mennyiseg')
                                          ->get();
-        
+        $allergens = [];
+        foreach ($alkotjas as $alkotja) {
+            $allergen = DB::table('allergens')->where('alapanyag', '=', $alkotja->alapanyag)
+                                              ->pluck('allergen');
+            if ($allergen != null) {
+                array_push($allergens, $allergen);
+            }
+        }
         $steps = Lepes::all()->where('recept', '=', $id);
-        return view('recipe', ['recipe'=> $recipe, 'alkotjas'=>$alkotjas, 'steps'=>$steps]);
+        return view('recipe', ['recipe'=> $recipe, 'alkotjas'=>$alkotjas, 'steps'=>$steps, 'allergens'=>$allergens]);
     }
 
     public function seged($url_slug)
@@ -308,6 +318,7 @@ class ReceptController extends Controller
         switch ($request->input('action')) {
             case 'delete':
                 Recept::where('r_id', $id)->delete();
+                return redirect('admin/draft-recipe-list');
                 break;
             default:
                 $recept = Recept::find($id);
@@ -370,10 +381,10 @@ class ReceptController extends Controller
                     $l->lepes = $lepes;
                     $l->save();
                 }
+                return redirect('index');
             }
             
             
-        return redirect('index');
     }
                     
     /**

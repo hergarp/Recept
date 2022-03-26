@@ -1,17 +1,21 @@
 $(function() {
-    $(document).ready(function() {
+    times();
+    quantity();
+    
+    function times() {
         let times = document.querySelectorAll(".times");
         sum = 0;
         times.forEach(element => {
             sum += Number(element.innerHTML);
         });
         $('#sum-time').html(sum);
-        quantity();
-    })
+    }
+
     $('.-selectable').on("click", function(){
         $('.-selectable').removeClass('-active');
         $(this).addClass('-active');
     })
+
     function quantity(){
         let portion = $('#adag').val();
         let q = document.querySelectorAll(".quantity");
@@ -25,5 +29,9 @@ $(function() {
                 $(element).html(value);
             }
         });
+    }
+
+    function adagSzabalyzo() {
+
     }
 })

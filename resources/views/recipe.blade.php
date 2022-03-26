@@ -17,24 +17,44 @@
             <h2 class="align-center" >{{$recipe->megnevezes}}</h2>
             <section id="free-from-div">
                 <figure class="align-center">
-                    <img class="w-20" src="../img/sugar-cube-free.png" alt="">
-                    <figcaption>cukormentes</figcaption>
+                    <img class="w-20" src="<?php echo in_array('sugar', $allergens)
+                    ? '../img/sugar-cube.png'
+                    : '../img/sugar-cube-free.png'; ?>" alt="">
+                        <figcaption><?php echo in_array('sugar', $allergens)
+                    ? 'cukrot tartalmaz'
+                    : 'cukormentes'; ?></figcaption>
                 </figure>
                 <figure class="align-center">
-                    <img class="w-20" src="../img/laktose-free.png" alt="">
-                    <figcaption>laktózmentes</figcaption>
+                    <img class="w-20" src="<?php echo in_array('laktose', $allergens)
+                    ? '../img/laktose.png'
+                    : '../img/laktose-free.png'; ?>" alt="">
+                        <figcaption><?php echo in_array('laktose', $allergens)
+                    ? 'laktózt tartalmaz'
+                    : 'laktózmentes'; ?></figcaption>
                 </figure>
                 <figure class="align-center">
-                    <img class="w-20" src="../img/gluten-free.png" alt="">
-                    <figcaption>gluténmentes</figcaption>
+                    <img class="w-20" src="<?php echo in_array('gluten', $allergens)
+                    ? '../img/gluten.png'
+                    : '../img/gluten-free.png'; ?>" alt="">
+                        <figcaption><?php echo in_array('gluten', $allergens)
+                    ? 'glutént tartalmaz'
+                    : 'gluténmentes'; ?></figcaption>
                 </figure>
                 <figure class="align-center">
-                    <img class="w-20" src="../img/milk-free.png" alt="">
-                    <figcaption>tejmentes</figcaption>
+                    <img class="w-20" src="<?php echo in_array('milk', $allergens)
+                    ? '../img/milk.png'
+                    : '../img/milk-free.png'; ?>" alt="">
+                        <figcaption><?php echo in_array('milk', $allergens)
+                    ? 'tejet tartalmaz'
+                    : 'tejmentes'; ?></figcaption>
                 </figure>
                 <figure class="align-center">
-                    <img class="w-20" src="../img/egg-free.png" alt="">
-                    <figcaption>tojásmentes</figcaption>
+                <img class="w-20" src="<?php echo in_array('egg', $allergens)
+                    ? '../img/egg.png'
+                    : '../img/egg-free.png'; ?>" alt="">
+                        <figcaption><?php echo in_array('egg', $allergens)
+                    ? 'tojást tartalmaz'
+                    : 'tojásmentes'; ?></figcaption>
                 </figure>
             </section>
             <section class="align-center">
@@ -88,10 +108,10 @@
                     <div class="right">
                         <div class="order-md-2">
                             <form method="GET">
-                                <a href=""><i class="fas fa-minus"></i></a>
-                                <input id="adag" class="m-form__input w-10 -fontSize-16" type="text" name="adag" value="4">
+                                <a href="./{{$recipe->url_slug}}?adag={{$_GET['adag']-1}}#hozzavalok-adag"><i class="fas fa-minus"></i></a>
+                                <input id="adag" class="m-form__input w-10 -fontSize-16" type="text" name="adag" value="{{$_GET['adag']}}">
                                 <label for="adag">adag</label>
-                                <a href=""><i class="fas fa-plus"></i></a>
+                                <a href="./{{$recipe->url_slug}}?adag={{$_GET['adag']+1}}#hozzavalok-adag"><i class="fas fa-plus"></i></a>
                             </form>
                         </div>
                     </div>

@@ -4,8 +4,8 @@
 <head>
   @include('../template/head')
   <link rel="stylesheet" href="css/upload-desktop.css" />
-  <script src="js/upload.js"></script>
   <script src="js/urlap_validacio.js" type="text/javascript"></script>
+  <script src="js/upload.js"></script>
   <title>Receptfeltöltés | Recapt</title>
 </head>
 
@@ -15,7 +15,7 @@
       @include('../template/header')
     </header>
     @if(Auth::check())
-    <form action="/admin/upload" method="POST" enctype="multipart/form-data">
+    <form action="/upload" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
     <article>
       <p>A csillaggal (<span class="red">*</span>) jelölt mezők kitöltése kötelező.</p>
@@ -40,14 +40,14 @@
                 <option value="{{ $material -> megnevezes}}">{{ $material -> megnevezes}}</option>
               @endforeach
             </datalist>
-            <input class="-hidden m-form__input raw-material-quantity" type="number" name="quantities" id="quantity" placeholder="mennyiség"/>
+            <input class="-hidden m-form__input raw-material-quantity" min="0" name="quantities" id="quantity" placeholder="mennyiség"/>
             <select class="m-form__select left-b raw-material-unit" name="units" id="unit">
              <option selected disabled>mértékegység</option>
             </select>
             <div class="right">
               <button type="button" class="-delete little-button">–</button>
             </div>
-            <div id="quantity-hiba" class="w-100"></div>
+            <div id="quantity-hiba" class="quantity-hiba w-100"></div>
           </div>
         </div>
         <div>
@@ -109,19 +109,19 @@
       <section>
         <h2>Értékek</h2>
         <div class="-colorBgTernary mb-3 w-100 values">
-          <label for="preparation">Előkészületi idő:</label>
+          <label for="preparation">Előkészületi idő: </label>
           <input class="align-center -hidden m-form__input" name="preparation" id="preparation" min="1"/>
           <span>perc</span>
         </div>
         <div id="preparation-hiba" class="w-100"></div>
         <div class="-colorBgTernary mb-3 w-100 values">
-          <label for="cooking">Főzési idő</label>
+          <label for="cooking">Főzési idő: </label>
           <input class="align-center -hidden m-form__input" name="cooking" id="cooking" min="1"/>
           <span>perc</span>
         </div>
         <div id="cooking-hiba" class="w-100"></div>
         <div class="-colorBgTernary mb-3 w-100 values">
-          <label for="baking">Sütési idő</label>
+          <label for="baking">Sütési idő: </label>
           <input class="align-center -hidden m-form__input" name="baking" id="baking" min="1"/>
           <span>perc</span>
         </div>
