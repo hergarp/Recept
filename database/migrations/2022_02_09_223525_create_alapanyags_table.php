@@ -603,6 +603,20 @@ class CreateAlapanyagsTable extends Migration
         Alapanyag::create(['megnevezes' => 'szumák']);
         Alapanyag::create(['megnevezes' => 'szárított fűszerpaprika']);
         Alapanyag::create(['megnevezes' => 'áfonyalevél']);
+        Alapanyag::create(['megnevezes' => 'balzsamecet']);
+        Alapanyag::create(['megnevezes' => 'fehérborecet']);
+        Alapanyag::create(['megnevezes' => 'ecet']);
+        Alapanyag::create(['megnevezes' => 'rizsecet']);
+        Alapanyag::create(['megnevezes' => 'almaecet']);
+        Alapanyag::create(['megnevezes' => 'vörösborecet']);
+        Alapanyag::create(['megnevezes' => 'málnaecet']);
+        Alapanyag::create(['megnevezes' => 'fehér balzsamecet']);
+        Alapanyag::create(['megnevezes' => 'rizsborecet']);
+        Alapanyag::create(['megnevezes' => 'sherryecet']);
+        Alapanyag::create(['megnevezes' => 'tárkonyecet']);
+        Alapanyag::create(['megnevezes' => 'gyümölcsös dresszing']);
+        Alapanyag::create(['megnevezes' => 'Tokaj dresszing']);
+        Alapanyag::create(['megnevezes' => 'Tokaj vinaigrette']);
     }
 
     /**
