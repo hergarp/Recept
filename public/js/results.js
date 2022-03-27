@@ -1,7 +1,4 @@
 $(function() {
-    var sPageURL = window.location.search.substring(1).split('?');
-    var apivegpont = 'http://localhost:8000/api/search?' + sPageURL;
-
     if($('input:checkbox').is(':checked')) {
         $('input:checkbox:checked').parent().addClass('-fontColorInversePrimary');
     }

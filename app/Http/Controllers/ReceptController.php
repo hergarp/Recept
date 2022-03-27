@@ -160,86 +160,69 @@ class ReceptController extends Controller
         return view('recipe', ['recipe'=> $recipe, 'alkotjas'=>$alkotjas, 'steps'=>$steps, 'allergens'=>$allergens]);
     }
 
-    public function seged($url_slug)
+    public function seged(Request $request)
     {
-        $recipe = DB::table('recepts')->where('r_id', '=', 1)->get();
-        return response()->json(['recipe'=> $recipe]);
-    }
-
-    public function apiSearch(Request $request) 
-    {
-        $keyword = $request->keyword;
-        $option = $request->search_selector;
-
-        if ($option == "name") {
-            $recs = DB::table('recepts')->where('megnevezes','like','%'.$keyword.'%')
-                                        ->where('statusz','publikus')
-                                        ->get();
-            $recipes=[];
-            if ($recs->isEmpty()){}
-            else {
-                foreach ($recs as $recipe) {
-                    $materials = DB::table('alkotjas')->join('alapanyag_mertekegysegs', 
-                                                             'alkotjas.alapanyag_mertekegyseg', 
-                                                             '=', 
-                                                             'alapanyag_mertekegysegs.am_id')
-                                                       ->select('alapanyag_mertekegysegs.alapanyag')
-                                                       ->where('alkotjas.recept',$recipe->megnevezes)
-                                                       ->get();
-                    $materials = json_decode($materials);
-                    $recipe = (array)$recipe;
-                    $recipe['hozzávalók'] = $materials;
-                    array_push($recipes, $recipe);
-                }
-            }
-        }
-        else {
-            $rec_ids = DB::table('alkotjas')->join('alapanyag_mertekegysegs', 
+        $recs = [];
+        $rec_ids = DB::table('alkotjas')->join('alapanyag_mertekegysegs', 
                                                    'alkotjas.alapanyag_mertekegyseg', 
                                                    '=', 
                                                    'alapanyag_mertekegysegs.am_id')
                                             ->select('alkotjas.recept')
-                                            ->where('alapanyag_mertekegysegs.alapanyag','like','%'.$keyword.'%')->get();
-            $recipes=[];
+                                            ->where('alapanyag_mertekegysegs.alapanyag','like','%eper%')->get();
+        $recipes_by_option=[];
+        if (count($rec_ids) == 0) {$recipes_by_option=[];}
+        else {
             foreach ($rec_ids as $id) {
                 $recipe = DB::table('recepts')->where('r_id', '=', $id->recept)
-                                              ->where('statusz','publikus')
-                                              ->get();
-                if ($recipe->isEmpty()) {}
-                else {
-                    $materials = DB::table('alkotjas')->join('alapanyag_mertekegysegs', 
-                                                             'alkotjas.alapanyag_mertekegyseg', 
-                                                             '=', 
-                                                             'alapanyag_mertekegysegs.am_id')
-                                                       ->select('alapanyag_mertekegysegs.alapanyag')
-                                                       ->where('alkotjas.recept',$id->recept)
-                                                       ->get();
-                    $materials = json_decode($materials);
-                    $recipe = json_decode($recipe);
-                    $recipe['hozzávalók'] = $materials;
-                    array_push($recipes, $recipe);
+                                                ->where('statusz','publikus')
+                                                ->first();
+                                    
+                if ($recipe != null) {
+                    array_push($recipes_by_option, $recipe);
                 }
             }
         }
-        return response()->json(['recipes'=> $recipes]);
+        // $seged = [];
+        // foreach ($recipes_by_option as $recipe) {
+        // array_push($seged, $recipe);
+        // }
+        // $recipes_by_option = $seged;
+
+        // $recipes=[];
+        // foreach ($recipes_by_option as $rec) {
+        //     $recipe =  [];
+        //     $rec = (array)$rec;
+        //     $recipe['url_slug'] = $rec['url_slug'];
+        //     $recipe['megnevezes'] = $rec['megnevezes'];
+        //     $recipe['kep'] = $rec['kep'];
+        //     array_push($recipes, $recipe);
+        // }
+        // $recipes = array_unique($recipes,SORT_REGULAR);
+        return response()->json(['recipes'=> $recipes_by_option]);
     }
 
     public function search(Request $request) 
     {
         $keyword = $request->keyword;
         $option = $request->search_selector;
-
+        $recs = [];
         if ($option == "name") {
-            $recs = DB::table('recepts')->where('megnevezes','like','%'.$keyword.'%')
-                                           ->where('statusz','publikus')
-                                           ->get();
-            $recipes = [];
-            if (count($recs) == 0) {$recipes=0;}
-            else {
-                foreach ($recs as $recipe) {
-                    array_push($recipes,[$recipe]);
-                }
+            $recipes_by_option = DB::table('recepts')->join('alkotjas', 
+                                                            'recepts.r_id', 
+                                                            '=', 
+                                                            'alkotjas.recept')
+                                                     ->join('alapanyag_mertekegysegs', 
+                                                            'alkotjas.alapanyag_mertekegyseg', 
+                                                            '=', 
+                                                            'alapanyag_mertekegysegs.am_id')
+                                                     ->where('megnevezes','like','%'.$keyword.'%')
+                                                     ->where('statusz','publikus')
+                                                     ->get();
+            $seged = [];
+            foreach ($recipes_by_option as $recipe) {
+                array_push($seged, $recipe);
             }
+            $recipes_by_option = $seged;
         }
         else {
             $rec_ids = DB::table('alkotjas')->join('alapanyag_mertekegysegs', 
@@ -248,20 +231,57 @@ class ReceptController extends Controller
                                                    'alapanyag_mertekegysegs.am_id')
                                             ->select('alkotjas.recept')
                                             ->where('alapanyag_mertekegysegs.alapanyag','like','%'.$keyword.'%')->get();
-            $recipes=[];
-            if (count($rec_ids) == 0) {$recipes=0;}
+            $recipes_by_option=[];
+            if (count($rec_ids) == 0) {$recipes_by_option=[];}
             else {
                 foreach ($rec_ids as $id) {
                     $recipe = DB::table('recepts')->where('r_id', '=', $id->recept)
-                                                  ->where('statusz','publikus')
-                                                  ->get();
-                    if (count($recipe) != 0) {
-                        array_push($recipes, $recipe);
+                                                    ->where('statusz','publikus')
+                                                    ->first();
+                                        
+                    if ($recipe != null) {
+                        array_push($recipes_by_option, $recipe);
                     }
                 }
             }
         }
-        return view('results', ['recipes'=> $recipes, 'keyword' => $keyword]);
+        
+        $search_terms = array("winter"=>"tel", 
+                              "spring" => "tavasz", 
+                              "summer" => "nyar", 
+                              "autumn" => "osz",
+                              "breakfast" => "reggeli",
+                              "elevenses" => "tizorai",
+                              "lunch" => "ebed",
+                              "snack" => "uzsonna",
+                              "dinner" => "vacsora",);
+        
+        $request_num = count($request->all());
+        if ($request_num > 4){
+            foreach($search_terms as $key => $value) {
+                if(isset($request->$key)) {
+                    foreach ($recipes_by_option as $recipe){
+                        if($recipe->$value == 1){
+                            array_push($recs, $recipe);
+                        }
+                    }
+                }
+            }
+        }
+        else {
+            $recs = $recipes_by_option;
+        }
+        $recipes = [];
+        foreach ($recs as $rec) {
+            $recipe =  [];
+            $rec = (array)$rec;
+            $recipe['url_slug'] = $rec['url_slug'];
+            $recipe['megnevezes'] = $rec['megnevezes'];
+            $recipe['kep'] = $rec['kep'];
+            array_push($recipes, $recipe);
+        }
+        $recipes = array_unique($recipes,SORT_REGULAR);
+        return view('results', ['recipes'=> $recipes, 'keyword' => $keyword, 'option'=>$option]);
     }
 
     /**

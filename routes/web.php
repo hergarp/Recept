@@ -46,11 +46,10 @@ Route::post('/admin/edit/{id}', [ReceptController::class, 'update']);
 
 Route::get('/api/matunits', [Alapanyag_mertekegysegController::class, 'index']);
 Route::get('/api/materials', [AlapanyagController::class, 'show']);
-Route::get('/api/search', [ReceptController::class, 'apiSearch']);
 Route::delete('/api/draft/{id}', [ReceptController::class, 'draft']);
 Route::delete('/api/edit/{id}', [ReceptController::class, 'destroy']);
 
 //segéd:
-Route::get('/api/recipe/{url_slug}', [ReceptController::class, 'seged']);
+Route::get('/api/seged', [ReceptController::class, 'seged']);
 
 require __DIR__.'/auth.php';
