@@ -457,6 +457,38 @@ class CreateAlapanyagsTable extends Migration
         Alapanyag::create(['megnevezes' => 'zöldspárga']);
         Alapanyag::create(['megnevezes' => 'tengeri spárga']);
         Alapanyag::create(['megnevezes' => 'cukkinivirág']);
+        Alapanyag::create(['megnevezes' => 'sertészsír']);
+        Alapanyag::create(['megnevezes' => 'kacsazsír']);
+        Alapanyag::create(['megnevezes' => 'kacsa testháj']);
+        Alapanyag::create(['megnevezes' => 'libazsír']);
+        Alapanyag::create(['megnevezes' => 'libaháj']);
+        Alapanyag::create(['megnevezes' => 'disznózsír']);
+        Alapanyag::create(['megnevezes' => 'mangalica zsír']);
+        Alapanyag::create(['megnevezes' => 'halolaj']);
+        Alapanyag::create(['megnevezes' => 'pecsenyezsír']);
+        Alapanyag::create(['megnevezes' => 'margarin']);
+        Alapanyag::create(['megnevezes' => 'tökmagolaj']);
+        Alapanyag::create(['megnevezes' => 'kókuszolaj']);
+        Alapanyag::create(['megnevezes' => 'szőlőmagolaj']);
+        Alapanyag::create(['megnevezes' => 'napraforgó olaj']);
+        Alapanyag::create(['megnevezes' => 'szezámolaj']);
+        Alapanyag::create(['megnevezes' => 'repceolaj']);
+        Alapanyag::create(['megnevezes' => 'kókuszzsír']);
+        Alapanyag::create(['megnevezes' => 'chiliolaj']);
+        Alapanyag::create(['megnevezes' => 'dióolaj']);
+        Alapanyag::create(['megnevezes' => 'földimogyoró olaj']);
+        Alapanyag::create(['megnevezes' => 'pálmazsír']);
+        Alapanyag::create(['megnevezes' => 'mogyoróolaj']);
+        Alapanyag::create(['megnevezes' => 'kukoricaolaj']);
+        Alapanyag::create(['megnevezes' => 'lenmagolaj']);
+        Alapanyag::create(['megnevezes' => 'szójaolaj']);
+        Alapanyag::create(['megnevezes' => 'kakaóvaj']);
+        Alapanyag::create(['megnevezes' => 'ánizsolaj']);
+        Alapanyag::create(['megnevezes' => 'Rama']);
+        Alapanyag::create(['megnevezes' => 'tejmentes margarin']);
+        Alapanyag::create(['megnevezes' => 'szarvasgombás olaj']);
+        Alapanyag::create(['megnevezes' => 'sütőmargarin']);
+        Alapanyag::create(['megnevezes' => 'fűszerpaprikamag-olaj']);
     }
 
     /**

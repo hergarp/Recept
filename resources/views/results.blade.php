@@ -64,7 +64,7 @@
                 <section>
                     <h2>Alapanyagok</h2>
                     <div class="-colorBgTernary mb-3 w-100">
-                        <input class="-hidden m-form__input" list="materials" type="text" name="raw_material" placeholder="Alapanyag" value="{{$_GET['raw_material']}}">
+                        <input class="-hidden m-form__input" list="materials" type="text" name="raw_material" placeholder="Alapanyag" value="<?php echo isset($_GET['raw_material'])? $_GET['raw_material'] : '' ;?>">
                         <datalist id="materials">
                             @foreach ($materials as $material)     
                                 <option value="{{ $material->megnevezes }}">{{ $material->megnevezes }}</option>
@@ -72,7 +72,7 @@
                         </datalist>
                     </div>
                     <div class="-colorBgTernary mb-3 w-100">
-                        <input class="-hidden m-form__input" list="no-materials" type="text" name="no_material" placeholder="Alapanyag nélkül" value="{{$_GET['no_material']}}">
+                        <input class="-hidden m-form__input" list="no-materials" type="text" name="no_material" placeholder="Alapanyag nélkül" value="<?php echo isset($_GET['no_material'])? $_GET['no_material'] : '' ;?>">
                         <datalist id="no-materials">
                             @foreach ($materials as $material)     
                                 <option value="{{ $material->megnevezes }}">{{ $material->megnevezes }}</option>
