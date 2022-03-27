@@ -40,6 +40,7 @@ class CreateMertekegysegsTable extends Migration
         Mertekegyseg::create(['mertekegyseg' => 'bk']);
         Mertekegyseg::create(['mertekegyseg' => 'db']);
         Mertekegyseg::create(['mertekegyseg' => 'bögre']);
+        Mertekegyseg::create(['mertekegyseg' => 'csokor']);
     }
 
     /**
