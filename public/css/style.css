@@ -242,6 +242,10 @@ option {
     background-color: lightcoral;
 }
 
+.-salmon {
+    background-color: rgb(255,160,122);
+}
+
 .-sending {
     padding: 15px;
     border: none;

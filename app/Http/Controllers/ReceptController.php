@@ -162,42 +162,7 @@ class ReceptController extends Controller
 
     public function seged(Request $request)
     {
-        $recs = [];
-        $rec_ids = DB::table('alkotjas')->join('alapanyag_mertekegysegs', 
-                                                   'alkotjas.alapanyag_mertekegyseg', 
-                                                   '=', 
-                                                   'alapanyag_mertekegysegs.am_id')
-                                            ->select('alkotjas.recept')
-                                            ->where('alapanyag_mertekegysegs.alapanyag','like','%eper%')->get();
-        $recipes_by_option=[];
-        if (count($rec_ids) == 0) {$recipes_by_option=[];}
-        else {
-            foreach ($rec_ids as $id) {
-                $recipe = DB::table('recepts')->where('r_id', '=', $id->recept)
-                                                ->where('statusz','publikus')
-                                                ->first();
-                                    
-                if ($recipe != null) {
-                    array_push($recipes_by_option, $recipe);
-                }
-            }
-        }
-        // $seged = [];
-        // foreach ($recipes_by_option as $recipe) {
-        // array_push($seged, $recipe);
-        // }
-        // $recipes_by_option = $seged;
-
-        // $recipes=[];
-        // foreach ($recipes_by_option as $rec) {
-        //     $recipe =  [];
-        //     $rec = (array)$rec;
-        //     $recipe['url_slug'] = $rec['url_slug'];
-        //     $recipe['megnevezes'] = $rec['megnevezes'];
-        //     $recipe['kep'] = $rec['kep'];
-        //     array_push($recipes, $recipe);
-        // }
-        // $recipes = array_unique($recipes,SORT_REGULAR);
+        
         return response()->json(['recipes'=> $recipes_by_option]);
     }
 
@@ -205,6 +170,8 @@ class ReceptController extends Controller
     {
         $keyword = $request->keyword;
         $option = $request->search_selector;
+        $raw_material = $request->raw_material;
+        $no_material = $request->no_material;
         $recs = [];
         if ($option == "name") {
             $recipes_by_option = DB::table('recepts')->join('alkotjas', 
@@ -271,6 +238,34 @@ class ReceptController extends Controller
         else {
             $recs = $recipes_by_option;
         }
+
+        //szűrés alapanyagra
+        if ($raw_material != null) {
+            $seged = [];
+            foreach ($recs as $recipe) {
+                $recipe = (array)$recipe;
+                if ($recipe['alapanyag'] == $raw_material) {
+                    array_push($seged,$recipe);
+                }
+            }
+            $recs = $seged;
+        }
+
+        //szűrés alapanyag nélkülre
+        // if ($no_material != null) {
+        //     $seged = [];
+        //     $seged2 = [];
+        //     foreach ($recs as $recipe) {
+        //         $recipe = (array)$recipe;
+        //         if ($recipe['alapanyag'] == $no_material) {
+        //             array_push($seged,$recipe);
+        //         }
+        //         else {
+        //             array_push($seged2,$recipe);
+        //         }
+        //     }
+        //     $recs = array_diff($seged, $seged2);
+        // }
         $recipes = [];
         foreach ($recs as $rec) {
             $recipe =  [];
@@ -278,10 +273,13 @@ class ReceptController extends Controller
             $recipe['url_slug'] = $rec['url_slug'];
             $recipe['megnevezes'] = $rec['megnevezes'];
             $recipe['kep'] = $rec['kep'];
+            $recipe['adag'] = $rec['adag'];
             array_push($recipes, $recipe);
         }
         $recipes = array_unique($recipes,SORT_REGULAR);
-        return view('results', ['recipes'=> $recipes, 'keyword' => $keyword, 'option'=>$option]);
+
+        $materials = Alapanyag::all();
+        return view('results', ['recipes'=> $recipes, 'keyword' => $keyword, 'option'=>$option, 'materials'=>$materials]);
     }
 
     /**

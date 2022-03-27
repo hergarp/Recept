@@ -22,8 +22,10 @@
             @if (count($recipes) != 0)
             @foreach ($recipes as $recipe)
             <div class="result">
-                <div class="image" style="background-image: url('../{{$recipe['kep']}}');"></div>
-                <h3>{{$recipe['megnevezes']}}</h3>
+                <a href="../recipe/{{$recipe['url_slug']}}?adag={{$recipe['adag']}}">
+                    <div class="image" style="background-image: url('../{{$recipe['kep']}}');"></div>
+                    <h3>{{$recipe['megnevezes']}}</h3>
+                </a>
             </div>
             @endforeach
             @else
@@ -34,38 +36,48 @@
             <form action="/results">
                 <input class="d-none" name="keyword" type="text" value="{{$keyword}}">
                 <input class="d-none" name="search_selector" type="text" value="{{$_GET['search_selector']}}">
-                <input type="submit" value="Szűrés">
+                <input class="-salmon -sending w-100" type="submit" value="Szűrés">
                 <section>
                     <h2>Szezon</h2>
                     <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary" for="winter"><input class="d-none" type="checkbox"
-                        name="winter" id="winter" />tél</label>
+                        name="winter" id="winter" <?php echo isset($_GET['winter'])? 'checked' : '' ;?>/>tél</label>
                     <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary" for="spring"><input class="d-none" type="checkbox"
-                        name="spring" id="spring" />tavasz</label>
+                        name="spring" id="spring" <?php echo isset($_GET['spring'])? 'checked' : '' ;?>/>tavasz</label>
                     <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary" for="summer"><input class="d-none" type="checkbox"
-                        name="summer" id="summer" />nyár</label>
+                        name="summer" id="summer" <?php echo isset($_GET['summer'])? 'checked' : '' ;?>/>nyár</label>
                     <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary" for="autumn"><input class="d-none" type="checkbox"
-                        name="autumn" id="autumn" />ősz</label>
+                        name="autumn" id="autumn" <?php echo isset($_GET['autumn'])? 'checked' : '' ;?>/>ősz</label>
                 </section>
                 <section>
                     <h2>Napszak</h2>
                     <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary mb-1" for="breakfast"><input class="d-none"
-                        type="checkbox" name="breakfast" id="breakfast" />reggeli</label>
+                        type="checkbox" name="breakfast" id="breakfast" <?php echo isset($_GET['breakfast'])? 'checked' : '' ;?>/>reggeli</label>
                     <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary mb-1" for="elevenses"><input class="d-none"
-                        type="checkbox" name="elevenses" id="elevenses" />tízórai</label>
+                        type="checkbox" name="elevenses" id="elevenses" <?php echo isset($_GET['elevenses'])? 'checked' : '' ;?>/>tízórai</label>
                     <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary mb-1" for="lunch"><input class="d-none" type="checkbox"
-                        name="lunch" id="lunch" />ebéd</label>
+                        name="lunch" id="lunch" <?php echo isset($_GET['lunch'])? 'checked' : '' ;?>/>ebéd</label>
                     <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary mb-1" for="snack"><input class="d-none" type="checkbox"
-                        name="snack" id="snack" />uzsonna</label>
+                        name="snack" id="snack" <?php echo isset($_GET['snack'])? 'checked' : '' ;?>/>uzsonna</label>
                     <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary mb-1" for="dinner"><input class="d-none" type="checkbox"
-                        name="dinner" id="dinner" />vacsora</label>
+                        name="dinner" id="dinner" <?php echo isset($_GET['dinner'])? 'checked' : '' ;?>/>vacsora</label>
                 </section>
                 <section>
                     <h2>Alapanyagok</h2>
                     <div class="-colorBgTernary mb-3 w-100">
-                        <input class="-hidden m-form__input" type="text" name="raw-material" id="raw-material" placeholder="Alapanyag">
+                        <input class="-hidden m-form__input" list="materials" type="text" name="raw_material" placeholder="Alapanyag" value="{{$_GET['raw_material']}}">
+                        <datalist id="materials">
+                            @foreach ($materials as $material)     
+                                <option value="{{ $material->megnevezes }}">{{ $material->megnevezes }}</option>
+                            @endforeach
+                        </datalist>
                     </div>
                     <div class="-colorBgTernary mb-3 w-100">
-                        <input class="-hidden m-form__input" type="text" name="no-material" id="no-material" placeholder="Alapanyag nélkül">
+                        <input class="-hidden m-form__input" list="no-materials" type="text" name="no_material" placeholder="Alapanyag nélkül" value="{{$_GET['no_material']}}">
+                        <datalist id="no-materials">
+                            @foreach ($materials as $material)     
+                                <option value="{{ $material->megnevezes }}">{{ $material->megnevezes }}</option>
+                            @endforeach
+                        </datalist>    
                     </div>
                 </section>
                 <section>
