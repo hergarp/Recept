@@ -15,16 +15,12 @@
         </header>
         <div class="container">
         <article>
-            <div class="d-none template result">
-                <img src="#" alt="">
-                <h3>Title</h3>
-            </div>
             @if (count($recipes) != 0)
             @foreach ($recipes as $recipe)
             <div class="result">
-                <a href="../recipe/{{$recipe['url_slug']}}?adag={{$recipe['adag']}}">
-                    <div class="image" style="background-image: url('../{{$recipe['kep']}}');"></div>
-                    <h3>{{$recipe['megnevezes']}}</h3>
+                <a href="../recipe/{{$recipe[0]->url_slug}}?adag={{$recipe[0]->adag}}">
+                    <div class="image" style="background-image: url('../{{$recipe[0]->kep}}');"></div>
+                    <h3>{{$recipe[0]->megnevezes}}</h3>
                 </a>
             </div>
             @endforeach
@@ -83,17 +79,15 @@
                 <section>
                     <h2>Speciális étrendek</h2>
                     <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary mb-1" for="glutenfree"><input class="d-none"
-                        type="checkbox" name="glutenfree" id="glutenfree"/>gluténmentes</label>
+                        type="checkbox" name="glutenfree" id="glutenfree" <?php echo isset($_GET['glutenfree'])? 'checked' : '' ;?>/>gluténmentes</label>
                     <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary mb-1" for="sugarfree"><input class="d-none"
-                        type="checkbox" name="sugarfree" id="sugarfree" />cukormentes</label>
+                        type="checkbox" name="sugarfree" id="sugarfree" <?php echo isset($_GET['sugarfree'])? 'checked' : '' ;?>/>cukormentes</label>
                     <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary mb-1" for="milk-free"><input class="d-none" type="checkbox"
-                        name="milk-free" id="milk-free" />tejmentes</label>
+                        name="milk-free" id="milk-free" <?php echo isset($_GET['milk-free'])? 'checked' : '' ;?>/>tejmentes</label>
                     <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary mb-1" for="egg-free"><input class="d-none" type="checkbox"
-                        name="egg-free" id="egg-free" />tojásmentes</label>
+                        name="egg-free" id="egg-free" <?php echo isset($_GET['egg-free'])? 'checked' : '' ;?>/>tojásmentes</label>
                     <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary mb-1" for="laktosefree"><input class="d-none" type="checkbox"
-                        name="laktosefree" id="laktosefree" />laktózmentes</label>
-                    <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary mb-1" for="vegan"><input class="d-none" type="checkbox"
-                        name="vegan" id="vegan" />vegán</label>
+                        name="laktosefree" id="laktosefree" <?php echo isset($_GET['laktosefree'])? 'checked' : '' ;?>/>laktózmentes</label>
                 </section>
             </form>
         </aside>
