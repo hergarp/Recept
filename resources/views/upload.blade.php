@@ -200,7 +200,7 @@
         <h2>Egyéb elnevezések</h2>
         <div id="names">
           <div class="d-none name-template -colorBgTernary mb-3 w-100 names">
-            <input class="-hidden m-form__input w-80" type="text" name="names" id="name" placeholder="További elnevezés" />
+            <input class="-hidden m-form__input w-80" type="text" id="name" placeholder="További elnevezés"/>
             <div class="right"><button type="button" class="-delete little-button">–</button></div>
           </div>
         </div>
@@ -210,7 +210,7 @@
       </section>
     </aside>
     <div class="align-center w-100" id="d-send">
-      <button type="submit" class="m-button -adding -sending">Beküldés</button>
+      <button type="submit" class="-adding -sending">Beküldés</button>
     </div>
   </form>
   @else

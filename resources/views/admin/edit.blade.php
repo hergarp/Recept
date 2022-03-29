@@ -239,12 +239,12 @@
         <h2>Egyéb elnevezések</h2>
         <div id="names">
           <div class="d-none name-template -colorBgTernary mb-3 w-100 names">
-            <input class="-hidden m-form__input w-80" type="text" name="names" id="name" placeholder="További elnevezés" />
+            <input class="-hidden m-form__input w-80" type="text" name="name" id="name" placeholder="További elnevezés" />
             <div class="right"><button type="button" class="-delete little-button">–</button></div>
           </div>
           @foreach ($elnevezesek as $elnevezes)
           <div class="-colorBgTernary mb-3 w-100 names">
-            <input class="-hidden m-form__input w-80" type="text" name="other-name-1"
+            <input class="-hidden m-form__input w-80" type="text" name="name[]"
               placeholder="Egyéb elnevezés" value="{{ $elnevezes }}" />
             <div class="right">
               <button class="-delete little-button">–</button>
@@ -265,11 +265,6 @@
       <button onclick="return confirm('Biztosan törli?')" class="-rejection -sending w-100" type="submit" name="action" value="delete">Elvetés</button>     
     </div>
   </form>
-  <!-- <form action="/api/edit/{{$recipe->r_id}}" method="post">
-    <input id="form-delete" onclick="return confirm('Biztosan törli?')" class="-rejection -sending w-100" type="submit" value="Elvetés"></input>
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-  </form> -->
   @else
     <div class="align-center">
         <p>Ezen oldal betöltéséhez adminnak kell lenni.</p>

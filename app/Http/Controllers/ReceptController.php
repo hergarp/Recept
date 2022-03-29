@@ -69,10 +69,7 @@ class ReceptController extends Controller
         $recept->fogas = $request->snacky;
         $recept->konyhatechnologia = $request->technology;
         $recept->babakonyha = $request->baby;
-        if ($request->names != null) {
-            $recept->egyeb_elnevezesek = $request->names;
-            $recept->egyeb_elnevezesek = json_encode($names);
-        }
+        $recept->egyeb_elnevezesek = json_encode($request->name);
         $recept->reggeli = $request->has('breakfast');
         $recept->tizorai = $request->has('elevenses');
         $recept->ebed = $request->has('lunch');
@@ -82,7 +79,6 @@ class ReceptController extends Controller
         $recept->nyar = $request->has('summer');
         $recept->osz = $request->has('autumn');
         $recept->tel = $request->has('winter');
-        
 
         $recept->save();
 
@@ -188,6 +184,20 @@ class ReceptController extends Controller
                                                      ->get();
             $seged = [];
             foreach ($recipes_by_option as $recipe) {
+                array_push($seged, $recipe);
+            }
+            $other = DB::table('recepts')->join('alkotjas', 
+                                                            'recepts.r_id', 
+                                                            '=', 
+                                                            'alkotjas.recept')
+                                                     ->join('alapanyag_mertekegysegs', 
+                                                            'alkotjas.alapanyag_mertekegyseg', 
+                                                            '=', 
+                                                            'alapanyag_mertekegysegs.am_id')
+                                                     ->where('egyeb_elnevezesek','like','%'.$keyword.'%')
+                                                     ->where('statusz','publikus')
+                                                     ->get();
+            foreach ($other as $recipe) {
                 array_push($seged, $recipe);
             }
             $recipes_by_option = $seged;
@@ -404,6 +414,7 @@ class ReceptController extends Controller
                 $recept->fogas = $request->snacky;
                 $recept->konyhatechnologia = $request->technology;
                 $recept->babakonyha = $request->baby;
+                $recept->egyeb_elnevezesek = json_encode($request->name);
                 $recept->egyeb_elnevezesek = $request->egyeb_elnevezesek;
                 $recept->reggeli = $request->has('breakfast');
                 $recept->tizorai = $request->has('elevenses');

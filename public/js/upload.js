@@ -15,7 +15,6 @@ $(function () {
     var nameNum = 1;
     addingMaterial();
     addingStep();
-    addingName();
 
     function materialsBeolvasas(fajlnev, tomb) {
         $.ajax({
@@ -100,7 +99,7 @@ $(function () {
         const sablonElem = $(".name-template");
         let ujElem = sablonElem.clone().appendTo(szuloElem).removeClass('d-none name-template');
         var nameId = "name-" + nameNum;
-        $("[id=name]:eq(1)").attr("id", nameId).attr("name",'name[]');
+        $("[id=name]:eq(1)").attr("id", nameId).attr("name",'name[]').attr("required", true);
         delField();
         nameNum += 1;
     }
