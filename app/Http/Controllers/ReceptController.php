@@ -123,8 +123,15 @@ class ReceptController extends Controller
 
     public function recipeList()
     {
-        $recipes = Recept::all()->where('statusz', '=', 'publikus');
-        return view('admin.recipe-list', ['recipes'=> $recipes]);
+        $recs = DB::table('recepts')->where('statusz', '=', 'publikus')
+                             ->select('url_slug', 'megnevezes', 'kep', 'adag', 'statusz', 'created_at')
+                             ->get();
+        $recipes = [];
+        foreach ($recs as $recipe) {
+            array_push($recipes,$recipe);
+        }
+        // return view('admin.recipe-list', ['recipes'=> $recipes]);
+        return response()->json(['recipes'=> $recipes]);
     }
     /**
      * Display the specified resource.
@@ -135,26 +142,31 @@ class ReceptController extends Controller
     public function show($url_slug)
     {
         $recipe = Recept::where('url_slug',$url_slug)->first();
-        $id=$recipe->r_id;
-        $alkotjas = DB::table('alkotjas')->where('recept', '=', $id)
-                                         ->join('alapanyag_mertekegysegs', 
-                                                'alkotjas.alapanyag_mertekegyseg', 
-                                                '=', 
-                                                'alapanyag_mertekegysegs.am_id')
-                                         ->select('alapanyag_mertekegysegs.alapanyag',
-                                                'alapanyag_mertekegysegs.mertekegyseg',
-                                                'alkotjas.mennyiseg')
-                                         ->get();
-        $allergens = [];
-        foreach ($alkotjas as $alkotja) {
-            $allergen = DB::table('allergens')->where('alapanyag', '=', $alkotja->alapanyag)
-                                              ->pluck('allergen');
-            if ($allergen != null) {
-                array_push($allergens, $allergen);
-            }
+        if ($recipe == null) {
+            return view('recipe', ['recipe'=> $recipe]);
         }
-        $steps = Lepes::all()->where('recept', '=', $id);
-        return view('recipe', ['recipe'=> $recipe, 'alkotjas'=>$alkotjas, 'steps'=>$steps, 'allergens'=>$allergens]);
+        else {
+            $id=$recipe->r_id;
+            $alkotjas = DB::table('alkotjas')->where('recept', '=', $id)
+                                             ->join('alapanyag_mertekegysegs', 
+                                                    'alkotjas.alapanyag_mertekegyseg', 
+                                                    '=', 
+                                                    'alapanyag_mertekegysegs.am_id')
+                                             ->select('alapanyag_mertekegysegs.alapanyag',
+                                                    'alapanyag_mertekegysegs.mertekegyseg',
+                                                    'alkotjas.mennyiseg')
+                                             ->get();
+            $allergens = [];
+            foreach ($alkotjas as $alkotja) {
+                $allergen = DB::table('allergens')->where('alapanyag', '=', $alkotja->alapanyag)
+                                                  ->pluck('allergen');
+                if ($allergen != null) {
+                    array_push($allergens, $allergen);
+                }
+            }
+            $steps = Lepes::all()->where('recept', '=', $id);
+            return view('recipe', ['recipe'=> $recipe, 'alkotjas'=>$alkotjas, 'steps'=>$steps, 'allergens'=>$allergens]);
+        }
     }
 
     public function seged(Request $request)

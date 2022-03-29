@@ -12,8 +12,11 @@
     <main>
         <header>
         @include('template/header')
-</header>
+        </header>
         <div id="recipe-container">
+            @if ($recipe == null || $recipe->statusz != 'publikus')
+            <p>Ez a recept nem létezik vagy nem publikus.</p>
+            @else
             <h2 class="align-center" >{{$recipe->megnevezes}}</h2>
             <section id="free-from-div">
                 <figure class="align-center">
@@ -131,6 +134,7 @@
                 <p>Össznézettség: <span id="total-views">{{$recipe->ossznezettseg}}</span></p>
                 <p>Feltöltés dátuma: <span id="date-of-upload">{{$recipe->created_at}}</span></p>
             </section>
+            @endif
         </div>
         <footer>
             @include('template/footer')

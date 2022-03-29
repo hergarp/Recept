@@ -15,11 +15,12 @@ class CreateReceptkonyvsTable extends Migration
     {
         Schema::create('receptkonyvs', function (Blueprint $table) {
             $table->increments('rk_id', 11);
-            $table->unsignedBigInteger('user')->index()->nullable();
+            $table->unsignedBigInteger('user')->index();
             $table->unsignedInteger('recept')->index();
             $table->boolean('jelzes')->default(0);
             $table->tinyInteger('minosites')->default(0);
             $table->timestamps();
+            $table->unique(array('user', 'recept'));
 
 
             $table->foreign('user')->references('id')->on('users')
