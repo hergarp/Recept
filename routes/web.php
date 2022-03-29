@@ -35,6 +35,8 @@ Route::get('/upload', [ReceptController::class, 'create']);
 Route::post('/upload', [ReceptController::class, 'store']);
 Route::get('/logout', [AuthenticatedSessionController::class, 'destroy']);
 
+Route::post('/recipe_save/{url_slug}', [ReceptkonyvController::class, 'saveRecipe']);
+
 Route::get('/admin/recipe-list', [ReceptController::class, 'recipeList']);
 Route::get('/admin/materials', [AlapanyagController::class, 'index']);
 Route::post('/admin/add-materials', [AlapanyagController::class, 'store']);

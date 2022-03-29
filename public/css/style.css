@@ -88,6 +88,10 @@ option {
     float: right;
 }
 
+.grey{
+    color:grey;
+}
+
 .left-b {
     border-left: 2px solid white;
 }

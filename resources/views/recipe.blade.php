@@ -20,7 +20,9 @@
                     <img class="w-20" src="<?php echo in_array('sugar', $allergens)
                     ? '../img/sugar-cube.png'
                     : '../img/sugar-cube-free.png'; ?>" alt="">
-                        <figcaption><?php echo in_array('sugar', $allergens)
+                        <figcaption <?php echo in_array('sugar', $allergens)
+                    ? ''
+                    : 'class="grey"';?> ><?php echo in_array('sugar', $allergens)
                     ? 'cukrot tartalmaz'
                     : 'cukormentes'; ?></figcaption>
                 </figure>
@@ -28,7 +30,9 @@
                     <img class="w-20" src="<?php echo in_array('laktose', $allergens)
                     ? '../img/laktose.png'
                     : '../img/laktose-free.png'; ?>" alt="">
-                        <figcaption><?php echo in_array('laktose', $allergens)
+                        <figcaption <?php echo in_array('laktose', $allergens)
+                    ? ''
+                    : 'class="grey"';?>><?php echo in_array('laktose', $allergens)
                     ? 'laktózt tartalmaz'
                     : 'laktózmentes'; ?></figcaption>
                 </figure>
@@ -36,7 +40,9 @@
                     <img class="w-20" src="<?php echo in_array('gluten', $allergens)
                     ? '../img/gluten.png'
                     : '../img/gluten-free.png'; ?>" alt="">
-                        <figcaption><?php echo in_array('gluten', $allergens)
+                        <figcaption <?php echo in_array('gluten', $allergens)
+                    ? ''
+                    : 'class="grey"';?>><?php echo in_array('gluten', $allergens)
                     ? 'glutént tartalmaz'
                     : 'gluténmentes'; ?></figcaption>
                 </figure>
@@ -44,15 +50,19 @@
                     <img class="w-20" src="<?php echo in_array('milk', $allergens)
                     ? '../img/milk.png'
                     : '../img/milk-free.png'; ?>" alt="">
-                        <figcaption><?php echo in_array('milk', $allergens)
+                        <figcaption <?php echo in_array('milk', $allergens)
+                    ? ''
+                    : 'class="grey"';?>><?php echo in_array('milk', $allergens)
                     ? 'tejet tartalmaz'
                     : 'tejmentes'; ?></figcaption>
                 </figure>
                 <figure class="align-center">
-                <img class="w-20" src="<?php echo in_array('egg', $allergens)
+                <img class="w-20" src="<?php echo in_array('tojas', $allergens)
                     ? '../img/egg.png'
                     : '../img/egg-free.png'; ?>" alt="">
-                        <figcaption><?php echo in_array('egg', $allergens)
+                        <figcaption <?php echo in_array('tojas', $allergens)
+                    ? ''
+                    : 'class="grey"';?>><?php echo in_array('tojas', $allergens)
                     ? 'tojást tartalmaz'
                     : 'tojásmentes'; ?></figcaption>
                 </figure>
@@ -66,7 +76,16 @@
                         <i class="fas fa-print"></i>
                     </div>
                     <div>
+
+                        <form action="/recipe_save/{{$recipe->url_slug}}" method="post">
+                            @csrf
+                            <input class="d-none" value="{{$recipe->r_id}}" name="recipe_id" type="text">
+                            <input class="d-none" value="{{$_GET['adag']}}" name="recipe_adag" type="text">
+                        <button type="submit" id='recipe-save'>
                         <i class="far fa-bookmark"></i>
+                    </button>
+                        </form>
+                        
                     </div>
                 </div>
                 <div class="right">

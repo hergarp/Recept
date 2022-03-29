@@ -83,6 +83,9 @@ ol, ul {
 .-number {
     counter-increment: number;
 }
+input{
+    text-align: center
+}
 
 /* social media */
 #facebookArticle-btn {
