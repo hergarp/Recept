@@ -26,5 +26,15 @@ function validate(id, errorField) {
             $("#" + errorField).empty();
         }
     }
+//     else{
+// // if $preparing+$backing==0 || $preparing+$cookig==0
+
+// //     }
+// if (id  == 'undefined') {
+//     hiba += "<p class='red align-center'>hello ez nem jó még!</p>";
+//     ID(id).style.border = "1px solid red";
+//     $(errorField).html(hiba);
+// }
+//     }
 }
 

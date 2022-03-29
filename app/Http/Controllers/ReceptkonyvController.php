@@ -41,6 +41,17 @@ class ReceptkonyvController extends Controller
         //
     }
 
+    public function saveRecipe(Request $request, $url_slug)
+    {
+        $rk=new Receptkonyv();
+        $rk->user=Auth::user()->id; 
+        $rk->recept=$request->recipe_id; 
+        $rk->minosites=0;  // ezt kikell szedni adatbázis migráció után
+        $rk->save();
+        $adag=$request->recipe_adag;
+        return redirect('/recipe/'.$url_slug.'?adag='.$adag.'#recipe-save');
+    }
+
     /**
      * Display the specified resource.
      *
