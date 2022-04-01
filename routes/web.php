@@ -41,12 +41,12 @@ Route::get('/logout', [AuthenticatedSessionController::class, 'destroy']);
 
 Route::post('/recipe_save/{url_slug}', [ReceptkonyvController::class, 'saveRecipe']);
 
-Route::get('/admin/recipe-list', [ReceptController::class, 'recipeList']);
 Route::get('/admin/materials', [AlapanyagController::class, 'index']);
 Route::post('/admin/add-materials', [AlapanyagController::class, 'store']);
 Route::post('/admin/add-matunits', [Alapanyag_mertekegysegController::class, 'store']);
 Route::post('/admin/add-allergen', [AllergenController::class, 'store']);
 Route::get('/admin/draft-recipe-list', [ReceptController::class, 'draftList']);
+Route::get('/admin/recipe-list', [ReceptController::class, 'publicList']);
 Route::get('/admin/edit/{id}', [ReceptController::class, 'edit']);
 Route::post('/admin/edit/{id}', [ReceptController::class, 'update']);
 

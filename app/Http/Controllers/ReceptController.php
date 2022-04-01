@@ -121,6 +121,12 @@ class ReceptController extends Controller
         return view('admin.draft-recipe-list', ['recipes'=> $recipes]);
     }
 
+    public function publicList()
+    {
+        $recipes = Recept::all()->where('statusz', '=', 'publikus');
+        return view('admin.recipe-list', ['recipes'=> $recipes]);
+    }
+
     public function recipeList()
     {
         $recs = DB::table('recepts')->where('statusz', '=', 'publikus')
