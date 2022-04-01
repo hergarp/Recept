@@ -93,7 +93,10 @@
                 </div>
                 <div class="right">
                     <div>
-                        <a id="facebookArticle-btn" href=""><i class="fab fa-facebook-f"></i></a>
+                        <a  id="facebookArticle-btn" href="https://www.facebook.com/sharer/sharer.php?u=https://127.0.0.1/recipe/{{$recipe->url_slug}}?adag=4" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                      
+                <!-- <i class="m-shareBlock__icon a-icon -md fab fa-facebook-f -facebookColor"></i> -->
+            </a>
                     </div>
                     <div>
                         <a href=""><i class="fab fa-facebook-messenger"></i></a>
