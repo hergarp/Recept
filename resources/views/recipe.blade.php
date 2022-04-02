@@ -20,52 +20,52 @@
             <h2 class="align-center" >{{$recipe->megnevezes}}</h2>
             <section id="free-from-div">
                 <figure class="align-center">
-                    <img class="w-20" src="<?php echo in_array('sugar', $allergens)
+                    <img class="w-20" src="<?php echo strpos($allergens, 'sugar')
                     ? '../img/sugar-cube.png'
                     : '../img/sugar-cube-free.png'; ?>" alt="">
-                        <figcaption <?php echo in_array('sugar', $allergens)
+                        <figcaption <?php echo strpos($allergens, 'sugar')
                     ? ''
-                    : 'class="grey"';?> ><?php echo in_array('sugar', $allergens)
+                    : 'class="grey"';?> ><?php echo strpos($allergens, 'sugar')
                     ? 'cukrot tartalmaz'
                     : 'cukormentes'; ?></figcaption>
                 </figure>
                 <figure class="align-center">
-                    <img class="w-20" src="<?php echo in_array('laktose', $allergens)
+                    <img class="w-20" src="<?php echo strpos($allergens, 'laktose')
                     ? '../img/laktose.png'
                     : '../img/laktose-free.png'; ?>" alt="">
-                        <figcaption <?php echo in_array('laktose', $allergens)
+                        <figcaption <?php echo strpos($allergens, 'laktose')
                     ? ''
-                    : 'class="grey"';?>><?php echo in_array('laktose', $allergens)
+                    : 'class="grey"';?>><?php echo strpos($allergens, 'laktose')
                     ? 'laktózt tartalmaz'
                     : 'laktózmentes'; ?></figcaption>
                 </figure>
                 <figure class="align-center">
-                    <img class="w-20" src="<?php echo in_array('gluten', $allergens)
+                    <img class="w-20" src="<?php echo strpos($allergens, 'gluten')
                     ? '../img/gluten.png'
                     : '../img/gluten-free.png'; ?>" alt="">
-                        <figcaption <?php echo in_array('gluten', $allergens)
+                        <figcaption <?php echo strpos($allergens, 'gluten')
                     ? ''
-                    : 'class="grey"';?>><?php echo in_array('gluten', $allergens)
+                    : 'class="grey"';?>><?php echo strpos($allergens, 'gluten')
                     ? 'glutént tartalmaz'
                     : 'gluténmentes'; ?></figcaption>
                 </figure>
                 <figure class="align-center">
-                    <img class="w-20" src="<?php echo in_array('milk', $allergens)
+                    <img class="w-20" src="<?php echo strpos($allergens, 'milk')
                     ? '../img/milk.png'
                     : '../img/milk-free.png'; ?>" alt="">
-                        <figcaption <?php echo in_array('milk', $allergens)
+                        <figcaption <?php echo strpos($allergens, 'milk')
                     ? ''
-                    : 'class="grey"';?>><?php echo in_array('milk', $allergens)
+                    : 'class="grey"';?>><?php echo strpos($allergens, 'milk')
                     ? 'tejet tartalmaz'
                     : 'tejmentes'; ?></figcaption>
                 </figure>
                 <figure class="align-center">
-                <img class="w-20" src="<?php echo in_array('tojas', $allergens)
+                <img class="w-20" src="<?php echo strpos($allergens, 'egg')
                     ? '../img/egg.png'
                     : '../img/egg-free.png'; ?>" alt="">
-                        <figcaption <?php echo in_array('tojas', $allergens)
+                        <figcaption <?php echo strpos($allergens, 'egg')
                     ? ''
-                    : 'class="grey"';?>><?php echo in_array('tojas', $allergens)
+                    : 'class="grey"';?>><?php echo strpos($allergens, 'egg')
                     ? 'tojást tartalmaz'
                     : 'tojásmentes'; ?></figcaption>
                 </figure>

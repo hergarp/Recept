@@ -162,12 +162,11 @@ class ReceptController extends Controller
                                                     'alapanyag_mertekegysegs.mertekegyseg',
                                                     'alkotjas.mennyiseg')
                                              ->get();
-            $allergens = [];
+            $allergens = '';
             foreach ($alkotjas as $alkotja) {
-                $allergen = DB::table('allergens')->where('alapanyag', '=', $alkotja->alapanyag)
-                                                  ->pluck('allergen');
+                $allergen = Allergen::where('alapanyag', $alkotja->alapanyag)->pluck('allergen');
                 if ($allergen != null) {
-                    array_push($allergens, $allergen);
+                    $allergens = $allergens .  ' ' . (String)$allergen;
                 }
             }
             $steps = Lepes::all()->where('recept', '=', $id);
@@ -175,10 +174,27 @@ class ReceptController extends Controller
         }
     }
 
-    public function seged(Request $request)
+    public function seged($url_slug)
     {
-        
-        return response()->json(['recipes'=> $filtered_recipes]);
+        $recipe = Recept::where('url_slug',$url_slug)->first();
+        $id=$recipe->r_id;
+        $alkotjas = DB::table('alkotjas')->where('recept', '=', $id)
+                                             ->join('alapanyag_mertekegysegs', 
+                                                    'alkotjas.alapanyag_mertekegyseg', 
+                                                    '=', 
+                                                    'alapanyag_mertekegysegs.am_id')
+                                             ->select('alapanyag_mertekegysegs.alapanyag',
+                                                    'alapanyag_mertekegysegs.mertekegyseg',
+                                                    'alkotjas.mennyiseg')
+                                             ->get();
+            $allergens = '';
+            foreach ($alkotjas as $alkotja) {
+                $allergen = Allergen::where('alapanyag', $alkotja->alapanyag)->pluck('allergen');
+                if ($allergen != null) {
+                    $allergens = $allergens .  ' ' . (String)$allergen;
+                }
+            }
+        return response()->json(['allergens' => $allergens]);
     }
 
     public function search(Request $request) 

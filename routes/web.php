@@ -31,6 +31,7 @@ Route::get('/login', function () {
 Route::get('/admin/recipe-list', function () {
     return view('admin.recipe-list');
 });
+Route::get('/admin/draft-recipe-list', [ReceptController::class, 'draftList']);
 
 Route::get('/recipe/{url_slug}', [ReceptController::class, 'show']);
 Route::get('/results', [ReceptController::class, 'search']);
@@ -45,8 +46,6 @@ Route::get('/admin/materials', [AlapanyagController::class, 'index']);
 Route::post('/admin/add-materials', [AlapanyagController::class, 'store']);
 Route::post('/admin/add-matunits', [Alapanyag_mertekegysegController::class, 'store']);
 Route::post('/admin/add-allergen', [AllergenController::class, 'store']);
-Route::get('/admin/draft-recipe-list', [ReceptController::class, 'draftList']);
-Route::get('/admin/recipe-list', [ReceptController::class, 'publicList']);
 Route::get('/admin/edit/{id}', [ReceptController::class, 'edit']);
 Route::post('/admin/edit/{id}', [ReceptController::class, 'update']);
 
@@ -57,6 +56,6 @@ Route::delete('/api/draft/{id}', [ReceptController::class, 'draft']);
 Route::delete('/api/edit/{id}', [ReceptController::class, 'destroy']);
 
 //segéd:
-Route::get('/api/seged', [ReceptController::class, 'seged']);
+Route::get('/api/seged/{url_slug}', [ReceptController::class, 'seged']);
 
 require __DIR__.'/auth.php';
