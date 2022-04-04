@@ -75,11 +75,11 @@
                 <div id="main-pic" style="background-image: url('../{{$recipe->kep}}');"></div>
             </section>
             <section id="icons">
-                <div>
+                <div id="kis-div">
                     <div>
                         <i class="fas fa-print"></i>
                     </div>
-                    <div>
+                    <div id="bookmark">
 
                         <form action="/recipe_save/{{$recipe->url_slug}}" method="post">
                             @csrf
@@ -92,7 +92,7 @@
                         
                     </div>
                 </div>
-                @endif
+                
                 <div class="right">
                     <div>
                         <a  id="facebookArticle-btn" href="https://www.facebook.com/sharer/sharer.php?u=https://127.0.0.1/recipe/{{$recipe->url_slug}}?adag=4" target="_blank"><i class="fab fa-facebook-f"></i></a>
@@ -100,9 +100,11 @@
                 <!-- <i class="m-shareBlock__icon a-icon -md fab fa-facebook-f -facebookColor"></i> -->
             </a>
                     </div>
-                    <div>
-                        <a href=""><i class="fab fa-facebook-messenger"></i></a>
-                    </div>
+
+            <a id="facebookMessengerArticle-btn" href="https://m.me/sharer.php?u=https://127.0.0.1/recipe/{{$recipe->url_slug}}?adag=4" ><i class="fab fa-facebook-messenger"  data-url="https://127.0.0.1/recipe/{{$recipe->url_slug}}?adag=4"></i></a>
+
+            
+                    
                 </div>
             </section>
             <section id="times" class="align-center">
@@ -137,7 +139,7 @@
                             
                             <form method="GET">
 
-                             @if ($_GET['adag']<= "1") 
+                            @if ($_GET['adag']<= "1") 
                                 <a href="./{{$recipe->url_slug}}?adag={{$_GET['adag']-1}}#hozzavalok-adag"></a>
                             @else
                                <a href="./{{$recipe->url_slug}}?adag={{$_GET['adag']-1}}#hozzavalok-adag"><i class="fas fa-minus"></i></a>
@@ -166,7 +168,7 @@
                 <p>Össznézettség: <span id="total-views">{{$recipe->ossznezettseg}}</span></p>
                 <p>Feltöltés dátuma: <span id="date-of-upload">{{$recipe->created_at}}</span></p>
             </section>
-           
+            @endif
         </div>
         <footer>
             @include('template/footer')

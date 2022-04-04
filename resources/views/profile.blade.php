@@ -4,6 +4,7 @@
     @include('../template/head')
     <link rel="stylesheet" href="../css/profile-desktop.css">
     <link rel="stylesheet" href="../css/rating.css">
+    <script src="../js/profile.js"></script>
     <title>Profil | Recapt</title>
 </head>
 <body>
@@ -16,6 +17,7 @@
             <article>
                 @foreach($receptkonyv as $rk)
                 <div class="result -colorBgTernary">
+                    <a href="../recipe/{{$rk->url_slug}}?adag={{$rk->adag}}">
                     <img src="../{{$rk->kep}}" alt="" >
                     <form action="">
                         <div class="rate">
@@ -30,8 +32,15 @@
                             <input type="radio" id="star1" name="rate" value="1" />
                             <label for="star1" title="text">1 star</label>
                         </div>
+                        
                     </form>
                     <h3>{{$rk->megnevezes}}</h3>
+                    <form action="/api/delete-from-rk/{{$rk->r_id}}" method="POST">@method('delete')
+                    @csrf
+                    <button type="submit">delete</button>
+
+                    </form>
+                    </a>
                 </div>
                @endforeach
             </article>
@@ -81,8 +90,6 @@
                         name="egg-free" id="egg-free" />tojásmentes</label>
                     <label class="mb-1 m-button -fontSize-16 p-3 mr-2 -colorBgTernary" for="laktosefree"><input class="d-none" type="checkbox"
                         name="laktosefree" id="laktosefree" />laktózmentes</label>
-                    <label class="mb-1 m-button -fontSize-16 p-3 mr-2 -colorBgTernary" for="vegan"><input class="d-none" type="checkbox"
-                        name="vegan" id="vegan" />vegán</label>
                 </section>
             </aside>
         </div>

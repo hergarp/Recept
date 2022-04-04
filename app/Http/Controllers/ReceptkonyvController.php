@@ -64,7 +64,7 @@ class ReceptkonyvController extends Controller
         $user=Auth::user()->id; 
         $receptkonyv=DB::table('receptkonyvs')->where ('receptkonyvs.user', '=',$user)
                                             -> join('recepts', 'receptkonyvs.recept', '=', 'recepts.r_id')
-                                            -> select('receptkonyvs.jelzes', 'receptkonyvs.minosites','recepts.url_slug','recepts.megnevezes', 'recepts.kep')
+                                            -> select('receptkonyvs.jelzes', 'receptkonyvs.minosites','recepts.url_slug','recepts.megnevezes', 'recepts.kep', 'recepts.adag', 'recepts.r_id')
                                             ->get();
         return view('profile', ['receptkonyv'=>$receptkonyv]);
     
@@ -99,8 +99,11 @@ class ReceptkonyvController extends Controller
      * @param  \App\Models\Receptkonyv  $receptkonyv
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Receptkonyv $receptkonyv)
+    public function destroy($recept)
     {
-        //
+        $user=Auth::user()->id;
+        Receptkonyv::where('user', '=', $user)
+            ->where('recept', '=', $recept)->delete();
+            return redirect('/profile');
     }
 }

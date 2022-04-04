@@ -54,6 +54,7 @@ Route::get('/api/materials', [AlapanyagController::class, 'show']);
 Route::get('/api/recipe-list', [ReceptController::class, 'recipeList']);
 Route::delete('/api/draft/{id}', [ReceptController::class, 'draft']);
 Route::delete('/api/edit/{id}', [ReceptController::class, 'destroy']);
+Route::delete('/api/delete-from-rk/{recept}', [ReceptkonyvController::class, 'destroy']);
 
 //segéd:
 Route::get('/api/seged/{url_slug}', [ReceptController::class, 'seged']);
