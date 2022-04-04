@@ -8,6 +8,7 @@
     <script src="../js/recipe.js"></script>
     <title>Recept | Recapt</title>
 </head>
+
 <body>
     <main>
         <header>
@@ -91,6 +92,7 @@
                         
                     </div>
                 </div>
+                @endif
                 <div class="right">
                     <div>
                         <a  id="facebookArticle-btn" href="https://www.facebook.com/sharer/sharer.php?u=https://127.0.0.1/recipe/{{$recipe->url_slug}}?adag=4" target="_blank"><i class="fab fa-facebook-f"></i></a>
@@ -132,11 +134,19 @@
                     </ul>
                     <div class="right">
                         <div class="order-md-2">
+                            
                             <form method="GET">
-                                <a href="./{{$recipe->url_slug}}?adag={{$_GET['adag']-1}}#hozzavalok-adag"><i class="fas fa-minus"></i></a>
+
+                             @if ($_GET['adag']<= "1") 
+                                <a href="./{{$recipe->url_slug}}?adag={{$_GET['adag']-1}}#hozzavalok-adag"></a>
+                            @else
+                               <a href="./{{$recipe->url_slug}}?adag={{$_GET['adag']-1}}#hozzavalok-adag"><i class="fas fa-minus"></i></a>
+                            @endif                                
                                 <input id="adag" class="m-form__input w-10 -fontSize-16" type="text" name="adag" value="{{$_GET['adag']}}">
+                                
                                 <label for="adag">adag</label>
                                 <a href="./{{$recipe->url_slug}}?adag={{$_GET['adag']+1}}#hozzavalok-adag"><i class="fas fa-plus"></i></a>
+
                             </form>
                         </div>
                     </div>
@@ -156,7 +166,7 @@
                 <p>Össznézettség: <span id="total-views">{{$recipe->ossznezettseg}}</span></p>
                 <p>Feltöltés dátuma: <span id="date-of-upload">{{$recipe->created_at}}</span></p>
             </section>
-            @endif
+           
         </div>
         <footer>
             @include('template/footer')

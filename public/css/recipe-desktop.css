@@ -22,8 +22,8 @@ ol, ul {
 
 #icons {
     height: 17.6px;
-    display: grid;
-    grid-auto-flow: column;
+    display:grid;
+    grid-auto-flow:column;
     vertical-align: text-top;
     margin-bottom: 2rem;
 }
