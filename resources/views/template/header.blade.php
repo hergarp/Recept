@@ -23,7 +23,7 @@
                 @if (Auth::guest()) 
                 <li><a href="../login">Bejelentkezés</a></li>
                 @else
-                <li><a href="../profile">Profil</a></li>
+                <li><a href="../../profile">Profil</a></li>
                 <li><a href="../logout">Kijelentkezés</a></li>
                 @endif
             </ul>

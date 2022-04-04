@@ -8,6 +8,7 @@
     <script src="../js/recipe.js"></script>
     <title>Recept | Recapt</title>
 </head>
+
 <body>
     <main>
         <header>
@@ -74,11 +75,11 @@
                 <div id="main-pic" style="background-image: url('../{{$recipe->kep}}');"></div>
             </section>
             <section id="icons">
-                <div>
+                <div id="kis-div">
                     <div>
                         <i class="fas fa-print"></i>
                     </div>
-                    <div>
+                    <div id="bookmark">
 
                         <form action="/recipe_save/{{$recipe->url_slug}}" method="post">
                             @csrf
@@ -91,6 +92,7 @@
                         
                     </div>
                 </div>
+                
                 <div class="right">
                     <div>
                         <a  id="facebookArticle-btn" href="https://www.facebook.com/sharer/sharer.php?u=https://127.0.0.1/recipe/{{$recipe->url_slug}}?adag=4" target="_blank"><i class="fab fa-facebook-f"></i></a>
@@ -98,9 +100,11 @@
                 <!-- <i class="m-shareBlock__icon a-icon -md fab fa-facebook-f -facebookColor"></i> -->
             </a>
                     </div>
-                    <div>
-                        <a href=""><i class="fab fa-facebook-messenger"></i></a>
-                    </div>
+
+            <a id="facebookMessengerArticle-btn" href="https://m.me/sharer.php?u=https://127.0.0.1/recipe/{{$recipe->url_slug}}?adag=4" ><i class="fab fa-facebook-messenger"  data-url="https://127.0.0.1/recipe/{{$recipe->url_slug}}?adag=4"></i></a>
+
+            
+                    
                 </div>
             </section>
             <section id="times" class="align-center">
@@ -132,11 +136,19 @@
                     </ul>
                     <div class="right">
                         <div class="order-md-2">
+                            
                             <form method="GET">
-                                <a href="./{{$recipe->url_slug}}?adag={{$_GET['adag']-1}}#hozzavalok-adag"><i class="fas fa-minus"></i></a>
+
+                            @if ($_GET['adag']<= "1") 
+                                <a href="./{{$recipe->url_slug}}?adag={{$_GET['adag']-1}}#hozzavalok-adag"></a>
+                            @else
+                               <a href="./{{$recipe->url_slug}}?adag={{$_GET['adag']-1}}#hozzavalok-adag"><i class="fas fa-minus"></i></a>
+                            @endif                                
                                 <input id="adag" class="m-form__input w-10 -fontSize-16" type="text" name="adag" value="{{$_GET['adag']}}">
+                                
                                 <label for="adag">adag</label>
                                 <a href="./{{$recipe->url_slug}}?adag={{$_GET['adag']+1}}#hozzavalok-adag"><i class="fas fa-plus"></i></a>
+
                             </form>
                         </div>
                     </div>
