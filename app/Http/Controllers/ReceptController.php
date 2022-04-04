@@ -115,28 +115,33 @@ class ReceptController extends Controller
         return redirect('index');
     }
 
-    public function draftList()
-    {
-        $recipes = Recept::all()->where('statusz', '!=', 'publikus');
-        return view('admin.draft-recipe-list', ['recipes'=> $recipes]);
-    }
-
     public function publicList()
     {
         $recipes = Recept::all()->where('statusz', '=', 'publikus');
         return view('admin.recipe-list', ['recipes'=> $recipes]);
     }
 
-    public function recipeList()
+    public function draftList()
     {
-        $recs = DB::table('recepts')->where('statusz', '=', 'publikus')
-                             ->select('url_slug', 'megnevezes', 'kep', 'adag', 'statusz', 'created_at')
+        $recs = DB::table('recepts')->where('statusz', '!=', 'publikus')
+                             ->select('r_id', 'url_slug', 'megnevezes', 'kep', 'adag', 'statusz', 'created_at')
                              ->get();
         $recipes = [];
         foreach ($recs as $recipe) {
             array_push($recipes,$recipe);
         }
-        // return view('admin.recipe-list', ['recipes'=> $recipes]);
+        return response()->json(['recipes'=> $recipes]);
+    }
+
+    public function recipeList()
+    {
+        $recs = DB::table('recepts')->where('statusz', '=', 'publikus')
+                             ->select('r_id', 'url_slug', 'megnevezes', 'kep', 'adag', 'statusz', 'created_at')
+                             ->get();
+        $recipes = [];
+        foreach ($recs as $recipe) {
+            array_push($recipes,$recipe);
+        }
         return response()->json(['recipes'=> $recipes]);
     }
     /**

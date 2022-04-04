@@ -1,23 +1,8 @@
 $(function() {
     apivegpont = 'http://localhost:8000/api/recipe-list';
     const recipes = [];
-    adatbeolvasas(apivegpont, recipes, megjelenit);
-
-    function adatbeolvasas(fajlnev, tomb, myCallback) {
-        tomb.length=0;
-        $.ajax({
-            url: fajlnev,
-            success: function (result) {
-
-                var recs = result.recipes;
-                for (let index = 0; index < recs.length; index++) {
-                    tomb.push(recs[index]);
-                }
-
-                myCallback();
-            },
-        });
-    }
+    const sajatAjax = new SajatAjax();
+    sajatAjax.adatbeolvasas(apivegpont, recipes, megjelenit);
 
     function megjelenit() {
         const szuloElem = $("#body");

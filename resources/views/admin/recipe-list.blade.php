@@ -3,6 +3,7 @@
 <head>
     @include('../template/head')
     <link rel="stylesheet" href="../css/admin-recipe-list-desktop.css">
+    <script src="../js/ajax.js"></script>
     <script src="../js/recipe-list-table.js"></script>
     <script src="../js/recipe-list.js"></script>
     <title>Publikált receptek | Recapt</title>

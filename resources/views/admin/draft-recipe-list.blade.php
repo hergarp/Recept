@@ -2,6 +2,9 @@
 <html lang="hu">
 <head>
     @include('../template/head')
+    <script src="../js/ajax.js"></script>
+    <script src="../js/draft-recipe-list-table.js"></script>
+    <script src="../js/draft-recipe-list.js"></script>
     <link rel="stylesheet" href="../css/admin-recipe-list-desktop.css">
     <title>Draft receptek | Recapt</title>
 </head>
@@ -14,7 +17,6 @@
         <div class="container">
             @if (Auth::check() and Auth::user()->is_admin)
             <article>
-                <input type="text" placeholder="Szűrés név alapján">
                 <table>
                     <thead>
                         <th>Kép</th>
@@ -22,15 +24,7 @@
                         <th>Publikálás időpontja</th>
                         <th>Státusz</th>
                     </thead>
-                    <tbody>
-                        @foreach ($recipes as $recipe)
-                            <tr>
-                                <td><div class="image" style="background-image: url('../../{{ $recipe->kep}}');"></div></td>
-                                <td><a href="/admin/edit/{{$recipe->r_id}}">{{ $recipe->megnevezes}}</a></td>
-                                <td>{{ $recipe->created_at}}</td>
-                                <td>{{ $recipe->statusz}}</td>
-                            </tr>
-                        @endforeach
+                    <tbody id="body">
                     </tbody>
                 </table>
             </article>

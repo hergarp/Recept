@@ -4,6 +4,7 @@
 <head>
     @include('../template/head')
     <link rel="stylesheet" href="../css/materials-desktop.css">
+    <script src="../js/ajax.js"></script>
     <script src="../js/materials.js"></script>
     <script src="../js/materials-table.js"></script>
     <title>Alapanyagok | Recapt</title>

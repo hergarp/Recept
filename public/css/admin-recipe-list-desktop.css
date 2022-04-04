@@ -7,9 +7,31 @@ tr:nth-child(even) {
     background-color: rgba(255,160,122,0.3);
 }
 
+th, td {
+    padding: 0 10px;
+}
+
 .image {
     width: 150px;
     height: 99px;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+label {
+    padding: 5px 20px;
+    border-radius: 5px;
+}
+
+.tag {
+    padding: 5px 20px;
+    border-radius: 5px;
+}
+
+.arrived {
+    background-color: coral;
+}
+
+.draft {
+    background-color: lightgrey;
 }

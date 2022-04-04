@@ -11,10 +11,11 @@ class Table {
     }
 
     setAdat(ertek) {
-        this.kep.html(`<a href="../recipe/`+ertek.url_slug+`?adag=`+ertek.adag+`"><div class="image" style="background-image: url('../../`+ertek.kep+`');"></div></a>`);
+        this.kep.html(`<div class="image" style="background-image: url('../../`+ertek.kep+`');"></div>`);
         var cim = `<a href="../admin/edit/`+ertek.r_id+`">`+ertek.megnevezes+`</a>`;
         this.cim.html(cim);
         this.idopont.html(ertek.created_at);
-        this.statusz.html(ertek.statusz);
+        var statusz = `<span class="tag">` + ertek.statusz + `</span>`
+        this.statusz.html(statusz);
     }
 }
