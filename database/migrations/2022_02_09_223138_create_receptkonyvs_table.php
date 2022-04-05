@@ -17,7 +17,8 @@ class CreateReceptkonyvsTable extends Migration
             $table->increments('rk_id', 11);
             $table->unsignedBigInteger('user')->index();
             $table->unsignedInteger('recept')->index();
-            $table->boolean('jelzes')->default(0);
+            $table->boolean('elkeszitette')->default(0);
+            $table->boolean('sajat')->default(0);
             $table->tinyInteger('minosites')->default(0);
             $table->timestamps();
             $table->unique(array('user', 'recept'));

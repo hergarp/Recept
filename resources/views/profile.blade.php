@@ -18,7 +18,7 @@
                 @foreach($receptkonyv as $rk)
                 <div class="result -colorBgTernary">
                     <a href="../recipe/{{$rk->url_slug}}?adag={{$rk->adag}}">
-                    <img src="../{{$rk->kep}}" alt="" >
+                    <div class="image" style="background-image: url('../{{$rk->kep}}');"></div>
                     <form action="">
                         <div class="rate">
                             <input type="radio" id="star5" name="rate" value="5" />

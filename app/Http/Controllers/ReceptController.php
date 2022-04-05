@@ -11,6 +11,7 @@ use App\Models\Alkotja;
 use App\Models\Lepes;
 use App\Models\Uzenet;
 use App\Models\Allergen;
+use App\Models\Receptkonyv;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
@@ -476,6 +477,14 @@ class ReceptController extends Controller
                     case 'public':
                         $recept->statusz = 'publikus';
                         $recept->save();
+
+                        $rk=new Receptkonyv();
+                        $rk->user=$recept->user; 
+                        $rk->recept=$recept->r_id; 
+                        $rk->sajat = 1;
+                        $rk->minosites=0;  // ezt kikell szedni adatbázis migráció után
+                        $rk->save();
+
                         break;
                     }
 
