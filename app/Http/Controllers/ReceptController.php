@@ -176,10 +176,18 @@ class ReceptController extends Controller
                 }
             }
             $steps = Lepes::all()->where('recept', '=', $id);
-            return view('recipe', ['recipe'=> $recipe, 'alkotjas'=>$alkotjas, 'steps'=>$steps, 'allergens'=>$allergens]);
+
+            $ennyiReceptkonybeVanElmentve = Recept::where('r_id', '=', $recipe->r_id)
+                                                    ->join('receptkonyvs', 'r_id', '=', 'receptkonyvs.recept')
+                                                    ->join('users', 'users.id', '=', 'receptkonyvs.user')
+                                                    ->count();
+            return view('recipe', ['recipe'=> $recipe, 'alkotjas'=>$alkotjas, 'steps'=>$steps, 'allergens'=>$allergens, 'ennyiReceptkonybeVanElmentve' => $ennyiReceptkonybeVanElmentve]);
         }
     }
 
+    public function test() {
+        Recept::find(1);
+    }
     public function seged($url_slug)
     {
         $recipe = Recept::where('url_slug',$url_slug)->first();

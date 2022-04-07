@@ -77,20 +77,24 @@
             <section id="icons">
                 <div id="kis-div">
                     <div>
+                    <button type="submit" id='recipe-print'>
                         <i class="fas fa-print"></i>
+                        </button>
                     </div>
+                    
                     <div id="bookmark">
-
+                      
                         <form action="/recipe_save/{{$recipe->url_slug}}" method="post">
                             @csrf
                             <input class="d-none" value="{{$recipe->r_id}}" name="recipe_id" type="text">
                             <input class="d-none" value="{{$_GET['adag']}}" name="recipe_adag" type="text">
-                        <button type="submit" id='recipe-save'>
-                        <i class="far fa-bookmark"></i>
-                    </button>
+                            <button type="submit" id='recipe-save'>
+                            <i class="far fa-bookmark"></i>
+                            </button>
                         </form>
-                        
+      
                     </div>
+                    
                 </div>
                 
                 <div class="right">
@@ -164,10 +168,11 @@
                 
             </section>
             <section>
-                <p>Receptkönyvben: <span id="recipebook">{{$recipe->receptkonyvben}}</span></p>
+                <p>Receptkönyvben: <span id="recipebook">{{$ennyiReceptkonybeVanElmentve}}</span></p>
                 <p>Össznézettség: <span id="total-views">{{$recipe->ossznezettseg}}</span></p>
                 <p>Feltöltés dátuma: <span id="date-of-upload">{{$recipe->created_at}}</span></p>
             </section>
+   
             @endif
         </div>
         <footer>

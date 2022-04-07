@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Receptkonyv extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'rk_id';
 }

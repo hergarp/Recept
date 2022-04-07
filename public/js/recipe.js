@@ -1,3 +1,19 @@
+function ID(nev) {
+    return document.getElementById(nev);
+}
+$(function() {
+  
+    // ID("recipe-save").addEventListener("click", () => {
+    //     szamlalo +=1;
+    //     console.log(szamlalo);
+    // });
+    ID("recipe-print").addEventListener("click", () => {
+        window.print();
+    });
+    
+})
+
+
 $(function() {
     times();
     quantity();
