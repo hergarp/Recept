@@ -695,6 +695,7 @@ class CreateAlapanyagsTable extends Migration
         Alapanyag::create(['megnevezes' => 'tej']);
         Alapanyag::create(['megnevezes' => 'sovány tej']);
         Alapanyag::create(['megnevezes' => 'laktózmentes tej']);
+
         //tészták
         Alapanyag::create(['megnevezes' => 'tarhonya']);
         Alapanyag::create(['megnevezes' => 'csuszatészta']);
@@ -731,6 +732,76 @@ class CreateAlapanyagsTable extends Migration
         Alapanyag::create(['megnevezes' => 'sonkás tortellini']);
         Alapanyag::create(['megnevezes' => 'sajtos tortellini']);
         Alapanyag::create(['megnevezes' => 'tortelloni']);
+        //tészták vége
+
+        //felvágottak, húskészítmények
+        Alapanyag::create(['megnevezes' => 'tepertő']);
+        Alapanyag::create(['megnevezes' => 'libatepertő']);
+        Alapanyag::create(['megnevezes' => 'hamburgerhús']);
+        Alapanyag::create(['megnevezes' => 'löncshús']);
+        Alapanyag::create(['megnevezes' => 'májgombóc']);
+        Alapanyag::create(['megnevezes' => 'melegszendvicskrém']);
+        Alapanyag::create(['megnevezes' => 'májas hurka']);
+        Alapanyag::create(['megnevezes' => 'véres hurka']);
+        Alapanyag::create(['megnevezes' => 'konzerv vagdalthús']);
+        Alapanyag::create(['megnevezes' => 'disznósajt']);
+        Alapanyag::create(['megnevezes' => 'tatárbifsztek']);
+        Alapanyag::create(['megnevezes' => 'kolbász']);
+        Alapanyag::create(['megnevezes' => 'chorizo']);
+        Alapanyag::create(['megnevezes' => 'csípős kolbász']);
+        Alapanyag::create(['megnevezes' => 'gyulai kolbász']);
+        Alapanyag::create(['megnevezes' => 'paprikás szalámi']);
+        Alapanyag::create(['megnevezes' => 'lecsókolbász']);
+        Alapanyag::create(['megnevezes' => 'szalámi']);
+        Alapanyag::create(['megnevezes' => 'főzőkolbász']);
+        Alapanyag::create(['megnevezes' => 'debreceni kolbász']);
+        Alapanyag::create(['megnevezes' => 'paprikás kolbász']);
+        Alapanyag::create(['megnevezes' => 'kolbászhús']);
+        Alapanyag::create(['megnevezes' => 'parasztkolbász']);
+        Alapanyag::create(['megnevezes' => 'sonkás szalámi']);
+        Alapanyag::create(['megnevezes' => 'sütnivaló kolbász']);
+        Alapanyag::create(['megnevezes' => 'téliszalámi']);
+        Alapanyag::create(['megnevezes' => 'lángolt kolbász']);
+        Alapanyag::create(['megnevezes' => 'kenőmájas']);
+        Alapanyag::create(['megnevezes' => 'májkrém']);
+        Alapanyag::create(['megnevezes' => 'libamájpástétom']);
+        Alapanyag::create(['megnevezes' => 'prosciutto']);
+        Alapanyag::create(['megnevezes' => 'serrano sonka']);
+        Alapanyag::create(['megnevezes' => 'sonka']);
+        Alapanyag::create(['megnevezes' => 'felvágott']);
+        Alapanyag::create(['megnevezes' => 'csirkemellsonka']);
+        Alapanyag::create(['megnevezes' => 'gépsonka']);
+        Alapanyag::create(['megnevezes' => 'pármai sonka']);
+        Alapanyag::create(['megnevezes' => 'mangalicasonka']);
+        Alapanyag::create(['megnevezes' => 'pulykamellsonka']);
+        Alapanyag::create(['megnevezes' => 'feketeerdő sonka']);
+        Alapanyag::create(['megnevezes' => 'kötözött sonka']);
+        Alapanyag::create(['megnevezes' => 'prágai sonka']);
+        Alapanyag::create(['megnevezes' => 'selyemsonka']);
+        Alapanyag::create(['megnevezes' => 'főtt sonka']);
+        Alapanyag::create(['megnevezes' => 'füstölt-főtt tarja']);
+        Alapanyag::create(['megnevezes' => 'füstölt lapocka']);
+        Alapanyag::create(['megnevezes' => 'pastrami']);
+        Alapanyag::create(['megnevezes' => 'bacon']);
+        Alapanyag::create(['megnevezes' => 'pancetta']);
+        Alapanyag::create(['megnevezes' => 'füstölt szalonna']);
+        Alapanyag::create(['megnevezes' => 'mangalica szalonna']);
+        Alapanyag::create(['megnevezes' => 'erdélyi szalonna']);
+        Alapanyag::create(['megnevezes' => 'kenyérszalonna']);
+        Alapanyag::create(['megnevezes' => 'kanadai bacon']);
+        Alapanyag::create(['megnevezes' => 'kolozsvári szalonna']);
+        Alapanyag::create(['megnevezes' => 'angolszalonna']);
+        Alapanyag::create(['megnevezes' => 'császárszalonna']);
+        Alapanyag::create(['megnevezes' => 'tokaszalonna']);
+        Alapanyag::create(['megnevezes' => 'mortadella']);
+        Alapanyag::create(['megnevezes' => 'virsli']);
+        Alapanyag::create(['megnevezes' => 'krinolin']);
+        Alapanyag::create(['megnevezes' => 'párizsi']);
+        Alapanyag::create(['megnevezes' => 'juhbeles virsli']);
+        Alapanyag::create(['megnevezes' => 'frankfurti virsli']);
+        Alapanyag::create(['megnevezes' => 'füstölt virsli']);
+        Alapanyag::create(['megnevezes' => 'sertés virsli']);
+        //felvágottak, húskészítmények vége
     }
 
     /**

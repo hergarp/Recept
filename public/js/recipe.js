@@ -37,17 +37,13 @@ $(function() {
         let q = document.querySelectorAll(".quantity");
         q.forEach(element => {
             value = element.getAttribute('value');
-            if ($.isNumeric(value)) {
+            if ($.isNumeric(value) && value != 0) {
                 let quantity = value * portion;
                 $(element).html(quantity);
             }
             else {
-                $(element).html(value);
+                $(element).html('');
             }
         });
-    }
-
-    function adagSzabalyzo() {
-
     }
 })

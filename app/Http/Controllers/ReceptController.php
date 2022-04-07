@@ -94,7 +94,7 @@ class ReceptController extends Controller
             $a = new Alkotja();
             $a->recept = $r_id;
             $a->alapanyag_mertekegyseg = $am->am_id;
-            $a->mennyiseg = $material[1]/$adag;
+            $a->mennyiseg = $material[1];
             $a->save();
         }
 

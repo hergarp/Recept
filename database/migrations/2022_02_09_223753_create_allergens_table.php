@@ -189,6 +189,7 @@ class CreateAllergensTable extends Migration
         Allergen::create(['alapanyag' => 'sovány tej', 'allergen' => 'laktose']);
         Allergen::create(['alapanyag' => 'sovány tej', 'allergen' => 'milk']);
         Allergen::create(['alapanyag' => 'laktózmentes tej', 'allergen' => 'milk']);
+        
         //tészták
         Allergen::create(['alapanyag' => 'tarhonya', 'allergen' => 'gluten']);
         Allergen::create(['alapanyag' => 'csuszatészta', 'allergen' => 'gluten']);
@@ -227,6 +228,76 @@ class CreateAllergensTable extends Migration
         Allergen::create(['alapanyag' => 'sajtos tortellini', 'allergen' => 'gluten']);
         Allergen::create(['alapanyag' => 'sajtos tortellini', 'allergen' => 'animal']);
         Allergen::create(['alapanyag' => 'tortelloni', 'allergen' => 'gluten']);
+        //tészták vége
+        
+        //felvágottak, húskészítmények
+        Allergen::create(['alapanyag' => 'tepertő', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'libatepertő', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'hamburgerhús', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'löncshús', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'májgombóc', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'melegszendvicskrém', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'májas hurka', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'véres hurka', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'konzerv vagdalthús', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'disznósajt', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'tatárbifsztek', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'kolbász', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'chorizo', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'csípős kolbász', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'gyulai kolbász', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'paprikás szalámi', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'lecsókolbász', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'szalámi', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'főzőkolbász', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'debreceni kolbász', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'paprikás kolbász', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'kolbászhús', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'parasztkolbász', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'sonkás szalámi', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'sütnivaló kolbász', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'téliszalámi', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'lángolt kolbász', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'kenőmájas', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'májkrém', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'libamájpástétom', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'prosciutto', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'serrano sonka', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'sonka', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'felvágott', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'csirkemellsonka', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'gépsonka', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'pármai sonka', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'mangalicasonka', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'pulykamellsonka', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'feketeerdő sonka', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'kötözött sonka', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'prágai sonka', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'selyemsonka', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'főtt sonka', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'füstölt-főtt tarja', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'füstölt lapocka', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'pastrami', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'bacon', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'pancetta', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'füstölt szalonna', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'mangalica szalonna', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'erdélyi szalonna', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'kenyérszalonna', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'kanadai bacon', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'kolozsvári szalonna', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'angolszalonna', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'császárszalonna', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'tokaszalonna', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'mortadella', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'virsli', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'krinolin', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'párizsi', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'juhbeles virsli', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'frankfurti virsli', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'füstölt virsli', 'allergen' => 'animal']);
+        Allergen::create(['alapanyag' => 'sertés virsli', 'allergen' => 'animal']);
+        //felvágottak, húskészítmények vége
     }
 
     /**

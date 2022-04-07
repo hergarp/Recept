@@ -25,7 +25,7 @@
       <section>
         <h2>Hozzávalók</h2>
         <div id="ingredients">
-          <div class="d-none alapanyag-felvitel-template m-form__selectWrapper -colorBgTernary mb-3 ingredients">
+          <div class="d-none alapanyag-felvitel-template m-form__selectWrapper -colorBgTernary mb-3">
             <input class="-hidden m-form__input raw-material-name" id="material" list="materials" name="alapanyagok" placeholder="Alapanyag">
             <datalist id="materials">
               @foreach ($materials as $material)
@@ -52,7 +52,7 @@
             <input class="-hidden m-form__input raw-material-quantity" type="number" name="quantity[]" id="quantityedit-{{$alkotja->alk_id}}"
               placeholder="mennyiség" value="{{$alkotja->mennyiseg}}" />
             <select class="m-form__select left-b raw-material-unit" name="unit[]" id="unitedit-{{$alkotja->alk_id}}">
-              <option value="{{$alkotja->mertekegyseg}}">{{$alkotja->mertekegyseg}}</option>
+              <option value="{{$alkotja->mertekegyseg}}" selected>{{$alkotja->mertekegyseg}}</option>
             </select>
             <div class="right">
                 <button class="-delete little-button">–</button>
@@ -136,13 +136,13 @@
         </div>
         <div id="preparation-hiba" class="w-100"></div>
         <div class="-colorBgTernary mb-3 w-100 values">
-          <label for="cooking">Főzési idő</label>
+          <label for="cooking">Főzési idő:</label>
           <input class="align-center -hidden m-form__input" name="cooking" id="cooking" min="1" value="{{ $recipe->fozesi_ido }}"/>
           <span>perc</span>
         </div>
         <div id="cooking-hiba" class="w-100"></div>
         <div class="-colorBgTernary mb-3 w-100 values">
-          <label for="baking">Sütési idő</label>
+          <label for="baking">Sütési idő:</label>
           <input class="align-center -hidden m-form__input" name="baking" id="baking" min="1" value="{{ $recipe->sutesi_ido }}"/>
           <span>perc</span>
         </div>
@@ -150,42 +150,42 @@
       </section>
       <section>
         <h2>Mikor</h2>
-        <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary" for="breakfast"><input class="d-none"
+        <label class="m-button -fontSize-16 p-3 mr-2 mb-1 -colorBgTernary" for="breakfast"><input class="d-none"
             type="checkbox" name="breakfast" id="breakfast" <?php echo $recipe->reggeli == 1
                 ? 'checked'
                 : ''; ?>/>reggeli</label>
-        <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary" for="elevenses"><input class="d-none"
+        <label class="m-button -fontSize-16 p-3 mr-2 mb-1 -colorBgTernary" for="elevenses"><input class="d-none"
             type="checkbox" name="elevenses" id="elevenses" <?php echo $recipe->tizorai == 1
                 ? 'checked'
                 : ''; ?>/>tízórai</label>
-        <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary" for="lunch"><input class="d-none" type="checkbox"
+        <label class="m-button -fontSize-16 p-3 mr-2 mb-1 -colorBgTernary" for="lunch"><input class="d-none" type="checkbox"
             name="lunch" id="lunch" <?php echo $recipe->ebed == 1
                 ? 'checked'
                 : ''; ?>/>ebéd</label>
-        <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary" for="snack"><input class="d-none" type="checkbox"
+        <label class="m-button -fontSize-16 p-3 mr-2 mb-1 -colorBgTernary" for="snack"><input class="d-none" type="checkbox"
             name="snack" id="snack" <?php echo $recipe->uzsonna == 1
                 ? 'checked'
                 : ''; ?>/>uzsonna</label>
-        <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary" for="dinner"><input class="d-none" type="checkbox"
+        <label class="m-button -fontSize-16 p-3 mr-2 mb-1 -colorBgTernary" for="dinner"><input class="d-none" type="checkbox"
             name="dinner" id="dinner" <?php echo $recipe->vacsora == 1
                 ? 'checked'
                 : ''; ?>/>vacsora</label>
       </section>
       <section>
         <h2>Szezon</h2>
-        <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary" for="winter"><input class="d-none" type="checkbox"
+        <label class="m-button -fontSize-16 p-3 mr-2 mb-1 -colorBgTernary" for="winter"><input class="d-none" type="checkbox"
             name="winter" id="winter" <?php echo $recipe->tel == 1
                 ? 'checked'
                 : ''; ?>/>tél</label>
-        <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary" for="spring"><input class="d-none" type="checkbox"
+        <label class="m-button -fontSize-16 p-3 mr-2 mb-1 -colorBgTernary" for="spring"><input class="d-none" type="checkbox"
             name="spring" id="spring" <?php echo $recipe->tavasz == 1
                 ? 'checked'
                 : ''; ?>/>tavasz</label>
-        <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary" for="summer"><input class="d-none" type="checkbox"
+        <label class="m-button -fontSize-16 p-3 mr-2 mb-1 -colorBgTernary" for="summer"><input class="d-none" type="checkbox"
             name="summer" id="summer" checked <?php echo $recipe->nyar == 1
                 ? 'checked'
                 : ''; ?>/>nyár</label>
-        <label class="m-button -fontSize-16 p-3 mr-2 -colorBgTernary" for="autumn"><input class="d-none" type="checkbox"
+        <label class="m-button -fontSize-16 p-3 mr-2 mb-1 -colorBgTernary" for="autumn"><input class="d-none" type="checkbox"
             name="autumn" id="autumn" <?php echo $recipe->osz == 1
                 ? 'checked'
                 : ''; ?>/>ősz</label>
