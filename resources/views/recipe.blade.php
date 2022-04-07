@@ -130,7 +130,7 @@
                 <div id="hozzavalok-adag">
                     <ul>
                         @foreach($alkotjas as $alkotja)
-                        <li><spam class="quantity" value="{{$alkotja->mennyiseg}}"></spam> 
+                        <li><spam class="quantity" value="{{$alkotja->mennyiseg / $recipe->adag}}"></spam> 
                         <spam class="unit">{{$alkotja->mertekegyseg}}</spam> {{$alkotja->alapanyag}}</li>
                        @endforeach
                     </ul>

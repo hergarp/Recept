@@ -6,6 +6,7 @@ $(function () {
     matunitsBeolvasas(matunitsApiVegpont, matunits);
     materialsBeolvasas(materialsApiVegpont, materials);
     delField();
+    mertekegysegekBeolvasaskor();
     var addingMaterialCounter = 1;
     var stepNum = 1;
     var nameNum = 1;
@@ -53,7 +54,7 @@ $(function () {
     function addingMaterial() {
         const szuloElem = $("#ingredients");
         const sablonElem = $(".alapanyag-felvitel-template");
-        let ujElem = sablonElem.clone().appendTo(szuloElem).removeClass('d-none alapanyag-felvitel-template');
+        let ujElem = sablonElem.clone().appendTo(szuloElem).removeClass('d-none alapanyag-felvitel-template').addClass('ingredients');
         var materialid = 'material-' + addingMaterialCounter;
         var materiallist = "materials-" + addingMaterialCounter;
         var quantityid = 'quantity-' + addingMaterialCounter;
@@ -63,6 +64,7 @@ $(function () {
         $("[id=quantity]:eq(1)").attr("id", quantityid).attr("name",'quantity[]');
         $("[id=unit]:eq(1)").attr("id", unitid).attr("required", true).attr("name",'unit[]');
         mertekegysegAdas(materialid, unitid, quantityid);
+        delField();
         addingMaterialCounter += 1;
     }
 
@@ -76,6 +78,7 @@ $(function () {
         let ujElem = sablonElem.clone().appendTo(szuloElem).removeClass('d-none step-template');
         var stepId = "step-" + stepNum;
         $("[id=step]:eq(1)").attr("id", stepId).attr("required", true).attr("name",'step[]');
+        delField();
         stepNum += 1;
     }
     
@@ -131,6 +134,20 @@ $(function () {
             }
         }).trigger('input');
         requiredQuantity(unitId, quantityId);
+    }
+
+    function mertekegysegekBeolvasaskor() {
+        let inputs = document.querySelectorAll("[name='material[]']");
+        
+        inputs.forEach(row => {
+            let material = $(row).val();
+            let id = $(row).attr('id').split('-')[1];
+            var data = matunits.filter(element => element.alapanyag == material);
+            console.log(data);
+            data.forEach(element => {
+                $('#unitedit-' + id).append(`<option value="${element.mertekegyseg}">${element.mertekegyseg}</option>`);
+            });
+        });
     }
     
     function requiredQuantity(unitId, quantityId) {
