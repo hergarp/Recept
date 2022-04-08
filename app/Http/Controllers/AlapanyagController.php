@@ -6,6 +6,7 @@ use App\Models\Alapanyag;
 use App\Models\Mertekegyseg;
 use App\Models\Alapanyag_mertekegyseg;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AlapanyagController extends Controller
 {
@@ -58,8 +59,10 @@ class AlapanyagController extends Controller
      */
     public function show(Alapanyag $alapanyag)
     {
-        $materials = Alapanyag::all();
-        return response()->json($materials);
+        $materials = DB::table('alapanyags')->select('megnevezes')->pluck('megnevezes');
+        return response()->json(['materials'=> $materials]);
+        // $materials = Alapanyag::all();
+        // return response()->json($materials);
     }
 
     /**

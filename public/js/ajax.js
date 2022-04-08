@@ -16,4 +16,15 @@ class SajatAjax {
             },
         });
     }
+
+    szimplaBeolvasas(fajlnev, tomb) {
+        $.ajax({
+            url: fajlnev,
+            success: function (result) {
+                result.forEach(element => {
+                    tomb.push(element);
+                });
+            },
+        });
+    }
 }

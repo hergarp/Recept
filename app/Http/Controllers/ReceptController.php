@@ -145,6 +145,13 @@ class ReceptController extends Controller
         }
         return response()->json(['recipes'=> $recipes]);
     }
+
+    public function titleList()
+    {
+        // $urls = Recept::all();
+        $urls = DB::table('recepts')->select('url_slug')->pluck('url_slug');
+        return response()->json($urls);
+    }
     /**
      * Display the specified resource.
      *
