@@ -75,6 +75,7 @@
                             <option value="laktose">laktóz</option>
                             <option value="egg">tojás</option>
                             <option value="gluten">glutén</option>
+                            <option value="animal">állati eredetű</option>
                         </select>
                     </div>
                     <div class="button-div">
