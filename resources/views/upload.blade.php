@@ -4,8 +4,9 @@
 <head>
   @include('../template/head')
   <link rel="stylesheet" href="css/upload-desktop.css" />
-  <script src="js/urlap_validacio.js" type="text/javascript"></script>
+  <script src="js/ajax.js"></script>
   <script src="js/upload.js"></script>
+  <script src="js/urlap_validacio.js" type="text/javascript"></script>
   <title>Receptfeltöltés | Recapt</title>
 </head>
 
@@ -20,7 +21,8 @@
     <article>
       <p>A csillaggal (<span class="red">*</span>) jelölt mezők kitöltése kötelező.</p>
       <input class="w-100" type="text" name="title" id="title" placeholder="Név*" required/>
-      <input class="d-none" id="slug" type="text" name="url_slug">
+      <input class="d-none" id="slug" name="url_slug">
+      <div id="title-error"></div>
       <div id="image">
         <div>
           <h2>kép feltöltése<span class="red">*</span></h2>
@@ -40,7 +42,7 @@
                 <option value="{{ $material -> megnevezes}}">{{ $material -> megnevezes}}</option>
               @endforeach
             </datalist>
-            <input class="-hidden m-form__input raw-material-quantity" min="0" name="quantities" id="quantity" placeholder="mennyiség"/>
+            <input class="-hidden m-form__input" type="text" name="quantities" id="quantity" placeholder="mennyiség"/>
             <select class="m-form__select left-b raw-material-unit" name="units" id="unit">
              <option selected disabled>mértékegység</option>
             </select>
@@ -101,31 +103,32 @@
         </div>
 
         <div class="-colorBgTernary mb-3 w-100 portion">
-          <label for="adag">Adag:</label>
-          <input id="adag" class="align-center -hidden m-form__input" name="adag" min="1" max="100" required/>
+          <label for="portion">Adag:(<span class="red">*</span>)</label>
+          <input id="portion" class="align-center -hidden m-form__input" type="text" name="adag" min="1" max="100" required/>
         </div>
-        <div id="adag-hiba" class="w-100"></div>
+        <div id="portion-error" class="w-100"></div>
       </section>
       <section>
         <h2>Értékek</h2>
+        <div id="time-error"></div>
         <div class="-colorBgTernary mb-3 w-100 values">
           <label for="preparation">Előkészületi idő: </label>
-          <input class="align-center -hidden m-form__input" name="preparation" id="preparation" min="1"/>
+          <input class="align-center -hidden m-form__input" type="text" name="preparation" id="preparation" min="1"/>
           <span>perc</span>
         </div>
-        <div id="preparation-hiba" class="w-100"></div>
+        <div id="preparation-error" class="w-100"></div>
         <div class="-colorBgTernary mb-3 w-100 values">
           <label for="cooking">Főzési idő: </label>
-          <input class="align-center -hidden m-form__input" name="cooking" id="cooking" min="1"/>
+          <input class="align-center -hidden m-form__input" type="text" name="cooking" id="cooking" min="1"/>
           <span>perc</span>
         </div>
-        <div id="cooking-hiba" class="w-100"></div>
+        <div id="cooking-error" class="w-100"></div>
         <div class="-colorBgTernary mb-3 w-100 values">
           <label for="baking">Sütési idő: </label>
-          <input class="align-center -hidden m-form__input" name="baking" id="baking" min="1"/>
+          <input class="align-center -hidden m-form__input" type="text" name="baking" id="baking" min="1"/>
           <span>perc</span>
         </div>
-        <div id="baking-hiba" class="w-100"></div>
+        <div id="baking-error" class="w-100"></div>
       </section>
       <section>
         <h2>Mikor</h2>
@@ -200,7 +203,7 @@
         <h2>Egyéb elnevezések</h2>
         <div id="names">
           <div class="d-none name-template -colorBgTernary mb-3 w-100 names">
-            <input class="-hidden m-form__input w-80" type="text" id="name" placeholder="További elnevezés"/>
+            <input class="-hidden m-form__input w-80" id="name" placeholder="További elnevezés"/>
             <div class="right"><button type="button" class="-delete little-button">–</button></div>
           </div>
         </div>
@@ -210,7 +213,7 @@
       </section>
     </aside>
     <div class="align-center w-100" id="d-send">
-      <button type="submit" class="-adding -sending">Beküldés</button>
+      <button id="sending" type="submit" class="-sending" disabled="true">Beküldés</button>
     </div>
   </form>
   @else

@@ -3,29 +3,16 @@ function ID(nev) {
 }
 
 $(function () {
-    materialsApiVegpont = 'http://localhost:8000/api/materials';
     matunitsApiVegpont = 'http://localhost:8000/api/matunits';
-    const materials = [];
     const matunits = [];
-    matunitsBeolvasas(matunitsApiVegpont, matunits);
-    materialsBeolvasas(materialsApiVegpont, materials);
+    const sajatAjax = new SajatAjax();
+    sajatAjax.szimplaBeolvasas(matunitsApiVegpont, matunits);
     delField();
     var addingMaterialCounter = 1;
     var stepNum = 1;
     var nameNum = 1;
     addingMaterial();
     addingStep();
-
-    function materialsBeolvasas(fajlnev, tomb) {
-        $.ajax({
-            url: fajlnev,
-            success: function (result) {
-                result.forEach((value) => {
-                    tomb.push(value.megnevezes);
-                });
-            },
-        });
-    }
 
     $('#title').on('input', function() {
         url = $(this).val().toLowerCase()
@@ -67,13 +54,14 @@ $(function () {
         var unitid = 'unit-' + addingMaterialCounter;
         $("[id=material]:eq(1)").attr("id", materialid).attr("list", materiallist).attr("required", true).attr("name",'material[]');
         $("[id=materials]:eq(1)").attr("id", materiallist);
-        $("[id=quantity]:eq(1)").attr("id", quantityid).attr("name",'quantity[]');
+        $("[id=quantity]:eq(1)").attr("id", quantityid).attr("name",'quantity[]').addClass('raw-material-quantity');
         $("[id=quantity-hiba]:eq(1)").attr("id", quantityHibaId);
         $("[id=unit]:eq(1)").attr("id", unitid).attr("required", true).attr("name",'unit[]');
         delField();
         mertekegysegAdas(materialid, unitid, quantityid);
         addingMaterialCounter += 1;
-        ID(quantityid).addEventListener("blur", () => validate(quantityid, quantityHibaId));
+        //validáció
+        ID(quantityid).addEventListener("blur", () => validateInputs(errors));
     }
 
     $('#adding-material').click(function() {
@@ -112,17 +100,6 @@ $(function () {
         $('.-delete').on('click', function() {
             $(this).parent().parent().remove();
         })
-    }
-
-    function matunitsBeolvasas(fajlnev, tomb) {
-        $.ajax({
-            url: fajlnev,
-            success: function (result) {
-                result.forEach(element => {
-                    tomb.push(element);
-                });
-            },
-        });
     }
     
     function mertekegysegAdas(materialId, unitId, quantityId) {

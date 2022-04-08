@@ -55,6 +55,7 @@ Route::get('/api/matunits', [Alapanyag_mertekegysegController::class, 'index']);
 Route::get('/api/materials', [AlapanyagController::class, 'show']);
 Route::get('/api/recipe-list', [ReceptController::class, 'recipeList']);
 Route::get('/api/draft-recipe-list', [ReceptController::class, 'draftList']);
+Route::get('/api/recipe-titles', [ReceptController::class, 'titleList']);
 Route::delete('/api/draft/{id}', [ReceptController::class, 'draft']);
 Route::delete('/api/edit/{id}', [ReceptController::class, 'destroy']);
 Route::delete('/api/delete-from-rk/{recept}', [ReceptkonyvController::class, 'destroy']);
