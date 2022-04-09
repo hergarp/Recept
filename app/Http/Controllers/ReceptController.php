@@ -124,31 +124,22 @@ class ReceptController extends Controller
 
     public function draftList()
     {
-        $recs = DB::table('recepts')->where('statusz', '!=', 'publikus')
+        $recipes = DB::table('recepts')->where('statusz', '!=', 'publikus')
                              ->select('r_id', 'url_slug', 'megnevezes', 'kep', 'adag', 'statusz', 'created_at')
                              ->get();
-        $recipes = [];
-        foreach ($recs as $recipe) {
-            array_push($recipes,$recipe);
-        }
         return response()->json(['recipes'=> $recipes]);
     }
 
     public function recipeList()
     {
-        $recs = DB::table('recepts')->where('statusz', '=', 'publikus')
+        $recipes = DB::table('recepts')->where('statusz', '=', 'publikus')
                              ->select('r_id', 'url_slug', 'megnevezes', 'kep', 'adag', 'statusz', 'created_at')
                              ->get();
-        $recipes = [];
-        foreach ($recs as $recipe) {
-            array_push($recipes,$recipe);
-        }
         return response()->json(['recipes'=> $recipes]);
     }
 
     public function titleList()
     {
-        // $urls = Recept::all();
         $urls = DB::table('recepts')->select('url_slug')->pluck('url_slug');
         return response()->json($urls);
     }

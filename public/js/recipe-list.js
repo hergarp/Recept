@@ -26,6 +26,6 @@ $(function() {
         console.log("szűrő:" + szuro);
         let szurtvegpont = apivegpont + "?megnevezes_like=" + szuro;
         console.log("szűrt:" + szurtvegpont);
-        adatbeolvasas(szurtvegpont, recipes, megjelenit);
+        sajatAjax.adatbeolvasas(szurtvegpont, recipes, megjelenit);
     })
 })

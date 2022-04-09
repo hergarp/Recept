@@ -1,26 +1,13 @@
 $(function () {
-    materialsApiVegpont = 'http://localhost:8000/api/materials';
     matunitsApiVegpont = 'http://localhost:8000/api/matunits';
-    const materials = [];
     const matunits = [];
-    matunitsBeolvasas(matunitsApiVegpont, matunits);
-    materialsBeolvasas(materialsApiVegpont, materials);
+    const sajatAjax = new SajatAjax();
+    sajatAjax.szimplaBeolvasas(matunitsApiVegpont, matunits);
     delField();
-    mertekegysegekBeolvasaskor();
     var addingMaterialCounter = 1;
     var stepNum = 1;
     var nameNum = 1;
-
-    function materialsBeolvasas(fajlnev, tomb) {
-        $.ajax({
-            url: fajlnev,
-            success: function (result) {
-                result.forEach((value) => {
-                    tomb.push(value.megnevezes);
-                });
-            },
-        });
-    }
+    mertekegysegekBeolvasaskor();
 
     $('#title').on('input', function() {
         url = $(this).val().toLowerCase()
@@ -105,21 +92,11 @@ $(function () {
             $(this).parent().parent().remove();
         })
     }
-
-    function matunitsBeolvasas(fajlnev, tomb) {
-        $.ajax({
-            url: fajlnev,
-            success: function (result) {
-                result.forEach(element => {
-                    tomb.push(element);
-                });
-            },
-        });
-    }
     
     function mertekegysegAdas(materialId, unitId, quantityId) {
         $('#' + materialId).on('input', function() {
             var valueSelected = this.value;
+            console.log(matunits);
             var data = matunits.filter(element => element.alapanyag == valueSelected);
             $('#' + unitId).empty();
             data.forEach(element => {
@@ -142,6 +119,7 @@ $(function () {
         inputs.forEach(row => {
             let material = $(row).val();
             let id = $(row).attr('id').split('-')[1];
+            console.log(matunits);
             var data = matunits.filter(element => element.alapanyag == material);
             console.log(data);
             data.forEach(element => {

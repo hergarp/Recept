@@ -29,7 +29,6 @@ class CreateReceptsTable extends Migration
             $table->string('konyhatechnologia')->length(20)->nullable();
             $table->string('babakonyha')->length(30)->nullable();
             $table->Text('egyeb_elnevezesek')->length(200)->nullable();
-            $table->mediumInteger('receptkonyvben')->default('0');
             $table->mediumInteger('ossznezettseg')->default('0');  
             $table->boolean('reggeli')->default(0);
             $table->boolean('tizorai')->default(0);

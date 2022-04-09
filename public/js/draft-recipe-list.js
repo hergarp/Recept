@@ -34,6 +34,7 @@ $(function() {
         })
     }
 
+    //szűrés
     // if($('input:checkbox').is(':checked')) {
     //     $('input:checkbox:checked').each(function() {
     //         if($(this).attr('id') == 'arrived') {

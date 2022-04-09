@@ -15,6 +15,17 @@
             <h2>Draft receptek</h2>
         </header>
         <div class="container">
+            <div class="mb-2">
+                <input type="text" placeholder="Szűrés név szerint">
+                <label class="-fontSize-16 p-3 mr-2 mb-1" for="arrived">
+                    <input class="d-none" type="checkbox" name="arrived" id="arrived" value="1"/>
+                    beküldött
+                </label>
+                <label class="-fontSize-16 p-3 mr-2 mb-1" for="draft">
+                    <input class="d-none" type="checkbox" name="draft" id="draft" value="1"/>
+                    vázlat
+                </label>
+            </div>
             @if (Auth::check() and Auth::user()->is_admin)
             <article>
                 <table>
