@@ -19,11 +19,6 @@ $(function() {
     ids.forEach(element => {
         ID(element).addEventListener("blur", () => validateInputs(errors));
     });
-    // ID("portion").addEventListener("blur", () => validate("portion", "portion-error", errors));
-    // ID("baking").addEventListener("blur", () => validate("baking", "baking-error", errors));
-    // ID("cooking").addEventListener("blur", () => validate("cooking", "cooking-error", errors));
-    // ID("preparation").addEventListener("blur", () => validate("preparation", "preparation-error", errors));
-    // ID("title").addEventListener("blur", () => validate("title", "title-error", errors));
     validateTimes(errors);
 })
 
@@ -68,10 +63,10 @@ function validatePPCBQ(id) {
     } else if (id == "cooking") {
         errorField = "cooking-error";
     } else {
-        errorField = id.split("-")[0] + '-hiba-' + id.split("-")[1];
+        errorField = id.split("-")[0] + '-error-' + id.split("-")[1];
     }
     var input = $("#" + id).val(); 
-    if (id.split('-')[0] == "quantity") {
+    if (id.split('-')[0] == "quantity" || id.split('-')[0] == "quantityedit") {
         commaToDot(input, id);
         input = $("#" + id).val(); 
         var szuro = /^[0-9]+[0-9\.]*$/;

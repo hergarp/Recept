@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="../../css/admin-edit-recipe-desktop.css">
   <script src="../../js/ajax.js"></script>
   <script src="../../js/edit.js"></script>
+  <script src="../../js/urlap_validacio.js"></script>
   <title>Admin – Receptfelvitel | Recapt</title>
 </head>
 
@@ -20,7 +21,8 @@
     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
     <article>
       <input class="w-100 -hidden" type="text" name="title" id="title" placeholder="Név" value="{{ $recipe->megnevezes }}" />
-      <input class="d-none" id="slug" type="text" name="url_slug" value="{{ $recipe->url_slug }}">
+      <input class="d-none" id="slug" name="url_slug" value="{{ $recipe->url_slug }}">
+      <div id="title-error"></div>
       <div id="image" style="background-image: url('../../{{ $recipe->kep }}');">
       </div>
       <section>
@@ -33,14 +35,14 @@
                 <option value="{{ $material -> megnevezes }}">{{ $material -> megnevezes}}</option>
               @endforeach
             </datalist>
-            <input class="-hidden m-form__input raw-material-quantity" type="number" name="quantities" id="quantity" placeholder="mennyiség"/>
+            <input class="-hidden m-form__input raw-material-quantity" type="text" name="quantities" id="quantity" placeholder="mennyiség"/>
             <select class="m-form__select left-b raw-material-unit" name="units" id="unit">
              <option selected disabled>mértékegység</option>
             </select>
             <div class="right">
               <button type="button" class="-delete little-button">–</button>
             </div>
-            <div id="quantity-hiba" class="w-100"></div>
+            <div id="quantity-error" class="w-100 quantity-hiba bgWhite"></div>
           </div>
           @foreach ($alkotjas as $alkotja)
           <div class="m-form__selectWrapper -colorBgTernary mb-3 ingredients">
@@ -50,7 +52,7 @@
                 <option value="{{ $material -> megnevezes}}">{{ $material -> megnevezes}}</option>
               @endforeach
             </datalist>
-            <input class="-hidden m-form__input raw-material-quantity" type="number" name="quantity[]" id="quantityedit-{{$alkotja->alk_id}}"
+            <input class="-hidden m-form__input raw-material-quantity" type="text" name="quantity[]" id="quantityedit-{{$alkotja->alk_id}}"
               placeholder="mennyiség" value="{{$alkotja->mennyiseg}}" />
             <select class="m-form__select left-b raw-material-unit" name="unit[]" id="unitedit-{{$alkotja->alk_id}}">
               <option value="{{$alkotja->mertekegyseg}}" selected>{{$alkotja->mertekegyseg}}</option>
@@ -58,7 +60,7 @@
             <div class="right">
                 <button class="-delete little-button">–</button>
               </div>
-            <div id="quantity-hiba" class="w-100 bgWhite"></div>
+            <div id="quantityedit-error-{{$alkotja->alk_id}}" class="w-100 quantity-hiba bgWhite"></div>
           </div>
           @endforeach
         </div>
@@ -123,31 +125,32 @@
           </select>
         </div>
         <div class="-colorBgTernary mb-3 w-100 portion">
-          <label for="adag">Adag:</label>
-          <input id="adag" class="align-center -hidden m-form__input" name="adag" min="1" max="100" required value="{{ $recipe->adag }}"/>
+          <label for="portion">Adag(<span class="red">*</span>):</label>
+          <input id="portion" type="text" class="align-center -hidden m-form__input" name="adag" required value="{{ $recipe->adag }}"/>
         </div>
-        <div id="adag-hiba" class="w-100"></div>
+        <div id="portion-error" class="w-100"></div>
       </section>
       <section>
         <h2>Értékek</h2>
+        <div id="time-error"></div>
         <div class="-colorBgTernary mb-3 w-100 values">
           <label for="preparation">Előkészületi idő:</label>
-          <input class="align-center -hidden m-form__input" name="preparation" id="preparation" min="1" value="{{ $recipe->elokeszitesi_ido }}"/>
+          <input class="align-center -hidden m-form__input" type="text" name="preparation" id="preparation" min="1" value="{{ $recipe->elokeszitesi_ido }}"/>
           <span>perc</span>
         </div>
-        <div id="preparation-hiba" class="w-100"></div>
+        <div id="preparation-error" class="w-100"></div>
         <div class="-colorBgTernary mb-3 w-100 values">
           <label for="cooking">Főzési idő:</label>
-          <input class="align-center -hidden m-form__input" name="cooking" id="cooking" min="1" value="{{ $recipe->fozesi_ido }}"/>
+          <input class="align-center -hidden m-form__input" type="text" name="cooking" id="cooking" min="1" value="{{ $recipe->fozesi_ido }}"/>
           <span>perc</span>
         </div>
-        <div id="cooking-hiba" class="w-100"></div>
+        <div id="cooking-error" class="w-100"></div>
         <div class="-colorBgTernary mb-3 w-100 values">
           <label for="baking">Sütési idő:</label>
-          <input class="align-center -hidden m-form__input" name="baking" id="baking" min="1" value="{{ $recipe->sutesi_ido }}"/>
+          <input class="align-center -hidden m-form__input" type="text" name="baking" id="baking" min="1" value="{{ $recipe->sutesi_ido }}"/>
           <span>perc</span>
         </div>
-        <div id="baking-hiba" class="w-100"></div>
+        <div id="baking-error" class="w-100"></div>
       </section>
       <section>
         <h2>Mikor</h2>
@@ -240,12 +243,12 @@
         <h2>Egyéb elnevezések</h2>
         <div id="names">
           <div class="d-none name-template -colorBgTernary mb-3 w-100 names">
-            <input class="-hidden m-form__input w-80" type="text" name="name" id="name" placeholder="További elnevezés" />
+            <input class="-hidden m-form__input w-80" name="name" id="name" placeholder="További elnevezés" />
             <div class="right"><button type="button" class="-delete little-button">–</button></div>
           </div>
           @foreach ($elnevezesek as $elnevezes)
           <div class="-colorBgTernary mb-3 w-100 names">
-            <input class="-hidden m-form__input w-80" type="text" name="name[]"
+            <input class="-hidden m-form__input w-80" name="name[]"
               placeholder="Egyéb elnevezés" value="{{ $elnevezes }}" />
             <div class="right">
               <button class="-delete little-button">–</button>
@@ -262,7 +265,7 @@
     </aside>
     <div class="align-center w-100" id="d-send">  
       <button class="-draft -sending w-100" type="submit" name="action" value="draft">Mentés vázlatként</button>     
-      <button class="-adding -sending w-100" type="submit" name="action" value="public">Publikálás</button>     
+      <button id="sending" class="-adding -sending w-100" type="submit" name="action" value="public">Publikálás</button>     
       <button onclick="return confirm('Biztosan törli?')" class="-rejection -sending w-100" type="submit" name="action" value="delete">Elvetés</button>     
     </div>
   </form>

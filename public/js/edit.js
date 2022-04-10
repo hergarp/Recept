@@ -2,12 +2,11 @@ $(function () {
     matunitsApiVegpont = 'http://localhost:8000/api/matunits';
     const matunits = [];
     const sajatAjax = new SajatAjax();
-    sajatAjax.szimplaBeolvasas(matunitsApiVegpont, matunits);
+    sajatAjax.callBackBeolvasas(matunitsApiVegpont, matunits, mertekegysegekBeolvasaskor);
     delField();
     var addingMaterialCounter = 1;
     var stepNum = 1;
     var nameNum = 1;
-    mertekegysegekBeolvasaskor();
 
     $('#title').on('input', function() {
         url = $(this).val().toLowerCase()
@@ -46,13 +45,16 @@ $(function () {
         var materiallist = "materials-" + addingMaterialCounter;
         var quantityid = 'quantity-' + addingMaterialCounter;
         var unitid = 'unit-' + addingMaterialCounter;
+        var errorid = 'quantity-error-' + addingMaterialCounter;
         $("[id=material]:eq(1)").attr("id", materialid).attr("list", materiallist).attr("required", true).attr("name",'material[]');
         $("[id=materials]:eq(1)").attr("id", materiallist);
         $("[id=quantity]:eq(1)").attr("id", quantityid).attr("name",'quantity[]');
         $("[id=unit]:eq(1)").attr("id", unitid).attr("required", true).attr("name",'unit[]');
+        $("[id=quantity-error]:eq(1)").attr("id", errorid);
         mertekegysegAdas(materialid, unitid, quantityid);
         delField();
         addingMaterialCounter += 1;
+        ID(quantityid).addEventListener("blur", () => validateInputs(errors));
     }
 
     $('#adding-material').click(function() {

@@ -49,7 +49,7 @@
             <div class="right">
               <button type="button" class="-delete little-button">–</button>
             </div>
-            <div id="quantity-hiba" class="quantity-hiba w-100"></div>
+            <div id="quantity-error" class="quantity-hiba w-100 bgWhite"></div>
           </div>
         </div>
         <div>
@@ -103,7 +103,7 @@
         </div>
 
         <div class="-colorBgTernary mb-3 w-100 portion">
-          <label for="portion">Adag:(<span class="red">*</span>)</label>
+          <label for="portion">Adag(<span class="red">*</span>):</label>
           <input id="portion" class="align-center -hidden m-form__input" type="text" name="adag" min="1" max="100" required/>
         </div>
         <div id="portion-error" class="w-100"></div>

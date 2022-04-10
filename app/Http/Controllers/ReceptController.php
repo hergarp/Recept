@@ -140,7 +140,7 @@ class ReceptController extends Controller
 
     public function titleList()
     {
-        $urls = DB::table('recepts')->select('url_slug')->pluck('url_slug');
+        $urls = DB::table('recepts')->where('statusz', 'publikus')->select('url_slug')->pluck('url_slug');
         return response()->json($urls);
     }
     /**
@@ -416,12 +416,7 @@ class ReceptController extends Controller
         $konyhas = Konyha::all();
         $kategorias = Kategoria::all();
         /*and if you want to get that from DB and convert it back to an array use:*/
-        if (empty($recipe->egyeb_elnevezesek)) {
-            $elnevezesek = [];
-        }
-        else {
-            $elnevezesek = json_decode($recipe->egyeb_elnevezesek);
-        }
+        $recept->egyeb_elnevezesek = json_encode($request->name);
 
         return view('admin.edit', ['recipe'=> $recipe, 
                                    'alkotjas' => $alkotjas, 

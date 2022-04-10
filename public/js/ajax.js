@@ -27,4 +27,17 @@ class SajatAjax {
             },
         });
     }
+
+    callBackBeolvasas(fajlnev, tomb, myCallBack) {
+        $.ajax({
+            url: fajlnev,
+            success: function (result) {
+                result.forEach(element => {
+                    tomb.push(element);
+                });
+                myCallBack();
+            },
+
+        });
+    }
 }

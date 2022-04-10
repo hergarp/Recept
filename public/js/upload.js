@@ -52,11 +52,13 @@ $(function () {
         var quantityid = 'quantity-' + addingMaterialCounter;
         var quantityHibaId = 'quantity-hiba-' + addingMaterialCounter;
         var unitid = 'unit-' + addingMaterialCounter;
+        var errorid = 'quantity-error-' + addingMaterialCounter;
         $("[id=material]:eq(1)").attr("id", materialid).attr("list", materiallist).attr("required", true).attr("name",'material[]');
         $("[id=materials]:eq(1)").attr("id", materiallist);
         $("[id=quantity]:eq(1)").attr("id", quantityid).attr("name",'quantity[]').addClass('raw-material-quantity');
         $("[id=quantity-hiba]:eq(1)").attr("id", quantityHibaId);
         $("[id=unit]:eq(1)").attr("id", unitid).attr("required", true).attr("name",'unit[]');
+        $("[id=quantity-error]:eq(1)").attr("id", errorid);
         delField();
         mertekegysegAdas(materialid, unitid, quantityid);
         addingMaterialCounter += 1;
