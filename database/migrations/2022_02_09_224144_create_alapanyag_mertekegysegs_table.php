@@ -2130,6 +2130,8 @@ class createAlapanyagmertekegysegstable extends migration
         Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ml', 'alapanyag' => 'Tokaj vinaigrette']);
         Alapanyag_mertekegyseg::create(['mertekegyseg' => 'cl', 'alapanyag' => 'Tokaj vinaigrette']);
         Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dl', 'alapanyag' => 'Tokaj vinaigrette']);
+
+        //tejtermékek
         Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ml', 'alapanyag' => 'író']);
         Alapanyag_mertekegyseg::create(['mertekegyseg' => 'cl', 'alapanyag' => 'író']);
         Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dl', 'alapanyag' => 'író']);
@@ -2378,7 +2380,8 @@ class createAlapanyagmertekegysegstable extends migration
         Alapanyag_mertekegyseg::create(['mertekegyseg' => 'cl', 'alapanyag' => 'laktózmentes tej']);
         Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dl', 'alapanyag' => 'laktózmentes tej']);
         Alapanyag_mertekegyseg::create(['mertekegyseg' => 'l', 'alapanyag' => 'laktózmentes tej']);
-        
+        //tejtermékek vége
+
         //tészták
         Alapanyag_mertekegyseg::create(['mertekegyseg' => 'g', 'alapanyag' => 'tarhonya']);
         Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dkg', 'alapanyag' => 'tarhonya']);
@@ -2897,6 +2900,125 @@ class createAlapanyagmertekegysegstable extends migration
         Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dl', 'alapanyag' => 'szörp']);
         Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ízlés szerint', 'alapanyag' => 'szörp']);
         //szörpök vége
+        
+        //alkoholos italok
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ml', 'alapanyag' => 'marsala']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'cl', 'alapanyag' => 'marsala']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dl', 'alapanyag' => 'marsala']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ml', 'alapanyag' => 'rum']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'cl', 'alapanyag' => 'rum']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dl', 'alapanyag' => 'rum']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ml', 'alapanyag' => 'mirin']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'cl', 'alapanyag' => 'mirin']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dl', 'alapanyag' => 'mirin']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ml', 'alapanyag' => 'szaké']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'cl', 'alapanyag' => 'szaké']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dl', 'alapanyag' => 'szaké']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ml', 'alapanyag' => 'konyak']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'cl', 'alapanyag' => 'konyak']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dl', 'alapanyag' => 'konyak']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ml', 'alapanyag' => 'sör']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'cl', 'alapanyag' => 'sör']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dl', 'alapanyag' => 'sör']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ízlés szerint', 'alapanyag' => 'sör']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ml', 'alapanyag' => 'pezsgő']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'cl', 'alapanyag' => 'pezsgő']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dl', 'alapanyag' => 'pezsgő']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ízlés szerint', 'alapanyag' => 'pezsgő']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ml', 'alapanyag' => 'cointreau']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'cl', 'alapanyag' => 'cointreau']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dl', 'alapanyag' => 'cointreau']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ml', 'alapanyag' => 'tequila']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'cl', 'alapanyag' => 'tequila']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dl', 'alapanyag' => 'tequila']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ml', 'alapanyag' => 'tojáslikőr']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'cl', 'alapanyag' => 'tojáslikőr']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dl', 'alapanyag' => 'tojáslikőr']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ml', 'alapanyag' => 'sherry']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'cl', 'alapanyag' => 'sherry']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dl', 'alapanyag' => 'sherry']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ml', 'alapanyag' => 'amarettó']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'cl', 'alapanyag' => 'amarettó']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dl', 'alapanyag' => 'amarettó']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ml', 'alapanyag' => 'calvados']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'cl', 'alapanyag' => 'calvados']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dl', 'alapanyag' => 'calvados']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ml', 'alapanyag' => 'limoncello']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'cl', 'alapanyag' => 'limoncello']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dl', 'alapanyag' => 'limoncello']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ml', 'alapanyag' => 'whiskey']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'cl', 'alapanyag' => 'whiskey']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dl', 'alapanyag' => 'whiskey']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ml', 'alapanyag' => 'barna sör']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'cl', 'alapanyag' => 'barna sör']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dl', 'alapanyag' => 'barna sör']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ízlés szerint', 'alapanyag' => 'barna sör']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ml', 'alapanyag' => 'vodka']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'cl', 'alapanyag' => 'vodka']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dl', 'alapanyag' => 'vodka']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ml', 'alapanyag' => 'pálinka']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'cl', 'alapanyag' => 'pálinka']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dl', 'alapanyag' => 'pálinka']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ml', 'alapanyag' => 'barna rum']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'cl', 'alapanyag' => 'barna rum']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dl', 'alapanyag' => 'barna rum']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ml', 'alapanyag' => 'brandy']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'cl', 'alapanyag' => 'brandy']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dl', 'alapanyag' => 'brandy']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ml', 'alapanyag' => 'campari']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'cl', 'alapanyag' => 'campari']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dl', 'alapanyag' => 'campari']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ml', 'alapanyag' => 'Grand Marnier']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'cl', 'alapanyag' => 'Grand Marnier']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dl', 'alapanyag' => 'Grand Marnier']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ml', 'alapanyag' => 'fehér rum']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'cl', 'alapanyag' => 'fehér rum']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dl', 'alapanyag' => 'fehér rum']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ml', 'alapanyag' => 'gin']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'cl', 'alapanyag' => 'gin']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dl', 'alapanyag' => 'gin']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ml', 'alapanyag' => 'kínai rizsbor']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'cl', 'alapanyag' => 'kínai rizsbor']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dl', 'alapanyag' => 'kínai rizsbor']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ml', 'alapanyag' => 'Martini Bianco']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'cl', 'alapanyag' => 'Martini Bianco']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dl', 'alapanyag' => 'Martini Bianco']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ml', 'alapanyag' => 'Martini Rosso']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'cl', 'alapanyag' => 'Martini Rosso']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dl', 'alapanyag' => 'Martini Rosso']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ml', 'alapanyag' => 'sangría']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'cl', 'alapanyag' => 'sangría']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dl', 'alapanyag' => 'sangría']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ml', 'alapanyag' => 'sütő rum']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'cl', 'alapanyag' => 'sütő rum']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dl', 'alapanyag' => 'sütő rum']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ml', 'alapanyag' => 'triple sec']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'cl', 'alapanyag' => 'triple sec']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dl', 'alapanyag' => 'triple sec']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ml', 'alapanyag' => 'Unicum']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'cl', 'alapanyag' => 'Unicum']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dl', 'alapanyag' => 'Unicum']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ml', 'alapanyag' => 'likőr']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'cl', 'alapanyag' => 'likőr']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dl', 'alapanyag' => 'likőr']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ml', 'alapanyag' => 'tiszta szesz']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'cl', 'alapanyag' => 'tiszta szesz']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dl', 'alapanyag' => 'tiszta szesz']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ml', 'alapanyag' => 'cider']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'cl', 'alapanyag' => 'cider']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dl', 'alapanyag' => 'cider']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ízlés szerint', 'alapanyag' => 'cider']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ml', 'alapanyag' => 'desszertbor']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'cl', 'alapanyag' => 'desszertbor']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dl', 'alapanyag' => 'desszertbor']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ml', 'alapanyag' => 'Prosecco – habzóbor']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'cl', 'alapanyag' => 'Prosecco – habzóbor']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dl', 'alapanyag' => 'Prosecco – habzóbor']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ízlés szerint', 'alapanyag' => 'Prosecco – habzóbor']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ml', 'alapanyag' => 'Baileys']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'cl', 'alapanyag' => 'Baileys']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dl', 'alapanyag' => 'Baileys']);
+        //alkoholos italok vége
     }
 
     /**

@@ -870,6 +870,46 @@ class CreateAlapanyagsTable extends Migration
         Alapanyag::create(['megnevezes' => 'ribizliszörp']);
         Alapanyag::create(['megnevezes' => 'szörp']);
         //szörpök vége
+
+        //alkoholos italok
+        Alapanyag::create(['megnevezes' => 'marsala']);
+        Alapanyag::create(['megnevezes' => 'rum']);
+        Alapanyag::create(['megnevezes' => 'mirin']);
+        Alapanyag::create(['megnevezes' => 'szaké']);
+        Alapanyag::create(['megnevezes' => 'konyak']);
+        Alapanyag::create(['megnevezes' => 'sör']);
+        Alapanyag::create(['megnevezes' => 'pezsgő']);
+        Alapanyag::create(['megnevezes' => 'cointreau']);
+        Alapanyag::create(['megnevezes' => 'tequila']);
+        Alapanyag::create(['megnevezes' => 'tojáslikőr']);
+        Alapanyag::create(['megnevezes' => 'sherry']);
+        Alapanyag::create(['megnevezes' => 'amarettó']);
+        Alapanyag::create(['megnevezes' => 'calvados']);
+        Alapanyag::create(['megnevezes' => 'limoncello']);
+        Alapanyag::create(['megnevezes' => 'whiskey']);
+        Alapanyag::create(['megnevezes' => 'barna sör']);
+        Alapanyag::create(['megnevezes' => 'vodka']);
+        Alapanyag::create(['megnevezes' => 'pálinka']);
+        Alapanyag::create(['megnevezes' => 'barna rum']);
+        Alapanyag::create(['megnevezes' => 'brandy']);
+        Alapanyag::create(['megnevezes' => 'campari']);
+        Alapanyag::create(['megnevezes' => 'Grand Marnier']);
+        Alapanyag::create(['megnevezes' => 'fehér rum']);
+        Alapanyag::create(['megnevezes' => 'gin']);
+        Alapanyag::create(['megnevezes' => 'kínai rizsbor']);
+        Alapanyag::create(['megnevezes' => 'Martini Bianco']);
+        Alapanyag::create(['megnevezes' => 'Martini Rosso']);
+        Alapanyag::create(['megnevezes' => 'sangría']);
+        Alapanyag::create(['megnevezes' => 'sütő rum']);
+        Alapanyag::create(['megnevezes' => 'triple sec']);
+        Alapanyag::create(['megnevezes' => 'Unicum']);
+        Alapanyag::create(['megnevezes' => 'likőr']);
+        Alapanyag::create(['megnevezes' => 'tiszta szesz']);
+        Alapanyag::create(['megnevezes' => 'cider']);
+        Alapanyag::create(['megnevezes' => 'desszertbor']);
+        Alapanyag::create(['megnevezes' => 'Prosecco – habzóbor']);
+        Alapanyag::create(['megnevezes' => 'Baileys']);
+        //alkoholos italok vége
     }
 
     /**
