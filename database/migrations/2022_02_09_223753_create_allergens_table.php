@@ -298,6 +298,11 @@ class CreateAllergensTable extends Migration
         Allergen::create(['alapanyag' => 'füstölt virsli', 'allergen' => 'animal']);
         Allergen::create(['alapanyag' => 'sertés virsli', 'allergen' => 'animal']);
         //felvágottak, húskészítmények vége
+        
+        //kávé
+        Allergen::create(['alapanyag' => 'cappuccino por', 'allergen' => 'milk']);
+        Allergen::create(['alapanyag' => 'cappuccino por', 'allergen' => 'laktose']);
+        //kávé vége
     }
 
     /**

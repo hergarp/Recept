@@ -23,7 +23,10 @@ class CreateAlapanyagsTable extends Migration
         Alapanyag::create(['megnevezes' => 'eperszirup']);
         Alapanyag::create(['megnevezes' => 'ananászlé']);
         Alapanyag::create(['megnevezes' => 'citromlé']);
-        Alapanyag::create(['megnevezes' => 'grapefruitlé']);
+        Alapanyag::create(['megnevezes' => 'grépefrútlé']);
+        Alapanyag::create(['megnevezes' => 'eperlé']);
+        Alapanyag::create(['megnevezes' => 'limelé']);
+        Alapanyag::create(['megnevezes' => 'körtelé']);
         Alapanyag::create(['megnevezes' => 'pépesített eper']);
         Alapanyag::create(['megnevezes' => 'alkoholmentes pezsgő']);
         Alapanyag::create(['megnevezes' => 'tojás']);
@@ -86,6 +89,8 @@ class CreateAlapanyagsTable extends Migration
         Alapanyag::create(['megnevezes' => 'sótlan pisztácia']);
         Alapanyag::create(['megnevezes' => 'zöld mandula']);
         Alapanyag::create(['megnevezes' => 'sózott törökmogyoró']);
+
+        //gyümölcsök
         Alapanyag::create(['megnevezes' => 'citrom']);
         Alapanyag::create(['megnevezes' => 'mangó']);
         Alapanyag::create(['megnevezes' => 'grépfrút']);
@@ -126,6 +131,9 @@ class CreateAlapanyagsTable extends Migration
         Alapanyag::create(['megnevezes' => 'japánszilva']);
         Alapanyag::create(['megnevezes' => 'ringlószilva']);
         Alapanyag::create(['megnevezes' => 'cigánymeggy']);
+        //gyümölcsök vége
+
+        //gombák
         Alapanyag::create(['megnevezes' => 'shiitake gomba']);
         Alapanyag::create(['megnevezes' => 'savanyított gomba']);
         Alapanyag::create(['megnevezes' => 'fafülgomba']);
@@ -619,6 +627,8 @@ class CreateAlapanyagsTable extends Migration
         Alapanyag::create(['megnevezes' => 'gyümölcsös dresszing']);
         Alapanyag::create(['megnevezes' => 'Tokaj dresszing']);
         Alapanyag::create(['megnevezes' => 'Tokaj vinaigrette']);
+
+        //tejtermékek
         Alapanyag::create(['megnevezes' => 'író']);
         Alapanyag::create(['megnevezes' => 'tejpor']);
         Alapanyag::create(['megnevezes' => 'sűrített tej (cukrozott)']);
@@ -695,6 +705,7 @@ class CreateAlapanyagsTable extends Migration
         Alapanyag::create(['megnevezes' => 'tej']);
         Alapanyag::create(['megnevezes' => 'sovány tej']);
         Alapanyag::create(['megnevezes' => 'laktózmentes tej']);
+        //tejtermékek vége
 
         //tészták
         Alapanyag::create(['megnevezes' => 'tarhonya']);
@@ -802,6 +813,63 @@ class CreateAlapanyagsTable extends Migration
         Alapanyag::create(['megnevezes' => 'füstölt virsli']);
         Alapanyag::create(['megnevezes' => 'sertés virsli']);
         //felvágottak, húskészítmények vége
+        
+        //üdítők
+        Alapanyag::create(['megnevezes' => 'kakaó']);
+        Alapanyag::create(['megnevezes' => 'must']);
+        Alapanyag::create(['megnevezes' => 'paradicsomlé']);
+        Alapanyag::create(['megnevezes' => 'almalé']);
+        Alapanyag::create(['megnevezes' => 'paradicsom ivólé']);
+        Alapanyag::create(['megnevezes' => 'gyümölcslé']);
+        Alapanyag::create(['megnevezes' => 'gyömbér üdítő']);
+        Alapanyag::create(['megnevezes' => 'gyömbérsör']);
+        Alapanyag::create(['megnevezes' => 'szénsavas narancsos üdítőital']);
+        Alapanyag::create(['megnevezes' => 'meggylé']);
+        Alapanyag::create(['megnevezes' => 'narancslé']);
+        Alapanyag::create(['megnevezes' => 'szőlőlé']);
+        Alapanyag::create(['megnevezes' => 'tonik']);
+        Alapanyag::create(['megnevezes' => 'rostos gyümölcslé']);
+        Alapanyag::create(['megnevezes' => 'rostos almalé']);
+        Alapanyag::create(['megnevezes' => 'céklalé']);
+        Alapanyag::create(['megnevezes' => 'kóla']);
+        Alapanyag::create(['megnevezes' => 'szénsavas citromos üdítőital']);
+        //üdítők vége
+
+        //kávé
+        Alapanyag::create(['megnevezes' => 'kávé']);
+        Alapanyag::create(['megnevezes' => 'feketekávé']);
+        Alapanyag::create(['megnevezes' => 'instant kávé']);
+        Alapanyag::create(['megnevezes' => 'koffeinmentes kávé']);
+        Alapanyag::create(['megnevezes' => 'őrölt kávé']);
+        Alapanyag::create(['megnevezes' => 'cappuccino por']);
+        Alapanyag::create(['megnevezes' => 'instant pótkávé']);
+        Alapanyag::create(['megnevezes' => 'gabonakávé']);
+        //kávé vége
+        
+        //borok
+        Alapanyag::create(['megnevezes' => 'fehérbor']);
+        Alapanyag::create(['megnevezes' => 'édes fehérbor']);
+        Alapanyag::create(['megnevezes' => 'félszáraz fehérbor']);
+        Alapanyag::create(['megnevezes' => 'rosé']);
+        Alapanyag::create(['megnevezes' => 'édes rosé']);
+        Alapanyag::create(['megnevezes' => 'félédes rosé']);
+        Alapanyag::create(['megnevezes' => 'száraz rosé']);
+        Alapanyag::create(['megnevezes' => 'félszáraz rosé']);
+        Alapanyag::create(['megnevezes' => 'vörösbor']);
+        Alapanyag::create(['megnevezes' => 'édes vörösbor']);
+        Alapanyag::create(['megnevezes' => 'félédes vörösbor']);
+        Alapanyag::create(['megnevezes' => 'száraz vörösbor']);
+        Alapanyag::create(['megnevezes' => 'félszáraz vörösbor']);
+        //borok vége
+        
+        //szörpök
+        Alapanyag::create(['megnevezes' => 'feketeribizli szörp']);
+        Alapanyag::create(['megnevezes' => 'eperszörp']);
+        Alapanyag::create(['megnevezes' => 'málnaszörp']);
+        Alapanyag::create(['megnevezes' => 'narancsszörp']);
+        Alapanyag::create(['megnevezes' => 'ribizliszörp']);
+        Alapanyag::create(['megnevezes' => 'szörp']);
+        //szörpök vége
     }
 
     /**
