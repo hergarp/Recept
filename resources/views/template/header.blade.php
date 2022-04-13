@@ -3,16 +3,16 @@
     <a class="flp" href="../../index">
         <img src="../../img/logo.png" alt="">
     </a>
-    <ul>
+    <ul class="dropdown-ul">
         @if(\Request::is("login") or \Request::is("register"))
 
         @else
             <li class="float-right"><a href="#">Menü</a>
-            <ul>
+            <ul id="dropdown">
                 <li><a href="/upload">Receptbeküldés</a></li>
                 @if (Auth::check() and Auth::user()->is_admin)
                 <li>
-                    <a href="#">Receptek</a>
+                    <a href="#">Receptek:</a>
                     <ul>
                         <li><a href="../../admin/recipe-list">Publikus receptek</a></li>
                         <li><a href="../../admin/draft-recipe-list">Draft receptek</a></li>

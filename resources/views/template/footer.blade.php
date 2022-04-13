@@ -1,1 +1,1 @@
-<p>&copy; Hergár Péter, Molnár ALiz</p>
+<p>&copy; Hergár Péter, Molnár ALiz, 2022</p>

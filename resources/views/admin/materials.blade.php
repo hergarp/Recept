@@ -3,7 +3,8 @@
 <html lang="hu">
 <head>
     @include('../template/head')
-    <link rel="stylesheet" href="../css/materials-desktop.css">
+    <link rel="stylesheet" href="../css/admin-materials-desktop.css">
+    <link rel="stylesheet" href="../css/admin-materials-smaller.css">
     <script src="../js/ajax.js"></script>
     <script src="../js/materials.js"></script>
     <script src="../js/materials-table.js"></script>

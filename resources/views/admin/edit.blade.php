@@ -4,6 +4,7 @@
 <head>
   @include('../template/head')
   <link rel="stylesheet" href="../../css/admin-edit-recipe-desktop.css">
+  <link rel="stylesheet" href="../../css/admin-edit-recipe-smaller.css">
   <script src="../../js/ajax.js"></script>
   <script src="../../js/edit.js"></script>
   <script src="../../js/urlap_validacio.js"></script>

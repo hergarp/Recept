@@ -64,7 +64,7 @@
         <h2>Lépések<span class="red">*</span></h2>
         <div id="steps">
           <div class="d-none step-template steps w-100">
-            <textarea class="step-txt" name="steps" id="step" cols="30" rows="1"></textarea>
+            <textarea class="step-txt" name="steps" id="step" cols="5" rows="1"></textarea>
             <div class="right">
               <button type="button" class="-delete little-button">–</button>
             </div>
@@ -78,7 +78,7 @@
       </section>
       <section>
         <h2>Üzenet</h2>
-        <textarea class="w-100" name="message" id="message" cols="30" rows="5"
+        <textarea class="w-100" name="message" id="message" cols="5" rows="5"
           placeholder="Itt üzenhetsz a szerkesztőségnek, ha valamilyen alapanyagot nem találnál vagy kérdésed lenne. Kitöltése nem kötelező."></textarea>
       </section>
     </article>

@@ -19,7 +19,7 @@
                 <div class="result -colorBgTernary">
                     <a href="../recipe/{{$rk->url_slug}}?adag={{$rk->adag}}">
                     <div class="image" style="background-image: url('../{{$rk->kep}}');"></div>
-                    <form action="">
+                    <!-- <form action="">
                         <div class="rate">
                             <input type="radio" id="{{$rk->r_id}}-star5" name="rate" value="5" />
                             <label for="{{$rk->r_id}}-star5" title="text">5 stars</label>
@@ -33,7 +33,7 @@
                             <label for="{{$rk->r_id}}-star1" title="text">1 star</label>
                         </div>
                         
-                    </form>
+                    </form> -->
                     <h3>{{$rk->megnevezes}}</h3>
                     <form action="/api/delete-from-rk/{{$rk->r_id}}" method="POST">@method('delete')
                     @csrf

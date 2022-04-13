@@ -9,8 +9,10 @@
             'd'
             'f';
         gap: 30px;
-        padding: 30px;
-        /* overflow: hidden !important; */
+    }
+
+    #image {
+        height: 66vw;
     }
 
     #message {
@@ -20,7 +22,7 @@
     .portion {
         display: grid;
         grid-auto-flow: column;
-        grid-template: 65px auto !important;
+        grid-template: 65px 9fr !important;
     }
 
     #portion {

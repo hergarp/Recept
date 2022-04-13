@@ -1,0 +1,28 @@
+@media screen and (max-width: 1000px){
+    #adding-material {
+        grid-template: 'i i'
+                       'b b';
+    }
+    
+    #adding-matunit {
+        grid-template: 'div div'
+                       'b b';
+    }
+
+    #adding-allergen {
+        grid-template: 'd d'
+                       'b b';
+    }
+}
+
+@media screen and (max-width: 550px){
+    #adding-material {
+        grid-template: 'i'
+                       'b';
+    }
+    
+    div.select-div {
+        grid-template: 'i'
+                       's';
+    }
+}

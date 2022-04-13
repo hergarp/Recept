@@ -417,7 +417,12 @@ class ReceptController extends Controller
         $konyhas = Konyha::all();
         $kategorias = Kategoria::all();
         /*and if you want to get that from DB and convert it back to an array use:*/
-        $recept->egyeb_elnevezesek = json_encode($request->name);
+        if (empty($recipe->egyeb_elnevezesek)) {
+            $elnevezesek = [];
+        }
+        else {
+            $elnevezesek = json_decode($recipe->egyeb_elnevezesek);
+        }
 
         return view('admin.edit', ['recipe'=> $recipe, 
                                    'alkotjas' => $alkotjas, 
@@ -467,9 +472,9 @@ class ReceptController extends Controller
                 $recept->nyar = $request->has('summer');
                 $recept->osz = $request->has('autumn');
                 $recept->tel = $request->has('winter');
-                $names = $request->name;
-                $recept->egyeb_elnevezesek = json_encode($names);
-
+                // $names = $request->name;
+                // $recept->egyeb_elnevezesek = json_encode($names);
+                $recept->egyeb_elnevezesek = json_encode($request->name);
                 switch ($request->input('action')) {
                     case 'draft':
                         $recept->statusz = 'vázlat';

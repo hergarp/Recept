@@ -3,6 +3,7 @@
 <head>
     @include('../template/head')
     <link rel="stylesheet" href="../css/admin-recipe-list-desktop.css">
+    <link rel="stylesheet" href="../css/admin-recipe-list-smaller.css">
     <script src="../js/ajax.js"></script>
     <script src="../js/recipe-list-table.js"></script>
     <script src="../js/recipe-list.js"></script>
@@ -17,12 +18,12 @@
         <div class="container">
             @if (Auth::check() and Auth::user()->is_admin)
             <article>
-                <input id="szuresNevre" type="text" placeholder="Szűrés név alapján">
+                <input class="-hidden m-form__input -colorBgTernary mb-3" id="szuresNevre" type="text" placeholder="Szűrés név alapján">
                 <table>
                     <thead>
                         <th>Kép</th>
                         <th>Cím</th>
-                        <th>Publikálás időpontja</th>
+                        <th>Beküldés időpontja</th>
                         <th>Státusz</th>
                     </thead>
                     <tbody id="body">
