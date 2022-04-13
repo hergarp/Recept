@@ -28,7 +28,8 @@ class ReceptController extends Controller
     public function index()
     {
         $recipe = Recept::all()->where('statusz','publikus');
-        return view('index', ['recipes'=> $recipe]);
+        $ennyiRecept = Recept::all()->where('statusz','publikus')->count();
+        return view('index', ['recipes'=> $recipe, 'ennyiRecept' => $ennyiRecept]);
     }
 
     /**

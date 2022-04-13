@@ -39,3 +39,7 @@ section {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+#filter-h2 {
+    display: none;
+}

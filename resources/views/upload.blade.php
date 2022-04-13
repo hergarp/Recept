@@ -4,6 +4,7 @@
 <head>
   @include('../template/head')
   <link rel="stylesheet" href="css/upload-desktop.css" />
+  <link rel="stylesheet" href="css/upload-smaller.css" />
   <script src="js/ajax.js"></script>
   <script src="js/upload.js"></script>
   <script src="js/urlap_validacio.js" type="text/javascript"></script>
