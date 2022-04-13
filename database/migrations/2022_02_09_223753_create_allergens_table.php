@@ -29,8 +29,6 @@ class CreateAllergensTable extends Migration
 
         Allergen::create(['alapanyag' => 'kristálycukor', 'allergen' => 'sugar']);
         Allergen::create(['alapanyag' => 'porcukor', 'allergen' => 'sugar']);
-        Allergen::create(['alapanyag' => 'vaj', 'allergen' => 'milk']);
-        Allergen::create(['alapanyag' => 'vaj', 'allergen' => 'laktose']);
         Allergen::create(['alapanyag' => 'tojás', 'allergen' => 'egg']);
         Allergen::create(['alapanyag' => 'tojásfehérje', 'allergen' => 'egg']);
         Allergen::create(['alapanyag' => 'tojássárgája', 'allergen' => 'egg']);
@@ -198,7 +196,7 @@ class CreateAllergensTable extends Migration
         Allergen::create(['alapanyag' => 'szarvacska tészta', 'allergen' => 'gluten']);
         Allergen::create(['alapanyag' => 'rizstészta', 'allergen' => 'gluten']);
         Allergen::create(['alapanyag' => 'udon tészta', 'allergen' => 'gluten']);
-        Allergen::create(['alapanyag' => 'üveg tészta', 'allergen' => 'gluten']);
+        Allergen::create(['alapanyag' => 'üvegtészta', 'allergen' => 'gluten']);
         Allergen::create(['alapanyag' => 'ázsiai tészta', 'allergen' => 'gluten']);
         Allergen::create(['alapanyag' => 'kínai tészta', 'allergen' => 'gluten']);
         Allergen::create(['alapanyag' => 'spatzle tészta', 'allergen' => 'gluten']);

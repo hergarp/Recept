@@ -27,7 +27,7 @@ class CreateReceptkonyvsTable extends Migration
             $table->foreign('user')->references('id')->on('users')
                 ->constraints()
                 ->onUpdate('cascade')
-                ->onDelete('set null');
+                ->onDelete('cascade');
             $table->foreign('recept')->references('r_id')->on('recepts')
                 ->constraints()
                 ->onUpdate('cascade')

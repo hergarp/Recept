@@ -23,7 +23,7 @@ class CreateAlapanyagsTable extends Migration
         Alapanyag::create(['megnevezes' => 'eperszirup']);
         Alapanyag::create(['megnevezes' => 'ananászlé']);
         Alapanyag::create(['megnevezes' => 'citromlé']);
-        Alapanyag::create(['megnevezes' => 'grépefrútlé']);
+        Alapanyag::create(['megnevezes' => 'grépfrútlé']);
         Alapanyag::create(['megnevezes' => 'eperlé']);
         Alapanyag::create(['megnevezes' => 'limelé']);
         Alapanyag::create(['megnevezes' => 'körtelé']);
@@ -34,7 +34,6 @@ class CreateAlapanyagsTable extends Migration
         Alapanyag::create(['megnevezes' => 'tojássárgája']);
         Alapanyag::create(['megnevezes' => 'főtt tojás']);
         Alapanyag::create(['megnevezes' => 'fürjtojás']);
-        Alapanyag::create(['megnevezes' => 'vaj']);
         Alapanyag::create(['megnevezes' => 'kristálycukor']);
         Alapanyag::create(['megnevezes' => 'porcukor']);
         Alapanyag::create(['megnevezes' => 'só']);
@@ -119,7 +118,7 @@ class CreateAlapanyagsTable extends Migration
         Alapanyag::create(['megnevezes' => 'kékszőlő']);
         Alapanyag::create(['megnevezes' => 'bodzabogyó']);
         Alapanyag::create(['megnevezes' => 'vörösáfonya']);
-        Alapanyag::create(['megnevezes' => 'feketeáfonya']);
+        Alapanyag::create(['megnevezes' => 'fekete áfonya']);
         Alapanyag::create(['megnevezes' => 'som']);
         Alapanyag::create(['megnevezes' => 'szamóca']);
         Alapanyag::create(['megnevezes' => 'őszibarack']);
@@ -183,6 +182,7 @@ class CreateAlapanyagsTable extends Migration
         Alapanyag::create(['megnevezes' => 'tyúkháj']);
         Alapanyag::create(['megnevezes' => 'gyöngytyúk']);
         Alapanyag::create(['megnevezes' => 'csirkeaprólék']);
+        Alapanyag::create(['megnevezes' => 'csirkebőr']);
         Alapanyag::create(['megnevezes' => 'éticsiga']);
         Alapanyag::create(['megnevezes' => 'galambmáj']);
         Alapanyag::create(['megnevezes' => 'kakas']);
@@ -425,7 +425,7 @@ class CreateAlapanyagsTable extends Migration
         Alapanyag::create(['megnevezes' => 'csicseriborsó (konzerv)']);
         Alapanyag::create(['megnevezes' => 'chilis kukorica konzerv']);
         Alapanyag::create(['megnevezes' => 'indiai szószos bab']);
-        Alapanyag::create(['megnevezes' => 'maxicana szószos bab']);
+        Alapanyag::create(['megnevezes' => 'mexicana szószos bab']);
         Alapanyag::create(['megnevezes' => 'sombrero mix']);
         Alapanyag::create(['megnevezes' => 'paradicsomos babkonzerv']);
         Alapanyag::create(['megnevezes' => 'jalapeño']);
@@ -451,7 +451,7 @@ class CreateAlapanyagsTable extends Migration
         Alapanyag::create(['megnevezes' => 'cseresznyepaprika']);
         Alapanyag::create(['megnevezes' => 'savanyított kerekrépa']);
         Alapanyag::create(['megnevezes' => 'ecetes almapaprika']);
-        Alapanyag::create(['megnevezes' => 'vagyes savanyúság']);
+        Alapanyag::create(['megnevezes' => 'vegyes savanyúság']);
         Alapanyag::create(['megnevezes' => 'savanyúkáposztalé']);
         Alapanyag::create(['megnevezes' => 'cukkini']);
         Alapanyag::create(['megnevezes' => 'sütőtök']);
@@ -575,7 +575,7 @@ class CreateAlapanyagsTable extends Migration
         Alapanyag::create(['megnevezes' => 'babérlevél']);
         Alapanyag::create(['megnevezes' => 'aszatgyanta']);
         Alapanyag::create(['megnevezes' => 'borsikafű']);
-        Alapanyag::create(['megnevezes' => 'kandamom']);
+        Alapanyag::create(['megnevezes' => 'kardamom']);
         Alapanyag::create(['megnevezes' => 'borókabogyó']);
         Alapanyag::create(['megnevezes' => 'cayenne bors']);
         Alapanyag::create(['megnevezes' => 'római kömény']);
@@ -606,7 +606,7 @@ class CreateAlapanyagsTable extends Migration
         Alapanyag::create(['megnevezes' => 'négyszínű bors']);
         Alapanyag::create(['megnevezes' => 'sáfrányos szeklice']);
         Alapanyag::create(['megnevezes' => 'fokhagymabors']);
-        Alapanyag::create(['megnevezes' => 'szárított hibiszkusvirág']);
+        Alapanyag::create(['megnevezes' => 'szárított hibiszkuszvirág']);
         Alapanyag::create(['megnevezes' => 'tonkabab']);
         Alapanyag::create(['megnevezes' => 'szárított jázmin']);
         Alapanyag::create(['megnevezes' => 'édesgyökér']);
@@ -649,7 +649,7 @@ class CreateAlapanyagsTable extends Migration
         Alapanyag::create(['megnevezes' => 'parmezán sajt']);
         Alapanyag::create(['megnevezes' => 'sajt']);
         Alapanyag::create(['megnevezes' => 'kecskesajt']);
-        Alapanyag::create(['megnevezes' => 'mozarella']);
+        Alapanyag::create(['megnevezes' => 'mozzarella']);
         Alapanyag::create(['megnevezes' => 'mascarpone']);
         Alapanyag::create(['megnevezes' => 'feta sajt']);
         Alapanyag::create(['megnevezes' => 'gruyére sajt']);
@@ -717,6 +717,7 @@ class CreateAlapanyagsTable extends Migration
         Alapanyag::create(['megnevezes' => 'udon tészta']);
         Alapanyag::create(['megnevezes' => 'üvegtészta']);
         Alapanyag::create(['megnevezes' => 'ázsiai tészta']);
+        Alapanyag::create(['megnevezes' => 'kínai tészta']);
         Alapanyag::create(['megnevezes' => 'spatzle tészta']);
         Alapanyag::create(['megnevezes' => 'NoCarb Noodle']);
         Alapanyag::create(['megnevezes' => 'soba tészta']);
@@ -733,7 +734,7 @@ class CreateAlapanyagsTable extends Migration
         Alapanyag::create(['megnevezes' => 'farfalle']);
         Alapanyag::create(['megnevezes' => 'fusilli tészta']);
         Alapanyag::create(['megnevezes' => 'rigatoni tészta']);
-        Alapanyag::create(['megnevezes' => 'zöld metéltészta']);
+        Alapanyag::create(['megnevezes' => 'zöld metélttészta']);
         Alapanyag::create(['megnevezes' => 'kagylótészta']);
         Alapanyag::create(['megnevezes' => 'orecchiette tészta']);
         Alapanyag::create(['megnevezes' => 'tagliatelle']);
