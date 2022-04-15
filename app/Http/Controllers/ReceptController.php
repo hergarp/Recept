@@ -280,7 +280,7 @@ class ReceptController extends Controller
         }
         
         //szűrés szezonra és napszakra
-        $search_terms = array("winter"=>"tel", 
+        $search_terms = array("winter" => "tel", 
                               "spring" => "tavasz", 
                               "summer" => "nyar", 
                               "autumn" => "osz",
@@ -321,11 +321,11 @@ class ReceptController extends Controller
         }
 
         // szűrés allergénre
-        $allergens = array("glutenfree"=>"glutén", 
-                           "sugarfree"=>"cukor", 
-                           "milk-free"=>"tej", 
-                           "egg-free"=>"tojás", 
-                           "laktosefree"=>"laktóz");
+        $allergens = array("glutenfree"=>"gluten", 
+                           "sugarfree"=>"sugar", 
+                           "milk-free"=>"milk", 
+                           "egg-free"=>"egg", 
+                           "laktosefree"=>"laktose");
         
         $has_allergen = [];
         foreach($allergens as $key => $value) {
@@ -489,7 +489,6 @@ class ReceptController extends Controller
                         $rk->user=$recept->user; 
                         $rk->recept=$recept->r_id; 
                         $rk->sajat = 1;
-                        $rk->minosites=0;  // ezt kikell szedni adatbázis migráció után
                         $rk->save();
 
                         break;

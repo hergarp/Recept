@@ -46,7 +46,6 @@ class ReceptkonyvController extends Controller
         $rk=new Receptkonyv();
         $rk->user=Auth::user()->id; 
         $rk->recept=$request->recipe_id; 
-        $rk->minosites=0;  // ezt kikell szedni adatbázis migráció után
         $rk->save();
         $adag=$request->recipe_adag;
         return redirect('/recipe/'.$url_slug.'?adag='.$adag.'#recipe-save');
@@ -64,7 +63,7 @@ class ReceptkonyvController extends Controller
         $user=Auth::user()->id; 
         $receptkonyv=DB::table('receptkonyvs')->where ('receptkonyvs.user', '=',$user)
                                             -> join('recepts', 'receptkonyvs.recept', '=', 'recepts.r_id')
-                                            -> select('receptkonyvs.jelzes', 'receptkonyvs.minosites','recepts.url_slug','recepts.megnevezes', 'recepts.kep', 'recepts.adag', 'recepts.r_id')
+                                            -> select('receptkonyvs.elkeszitette', 'receptkonyvs.sajat', 'receptkonyvs.minosites','recepts.url_slug','recepts.megnevezes', 'recepts.kep', 'recepts.adag', 'recepts.r_id')
                                             ->get();
         return view('profile', ['receptkonyv'=>$receptkonyv]);
     
