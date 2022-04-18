@@ -1,18 +1,14 @@
 @media screen and (max-width: 1000px){
     .container {
-        display: grid;
-        grid-auto-columns: 1fr;
-        grid-auto-flow: column;
         grid-template:
             'h h'
             'as as'
             'ar ar'
             'f f';
-        gap: 30px;
     }
 
     article {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
     }
 
     aside .dropdown-content{
@@ -24,6 +20,16 @@
     }
 
     .image {
-        height: 30vw;
+        height: 20vw;
+    }
+}
+
+@media screen and (max-width: 550px){
+    article {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .image {
+        height: 25vw;
     }
 }

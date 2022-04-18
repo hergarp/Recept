@@ -31,7 +31,7 @@
 
                     <!-- Password -->
                     <div class="right">
-                        <x-label for="password" :value="__('Password')" />
+                        <x-label for="password" :value="__('Jelszó')" />
 
                         <x-input class="m-form__input -colorBgTernary" id="password" 
                                         type="password"

@@ -326,6 +326,7 @@ class CreateAlapanyagsTable extends Migration
         Alapanyag::create(['megnevezes' => 'nori lap']);
         Alapanyag::create(['megnevezes' => 'thai zöldségkeverék']);
         Alapanyag::create(['megnevezes' => 'paradicsomos salsa']);
+        Alapanyag::create(['megnevezes' => 'paradicsompüré']);
         Alapanyag::create(['megnevezes' => 'babpüré']);
         Alapanyag::create(['megnevezes' => 'vízigesztenye']);
         Alapanyag::create(['megnevezes' => 'zöldségkeverék']);
@@ -911,6 +912,16 @@ class CreateAlapanyagsTable extends Migration
         Alapanyag::create(['megnevezes' => 'Prosecco – habzóbor']);
         Alapanyag::create(['megnevezes' => 'Baileys']);
         //alkoholos italok vége
+        
+        //kifli, zsemle
+        Alapanyag::create(['megnevezes' => 'zsemlemorzsa']);
+        Alapanyag::create(['megnevezes' => 'kifli']);
+        Alapanyag::create(['megnevezes' => 'zsemle']);
+        Alapanyag::create(['megnevezes' => 'hamburger zsemle']);
+        Alapanyag::create(['megnevezes' => 'hot-dog kifli']);
+        Alapanyag::create(['megnevezes' => 'kruton']);
+        Alapanyag::create(['megnevezes' => 'bagel']);
+        //kifli, zsemle vége
     }
 
     /**

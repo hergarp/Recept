@@ -27,6 +27,15 @@ aside {
     grid-area: as;
 }
 
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:visited {
+    color: rgb(153, 96, 73);
+}
+
 section {
     border: 1px solid grey;
     padding: 10px;

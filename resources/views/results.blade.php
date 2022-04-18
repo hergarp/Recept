@@ -11,7 +11,7 @@
     <main>
         <header>
             @include('template/header')
-            <h2>Találatok a <span class="salmon">{{$keyword}}</span> kulcsszóra</h2>
+            <h2>Találatok a(z) <span class="salmon">{{$keyword}}</span> kulcsszóra</h2>
             <p id="url"></p>
         </header>
         <div class="container">

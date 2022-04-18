@@ -301,6 +301,16 @@ class CreateAllergensTable extends Migration
         Allergen::create(['alapanyag' => 'cappuccino por', 'allergen' => 'milk']);
         Allergen::create(['alapanyag' => 'cappuccino por', 'allergen' => 'laktose']);
         //kávé vége
+        
+        //kifli, zsemle
+        Allergen::create(['alapanyag' => 'zsemlemorzsa', 'allergen' => 'gluten']);
+        Allergen::create(['alapanyag' => 'kifli', 'allergen' => 'gluten']);
+        Allergen::create(['alapanyag' => 'zsemle', 'allergen' => 'gluten']);
+        Allergen::create(['alapanyag' => 'hamburger zsemle', 'allergen' => 'gluten']);
+        Allergen::create(['alapanyag' => 'hot-dog kifli', 'allergen' => 'gluten']);
+        Allergen::create(['alapanyag' => 'kruton', 'allergen' => 'gluten']);
+        Allergen::create(['alapanyag' => 'bagel', 'allergen' => 'gluten']);
+        //kifli, zsemle vége
     }
 
     /**

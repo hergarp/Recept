@@ -21,7 +21,7 @@
             <div class="reg-cont">
                 <!-- Name -->
                 <div class="right">
-                    <x-label for="name" :value="__('Name')" />
+                    <x-label for="name" :value="__('Név')" />
 
                     <x-input class="m-form__input -colorBgTernary" id="name" type="text" name="name" :value="old('name')" required autofocus />
                 </div>
@@ -35,7 +35,7 @@
 
                 <!-- Password -->
                 <div class="right">
-                    <x-label for="password" :value="__('Password')" />
+                    <x-label for="password" :value="__('Jelszó')" />
 
                     <x-input class="m-form__input -colorBgTernary" id="password"
                                     type="password"
@@ -45,7 +45,7 @@
 
                 <!-- Confirm Password -->
                 <div class="right">
-                    <x-label for="password_confirmation" :value="__('Confirm Password')" />
+                    <x-label for="password_confirmation" :value="__('Jelszó megerősítése')" />
 
                     <x-input class="m-form__input -colorBgTernary" id="password_confirmation"
                                     type="password"

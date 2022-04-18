@@ -184,32 +184,6 @@ class ReceptController extends Controller
         }
     }
 
-    public function test() {
-        Recept::find(1);
-    }
-    public function seged($url_slug)
-    {
-        $recipe = Recept::where('url_slug',$url_slug)->first();
-        $id=$recipe->r_id;
-        $alkotjas = DB::table('alkotjas')->where('recept', '=', $id)
-                                             ->join('alapanyag_mertekegysegs', 
-                                                    'alkotjas.alapanyag_mertekegyseg', 
-                                                    '=', 
-                                                    'alapanyag_mertekegysegs.am_id')
-                                             ->select('alapanyag_mertekegysegs.alapanyag',
-                                                    'alapanyag_mertekegysegs.mertekegyseg',
-                                                    'alkotjas.mennyiseg')
-                                             ->get();
-            $allergens = '';
-            foreach ($alkotjas as $alkotja) {
-                $allergen = Allergen::where('alapanyag', $alkotja->alapanyag)->pluck('allergen');
-                if ($allergen != null) {
-                    $allergens = $allergens .  ' ' . (String)$allergen;
-                }
-            }
-        return response()->json(['allergens' => $allergens]);
-    }
-
     public function search(Request $request) 
     {
         $keyword = $request->keyword;
@@ -345,14 +319,20 @@ class ReceptController extends Controller
 
         // szűrés alapanyagra
         if ($raw_material != null) {
-            $seged = [];
+            $recipes_with = [];
             foreach ($recs as $recipe) {
                 $recipe = (array)$recipe;
                 if ($recipe['alapanyag'] == $raw_material) {
-                    array_push($seged,$recipe);
+                    array_push($recipes_with,$recipe);
                 }
             }
-            $recs = $seged;
+            $seged = [];
+            foreach ($recipes_with as $rec) {
+                $rec = (array)$rec;
+                $title = $rec['url_slug'];
+                array_push($seged, $title);
+            }
+            $recipe_titles = array_intersect($recipe_titles, $seged);
         }
 
         // szűrés alapanyag nélkülre
@@ -417,7 +397,7 @@ class ReceptController extends Controller
         $konyhas = Konyha::all();
         $kategorias = Kategoria::all();
         /*and if you want to get that from DB and convert it back to an array use:*/
-        if (empty($recipe->egyeb_elnevezesek)) {
+        if ($recipe->egyeb_elnevezesek == "null") {
             $elnevezesek = [];
         }
         else {

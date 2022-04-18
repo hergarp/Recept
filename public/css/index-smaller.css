@@ -13,7 +13,7 @@
     }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 550px) {
     #recipes {
         display: grid;
         grid-auto-columns: 1fr;
@@ -32,8 +32,8 @@
         grid-auto-columns: 1fr;
         grid-auto-flow: column;
         grid-template: 
-            'si si si'
-            'ss ss b';
+            'si si'
+            'ss b';
         gap: 5px;
     }
 

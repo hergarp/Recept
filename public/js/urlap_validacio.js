@@ -49,7 +49,6 @@ function validateInputs(errors) {
 
 function commaToDot(input, id) {
     input = input.replace(',', '.');
-    console.log(input);
     $("#" + id).val(input);
 }
 
@@ -69,7 +68,7 @@ function validatePPCBQ(id) {
     if (id.split('-')[0] == "quantity" || id.split('-')[0] == "quantityedit") {
         commaToDot(input, id);
         input = $("#" + id).val(); 
-        var szuro = /^[0-9]+[0-9\.]*$/;
+        var szuro = /^[0-9]+[\.]+[0-9]*$/;
         hiba = "<p class='red align-center'>Legyen pozitív szám!</p>";
     }
     else {

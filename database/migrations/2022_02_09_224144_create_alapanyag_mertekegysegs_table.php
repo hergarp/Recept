@@ -34,6 +34,9 @@ class createAlapanyagmertekegysegstable extends migration
         });
 
         Alapanyag_mertekegyseg::create(['mertekegyseg' => 'db', 'alapanyag' => 'eper']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'g', 'alapanyag' => 'eper']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dkg', 'alapanyag' => 'eper']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'kg', 'alapanyag' => 'eper']);
         Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ml', 'alapanyag' => 'eperszirup']);
         Alapanyag_mertekegyseg::create(['mertekegyseg' => 'cl', 'alapanyag' => 'eperszirup']);
         Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dl', 'alapanyag' => 'eperszirup']);
@@ -131,6 +134,11 @@ class createAlapanyagmertekegysegstable extends migration
         Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dkg', 'alapanyag' => 'rozs']);
         Alapanyag_mertekegyseg::create(['mertekegyseg' => 'kg', 'alapanyag' => 'rozs']);
         Alapanyag_mertekegyseg::create(['mertekegyseg' => 'bögre', 'alapanyag' => 'rozs']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'g', 'alapanyag' => 'liszt']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dkg', 'alapanyag' => 'liszt']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'kg', 'alapanyag' => 'liszt']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'bögre', 'alapanyag' => 'liszt']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ek', 'alapanyag' => 'liszt']);
         Alapanyag_mertekegyseg::create(['mertekegyseg' => 'g', 'alapanyag' => 'kukoricaliszt']);
         Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dkg', 'alapanyag' => 'kukoricaliszt']);
         Alapanyag_mertekegyseg::create(['mertekegyseg' => 'kg', 'alapanyag' => 'kukoricaliszt']);
@@ -860,6 +868,10 @@ class createAlapanyagmertekegysegstable extends migration
         Alapanyag_mertekegyseg::create(['mertekegyseg' => 'g', 'alapanyag' => 'paradicsomos salsa']);
         Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dkg', 'alapanyag' => 'paradicsomos salsa']);
         Alapanyag_mertekegyseg::create(['mertekegyseg' => 'kg', 'alapanyag' => 'paradicsomos salsa']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ek', 'alapanyag' => 'paradicsompüré']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'g', 'alapanyag' => 'paradicsompüré']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dkg', 'alapanyag' => 'paradicsompüré']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'kg', 'alapanyag' => 'paradicsompüré']);
         Alapanyag_mertekegyseg::create(['mertekegyseg' => 'g', 'alapanyag' => 'zöldségkeverék']);
         Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dkg', 'alapanyag' => 'zöldségkeverék']);
         Alapanyag_mertekegyseg::create(['mertekegyseg' => 'kg', 'alapanyag' => 'zöldségkeverék']);
@@ -1111,6 +1123,7 @@ class createAlapanyagmertekegysegstable extends migration
         Alapanyag_mertekegyseg::create(['mertekegyseg' => 'g', 'alapanyag' => 'bambuszrügy']);
         Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dkg', 'alapanyag' => 'bambuszrügy']);
         Alapanyag_mertekegyseg::create(['mertekegyseg' => 'kg', 'alapanyag' => 'bambuszrügy']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ek', 'alapanyag' => 'sűrített paradicsom']);
         Alapanyag_mertekegyseg::create(['mertekegyseg' => 'g', 'alapanyag' => 'sűrített paradicsom']);
         Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dkg', 'alapanyag' => 'sűrített paradicsom']);
         Alapanyag_mertekegyseg::create(['mertekegyseg' => 'kg', 'alapanyag' => 'sűrített paradicsom']);
@@ -2293,6 +2306,7 @@ class createAlapanyagmertekegysegstable extends migration
         Alapanyag_mertekegyseg::create(['mertekegyseg' => 'g', 'alapanyag' => 'tejföl']);
         Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dkg', 'alapanyag' => 'tejföl']);
         Alapanyag_mertekegyseg::create(['mertekegyseg' => 'kg', 'alapanyag' => 'tejföl']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dl', 'alapanyag' => 'tejföl']);
         Alapanyag_mertekegyseg::create(['mertekegyseg' => 'ek', 'alapanyag' => 'crème fraîche']);
         Alapanyag_mertekegyseg::create(['mertekegyseg' => 'g', 'alapanyag' => 'crème fraîche']);
         Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dkg', 'alapanyag' => 'crème fraîche']);
@@ -3011,6 +3025,20 @@ class createAlapanyagmertekegysegstable extends migration
         Alapanyag_mertekegyseg::create(['mertekegyseg' => 'cl', 'alapanyag' => 'Baileys']);
         Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dl', 'alapanyag' => 'Baileys']);
         //alkoholos italok vége
+        
+        //kifli, zsemle
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'g', 'alapanyag' => 'zsemlemorzsa']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dkg', 'alapanyag' => 'zsemlemorzsa']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'kg', 'alapanyag' => 'zsemlemorzsa']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'db', 'alapanyag' => 'kifli']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'db', 'alapanyag' => 'zsemle']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'db', 'alapanyag' => 'hamburger zsemle']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'db', 'alapanyag' => 'hot-dog kifli']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'g', 'alapanyag' => 'kruton']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'dkg', 'alapanyag' => 'kruton']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'kg', 'alapanyag' => 'kruton']);
+        Alapanyag_mertekegyseg::create(['mertekegyseg' => 'db', 'alapanyag' => 'bagel']);
+        //kifli, zsemle vége
     }
 
     /**
