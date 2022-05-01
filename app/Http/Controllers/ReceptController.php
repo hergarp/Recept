@@ -85,7 +85,6 @@ class ReceptController extends Controller
         $recept->save();
 
         $r_id = $recept->r_id;
-        $adag = $recept->adag;
 
         $alme = array_map(null, $request->material, $request->quantity, $request->unit);
         foreach ($alme as $material) {
@@ -208,16 +207,16 @@ class ReceptController extends Controller
                 array_push($seged, $recipe);
             }
             $other = DB::table('recepts')->join('alkotjas', 
-                                                            'recepts.r_id', 
-                                                            '=', 
-                                                            'alkotjas.recept')
-                                                     ->join('alapanyag_mertekegysegs', 
-                                                            'alkotjas.alapanyag_mertekegyseg', 
-                                                            '=', 
-                                                            'alapanyag_mertekegysegs.am_id')
-                                                     ->where('egyeb_elnevezesek','like','%'.$keyword.'%')
-                                                     ->where('statusz','publikus')
-                                                     ->get();
+                                                'recepts.r_id', 
+                                                '=', 
+                                                'alkotjas.recept')
+                                         ->join('alapanyag_mertekegysegs', 
+                                                'alkotjas.alapanyag_mertekegyseg', 
+                                                '=', 
+                                                'alapanyag_mertekegysegs.am_id')
+                                         ->where('egyeb_elnevezesek','like','%'.$keyword.'%')
+                                         ->where('statusz','publikus')
+                                         ->get();
             foreach ($other as $recipe) {
                 array_push($seged, $recipe);
             }
@@ -225,22 +224,22 @@ class ReceptController extends Controller
         }
         else {
             $rec_ids = DB::table('alkotjas')->join('alapanyag_mertekegysegs', 
-                                                   'alkotjas.alapanyag_mertekegyseg', 
-                                                   '=', 
-                                                   'alapanyag_mertekegysegs.am_id')
+                                                    'alkotjas.alapanyag_mertekegyseg', 
+                                                    '=', 
+                                                    'alapanyag_mertekegysegs.am_id')
                                             ->select('alkotjas.recept')
                                             ->where('alapanyag_mertekegysegs.alapanyag','like','%'.$keyword.'%')
                                             ->get();
             $seged = [];
             foreach ($rec_ids as $rec) {
                 $recipe_by_option = DB::table('recepts')->join('alkotjas', 
-                                                               'recepts.r_id', 
-                                                               '=', 
-                                                               'alkotjas.recept')
+                                                                'recepts.r_id', 
+                                                                '=', 
+                                                                'alkotjas.recept')
                                                         ->join('alapanyag_mertekegysegs', 
-                                                               'alkotjas.alapanyag_mertekegyseg', 
-                                                               '=', 
-                                                               'alapanyag_mertekegysegs.am_id')
+                                                                'alkotjas.alapanyag_mertekegyseg', 
+                                                                '=', 
+                                                                'alapanyag_mertekegysegs.am_id')
                                                         ->where('r_id','=',$rec->recept)
                                                         ->where('statusz','=','publikus')
                                                         ->get();
@@ -255,14 +254,14 @@ class ReceptController extends Controller
         
         //szűrés szezonra és napszakra
         $search_terms = array("winter" => "tel", 
-                              "spring" => "tavasz", 
-                              "summer" => "nyar", 
-                              "autumn" => "osz",
-                              "breakfast" => "reggeli",
-                              "elevenses" => "tizorai",
-                              "lunch" => "ebed",
-                              "snack" => "uzsonna",
-                              "dinner" => "vacsora",);
+                                "spring" => "tavasz", 
+                                "summer" => "nyar", 
+                                "autumn" => "osz",
+                                "breakfast" => "reggeli",
+                                "elevenses" => "tizorai",
+                                "lunch" => "ebed",
+                                "snack" => "uzsonna",
+                                "dinner" => "vacsora",);
                 
         if (isset($request->winter) || 
             isset($request->spring) ||
@@ -296,10 +295,10 @@ class ReceptController extends Controller
 
         // szűrés allergénre
         $allergens = array("glutenfree"=>"gluten", 
-                           "sugarfree"=>"sugar", 
-                           "milk-free"=>"milk", 
-                           "egg-free"=>"egg", 
-                           "laktosefree"=>"laktose");
+                            "sugarfree"=>"sugar", 
+                            "milk-free"=>"milk", 
+                            "egg-free"=>"egg", 
+                            "laktosefree"=>"laktose");
         
         $has_allergen = [];
         foreach($allergens as $key => $value) {
@@ -359,12 +358,11 @@ class ReceptController extends Controller
         $filtered_recipes = [];
         foreach ($recipe_titles as $rec) {
             $recipe =  DB::table('recepts')->where('url_slug', '=', $rec)
-                                           ->select('url_slug',
+                                            ->select('url_slug',
                                                     'megnevezes',
                                                     'kep',
                                                     'adag')
-                                           ->get();
-            // $recipe = (array)$recipe;
+                                            ->get();
             array_push($filtered_recipes, $recipe);
         }
 
